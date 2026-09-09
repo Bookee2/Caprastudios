@@ -1,0 +1,100 @@
+/* TrailGoat design language — standalone stylesheet (kb-tokyo).
+ *
+ * Distilled from trailgoat.run's tokens.css / nav.css / fuel.css / home.css on
+ * 2026-09-06. Tokyo Night is the :root palette here (it is the site's default);
+ * Forest and First Light ride along as html.theme-* classes so a picker can
+ * offer them. Component recipes are the site's own, class names kept, so a
+ * page built on this file reads like a page on the site and a snippet copied
+ * from the site works here.
+ *
+ * Load order in a page: this file, then the page's own <style>. Fonts:
+ *   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800&family=Red+Hat+Text:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+ * Block that link and the page still reads on the system fallbacks — by design.
+ */
+
+/* =========================================================================
+   1. TOKENS — Tokyo Night on :root
+   ========================================================================= */
+:root {
+    /* Ground: well → page → panel → raised */
+    --bg-0: #1a1b26;
+    --bg-1: #24283b;
+    --bg-well: color-mix(in srgb, var(--bg-0) 80%, #000);
+    --bg-2:    color-mix(in srgb, var(--bg-1) 93%, #fff);
+
+    /* Ink */
+    --ink: #c0caf5;
+    --muted: #9aa5ce;
+    --ink-bright: color-mix(in srgb, var(--ink) 60%, #fff);
+    --faint:      color-mix(in srgb, var(--muted) 70%, var(--bg-0));
+
+    /* The one accent on duty */
+    --accent: #7aa2f7;
+    --accent-ink: var(--bg-well);
+    --selection: color-mix(in srgb, var(--accent) 28%, transparent);
+
+    /* Neutral ladder — every interactive state that is not the accent */
+    --fill-idle:     color-mix(in srgb, var(--ink) 4%, transparent);
+    --fill-hover:    color-mix(in srgb, var(--ink) 8%, transparent);
+    --fill-selected: color-mix(in srgb, var(--ink) 18%, transparent);
+    --edge:      color-mix(in srgb, var(--ink) 40%, transparent);
+    --edge-soft: color-mix(in srgb, var(--ink) 25%, transparent);
+    --ring:      color-mix(in srgb, var(--ink) 25%, transparent);
+
+    /* Lines & glass */
+    --line: rgba(255, 255, 255, 0.09);
+    --line-faint: color-mix(in srgb, var(--line) 55%, transparent);
+    --glass: rgba(255, 255, 255, 0.045);
+    --glass-2: rgba(255, 255, 255, 0.07);
+
+    /* Feature palette — data-viz and section iconography only, never chrome */
+    --c-fuel: #ff9e64;
+    --c-pace: #7aa2f7;
+    --c-crew: #9ece6a;
+    --c-course: #0db9d7;
+    --c-gear: #bb9af7;
+    --c-weather: #d98ae0;
+    --c-climb: #f7768e;
+    --c-aid: #7dcfff;
+    --gold: #e0af68;
+    /* legacy aliases the site's snippets still read */
+    --orange: var(--c-fuel); --moss: var(--c-pace); --fern: var(--c-crew); --teal: var(--c-course);
+    --violet: var(--c-gear); --plum: var(--c-weather); --coral: var(--c-climb); --aqua: var(--c-aid);
+
+    /* Corners: press / surface */
+    --r-ctl: 6px;
+    --r-card: 10px;
+    --radius: var(--r-card);
+
+    /* Type: three cuts of one family */
+    --display: 'Red Hat Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    --body: 'Red Hat Text', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'Red Hat Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    --mono-cap: 0.6875rem;                  /* 11px floor for mono-caps labels */
+
+    /* Motion */
+    --ease-snap: cubic-bezier(0.23, 1, 0.32, 1);
+    --dur-ctl: 150ms;
+    --dur-layer: 250ms;
+
+    /* You are here — the one two-colour mark, once per view */
+    --here-ring: linear-gradient(45deg, var(--teal), var(--accent));
+    --here-fill: var(--bg-2);
+    --here-bg: linear-gradient(var(--here-fill), var(--here-fill)) padding-box, var(--here-ring) border-box;
+
+    /* Depth: one pop shadow for floating layers; raise/well for the dark ground */
+    --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --raise-1: inset 0 1px 0 rgba(255,255,255,0.07), 0 2px 6px rgba(0,0,0,0.35);
+    --raise-2: inset 0 1px 0 rgba(255,255,255,0.09), 0 2px 5px rgba(0,0,0,0.45), 0 10px 22px -8px rgba(0,0,0,0.55);
+    --well: inset 0 2px 6px rgba(0,0,0,0.5), inset 0 -1px 0 rgba(255,255,255,0.05);
+
+    /* Backdrop tints (Tokyo Night: neon cyan + arcade violet, aurora signal blue) */
+    --bd-tint-1: rgba(13, 185, 215, 0.10);
+    --bd-tint-2: rgba(187, 154, 247, 0.08);
+    --bd-aurora: rgba(122, 162, 247, 0.07);
+    --bd-glow: rgba(187, 154, 247, 0.12);
+
+    --tg-tabbar-h: 56px;
+}
+@media (max-width: 860px) { :root { --mono-cap: 0.75rem; } }
+
