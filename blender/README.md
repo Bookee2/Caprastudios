@@ -23,7 +23,7 @@ This is a native Blender scene: four procedural ribbon surfaces with thickness, 
 - `../assets/motion/*poster.jpg`: empty opening frames and finished-pose fallbacks.
 - `preview.html`: responsive review player with replay and wide/phone formats.
 
-The film is delivered for visual review. The live homepage still uses the approved SVG/still ribbon reveal. These compressed videos work on GitHub Pages; no new hosting service or runtime Python process is needed.
+The homepage integration uses these compressed films in its statement-piece section, with responsive posters and accessible playback controls. See `../docs/ANIMATION.md` for loading and fallback behavior. The standalone review player remains available. No new hosting service or runtime Python process is needed.
 
 Run `npm run dev` and open `/blender/preview.html`. The development server supports byte ranges so seeking and format changes work correctly. The wide film is 1.08 MB; the phone film is 0.39 MB.
 

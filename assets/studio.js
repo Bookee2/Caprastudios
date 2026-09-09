@@ -2,7 +2,6 @@
 (() => {
   'use strict';
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   const menuButton = document.querySelector('.menu-toggle');
   const menu = document.querySelector('#mobile-nav');
   if (menuButton && menu) {
@@ -42,39 +41,96 @@
     });
   }
 
-  const stage = document.querySelector('#motion-stage');
-  const replay = document.querySelector('#replay-study');
-  if (stage && replay) {
-    let timer;
-    const resetPosition = () => { stage.style.removeProperty('--mx'); stage.style.removeProperty('--my'); };
-    const play = () => {
-      if (motion.matches) return;
-      clearTimeout(timer);
-      stage.classList.remove('study-playing');
-      void stage.offsetWidth;
-      stage.classList.add('study-playing');
-      replay.disabled = true;
-      timer = setTimeout(() => { stage.classList.remove('study-playing'); replay.disabled = false; }, 2600);
+  const stage = document.querySelector('#stage-media');
+  const video = document.querySelector('#unicorn-film');
+  const poster = document.querySelector('#stage-poster');
+  const control = document.querySelector('#replay-study');
+  if (stage && video && poster && control) {
+    const connection = navigator.connection;
+    const label = control.querySelector('[data-film-label]');
+    const icon = control.querySelector('[data-film-icon]');
+    let attempted = false, visible = false, resumeWhenVisible = false, userPaused = false;
+    const automatic = () => !motion.matches && !connection?.saveData;
+    const setPoster = (opening = false) => {
+      const suffix = opening ? '-opening-poster.jpg' : '-poster.jpg';
+      poster.querySelector('source').srcset = `assets/motion/capra-unicorn-mobile${suffix}`;
+      poster.querySelector('img').src = `assets/motion/capra-unicorn${suffix}`;
     };
-    replay.hidden = motion.matches;
-    replay.addEventListener('click', play);
-    stage.addEventListener('pointermove', event => {
-      if (motion.matches || !finePointer.matches) return;
-      const rect = stage.getBoundingClientRect();
-      stage.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width - .5) * 24}px`);
-      stage.style.setProperty('--my', `${((event.clientY - rect.top) / rect.height - .5) * 18}px`);
+    const updateControl = () => {
+      const playing = !video.paused && !video.ended;
+      const text = playing ? 'Pause' : video.ended ? 'Replay' : video.currentTime && !video.hidden ? 'Resume' : 'Play';
+      label.textContent = text;
+      icon.textContent = playing ? 'Ⅱ' : text === 'Replay' ? '↻' : '▷';
+      control.setAttribute('aria-label', `${text} unicorn animation`);
+    };
+    const showStill = () => {
+      setPoster();
+      poster.hidden = false;
+      video.hidden = true;
+      updateControl();
+    };
+    const play = (restart = false) => {
+      attempted = true;
+      userPaused = false;
+      resumeWhenVisible = false;
+      if (!video.getAttribute('src')) {
+        const phone = matchMedia('(max-width: 600px)').matches;
+        video.src = `assets/motion/capra-unicorn-${phone ? 'mobile' : '1080p'}.mp4?v=2`;
+        video.poster = `assets/motion/capra-unicorn${phone ? '-mobile' : ''}-opening-poster.jpg`;
+      }
+      if (restart || video.ended) video.currentTime = 0;
+      if (video.currentTime === 0) setPoster(true);
+      video.hidden = false;
+      video.play().then(() => {
+        if (!video.paused) poster.hidden = true;
+        updateControl();
+      }).catch(error => {
+        if (error.name !== 'AbortError') showStill();
+      });
+    };
+    control.hidden = false;
+    control.addEventListener('click', () => {
+      if (video.paused || video.ended || video.hidden) play(video.hidden || video.ended);
+      else {
+        userPaused = true;
+        resumeWhenVisible = false;
+        video.pause();
+      }
     });
-    stage.addEventListener('pointerleave', resetPosition);
-    motion.addEventListener('change', event => {
-      replay.hidden = event.matches;
-      if (event.matches) { clearTimeout(timer); stage.classList.remove('study-playing'); replay.disabled = false; resetPosition(); }
-    });
+    for (const event of ['play', 'pause', 'ended']) video.addEventListener(event, updateControl);
+    video.addEventListener('ended', () => { resumeWhenVisible = false; showStill(); });
+    video.addEventListener('error', showStill);
+    const pauseOffscreen = () => {
+      if (!userPaused && !video.paused && !video.ended) resumeWhenVisible = true;
+      video.pause();
+    };
+    const resume = () => {
+      if (!visible || document.hidden) return;
+      if (resumeWhenVisible && !userPaused) play();
+      else if (!attempted && automatic()) play();
+    };
     if ('IntersectionObserver' in window) {
-      const stageObserver = new IntersectionObserver(entries => {
-        if (entries.some(entry => entry.isIntersecting)) { play(); stageObserver.disconnect(); }
-      }, { threshold: .3 });
-      stageObserver.observe(stage);
+      if (automatic()) setPoster(true);
+      const observer = new IntersectionObserver(entries => {
+        const entry = entries[0];
+        visible = entry.intersectionRatio >= .85;
+        if (!entry.isIntersecting) pauseOffscreen();
+        else resume();
+      }, { threshold: [0, .85] });
+      observer.observe(stage);
     }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) pauseOffscreen(); else resume();
+    });
+    const respectPreferences = () => {
+      if (automatic()) return;
+      attempted = true;
+      resumeWhenVisible = false;
+      video.pause();
+      showStill();
+    };
+    motion.addEventListener('change', respectPreferences);
+    connection?.addEventListener?.('change', respectPreferences);
   }
   const year = document.querySelector('#year');
   if (year) year.textContent = String(new Date().getFullYear());
