@@ -2,15 +2,16 @@
 
 ## The reserved stage
 
-`index.html` contains a full-width `.motion-stage` with `#stage-media` inside it. This is the slot for the future rendered Blender animation. The current cut-C study is a complete vector brand composition, with a finite assembly animation, a replay control, and subtle pointer response. It is not represented as a Blender render.
+`index.html` contains a full-width `.motion-stage` with `#stage-media` inside it. This is the slot for the future rendered Blender animation. The current ribbon study combines the approved shaded unicorn artwork with an SVG reveal mask, a replay control, and subtle pointer response. The small brand applications are native SVG. The hero is currently an animated still, not a Blender-rendered video.
 
 The stage has a stable responsive height: 410–600px on larger screens and 350px on phones. Its corner captions remain HTML. Keep text and the primary sales message outside the video so content remains accessible and crawlable.
 
 ## Proposed art direction
 
-An extruded Capra cut-C monogram, machined as a sculptural object. Tokyo Midnight background, softly reflective periwinkle faces, a restrained violet edge. Gentle camera orbit or assembly into one coherent form. Avoid stock liquid-chrome blobs, visual noise, and rapid cuts.
+A single satin ribbon unfurls into the approved unicorn profile, then settles. Preserve the open neck, tapered horn, and looping forehead. Use a subtle camera orbit to reveal the ribbon thickness and twist, with periwinkle highlights and restrained violet backs. No stacked contour extrusion. The current still is the visual reference, not a substitute for constructing the eventual 3D ribbon geometry.
 
-- Source geometry: `assets/brand/mark.svg`.
+- Silhouette guide: `assets/brand/mark.svg`.
+- Approved material and form reference: `assets/brand/ribbon-hero.png`.
 - Background: `#15161e`, approximately the resolved Tokyo Night well color.
 - Face: signal blue `#7aa2f7`; optional cyan `#7dcfff` and violet `#bb9af7` edge lighting.
 - Target duration: 6–8 seconds, silent. Make the first and last frames usable as still images.

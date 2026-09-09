@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Capra Studios — independent web design and AI development",
   "scripts": {
+    "brand": "node scripts/generate-brand.mjs",
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "check": "node --check assets/studio.js && node --test scripts/build.test.mjs"

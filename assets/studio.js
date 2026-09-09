@@ -54,7 +54,7 @@
       void stage.offsetWidth;
       stage.classList.add('study-playing');
       replay.disabled = true;
-      timer = setTimeout(() => { stage.classList.remove('study-playing'); replay.disabled = false; }, 2300);
+      timer = setTimeout(() => { stage.classList.remove('study-playing'); replay.disabled = false; }, 2600);
     };
     replay.hidden = motion.matches;
     replay.addEventListener('click', play);

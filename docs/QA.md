@@ -7,12 +7,12 @@ Verified September 9, 2026, in headless Chrome through Playwright on macOS. This
 - 1280×800 desktop, 768×1024 tablet, 390×844 phone, and 320×740 narrow phone.
 - No horizontal page overflow at those sizes.
 - No page JavaScript exceptions.
-- All three local portfolio screenshots decode successfully.
+- The local hero artwork and all three portfolio screenshots load successfully.
 - One H1, valid section anchors, and live external portfolio destinations.
 - Desktop menu button hidden; mobile menu opens, closes after selecting a section, and closes on Escape with focus restored to its trigger.
 - Native FAQ disclosures open and close using browser controls.
 - Reduced-motion mode keeps every section visible, disables animated effects, and hides the replay control.
-- Normal motion assembles and settles; replay disables while running and re-enables on completion. Changing the motion preference while on the page also works.
+- Normal motion reveals the ribbon and settles; replay disables while running and re-enables on completion. Changing the motion preference while on the page also works.
 - No-JavaScript phone visit retains the hero, contact CTA, header contact link, and usable FAQ.
 - Desktop/phone screenshots were reviewed for the hero, motion stage, portfolio, studio, services, and contact.
 - Contact links were inspected as `mailto:` links; no test email was sent.

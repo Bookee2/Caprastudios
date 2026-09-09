@@ -1,10 +1,14 @@
 # Capra Studios identity
 
-## The cut C
+## The ribbon unicorn
 
-A compact geometric C with an open, rising cut: a small mark with a clear silhouette. The angular form connects with Capra's sure-footed, mountain-goat origins without using a literal mascot. Its stepped extrusion becomes the larger motion study.
+The selected direction is concept 03, the ribbon: a flowing, open unicorn profile with a tapered horn and an S-shaped neck. Satin blue and violet surfaces form the larger hero artwork; simple monochrome curves carry the identity in the header, footer, studio section and favicon.
 
-The logo works as a favicon, header mark, outline, solid monochrome mark, or dimensional object. Use the SVGs in `assets/brand/`. Keep clear space of at least one-quarter the mark's width. Use a minimum of 24px for the standalone mark and 16px only for the favicon.
+The SVG files in `assets/brand/` share their curves through `scripts/ribbon-shapes.json`. Run `npm run brand` after changing those curves to update every mark and the inline page symbol together. The outlined Red Hat wordmark lettering is preserved. The shaded artwork is a separately prepared image based on the approved concept, not a 3D model.
+
+Keep clear space around the horn and lower ribbon tip. Use a minimum height of 32px for the standalone mark where practical; the favicon uses the same silhouette in its dedicated square canvas. The small flat version is simplified for legibility and does not include the hero's material shading.
+
+The original C identity is preserved in `docs/brand-archive/cut-c/` and Git history. It is outside the deployed website artifact.
 
 ## Palette
 
@@ -39,4 +43,4 @@ Supporting line: **Human imagination. Artificial intelligence. Unmistakably your
 
 ## Motion
 
-Controls respond quickly; page elements arrive once; the brand study assembles and settles. Nothing in the navigation loops. Reduced motion shows complete static compositions. The browser owns ordinary scrolling; there is no scroll hijacking or cursor replacement.
+Controls respond quickly; page elements arrive once; the ribbon study reveals along its curve and settles. Nothing in the navigation loops. Reduced motion shows complete static compositions. The browser owns ordinary scrolling; there is no scroll hijacking or cursor replacement.
