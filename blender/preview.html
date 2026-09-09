@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Ribbon 03 — Capra Studios</title>
+  <title>Ribbon 03 · Revision 02 — Capra Studios</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Red+Hat+Text:wght@400;500&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,11 +15,11 @@
 </head>
 <body>
   <main class="shell">
-    <header><a class="brand" href="../">capra<span>STUDIOS</span></a><span class="label">Ribbon / Study 003</span></header>
-    <div class="intro"><h1>Imagination, in motion.</h1><p class="label">08 seconds / Silent</p></div>
+    <header><a class="brand" href="../">capra<span>STUDIOS</span></a><span class="label">Ribbon 03 / Revision 02</span></header>
+    <div class="intro"><h1>Imagination, in motion.</h1><p class="label">08 seconds / 60 fps / Silent</p></div>
     <figure class="film" id="film">
       <img id="still" src="../assets/motion/capra-unicorn-poster.jpg" alt="The Capra Studios unicorn formed from blue and violet satin ribbons." hidden>
-      <video id="unicorn" controls muted playsinline preload="none" poster="../assets/motion/capra-unicorn-poster.jpg" src="../assets/motion/capra-unicorn-1080p.mp4" aria-label="A blue and violet ribbon unfurls into the Capra Studios unicorn, then turns in soft studio light.">
+      <video id="unicorn" controls muted playsinline preload="none" poster="../assets/motion/capra-unicorn-opening-poster.jpg" src="../assets/motion/capra-unicorn-1080p.mp4" aria-label="From an empty stage, blue and violet ribbons grow from the tail tip into the Capra Studios unicorn, settling in sculpted studio light.">
         <a href="../assets/motion/capra-unicorn-1080p.mp4">Watch the unicorn animation</a>
       </video>
     </figure>
@@ -42,8 +42,8 @@
       const playing=!video.paused,time=video.currentTime;
       format.value=value;
       film.classList.toggle('portrait',value==='portrait');
-      video.poster=media+(value==='portrait'?'capra-unicorn-mobile-poster.jpg':'capra-unicorn-poster.jpg');
-      still.src=video.poster;
+      video.poster=media+(value==='portrait'?'capra-unicorn-mobile-opening-poster.jpg':'capra-unicorn-opening-poster.jpg');
+      still.src=media+(value==='portrait'?'capra-unicorn-mobile-poster.jpg':'capra-unicorn-poster.jpg');
       video.src=media+(value==='portrait'?'capra-unicorn-mobile.mp4':'capra-unicorn-1080p.mp4');
       document.querySelector('#download').href=video.src;
       video.onloadedmetadata=()=>{if(time>0)video.currentTime=Math.min(time,video.duration);};
