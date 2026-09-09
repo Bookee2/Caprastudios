@@ -2,7 +2,7 @@
 
 An independent web design and AI development studio for small businesses, operated by Capra, LLC.
 
-Built around the `/kb-tokyo` design philosophy: Tokyo Night, Red Hat typography, neutral controls, precise borders, a single solid accent CTA, and motion with a purpose. Capra's cut-C monogram, oversized editorial typography, and full-width brand study give the studio its own identity.
+Built around the `/kb-tokyo` design philosophy: Tokyo Night, Red Hat typography, neutral controls, precise borders, a single solid accent CTA, and motion with a purpose. Capra's ribbon unicorn, oversized editorial typography, and full-width brand study give the studio its own identity.
 
 ## Run it
 
@@ -14,7 +14,7 @@ npm run check  # link, metadata and deployment configuration tests
 npm run build  # public website in dist/
 ```
 
-The website itself is ordinary HTML, CSS and JavaScript. All important content, the portfolio, FAQ, and contact links work without JavaScript. Google Fonts is the only external request on the landing page; portfolio screenshots are stored locally.
+The website itself is ordinary HTML, CSS and JavaScript. All important content, the portfolio, FAQ, and contact links work without JavaScript. Google Fonts is the only external request on the landing page; the ribbon artwork and portfolio screenshots are stored locally.
 
 ## Launch on GitHub Pages
 
@@ -37,7 +37,8 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Menu, reveals, brand-study replay | `assets/studio.js` |
 | Public privacy explanation | `privacy.html` |
 | Deployment URL used by the build | `site.config.json` or the `SITE_URL` environment variable |
-| Vector logos | `assets/brand/` |
+| Vector logos and hero artwork | `assets/brand/` |
+| Shared ribbon curves; regenerate with `npm run brand` | `scripts/ribbon-shapes.json` |
 | Real portfolio screenshots | `assets/work/` |
 
 The provisional contact is **kris@caprahr.com**, the existing public email on Capra HR. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site. Confirm these before launching.
@@ -50,4 +51,4 @@ The build validates local asset paths, anchor targets, one H1 per page, and stru
 
 - Design tokens adapted from `Bookee2/SkillZ`, branch `add/kb-tokyo`, `skills/kb-tokyo/assets/tokyo.css` (September 9, 2026).
 - Portfolio descriptions and screenshots use the founder's actual websites: [TrailGoat](https://trailgoat.run), [Purple Squirrel](https://purplesquirrel.icu), [Capra HR](https://caprahr.com).
-- Custom Capra monogram and layout created for this project. Portfolio pages may include their own third-party resources; screenshots represent the sites as accessed on September 9, 2026.
+- Capra ribbon-unicorn identity selected from concept 03. Native SVG applications and the shaded hero artwork are documented in `docs/RIBBON-ASSET.md`. The original C assets are preserved in `docs/brand-archive/cut-c/`. Portfolio pages may include their own third-party resources; screenshots represent the sites as accessed on September 9, 2026.

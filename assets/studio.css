@@ -1,6 +1,6 @@
 /* Capra applies kb-tokyo's palette, type and neutral controls at an editorial scale.
    Deliberate departures for the studio brief: 900-weight oversized headings,
-   a bespoke vector brand mark and a finite, longer animation in the media stage. */
+   a bespoke ribbon-unicorn mark and a finite unfurling animation in the media stage. */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { color-scheme: dark; scroll-padding-top: 40px; }
 body { background: var(--bg-0); color: var(--ink); font: 400 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
@@ -28,7 +28,7 @@ p { text-wrap: pretty; }
 .skip-link:focus { transform: translateY(0); }
 .site-header { height: 110px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); position: relative; z-index: 30; }
 .brand { display: inline-flex; gap: 12px; align-items: center; min-height: 44px; }
-.brand-mark { width: 34px; height: 38px; fill: var(--accent); transition: transform var(--dur-layer) var(--ease-snap); }
+.brand-mark { width: 38px; height: 48px; fill: var(--accent); transition: transform var(--dur-layer) var(--ease-snap); }
 .brand:hover .brand-mark { transform: rotate(-8deg); }
 .brand-type { font: 900 31px/.78 var(--display); letter-spacing: -.065em; color: var(--ink-bright); }
 .brand-type > span { display: block; font: 500 10px/1 var(--mono); letter-spacing: .21em; margin-top: 9px; margin-left: 2px; text-transform: uppercase; }
@@ -71,14 +71,16 @@ p { text-wrap: pretty; }
 .stage-grid { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(var(--line-faint) 1px, transparent 1px), linear-gradient(90deg,var(--line-faint) 1px, transparent 1px); background-size: 12.5% 25%; mask-image: linear-gradient(90deg,transparent,black 25%,black 75%,transparent); }
 .stage-media { position: absolute; inset: 0; height: 100%; width: 100%; min-height: 0; min-width: 0; }
 .stage-media video { width: 100%; height: 100%; object-fit: cover; }
-.brand-study { position: absolute; left: 50%; top: 50%; width: 100%; height: 100%; transform: translate(-50%,-50%); overflow: visible; }
+.brand-study { position: absolute; left: 50%; top: 50%; width: 100%; height: 100%; transform: translate(-50%,-50%); overflow: visible; mix-blend-mode: lighten; }
 .study-coordinate { color: var(--edge-soft); }
-.study-solid { transform-origin: 50% 50%; transform: translate(var(--mx,0px), var(--my,0px)) scale(.82); transition: transform 700ms var(--ease-snap); }
-.study-depth { fill: var(--bg-well); stroke: var(--edge-soft); stroke-width: .3; }
-.study-layer { fill: var(--bg-well); stroke: url(#edge-light); stroke-width: .4; }
-.study-face { fill: url(#face); stroke: var(--c-aid); stroke-width: .25; }
-.study-playing .study-layer, .study-playing .study-face { animation: assemble 1.6s var(--ease-snap) both; animation-delay: calc(var(--layer) * 30ms); }
-@keyframes assemble { from { opacity: 0; transform: translate(-30px,-12px); } to { opacity: 1; transform: translate(0,0); } }
+.study-solid { transform-origin: 50% 50%; transform: translate(var(--mx,0px), var(--my,0px)); transition: transform 700ms var(--ease-snap); }
+.ribbon-trace, .ribbon-crown-trace { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ribbon-complete { opacity: 1; }
+.study-playing .ribbon-trace { animation: ribbon-unfurl 2.4s var(--ease-snap) both; }
+.study-playing .ribbon-crown-trace { animation: ribbon-unfurl 1.2s var(--ease-snap) 800ms both; }
+.study-playing .ribbon-complete { animation: ribbon-settle 2.4s ease both; }
+@keyframes ribbon-unfurl { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes ribbon-settle { 0%, 75% { opacity: 0; } 100% { opacity: 1; } }
 .stage-side { position: absolute; left: 28px; top: 50%; writing-mode: vertical-rl; transform: rotate(180deg) translateY(50%); transform-origin: center; color: var(--muted); font-size: 10px; }
 .replay-button { pointer-events: auto; border: 0; background: none; color: var(--muted); min-height: 44px; font: inherit; letter-spacing: inherit; text-transform: inherit; display: inline-flex; align-items: center; gap: 12px; }
 .replay-button:hover { color: var(--ink-bright); }
@@ -118,7 +120,7 @@ p { text-wrap: pretty; }
 .project-tag { color: var(--muted); margin-top: 22px; font-size: 10px; }
 .studio-section { background: var(--bg-well); border-block: 1px solid var(--line); }
 .studio-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 70px; }
-.studio-mark { width: 76px; height: 82px; fill: none; stroke: var(--edge); stroke-width: 1; margin: 90px 0 25px; }
+.studio-mark { width: 82px; height: 112px; fill: var(--muted); margin: 70px 0 25px; }
 .studio-aside > .mono:last-child { color: var(--muted); font-size: 10px; }
 .studio-content > h2 { font-size: clamp(34px, 4.2vw, 60px); line-height: 1.1; }
 .studio-content > h2 > span { color: var(--muted); }
@@ -207,7 +209,7 @@ p { text-wrap: pretty; }
   .mono, .stage-side, .project-tag, .footer-bottom, .studio-aside > .mono:last-child { font-size: 12px; }
   .shell { width: calc(100% - 40px); }
   .site-header { height: 85px; }
-  .brand-mark { width: 29px; height: 32px; }
+  .brand-mark { width: 32px; height: 44px; }
   .brand-type { font-size: 27px; }
   .desktop-nav { display: none; }
   .menu-toggle:not([hidden]) { display: flex; }
@@ -331,7 +333,7 @@ p { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .study-solid { transform: scale(.82) !important; }
+  .study-solid { transform: none !important; }
   .reveal { transform: none !important; opacity: 1 !important; }
   .hero-line { opacity: 1; transform: none; }
   .project-visual:hover .browser-frame, .button:hover, .contact-title:hover .contact-arrow { transform: none; }
