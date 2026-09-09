@@ -1,5 +1,7 @@
 # Blender handoff — Capra form study
 
+An editable Blender scene and rendered motion study are now available. See [`blender/README.md`](../blender/README.md) for the films, scene, reproduction steps and review preview. The homepage continues to use the approved still/SVG reveal while this new study is reviewed.
+
 ## The reserved stage
 
 `index.html` contains a full-width `.motion-stage` with `#stage-media` inside it. This is the slot for the future rendered Blender animation. The current ribbon study combines the approved shaded unicorn artwork with an SVG reveal mask, a replay control, and subtle pointer response. The small brand applications are native SVG. The hero is currently an animated still, not a Blender-rendered video.
