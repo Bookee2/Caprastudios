@@ -147,7 +147,7 @@
     flyoverPlay.addEventListener('click', () => {
       flyoverError.hidden = true;
       if (!flyover.getAttribute('src')) {
-        flyover.src = `assets/motion/atlanta-${matchMedia('(max-width: 600px)').matches ? 'mobile' : 'wide'}.mp4?v=1`;
+        flyover.src = `assets/motion/atlanta-${matchMedia('(max-width: 600px)').matches ? 'mobile' : 'wide'}.mp4?v=2`;
       }
       if (flyover.error) flyover.load();
       if (flyover.ended) flyover.currentTime = 0;
