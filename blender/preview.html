@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Ribbon 03 · Revision 02 — Capra Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Red+Hat+Text:wght@400;500&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    [hidden]{display:none!important}#still{display:block;width:100%;max-height:calc(100svh - 242px);aspect-ratio:16/9;object-fit:contain}.film.portrait #still{width:auto;max-width:100%;aspect-ratio:1}@media(max-width:600px){#still{max-height:none;aspect-ratio:1}}
+    *{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#15161e;color:#c0caf5;font:400 16px/1.5 'Red Hat Text',sans-serif}button,a,select{touch-action:manipulation}a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid #7aa2f7;outline-offset:5px}.shell{width:calc(100% - 64px);max-width:1440px;margin:auto}header{min-height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #292e42}.brand{font:900 27px/.85 'Red Hat Display',sans-serif;letter-spacing:-1px}.brand span{display:block;font:500 9px/1 'Red Hat Mono',monospace;letter-spacing:2px;margin-top:8px}.label{font:500 12px/1.5 'Red Hat Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:#9aa5ce}.intro{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:24px 0}h1{font:800 clamp(26px,3.4vw,44px)/1.1 'Red Hat Display',sans-serif;letter-spacing:-1.6px;margin:0}p{margin:0}.film{margin:0;display:grid;justify-items:center;background:#000;border:1px solid #292e42;border-radius:10px;overflow:hidden}video{display:block;width:100%;max-height:calc(100svh - 242px);aspect-ratio:16/9;object-fit:contain}.film.portrait video{width:auto;max-width:100%;aspect-ratio:1}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0 32px}.controls{display:flex;gap:10px;align-items:center}button,select,.download{min-height:44px;padding:10px 16px;border:1px solid #414868;border-radius:6px;background:#1a1b26;color:#c0caf5;font:500 12px/1.4 'Red Hat Mono',monospace;transition:background .2s,border-color .2s;cursor:pointer}button:hover,select:hover,.download:hover{background:#24283b;border-color:#9aa5ce}.note{color:#9aa5ce;font-size:13px;margin-bottom:28px}.note a{text-decoration:underline;text-underline-offset:4px}@media(max-width:600px){.shell{width:calc(100% - 32px)}header{min-height:76px}.intro{display:block;padding:24px 0}.intro p{margin-top:12px}video{max-height:none;aspect-ratio:1}.toolbar{align-items:stretch;flex-wrap:wrap;padding-top:14px}.controls{flex:1}select{flex:1}.download{display:flex;align-items:center}header .label{font-size:10px;letter-spacing:.5px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header><a class="brand" href="../">capra<span>STUDIOS</span></a><span class="label">Ribbon 03 / Revision 02</span></header>
+    <div class="intro"><h1>Imagination, in motion.</h1><p class="label">08 seconds / 60 fps / Silent</p></div>
+    <figure class="film" id="film">
+      <img id="still" src="../assets/motion/capra-unicorn-poster.jpg" alt="The Capra Studios unicorn formed from blue and violet satin ribbons." hidden>
+      <video id="unicorn" controls muted playsinline preload="none" poster="../assets/motion/capra-unicorn-opening-poster.jpg" src="../assets/motion/capra-unicorn-1080p.mp4" aria-label="From an empty stage, blue and violet ribbons grow from the tail tip into the Capra Studios unicorn, settling in sculpted studio light.">
+        <a href="../assets/motion/capra-unicorn-1080p.mp4">Watch the unicorn animation</a>
+      </video>
+    </figure>
+    <div class="toolbar">
+      <div class="controls" id="review-controls" hidden><button id="replay" type="button">Replay</button><label class="label" for="format">View</label><select id="format"><option value="wide">Wide</option><option value="portrait">Phone crop</option></select></div>
+      <a class="download" id="download" href="../assets/motion/capra-unicorn-1080p.mp4" download>Download film</a>
+    </div>
+    <p class="note">Satin blue. Violet folds. A little impossible, made real.</p>
+  </main>
+  <script>
+    const video=document.querySelector('video'),format=document.querySelector('#format'),film=document.querySelector('#film');
+    const still=document.querySelector('#still');
+    document.querySelector('#review-controls').hidden=false;
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+    const saving=navigator.connection?.saveData;
+    const media='../assets/motion/';
+    const showStill=()=>{video.hidden=true;still.hidden=false;};
+    const play=()=>{video.hidden=false;still.hidden=true;video.play().catch(showStill);};
+    function setFormat(value){
+      const playing=!video.paused,time=video.currentTime;
+      format.value=value;
+      film.classList.toggle('portrait',value==='portrait');
+      video.poster=media+(value==='portrait'?'capra-unicorn-mobile-opening-poster.jpg':'capra-unicorn-opening-poster.jpg');
+      still.src=media+(value==='portrait'?'capra-unicorn-mobile-poster.jpg':'capra-unicorn-poster.jpg');
+      video.src=media+(value==='portrait'?'capra-unicorn-mobile.mp4':'capra-unicorn-1080p.mp4');
+      document.querySelector('#download').href=video.src;
+      video.onloadedmetadata=()=>{if(time>0)video.currentTime=Math.min(time,video.duration);};
+      if(playing)play();
+      else if(time>0){video.preload='metadata';video.load();}
+    }
+    if(matchMedia('(max-width:600px)').matches)setFormat('portrait');
+    format.addEventListener('change',()=>setFormat(format.value));
+    document.querySelector('#replay').addEventListener('click',()=>{video.currentTime=0;play();});
+    reduced.addEventListener('change',e=>{if(e.matches){video.pause();showStill();}});
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();});
+    if(!reduced.matches&&!saving)play();else showStill();
+  </script>
+</body>
+</html>

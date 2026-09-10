@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Red+Hat+Text:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/tokens.css">
-  <link rel="stylesheet" href="assets/studio.css?v=ribbon-1">
-  <script src="assets/studio.js?v=ribbon-1" defer></script>
+  <link rel="stylesheet" href="assets/studio.css?v=atlanta-2">
+  <script src="assets/studio.js?v=atlanta-2" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -60,7 +60,7 @@
       <span class="brand-type">capra<span>studios</span></span>
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a class="nav-link" href="#work">Selected work <span class="nav-index">03</span></a>
+      <a class="nav-link" href="#work">Selected work <span class="nav-index">04</span></a>
       <a class="nav-link" href="#studio">The studio</a>
       <a class="nav-link" href="#services">What we do</a>
     </nav>
@@ -89,32 +89,33 @@
 
     <section class="motion-section shell" aria-label="Capra Studios animated ribbon unicorn">
       <div class="motion-stage" id="motion-stage">
-        <div class="stage-top mono"><span>CAPRA / RIBBON STUDY</span><span>VOL. 002</span></div>
-        <div class="stage-grid" aria-hidden="true"></div>
-        <!-- Stable, full-width media slot. A future Blender video can replace this ribbon study; see docs/ANIMATION.md. -->
+        <div class="stage-top mono"><span>CAPRA / IN MOTION</span><span>VOL. 003</span></div>
         <div class="stage-media" id="stage-media">
-          <svg class="brand-study" viewBox="0 0 900 540" fill="none" aria-hidden="true">
-            <defs>
-              <mask id="ribbon-unfurl" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="540">
-                <path class="ribbon-trace" d="M371 492C600 416 518 351 463 311C353 271 363 207 412 162C451 122 499 127 510 136" pathLength="1" fill="none" stroke="white" stroke-width="160" stroke-linecap="round"/>
-                <path class="ribbon-crown-trace" d="M487 88C489 185 573 197 575 246C557 295 524 228 455 207M500 131L602 41" pathLength="1" fill="none" stroke="white" stroke-width="100" stroke-linecap="round"/>
-                <rect class="ribbon-complete" width="900" height="540" fill="white"/>
-              </mask>
-            </defs>
-            <g class="study-coordinate" stroke="currentColor" stroke-width=".6"><path d="M140 270h620M450 55v430"/><ellipse cx="450" cy="270" rx="200" ry="200" stroke-dasharray="2 12"/></g>
-            <g class="study-solid" mask="url(#ribbon-unfurl)">
-              <image class="ribbon-art" href="assets/brand/ribbon-hero.png" x="270" y="0" width="360" height="540" preserveAspectRatio="xMidYMid meet"/>
-            </g>
-          </svg>
+          <picture class="stage-poster" id="stage-poster">
+            <source media="(max-width: 600px)" srcset="assets/motion/capra-unicorn-mobile-poster.jpg">
+            <img src="assets/motion/capra-unicorn-poster.jpg" width="1920" height="1080" alt="The Capra Studios unicorn, sculpted from blue and violet satin ribbons." loading="lazy" decoding="async">
+          </picture>
+          <video id="unicorn-film" muted playsinline preload="none" aria-hidden="true" tabindex="-1" hidden></video>
         </div>
-        <span class="stage-side mono" aria-hidden="true">IMAGINATION, IN MOTION</span>
-        <div class="stage-bottom mono"><span>Craft meets possibility.</span><button class="replay-button" id="replay-study" type="button" hidden>Replay study <span aria-hidden="true">↻</span></button></div>
+        <div class="stage-bottom mono"><span>Craft meets possibility.</span><button class="replay-button" id="replay-study" type="button" aria-controls="unicorn-film" aria-label="Play unicorn animation" hidden><span data-film-label>Play</span><span data-film-icon aria-hidden="true">▷</span></button></div>
       </div>
       <div class="stage-caption mono"><span>Good design gets noticed. Great design gets to work.</span><a class="scroll-cue" href="#work">Explore the work <span aria-hidden="true">↓</span></a></div>
     </section>
 
     <section class="work-section shell section-space" id="work" aria-labelledby="work-title">
-      <div class="section-heading reveal"><div><p class="eyebrow mono"><span>01 /</span> Selected work</p><h2 id="work-title">Ideas, out<br>in the world.</h2></div><p>Three ventures built by our founder.<br>Different worlds. The same care.</p></div>
+      <div class="section-heading reveal"><div><p class="eyebrow mono"><span>01 /</span> Selected work</p><h2 id="work-title">Ideas, out<br>in the world.</h2></div><p>A city in motion. Three founder-built ventures.<br>Different worlds. The same care.</p></div>
+      <article class="atlanta-case reveal" id="atlanta" aria-labelledby="atlanta-title">
+        <div class="atlanta-heading"><p class="mono">Featured case study / Motion</p><span class="mono">Atlanta, Georgia</span></div>
+        <div class="atlanta-player">
+          <video id="atlanta-film" controls playsinline preload="none" poster="assets/motion/atlanta-poster.jpg?v=2" aria-label="Atlanta flyover: Decatur, Downtown, Midtown and Buckhead">
+            <source src="assets/motion/atlanta-wide.mp4?v=2" type="video/mp4">
+            <a href="assets/motion/atlanta-wide.mp4">Watch the Atlanta flyover</a>
+          </video>
+          <button class="atlanta-play" id="atlanta-play" type="button" aria-controls="atlanta-film" hidden><span class="atlanta-play-icon" aria-hidden="true">▷</span><span>Watch the flyover<span class="mono">01:50 / A city in motion</span></span></button>
+        </div>
+        <div class="atlanta-description"><div><h3 id="atlanta-title">Atlanta, from a different angle.</h3><p>From Decatur to Downtown, through Midtown and into Buckhead. A moving portrait of the place we call home—and a study in how perspective can turn a familiar place into something worth another look.</p></div><span class="project-category mono">3D city flyover<br>Motion & visual storytelling</span></div>
+        <p class="atlanta-error" id="atlanta-error" role="status" hidden>The film couldn’t load. <a href="assets/motion/atlanta-wide.mp4">Open the video directly</a>.</p>
+      </article>
       <article class="project project-featured reveal">
         <a class="project-visual trailgoat-visual" href="https://trailgoat.run" target="_blank" rel="noopener noreferrer" aria-label="Visit TrailGoat, opens in a new tab">
           <div class="project-visual-top mono"><span>TRAILGOAT</span><span>01 — OUTDOOR / WEB APP</span></div>
