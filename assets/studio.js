@@ -132,6 +132,40 @@
     motion.addEventListener('change', respectPreferences);
     connection?.addEventListener?.('change', respectPreferences);
   }
+  // Long-form case-study media loads only after an explicit play request.
+  const flyover = document.querySelector('#atlanta-film');
+  const flyoverPlay = document.querySelector('#atlanta-play');
+  const flyoverError = document.querySelector('#atlanta-error');
+  if (flyover && flyoverPlay && flyoverError) {
+    flyover.controls = false;
+    flyoverPlay.hidden = false;
+    const failed = () => {
+      flyoverError.hidden = false;
+      flyoverPlay.hidden = false;
+      flyover.controls = false;
+    };
+    flyoverPlay.addEventListener('click', () => {
+      flyoverError.hidden = true;
+      if (!flyover.getAttribute('src')) {
+        flyover.src = `assets/motion/atlanta-${matchMedia('(max-width: 600px)').matches ? 'mobile' : 'wide'}.mp4?v=1`;
+      }
+      if (flyover.error) flyover.load();
+      if (flyover.ended) flyover.currentTime = 0;
+      flyover.controls = true;
+      flyoverPlay.hidden = true;
+      flyover.play().catch(error => { if (error.name !== 'AbortError') failed(); });
+    });
+    flyover.addEventListener('play', () => { flyoverPlay.hidden = true; });
+    flyover.addEventListener('ended', () => { flyoverPlay.hidden = false; flyover.controls = false; });
+    flyover.addEventListener('error', failed);
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) flyover.pause();
+      });
+      observer.observe(flyover);
+    }
+    document.addEventListener('visibilitychange', () => { if (document.hidden) flyover.pause(); });
+  }
   const year = document.querySelector('#year');
   if (year) year.textContent = String(new Date().getFullYear());
 })();

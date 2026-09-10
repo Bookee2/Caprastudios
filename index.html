@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Red+Hat+Text:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/tokens.css">
-  <link rel="stylesheet" href="assets/studio.css?v=film-2">
-  <script src="assets/studio.js?v=film-2" defer></script>
+  <link rel="stylesheet" href="assets/studio.css?v=atlanta-1">
+  <script src="assets/studio.js?v=atlanta-1" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -60,7 +60,7 @@
       <span class="brand-type">capra<span>studios</span></span>
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a class="nav-link" href="#work">Selected work <span class="nav-index">03</span></a>
+      <a class="nav-link" href="#work">Selected work <span class="nav-index">04</span></a>
       <a class="nav-link" href="#studio">The studio</a>
       <a class="nav-link" href="#services">What we do</a>
     </nav>
@@ -103,7 +103,19 @@
     </section>
 
     <section class="work-section shell section-space" id="work" aria-labelledby="work-title">
-      <div class="section-heading reveal"><div><p class="eyebrow mono"><span>01 /</span> Selected work</p><h2 id="work-title">Ideas, out<br>in the world.</h2></div><p>Three ventures built by our founder.<br>Different worlds. The same care.</p></div>
+      <div class="section-heading reveal"><div><p class="eyebrow mono"><span>01 /</span> Selected work</p><h2 id="work-title">Ideas, out<br>in the world.</h2></div><p>A city in motion. Three founder-built ventures.<br>Different worlds. The same care.</p></div>
+      <article class="atlanta-case reveal" id="atlanta" aria-labelledby="atlanta-title">
+        <div class="atlanta-heading"><p class="mono">Featured case study / Motion</p><span class="mono">Atlanta, Georgia</span></div>
+        <div class="atlanta-player">
+          <video id="atlanta-film" controls playsinline preload="none" poster="assets/motion/atlanta-poster.jpg" aria-label="Atlanta flyover: Decatur, Downtown, Midtown and Buckhead">
+            <source src="assets/motion/atlanta-wide.mp4?v=1" type="video/mp4">
+            <a href="assets/motion/atlanta-wide.mp4">Watch the Atlanta flyover</a>
+          </video>
+          <button class="atlanta-play" id="atlanta-play" type="button" aria-controls="atlanta-film" hidden><span class="atlanta-play-icon" aria-hidden="true">▷</span><span>Watch the flyover<span class="mono">01:12 / A city in motion</span></span></button>
+        </div>
+        <div class="atlanta-description"><div><h3 id="atlanta-title">Atlanta, from a different angle.</h3><p>From Decatur to Downtown, through Midtown and into Buckhead. A moving portrait of the place we call home—and a study in how perspective can turn a familiar place into something worth another look.</p></div><span class="project-category mono">3D city flyover<br>Motion & visual storytelling</span></div>
+        <p class="atlanta-error" id="atlanta-error" role="status" hidden>The film couldn’t load. <a href="assets/motion/atlanta-wide.mp4">Open the video directly</a>.</p>
+      </article>
       <article class="project project-featured reveal">
         <a class="project-visual trailgoat-visual" href="https://trailgoat.run" target="_blank" rel="noopener noreferrer" aria-label="Visit TrailGoat, opens in a new tab">
           <div class="project-visual-top mono"><span>TRAILGOAT</span><span>01 — OUTDOOR / WEB APP</span></div>
