@@ -11,11 +11,27 @@ createServer(async (req,res) => {
     const decoded = decodeURIComponent(url.pathname);
     const file = path.resolve(root, '.' + decoded);
     const relative = path.relative(root, file);
-    if (relative.startsWith('..') || relative.split(path.sep).some(p=>p.startsWith('.')) || (!['','index.html','privacy.html','404.html'].includes(relative) && !relative.startsWith('assets' + path.sep))) {
+    if (relative.startsWith('..') || relative.split(path.sep).some(p=>p.startsWith('.')) || (!['','index.html','privacy.html','404.html','blender/preview.html'].includes(relative) && !relative.startsWith('assets' + path.sep))) {
       res.writeHead(404); res.end('Not found'); return;
     }
     const target = (await stat(file)).isDirectory() ? path.join(file, 'index.html') : file;
-    res.writeHead(200, {'Content-Type': types[path.extname(target)] || 'application/octet-stream', 'Cache-Control':'no-store'});
-    res.end(await readFile(target));
+    const body = await readFile(target);
+    const headers = {'Content-Type': types[path.extname(target)] || 'application/octet-stream', 'Cache-Control':'no-store', 'Accept-Ranges':'bytes'};
+    // Browsers seek within MP4s using byte ranges, including during a format change.
+    if (req.headers.range) {
+      const match = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range);
+      let start, end;
+      if (match && (match[1] || match[2])) {
+        start = match[1] ? Number(match[1]) : Math.max(0, body.length - Number(match[2]));
+        end = match[1] && match[2] ? Math.min(Number(match[2]), body.length - 1) : body.length - 1;
+      }
+      if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start > end || start >= body.length || (match && !match[1] && Number(match[2]) === 0)) {
+        res.writeHead(416, {...headers, 'Content-Range':`bytes */${body.length}`}); res.end(); return;
+      }
+      res.writeHead(206, {...headers, 'Content-Range':`bytes ${start}-${end}/${body.length}`, 'Content-Length':end-start+1});
+      res.end(req.method === 'HEAD' ? undefined : body.subarray(start, end+1)); return;
+    }
+    res.writeHead(200, {...headers, 'Content-Length':body.length});
+    res.end(req.method === 'HEAD' ? undefined : body);
   } catch { res.writeHead(404, {'Content-Type':'text/plain'}); res.end('Not found'); }
 }).listen(port, '127.0.0.1', () => console.log(`Capra Studios preview: http://127.0.0.1:${port}/`));

@@ -5,3 +5,6 @@ dist/
 .env.*
 !\.env.example
 qa-output/
+output/
+*.blend1
+__pycache__/
