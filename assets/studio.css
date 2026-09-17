@@ -355,3 +355,14 @@ p { text-wrap: pretty; }
 }
 
 @media(prefers-reduced-motion:reduce) { .atlanta-play:hover .atlanta-play-icon { transform: none; } }
+
+/* A focused entry point for AI adoption, using the studio's existing tokens. */
+.adoption-pilot { margin-top: 48px; padding: clamp(24px, 4vw, 56px); border: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); }
+.adoption-pilot h3 { font-size: clamp(28px, 3vw, 42px); margin-bottom: 20px; }
+.adoption-pilot p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+.adoption-pilot .text-link { display: inline-flex; gap: 16px; align-items: center; margin-top: 24px; }
+.pilot-steps { list-style: none; padding: 0; margin: 0; }
+.pilot-steps li + li { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 22px; }
+.pilot-steps .mono { color: var(--accent); font-size: 11px; }
+.pilot-steps p { margin-top: 8px; }
+@media (max-width: 600px) { .adoption-pilot { grid-template-columns: 1fr; } }

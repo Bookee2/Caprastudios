@@ -1,6 +1,6 @@
 # Capra Studios
 
-An independent web design and AI development studio for small businesses, operated by Capra, LLC.
+An independent web design, custom software, and AI adoption studio for small businesses, operated by Capra, LLC.
 
 Built around the `/kb-tokyo` design philosophy: Tokyo Night, Red Hat typography, neutral controls, precise borders, a single solid accent CTA, and motion with a purpose. Capra's ribbon unicorn, oversized editorial typography, and full-width brand study give the studio its own identity.
 
@@ -41,7 +41,7 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Shared ribbon curves; regenerate with `npm run brand` | `scripts/ribbon-shapes.json` |
 | Real portfolio screenshots | `assets/work/` |
 
-The provisional contact is **kris@caprahr.com**, the existing public email on Capra HR. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site. Confirm these before launching.
+The contact is **kris@caprastudios.ai**. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site. AI adoption pilots include a readiness review, one scoped workflow, team training, and a 30-day follow-up.
 
 ## Validation
 
