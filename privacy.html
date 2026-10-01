@@ -13,28 +13,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Red+Hat+Text:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/studio-next.css">
+<link rel="stylesheet" href="assets/interactions.css">
 <script src="assets/studio-next.js" defer>
 </script>
+<script src="assets/nav.js" defer></script>
+<script src="assets/interactions.js" defer></script>
 <meta name="capra-agent-endpoint" content="">
 <link rel="stylesheet" href="assets/agent.css">
 <script src="assets/agent.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header shell">
+<header class="site-header" id="site-header">
+<div class="nav-bar shell">
 <a class="brand" href="./" aria-label="Capra Studios home">
 <img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
 </a>
 <nav class="main-nav" id="navigation" aria-label="Main navigation">
-<a href="work.html">Work <sup>02</sup>
-</a>
+<a href="work.html">Work <sup>02</sup></a>
+<a href="index.html#motion">Motion</a>
 <a href="ai-consulting.html">AI consulting</a>
-<a href="index.html#services">Expertise</a>
 <a href="index.html#studio">Studio</a>
-<a class="nav-contact" href="index.html#contact">Start a conversation ↗</a>
+<a class="nav-contact" href="index.html#contact">Start a conversation</a>
 </nav>
 <button class="menu-toggle" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>+</span>
 </button>
+</div>
+<div class="nav-progress" aria-hidden="true"></div>
 </header>
 <main class="legal shell" id="main">
 <p class="mono">Last updated / September 28, 2026</p>
@@ -51,17 +56,31 @@
 <p>For questions about information you have shared with Capra Studios, email <a href="mailto:kris@caprastudios.ai">kris@caprastudios.ai</a>.</p>
 </main>
 <footer class="site-footer shell">
-<div class="footer-top">
+<div class="footer-grid">
+<div class="footer-brand">
 <a class="brand" href="./">
 <img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
 </a>
 <p>Atlanta roots.<br>Wide-open possibilities.</p>
-<a href="#main">Back to top ↑</a>
+</div>
+<nav class="footer-nav" aria-label="Footer">
+<p class="eyebrow">Explore</p>
+<a href="work.html">Work</a>
+<a href="index.html#motion">Motion</a>
+<a href="ai-consulting.html">AI consulting</a>
+<a href="index.html#services">Expertise</a>
+<a href="index.html#studio">Studio</a>
+</nav>
+<div class="footer-contact">
+<p class="eyebrow">Start a project</p>
+<a class="footer-email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a>
+<a class="footer-top-link" href="#main">Back to top ↑</a>
+</div>
 </div>
 <div class="footer-bottom mono">
 <span>© <span id="year">2026</span> CAPRA, LLC</span>
 <span>Design / Web / Motion / AI</span>
-<a href="privacy.html">Privacy</a>
+<span class="footer-meta"><a href="privacy.html">Privacy</a><button class="motion-toggle" type="button" aria-pressed="true" hidden>Motion effects <span aria-hidden="true">on</span></button></span>
 </div>
 </footer>
 <button class="agent-launch" id="agent-launch" aria-haspopup="dialog" aria-controls="capra-agent" hidden><i aria-hidden="true"></i>Ask Capra</button>

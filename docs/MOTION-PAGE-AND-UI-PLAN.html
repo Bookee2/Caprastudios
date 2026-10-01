@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Capra Studios — Motion page and site UI plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800&family=Red+Hat+Text:wght@400;500;600&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-0:#1a1b26;--bg-1:#24283b;--bg-well:#15161e;--ink:#c0caf5;--bright:#e6eaff;--muted:#9aa5ce;
+  --accent:#7aa2f7;--pink:#d3adf8;--green:#9ece6a;--amber:#e0af68;--red:#f7768e;
+  --line:rgba(192,202,245,.14);--line-strong:rgba(192,202,245,.28);--fill:rgba(192,202,245,.05);
+  --display:"Red Hat Display",system-ui,sans-serif;--text:"Red Hat Text",system-ui,sans-serif;--mono:"Red Hat Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg-0);color:var(--ink);font:400 16px/1.6 var(--text);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+code{font:400 .86em var(--mono);background:var(--fill);border:1px solid var(--line);border-radius:5px;padding:.08em .38em;color:var(--bright);overflow-wrap:anywhere}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;max-width:1180px;margin:0 auto;padding:0 28px 96px}
+.toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:36px 0;font-size:14px}
+.toc .mark{font:800 15px var(--display);color:var(--bright);letter-spacing:-.01em;margin-bottom:22px}
+.toc .mark span{color:var(--muted);font-weight:700}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.toc a{display:block;padding:6px 14px;color:var(--muted);text-decoration:none;border-left:2px solid transparent;margin-left:-1px}
+.toc a:hover{color:var(--bright)}
+.toc a.on{color:var(--bright);border-left-color:var(--pink)}
+.toc .sub a{padding-left:28px;font-size:13px}
+main{min-width:0}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+header.top{padding:72px 0 44px;border-bottom:1px solid var(--line)}
+h1{font:800 clamp(38px,6vw,68px)/1 var(--display);letter-spacing:-.035em;color:var(--bright);margin:0 0 22px}
+h1 em{font-style:normal;color:var(--pink)}
+.lede{font-size:19px;max-width:62ch;color:var(--ink);margin:0 0 26px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font:400 12px var(--mono);color:var(--muted)}
+.meta span{border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+section{padding:64px 0 8px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font:800 clamp(28px,3.6vw,40px)/1.08 var(--display);letter-spacing:-.03em;color:var(--bright);margin:0 0 14px}
+h2 span{color:var(--muted)}
+h3{font:700 20px/1.25 var(--display);letter-spacing:-.015em;color:var(--bright);margin:40px 0 10px}
+h4{font:600 15px var(--text);color:var(--bright);margin:0 0 6px}
+p{margin:0 0 16px;max-width:72ch}
+ul,ol.steps{margin:0 0 20px;padding-left:20px;max-width:72ch}
+li{margin-bottom:7px}
+.intro{color:var(--muted);font-size:17px;max-width:66ch}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:32px 0 8px}
+.stat{background:var(--bg-1);border:1px solid var(--line);border-radius:14px;padding:18px}
+.stat b{display:block;font:800 32px/1 var(--display);color:var(--bright);letter-spacing:-.03em;margin-bottom:8px}
+.stat span{font-size:13.5px;color:var(--muted);line-height:1.4;display:block}
+.cards{display:grid;gap:12px;margin:24px 0 32px}
+.finding{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;background:var(--bg-1);border:1px solid var(--line);border-radius:14px;padding:22px}
+.finding .n{font:500 13px var(--mono);color:var(--pink);padding-top:3px}
+.finding p,.finding ul{margin-bottom:10px;font-size:15.5px}
+.finding :last-child{margin-bottom:0}
+.keep,.note{border:1px solid var(--line);border-left:3px solid var(--green);border-radius:10px;padding:18px 20px;margin:24px 0 32px;background:var(--fill)}
+.note{border-left-color:var(--amber)}
+.keep p,.note p{margin:0;font-size:15.5px}
+.keep h4,.note h4{margin-bottom:6px}
+.tablewrap{overflow-x:auto;margin:18px 0 30px;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px}
+th,td{text-align:left;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--line)}
+th{font:500 11.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--bg-well)}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--bright);font-weight:500}
+td.num{font:400 13px var(--mono);color:var(--pink);white-space:nowrap}
+.tag{display:inline-block;font:500 11px var(--mono);letter-spacing:.06em;border-radius:999px;padding:3px 10px;margin-left:10px;vertical-align:middle;border:1px solid}
+.p1{color:var(--red);border-color:rgba(247,118,142,.45)}
+.p2{color:var(--amber);border-color:rgba(224,175,104,.45)}
+.p3{color:var(--muted);border-color:var(--line-strong)}
+.lab{font:400 12px var(--mono);color:var(--muted);white-space:nowrap}
+.outline{counter-reset:o;list-style:none;padding:0;margin:20px 0 32px;max-width:none}
+.outline>li{counter-increment:o;display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;padding:18px 0;border-top:1px solid var(--line);margin:0}
+.outline>li::before{content:counter(o,decimal-leading-zero);font:500 13px var(--mono);color:var(--pink);padding-top:3px}
+.outline p{margin:0;font-size:15.5px;color:var(--ink)}
+.order{counter-reset:s;list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;max-width:none;margin:24px 0 32px}
+.order li{counter-increment:s;background:var(--bg-1);border:1px solid var(--line);border-radius:12px;padding:16px;font-size:14px;margin:0;line-height:1.45}
+.order li::before{content:"Step " counter(s);display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:8px}
+.checks{list-style:none;padding:0;max-width:none}
+.checks li{position:relative;padding:11px 0 11px 30px;border-top:1px solid var(--line);margin:0;font-size:15.5px}
+.checks li::before{content:"";position:absolute;left:2px;top:17px;width:12px;height:12px;border:1.5px solid var(--line-strong);border-radius:3px}
+footer{padding:40px 0 0;color:var(--muted);font-size:13.5px}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 16px 64px}
+  .toc{position:static;height:auto;padding:24px 0 0}
+  .toc ol{display:flex;flex-wrap:wrap;gap:6px;border:0}
+  .toc a{border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin:0}
+  .toc a.on{border-color:var(--pink)}
+  .toc .sub{display:none}
+  header.top{padding-top:36px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .order{grid-template-columns:1fr}
+  .finding,.outline>li{grid-template-columns:1fr;gap:6px}
+}
+@media print{.toc{display:none}.layout{display:block}body{background:#fff;color:#111}}
+</style><style>
+.prompt{background:var(--bg-well);border:1px solid var(--line-strong);border-radius:14px;padding:22px 24px;margin:20px 0 12px;font-size:15.5px;line-height:1.65;color:var(--bright);white-space:pre-wrap}
+.copy{font:500 13px var(--text);color:var(--bright);background:var(--fill);border:1px solid var(--line-strong);border-radius:8px;padding:8px 14px;cursor:pointer;margin-bottom:28px}
+.copy:hover{background:rgba(192,202,245,.1)}
+.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.phases{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:28px 0 8px}
+.phases a{display:block;text-decoration:none;background:var(--bg-1);border:1px solid var(--line);border-radius:12px;padding:16px;color:var(--ink);font-size:14px;line-height:1.4}
+.phases a:hover{border-color:var(--line-strong)}
+.phases b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:8px}
+.cols{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;margin-top:8px}
+.side h4{margin-top:22px}.side h4:first-child{margin-top:0}
+.side ul{font-size:15px}
+.decide{border-left-color:var(--pink)}
+@media(max-width:900px){.phases,.cols{grid-template-columns:1fr}}
+</style></head><body><div class="layout">
+<nav class="toc" aria-label="Contents"><div class="mark">capra <span>studios</span></div><ol>
+<li><a href="#summary">Overview</a></li><li><a href="#kickoff">Kickoff prompt</a></li><li><a href="#start">Starting state</a></li><li><a href="#rules">Rules for every phase</a></li>
+<li><a href="#p1">Phase 1. Navigation</a></li><li><a href="#p2">Phase 2. Motion page</a></li><li><a href="#p3">Phase 3. WebGPU pieces</a></li><li><a href="#p4">Phase 4. Homepage rhythm</a></li><li><a href="#p5">Phase 5. Inner pages</a></li><li><a href="#scope">Out of scope</a></li></ol></nav>
+<main>
+<header class="top" id="summary"><p class="eyebrow">Implementation plan · 1 October 2026</p>
+<h1>Five phases.<br><em>One at a time.</em></h1>
+<p class="lede">The handoff plan for the builder. It turns the <a href="MOTION-PAGE-AND-UI-BRIEF.html">audit and brief</a> into five phases, each its own branch and pull request, each with a clear finish line. The homepage hero does not change in any of them.</p>
+<div class="meta"><span>Builder reads the .md versions</span><span>5 phases</span><span>3 decisions for Kris</span></div>
+<div class="phases">
+<a href="#p1"><b>Phase 1</b>One navigation bar and the hover vocabulary</a>
+<a href="#p2"><b>Phase 2</b>The motion page, working in every browser</a>
+<a href="#p3"><b>Phase 3</b>Four WebGPU signature pieces</a>
+<a href="#p4"><b>Phase 4</b>Homepage rhythm</a>
+<a href="#p5"><b>Phase 5</b>Inner pages, legibility, weight</a></div></header>
+<section id="kickoff"><p class="eyebrow">Hand this over</p><h2>Kickoff <span>prompt.</span></h2><p class="intro">Paste this to start the build session.</p>
+<div class="prompt" id="prompt">Read docs/MOTION-PAGE-AND-UI-BRIEF.md and docs/MOTION-PAGE-AND-UI-PLAN.md in full, then README.md and docs/STUDIO-REFRESH.md. Build the plan one phase at a time, starting with Phase 1. Each phase is its own branch and pull request. Do not start a phase until I have approved the one before it. The homepage hero (copy, pond canvas, its controls, assets/pond.js) must not change. Before each pull request, run npm run check and npm run build, verify the pages in the browser preview at 1440 px and 375 px wide and with reduced motion, and show me screenshots. Stop and ask me where the plan says "Kris decides".</div><button class="copy" id="copy" type="button">Copy prompt</button></section>
+<section id="start"><p class="eyebrow">Before starting</p><h2>Starting <span>state.</span></h2>
+<ul><li>Repository: <code>/Users/kb/Desktop/Projects/Caprastudios</code>. Static site, no dependencies, Node 22. <code>npm run dev</code> serves on port 4173.</li><li>The current hero lives on branch <code>glow-graffiti-tag</code>, which is pushed but not merged to <code>main</code>. The builder branches from <code>glow-graffiti-tag</code>, or from <code>main</code> once that is merged.</li><li>The brief and this plan are untracked files in <code>docs/</code>. They are committed with Phase 1.</li><li>Study source code is outside the repository in <code>~/Documents/SecondBrain/inbox/</code>: the Motion Frontier source (<code>core.js</code>, <code>demos-a.js</code> to <code>demos-h.js</code>, the two bake scripts) and the Pointer and Scroll Lab source (<code>fx.js</code>, <code>page.html</code>). What is needed gets copied into the repository; nothing loads from the SecondBrain folder at runtime.</li><li>Technique notes and known pitfalls: <code>~/Documents/SecondBrain/wiki/concepts/</code>.</li></ul>
+<div class="note decide"><h4>Kris decides</h4><p>Whether to merge <code>glow-graffiti-tag</code> to <code>main</code> first, or have the builder branch from it as it stands.</p></div></section>
+<section id="rules"><p class="eyebrow">Non-negotiable</p><h2>Rules for <span>every phase.</span></h2>
+<ol class="steps"><li>The homepage hero is untouched below the navigation bar.</li><li>No package dependencies. No framework. No build step beyond <code>scripts/build.mjs</code>.</li><li>Every page reads in full without JavaScript. One H1 per page.</li><li>Reduced motion, and the site's motion toggle, switch every effect off and show the finished state.</li><li>Animate <code>transform</code> and <code>opacity</code> only. Native scrolling and native cursor.</li><li>Nothing depends on hover. Every hover behaviour also applies on <code>:focus-visible</code>.</li><li>No invented clients, prices, results or testimonials. New copy follows the existing voice: short, concrete, two-line headlines.</li><li>The lab demos use TrailGoat content. Replace it with Capra content before anything ships.</li><li>Match the existing code style: compact CSS, small scripts with progressive enhancement.</li></ol></section>
+<section id="p1"><p class="eyebrow">Phase 1 · Brief part 3, groups A and B</p><h2>Navigation and <span>interaction vocabulary.</span></h2><p class="intro">Every later phase builds on this.</p>
+<div class="cols"><div><h3 style="margin-top:8px">Build</h3><ul><li>A single sticky navigation bar on all seven pages: mark, Work, Motion, AI consulting, Studio, contact button. Remove the homepage <code>.chapter-nav</code>. "Motion" points at <code>index.html#motion</code> until Phase 2 ships.</li><li>Shy behaviour: hide on scroll down, return on scroll up, always shown at the top of the page and whenever something inside it has focus.</li><li>A 2 px scroll progress line under the bar using <code>animation-timeline: scroll()</code>, with no fallback needed.</li><li>A sliding highlight pill behind the hovered or focused link, resting on the current page.</li><li>Phone: one bar with the mark and the Menu button. Keep the existing menu behaviour.</li><li>New <code>assets/interactions.css</code> with the five behaviours: drawing underline, roll-over button label, spotlight card border, image lift with caption wipe, neighbours dim.</li><li>Apply them to text links, primary buttons, work cards, AI service cards, process steps, FAQ rows and film chapter buttons.</li><li>Move the scroll-effects toggle to the footer as "Motion: on / off". It governs the GSAP choreography and the new effects. Persist the choice in <code>localStorage</code> inside try/catch.</li><li>Footer: add navigation links and the email address.</li><li><code>↗</code> only on links that leave the site or open email.</li></ul></div><div class="side"><h4>Files</h4><p style="font-size:14.5px">All seven HTML pages, <code>assets/studio-next.css</code>, <code>assets/studio-next.js</code>, <code>assets/chapters.css</code>, <code>assets/chapters.js</code>, new <code>assets/interactions.css</code>, <code>scripts/build.mjs</code> and <code>package.json</code> for any new file.</p><h4>Watch for</h4><ul><li><code>chapters.js</code> returns early if <code>.scroll-toggle</code> is missing and uses the chapter links for <code>aria-current</code>. Rework both.</li><li>ScrollTrigger offsets assume a 60 px sticky bar (<code>start: 'top 60px'</code>). Recheck against the new bar height.</li><li>A parent with <code>overflow: hidden</code> freezes scroll timelines. Use <code>overflow: clip</code>.</li></ul></div></div>
+<h3>Done when</h3><ul class="checks"><li>One navigation bar on every page at every width, and the hero begins directly under it.</li><li>Keyboard: the bar never hides a focused element; the pill follows focus.</li><li>Toggle off or reduced motion: no pill slide, no shy hide, no hover animation, everything usable.</li><li><code>npm run check</code> and <code>npm run build</code> pass.</li></ul></section><section id="p2"><p class="eyebrow">Phase 2 · Brief part 2, sections 0 and 2 to 6</p><h2>The motion page, <span>for every browser.</span></h2><p class="intro">A complete page that works everywhere. The WebGPU pieces come in Phase 3.</p>
+<div class="cols"><div><h3 style="margin-top:8px">Build</h3><ul><li><code>motion.html</code> with the shared header, footer and contact block, its own H1, title, description, canonical and Open Graph tags.</li><li><code>assets/motion-page.css</code> and <code>assets/motion-governor.js</code>. Port the governor from the lab's <code>core.js</code>: create a piece near the viewport, draw only while visible, stop when the tab is hidden, and expose one "Pause all motion" control that announces its state.</li><li><strong>Scroll turntable:</strong> bake 48 frames of the ribbon unicorn from <code>blender/capra-ribbon-unicorn.blend</code> with <code>bake_turntable.py</code>, as one 8 × 6 WebP sprite sheet. Draw on a 2D canvas from scroll progress, with drag as an alternative.</li><li><strong>Assembled from shards:</strong> bake the mark's fracture with <code>bake_fracture.py</code>, replay in reverse on entering the viewport, with a replay button. WebGL2, with a poster fallback.</li><li>Film section: the Capra unicorn film (already in the repository, unused) and the TrailGoat film with its chapter buttons. Play on request only.</li><li>Eight interaction tiles ported from <code>fx.js</code>, with Capra content. Scroll tiles sit in their own framed scroller. On touch, pointer-only tiles run a scripted preview labelled "Best with a mouse".</li><li>"How we use motion": the five guardrails as client promises.</li><li>Four placeholder stages for the Phase 3 pieces, showing poster stills and descriptions.</li><li>Point "Motion" in the navigation at <code>motion.html</code>. Add a "See all motion" link to the homepage film section. Add view-transition names so the film poster carries across.</li><li>Add the page to <code>publicPages</code> in <code>scripts/build.mjs</code>, new scripts to <code>check</code> in <code>package.json</code>, tests in <code>scripts/build.test.mjs</code>, and a row in the README table.</li></ul></div><div class="side"><div class="note decide"><h4>Kris decides</h4><ul style="margin:0;font-size:15px"><li>The page's headline and intro copy. The builder proposes three options.</li><li>Whether Blender is available on the build machine for the two bakes. If not, the builder stops and says so, and does not substitute the lab's buckle or pane assets.</li></ul></div></div></div>
+<h3>Done when</h3><ul class="checks"><li>With JavaScript off, every piece shows a still and a description.</li><li>The page's initial load, before any piece starts, is under 300 KB excluding fonts.</li><li>No horizontal overflow at 320, 375, 768, 1280 and 1440 px.</li><li>Turntable, shards, films and all eight tiles work in Chromium; the turntable and tiles are confirmed in Safari and Firefox.</li></ul></section><section id="p3"><p class="eyebrow">Phase 3 · Brief part 2, section 1</p><h2>WebGPU <span>signature pieces.</span></h2><p class="intro">One pull request per piece, in this order.</p><div class="tablewrap"><table><tr><th>Order</th><th>Piece</th><th>Lab source</th><th>Capra treatment</th></tr>
+<tr><td class="num">1</td><td>Liquid metal mark</td><td class="lab">Frontier 5</td><td>The ribbon unicorn as a signed-distance shape in mercury; the pointer moves the light. This is the page opener</td></tr>
+<tr><td class="num">2</td><td>Ink in water</td><td class="lab">Frontier 3</td><td>Tokyo palette pigments; dragging stirs</td></tr>
+<tr><td class="num">3</td><td>Letters that grow</td><td class="lab">Frontier 1</td><td>The word "capra" as the mask; a re-seed button</td></tr>
+<tr><td class="num">4</td><td>One scene, three printers</td><td class="lab">Frontier 13</td><td>A unicorn film frame through dither, halftone and ASCII</td></tr></table></div>
+<h3>For each piece</h3><ul><li>One script file, loaded by the governor on approach. One shared <code>GPUDevice</code>.</li><li>A poster still rendered from the piece itself, used for no JavaScript, no WebGPU, reduced motion and loading.</li><li>Uniforms as vec4 blocks. No declared-but-unused bindings.</li><li>Device pixel ratio capped at 2. On a phone, at most one GPU piece running.</li><li>A text alternative on the canvas and real buttons for controls.</li></ul>
+<h3>Done when</h3><ul class="checks"><li>Without WebGPU, the still shows and nothing errors.</li><li>60 fps while scrolling the page on the development Mac, with no more than two GPU pieces drawing at once.</li><li>Checked in Chrome, Safari 26 and Firefox, and on a real phone.</li></ul></section><section id="p4"><p class="eyebrow">Phase 4 · Brief part 3, group C</p><h2>Homepage <span>rhythm.</span></h2><p class="intro">Give the homepage one peak and a capability section people can read.</p>
+<div class="cols"><div><h3 style="margin-top:8px">Build</h3><ul><li>Film section goes full-bleed with the copy overlaid at the lower left and an opening mask on scroll in. This is the only opening mask on the site.</li><li>Capability section becomes three stacking sticky cards in a block container, each with its story and its existing illustration. Remove the pinned state switch and its ScrollTrigger.</li><li>Closing headline lights word by word on scroll.</li><li>Work stage unchanged.</li></ul></div><div class="side"><h4>Watch for</h4><ul><li>A sticky element inside a grid is confined to its grid area. The cards need a block container.</li><li>The three illustrations are reused unchanged.</li></ul></div></div>
+<h3>Done when</h3><ul class="checks"><li>Each capability gets about a full viewport of scroll and works on touch.</li><li>The hero is pixel-for-pixel unchanged, shown by before and after screenshots.</li><li>With motion off, all three capability cards are stacked in normal flow.</li></ul></section><section id="p5"><p class="eyebrow">Phase 5 · Brief part 3, groups D, E and F</p><h2>Inner pages, <span>legibility and weight.</span></h2><p class="intro">Bring the rest of the site up to the homepage, then tidy.</p>
+<div class="cols"><div><h3 style="margin-top:8px">Build</h3><ul><li>Headline rise on H1 and H2 only, once, on all inner pages.</li><li>A drawing process line through the three steps on <code>work.html</code> and <code>ai-consulting.html</code>.</li><li><code>ai-consulting.html</code>: the <code>.intelligence-model</code> diagram becomes the opening visual with its path drawing once; one paragraph under "The bigger picture" lights by word.</li><li>FAQ: the <code>+</code> rotates to <code>×</code> on open.</li><li>Case studies: the "Next project" link becomes a full-width band with the next project's image.</li><li><code>work.html</code>: eyebrow numbering runs in order.</li><li>Eyebrows and mono captions to 12 px minimum on desktop, 11 px on a phone.</li><li>"Ask Capra" on a phone: icon-only 48 px button, hidden while scrolling down.</li><li><code>ribbon-hero.png</code> re-encoded as AVIF with a WebP fallback at 800 px wide, under 120 KB.</li><li>A 1080p cut of the TrailGoat film at 8 to 12 MB as the default source, with the 4K file offered as a link.</li><li>Remove <code>assets/studio.css</code>, <code>assets/studio.js</code> and <code>assets/filament.js</code> after confirming no <code>docs/</code> preview uses them.</li></ul></div><div class="side"><div class="note decide"><h4>Kris decides</h4><ul style="margin:0;font-size:15px"><li>Whether to re-encode the TrailGoat film, since it changes what visitors see and hear by default.</li></ul></div></div></div>
+<h3>Done when</h3><ul class="checks"><li>All acceptance checks in the brief pass.</li><li><code>docs/QA.md</code> and <code>docs/STUDIO-REFRESH.md</code> are updated with what was verified and how.</li></ul></section>
+<section id="scope"><p class="eyebrow">Boundaries</p><h2>Out of scope, <span>and reporting.</span></h2>
+<ul><li>Any change to the hero, the pond or its controls.</li><li>New case studies, new copy for existing sections, pricing, or testimonials.</li><li>The other 42 lab pieces. If wanted later they go on an unlinked <code>lab.html</code>.</li><li>Deployment, the custom domain and analytics.</li><li>The AI assistant's behaviour, beyond the phone button in Phase 5.</li></ul>
+<div class="keep"><h4>What the builder reports after each phase</h4><p>What was built, what was verified and how, what was not verified, and any deviation from the brief with the reason. Screenshots at 1440 px and 375 px.</p></div>
+<footer>Capra Studios · internal plan · builder's copy: <code>docs/MOTION-PAGE-AND-UI-PLAN.md</code></footer></section>
+</main></div>
+<script>
+(()=>{const links=[...document.querySelectorAll('.toc a')],map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+const b=document.getElementById('copy');b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(document.getElementById('prompt').textContent);b.textContent='Copied';}catch(e){b.textContent='Select the text and copy it';}setTimeout(()=>b.textContent='Copy prompt',2000);});
+if(!('IntersectionObserver' in window))return;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('on'));map.get(e.target.id)?.classList.add('on');}}),{rootMargin:'-10% 0px -75% 0px'});
+map.forEach((_,id)=>{const el=document.getElementById(id);if(el)io.observe(el);});})();
+</script></body></html>
