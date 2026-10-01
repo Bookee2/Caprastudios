@@ -1,4 +1,10 @@
-# Homepage unicorn film
+# Current website motion
+
+As of September 30, 2026, the homepage hero is the koi pond from the Motion Frontier study (demo 19, radiance cascades): five glowing koi light a dark pond floor and the unicorn mark, in place of the study's word, casts the soft shadows. The mark is drawn in the site accent (#7aa2f7). The koi steer on the CPU against a distance field of the stones, the mark and the pond edge, so no light passes through a solid. On desktop the final pass draws to a 4K-class canvas (long side 2160 px or the display's own density, whichever is larger) while the light is solved on a 1024-wide grid; phones use the display density and a 640-wide grid. `assets/pond.js` is raw WebGPU with no libraries; palette, light-wave and pause controls, the pointer lantern, reduced motion (one still frame) and off-screen pausing carry over from the earlier filament hero, and browsers without WebGPU keep the static mark. The earlier WebGL filament renderer remains in `assets/filament.js` but is no longer loaded. The homepage also uses the supplied TrailGoat 4K brand film with music. The film is click-to-play, with native controls and three chapter buttons; the case-study page uses the same movie. Production provenance, encoding, poster times, and verification are recorded in [the studio refresh](STUDIO-REFRESH.md#4k-film-replacement--september-29-2026). The source render remains outside the repository; `assets/motion/trailgoat-brand-film.mp4` is the web encode.
+
+The following notes describe the earlier Capra unicorn film and remain as an archived production reference. Its automatic-playback behavior does not describe the current homepage.
+
+# Earlier homepage unicorn film
 
 The homepage's statement-piece section now uses the rendered Blender ribbon unicorn. The eight-second film starts on an empty stage, unfolds from the tail through the mane, face and horn, and settles into the completed mark. Headlines, sales copy and captions remain ordinary, crawlable HTML.
 
