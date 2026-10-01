@@ -37,6 +37,6 @@ html:has(.home-chapters){scroll-padding-top:76px}
 #pond{width:100%;height:100%;display:block;touch-action:pan-y}
 .art.pond-live{margin-left:0;border:1px solid var(--stage-edge);border-radius:var(--stage-radius);box-shadow:var(--stage-shadow);overflow:hidden;background:#0d0b14}
 .art.pond-live .aura{display:none}.art.pond-live .art-caption{left:18px;right:18px;bottom:14px;flex-direction:row;color:#b4adc9}
-.swatch.koi{background:linear-gradient(130deg,#ff5c1a,#fff2d9,#33d9e6)}
+.swatch.uv{background:linear-gradient(130deg,#3a0ca3,#8b3dff,#b6ff3b)}.swatch.koi{background:linear-gradient(130deg,#ff5c1a,#fff2d9,#33d9e6)}
 @media(max-width:800px){.art.pond-live{margin-top:22px}}
 @media(max-width:480px){.art.pond-live{margin-inline:0}}
