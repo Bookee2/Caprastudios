@@ -33,6 +33,21 @@ html:not(.motion-off) .tt-hint,html:not(.motion-off) .tt-canvas,html:not(.motion
 .mo-head h2{font-size:clamp(38px,4.3vw,62px)}.mo-head h2 span{color:var(--muted)}.mo-head .eyebrow{margin-bottom:20px}
 .mo-head>p{color:var(--muted);font-size:16px;max-width:480px;margin:0}
 
+/* Live on the GPU: one stage per piece, alternating sides. */
+.gpu-pieces{display:grid;gap:72px}
+.gpu-piece{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:48px;align-items:center}
+.gpu-piece:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.65fr)}.gpu-piece:nth-child(even) .gpu-stage{order:2}
+.gpu-stage{position:relative;aspect-ratio:16/10;border:1px solid var(--stage-edge);border-radius:var(--stage-radius);overflow:hidden;background:#0b0d16;box-shadow:0 40px 100px #05081050;touch-action:pan-y;isolation:isolate}
+.gpu-stage canvas,.gpu-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.gpu-stage canvas{opacity:0}.gpu-stage.is-live canvas{opacity:1}.gpu-stage.is-live .gpu-poster{opacity:0}
+html:not(.motion-off) .gpu-stage canvas,html:not(.motion-off) .gpu-poster{transition:opacity .6s}
+.gpu-note{position:absolute;left:14px;right:14px;bottom:12px;margin:0;padding:8px 12px;border-radius:8px;background:#11141fe0;border:1px solid var(--edge-soft);font-size:11px;color:var(--muted)}
+.gpu-copy h3{font-size:clamp(30px,3vw,44px);line-height:1.04;margin-bottom:22px}.gpu-copy .eyebrow{color:#c3a6f4;margin-bottom:16px}
+.gpu-copy>p:not(.eyebrow){color:var(--muted);font-size:15px;max-width:420px}
+.gpu-controls{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 22px}.gpu-controls button{min-height:40px;padding:8px 14px}.gpu-controls [data-ink] span{color:#efa6de}
+.gpu-copy>p.gpu-fits{font-size:11px;color:#c3a6f4;margin:0;max-width:none}
+@media(max-width:900px){.gpu-piece,.gpu-piece:nth-child(even){grid-template-columns:1fr;gap:24px}.gpu-piece:nth-child(even) .gpu-stage{order:0}.gpu-pieces{gap:56px}}
+
 /* Built in Blender. */
 .mo-shards{margin:0}
 .shards-frame{position:relative;border:1px solid var(--stage-edge);border-radius:var(--stage-radius);overflow:hidden;background:#05060c;box-shadow:0 40px 100px #05081050}

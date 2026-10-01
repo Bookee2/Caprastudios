@@ -42,6 +42,7 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | WebGPU koi pond hero | `assets/pond.js` |
 | Work index and case studies | `work.html`, `trailgoat.html`, `purple-squirrel.html` |
 | Motion showcase page | `motion.html`, `assets/motion-page.css`, `assets/motion-page.js`, `assets/motion-governor.js` |
+| Motion page WebGPU pieces (shared device, one script per piece) and their fallback stills | `assets/motion-gpu.js`, `assets/gpu/*.js`; regenerate stills with `scripts/capture-gpu-posters.mjs` |
 | Baked motion assets: unicorn turntable sprite sheet and shard rebuild film | `blender/bake_turntable.py`, `blender/bake_shards.py`, `blender/encode_shards.py` → `assets/motion/unicorn-*` |
 | Public privacy explanation | `privacy.html` |
 | Deployment URL used by the build | `site.config.json` or the `SITE_URL` environment variable |
