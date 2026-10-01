@@ -1,4 +1,5 @@
-/* Homepage moments that need no GSAP: the film's overlay, the stacking capability cards, and the closing line. */
+/* Homepage moments that need no GSAP: the film's overlay and the stacking capability cards.
+   The closing line's word lighting is shared, in interactions.js. */
 (()=>{'use strict';
  const root=document.documentElement,motionOff=()=>root.classList.contains('motion-off');
  let queued=false;const jobs=[];
@@ -36,18 +37,4 @@
   });
  }
 
- // "Let's make an impression." lights word by word as it rises through the screen.
- const line=document.querySelector('.closing-stage .contact h2');
- if(line){
-  const words=[];
-  const split=node=>[...node.childNodes].forEach(child=>{
-   if(child.nodeType===3){const parts=child.textContent.split(/(\s+)/);const frag=document.createDocumentFragment();parts.forEach(part=>{if(!part)return;if(/^\s+$/.test(part)){frag.append(part);return;}const w=document.createElement('span');w.className='w';w.textContent=part;words.push(w);frag.append(w);});child.replaceWith(frag);}
-   else if(child.nodeType===1&&child.tagName!=='BR')split(child);
-  });
-  split(line);line.classList.add('words-ready');
-  onScroll(()=>{
-   const r=line.getBoundingClientRect(),p=motionOff()?1:Math.max(0,Math.min(1,(innerHeight*.88-r.top)/(innerHeight*.4)));
-   const n=Math.round(p*words.length);words.forEach((w,i)=>w.classList.toggle('lit',i<n));
-  });
- }
 })();
