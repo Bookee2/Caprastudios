@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1a1b26">
+<title>Motion — Capra Studios</title>
+<meta name="description" content="Motion design by Capra Studios, live in your browser: a Blender-baked unicorn you can turn, a mark that rebuilds from 150 shards, brand films, and pointer and scroll effects.">
+<link rel="canonical" href="https://bookee2.github.io/Caprastudios/motion.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Capra Studios">
+<meta property="og:title" content="Motion — Capra Studios">
+<meta property="og:description" content="Motion design by Capra Studios, live in your browser: a Blender-baked unicorn you can turn, a mark that rebuilds from 150 shards, brand films, and pointer and scroll effects.">
+<meta property="og:url" content="https://bookee2.github.io/Caprastudios/motion.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&amp;family=Red+Hat+Text:wght@400;500;600;700&amp;family=Red+Hat+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/studio-next.css">
+<link rel="stylesheet" href="assets/interactions.css">
+<link rel="stylesheet" href="assets/page-transitions.css">
+<link rel="stylesheet" href="assets/motion-page.css">
+<script src="assets/studio-next.js" defer>
+</script>
+<script src="assets/nav.js" defer></script>
+<script src="assets/interactions.js" defer></script>
+<script src="assets/motion-governor.js" defer></script>
+<script src="assets/motion-page.js" defer></script>
+<script src="assets/motion-gpu.js" defer></script>
+<meta name="capra-agent-endpoint" content="">
+<link rel="stylesheet" href="assets/agent.css">
+<script src="assets/agent.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="nav-bar shell">
+<a class="brand" href="./" aria-label="Capra Studios home">
+<img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
+</a>
+<nav class="main-nav" id="navigation" aria-label="Main navigation">
+<a href="work.html">Work <sup>02</sup></a>
+<a href="motion.html" aria-current="page">Motion</a>
+<a href="ai-consulting.html">AI consulting</a>
+<a href="index.html#studio">Studio</a>
+<a class="nav-contact" href="#contact">Start a conversation</a>
+</nav>
+<button class="menu-toggle" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>+</span>
+</button>
+</div>
+<div class="nav-progress" aria-hidden="true"></div>
+</header>
+<main id="main" class="motion-page">
+<section class="mo-opener shell" aria-labelledby="motion-title">
+<div class="mo-opener-copy">
+<p class="eyebrow">Motion / Live in your browser</p>
+<h1 id="motion-title">Made to move.<br><em>Meant to matter.</em></h1>
+<p class="lead">Motion is how a brand shows its character before anyone reads a word. Everything here runs live on this page, and every piece is something we can build into yours.</p>
+<div class="mo-actions">
+<a class="button primary" href="#gpu">See it move ↓</a>
+<button class="mo-pause" type="button" aria-pressed="false" hidden>Pause all motion <span aria-hidden="true">Ⅱ</span></button>
+</div>
+<p class="sr-only" id="mo-status" aria-live="polite"></p>
+<ol class="mo-index mono" aria-label="On this page">
+<li><a href="#turntable">01 Turn it</a></li>
+<li><a href="#gpu">02 Live on the GPU</a></li>
+<li><a href="#baked">03 Built in Blender</a></li>
+<li><a href="#film">04 Film</a></li>
+<li><a href="#drive">05 Motion you drive</a></li>
+<li><a href="#principles">06 How we use motion</a></li>
+</ol>
+</div>
+<figure class="mo-turntable" id="turntable" data-sheet="assets/motion/unicorn-turntable.webp" data-frames="60" data-cols="10">
+<div class="tt-stage">
+<div class="tt-floor" aria-hidden="true"></div>
+<img class="tt-poster" src="assets/motion/unicorn-turntable-poster.webp" width="480" height="600" alt="Capra’s ribbon unicorn as a sculpture of satin-blue metal ribbons, rendered in Blender">
+<canvas class="tt-canvas" aria-hidden="true"></canvas>
+<span class="tt-hint mono" aria-hidden="true">Drag to turn</span>
+</div>
+<label class="tt-dial"><span class="sr-only">Turn the unicorn</span><input type="range" min="0" max="59" step="1" value="0" disabled></label>
+<figcaption class="mo-caption mono"><span>01 / Turn it by scrolling or dragging</span><span>60 frames rendered in Blender · no GPU needed</span></figcaption>
+</figure>
+</section>
+
+<section class="mo-section shell" id="gpu" aria-labelledby="gpu-title">
+<div class="mo-head">
+<div><p class="eyebrow">02 / Live on the GPU</p><h2 id="gpu-title">Drawn fresh,<br><span>every frame.</span></h2></div>
+<p>Four pieces your graphics card renders as you watch, with WebGPU. Move over them, press, change them. Where WebGPU isn’t available, each one shows a still.</p>
+</div>
+<div class="gpu-pieces">
+<article class="gpu-piece" aria-labelledby="g-metal">
+<div class="gpu-stage" data-gpu="metal" data-rest="40"><img class="gpu-poster" src="assets/motion/gpu-metal.jpg" width="1280" height="800" loading="lazy" alt="Capra’s unicorn as a chrome badge, with mercury drops flowing around and into it"><canvas role="img" aria-label="Live render: Capra’s unicorn as a chrome badge, with mercury drops flowing around and into it"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">Liquid metal</p>
+<h3 id="g-metal">The mark, pulled<br>out of mercury.</h3>
+<p>The unicorn becomes a signed-distance shape, and light is traced across it every frame. Drops of mercury orbit and fuse with it wherever they touch. Bring your pointer in to add one of your own.</p>
+<p class="gpu-fits mono">Where it fits: a hero, a launch, a product reveal</p>
+</div>
+</article>
+<article class="gpu-piece" aria-labelledby="g-grow">
+<div class="gpu-stage" data-gpu="grow" data-rest="260"><img class="gpu-poster" src="assets/motion/gpu-grow.jpg" width="1280" height="800" loading="lazy" alt="The word capra grown as a violet and pink maze pattern"><canvas role="img" aria-label="Live simulation: the word capra growing from a chemical-reaction pattern"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">Letters that grow</p>
+<h3 id="g-grow">Type that<br>grows itself.</h3>
+<p>A reaction-diffusion simulation runs inside the letters. Change two numbers and the same word grows as a maze, loops or spots. Touch the letters to seed new growth.</p>
+<div class="gpu-controls" role="group" aria-label="Growth pattern"><button type="button" data-pattern="0" aria-pressed="true">Maze</button><button type="button" data-pattern="1" aria-pressed="false">Loops</button><button type="button" data-pattern="2" aria-pressed="false">Spots</button><button type="button" data-regrow>Grow again <span aria-hidden="true">↺</span></button></div>
+<p class="gpu-fits mono">Where it fits: logo stings, loaders, title cards</p>
+</div>
+</article>
+<article class="gpu-piece" aria-labelledby="g-ink">
+<div class="gpu-stage" data-gpu="ink" data-rest="420"><img class="gpu-poster" src="assets/motion/gpu-ink.jpg" width="1280" height="800" loading="lazy" alt="Cyan, violet and pink ink swirling through dark water"><canvas role="img" aria-label="Live fluid simulation: cyan, violet and pink ink swirling through dark water"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">Ink in water</p>
+<h3 id="g-ink">Stir it<br>with your hand.</h3>
+<p>A fluid solver carries three inks from the studio palette through dark water. Two brushes drift on their own; your pointer is the third. Press to change colour.</p>
+<div class="gpu-controls" role="group" aria-label="Ink"><button type="button" data-ink>Ink: <span>Violet</span></button><button type="button" data-clear>Clear the water</button></div>
+<p class="gpu-fits mono">Where it fits: backgrounds that respond, event pages, an interactive hero</p>
+</div>
+</article>
+<article class="gpu-piece" aria-labelledby="g-print">
+<div class="gpu-stage" data-gpu="print" data-rest="20"><img class="gpu-poster" src="assets/motion/gpu-print.jpg" width="1280" height="800" loading="lazy" alt="Capra’s unicorn printed as a one-bit dither in lavender on navy"><canvas role="img" aria-label="Live filter: the Capra unicorn film shown as dither, halftone or ASCII type"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">One film, three printers</p>
+<h3 id="g-print">One asset,<br>restyled live.</h3>
+<p>The unicorn film runs through three print processes as it plays: a one-bit dither, a two-ink halftone and ASCII type. One source becomes a whole family of brand moments.</p>
+<div class="gpu-controls" role="group" aria-label="Print process"><button type="button" data-print="0" aria-pressed="false">Original</button><button type="button" data-print="1" aria-pressed="true">Dither</button><button type="button" data-print="2" aria-pressed="false">Halftone</button><button type="button" data-print="3" aria-pressed="false">ASCII</button></div>
+<p class="gpu-fits mono">Where it fits: campaign variations, posters, a terminal mode</p>
+</div>
+</article>
+</div>
+</section>
+
+<section class="mo-section shell" id="baked" aria-labelledby="baked-title">
+<div class="mo-head">
+<div><p class="eyebrow">03 / Built in Blender</p><h2 id="baked-title">Broken on purpose.<br><span>Rebuilt in seconds.</span></h2></div>
+<p>A tile carrying the unicorn is cut into 150 shards and struck. Blender’s physics solver works out where every piece falls; we render it and play it backwards, so the mark puts itself together.</p>
+</div>
+<figure class="mo-stage mo-shards">
+<div class="shards-frame">
+<video id="shards-film" muted playsinline preload="none" poster="assets/motion/unicorn-shards-poster.jpg" aria-label="One hundred and fifty glass shards lift from a dark floor and fly together into a tile printed with Capra’s ribbon unicorn">
+<source src="assets/motion/unicorn-shards.mp4" type="video/mp4">
+</video>
+<button class="mo-replay" type="button" hidden><span aria-hidden="true">↺</span> Play again</button>
+</div>
+<figcaption class="mo-fits">
+<p class="mono">Where it fits</p>
+<ul><li>A logo reveal that earns a second look</li><li>A launch or announcement page</li><li>A 404 page that puts itself back together</li></ul>
+</figcaption>
+</figure>
+</section>
+
+<section class="mo-section shell" id="film" aria-labelledby="film-title">
+<div class="mo-head">
+<div><p class="eyebrow">04 / Film</p><h2 id="film-title">Characters,<br><span>not just logos.</span></h2></div>
+<p>Two short films from the studio’s own identities, each made in 3D and delivered as ordinary video that plays anywhere.</p>
+</div>
+<div class="mo-films">
+<figure class="mo-film mo-film-main">
+<div class="film-frame"><video id="brand-film" class="project-film" controls playsinline preload="none" poster="assets/motion/trailgoat-detail.jpg?v=4k-20260929" aria-label="TrailGoat 4K brand film with music: blocks assemble into a goat, flip, and resolve into the wordmark"><source src="assets/motion/trailgoat-brand-film.mp4?v=4k-20260929" type="video/mp4"><a href="assets/motion/trailgoat-brand-film.mp4?v=4k-20260929">Watch the TrailGoat brand film</a></video><button class="film-play" data-play-film="brand-film" aria-controls="brand-film" hidden><span aria-hidden="true">▷</span> Play with sound</button></div>
+<div class="film-chapters" role="group" aria-label="Explore the film" hidden><button data-film-time="0" aria-controls="brand-film"><img src="assets/motion/trailgoat-detail.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>01</b> Assemble</span></button><button data-film-time="7" aria-controls="brand-film"><img src="assets/motion/trailgoat-character.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>02</b> Become</span></button><button data-film-time="16.5" aria-controls="brand-film"><img src="assets/motion/trailgoat-resolve.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>03</b> Resolve</span></button></div>
+<figcaption class="mo-caption mono"><span>TrailGoat / Brand film</span><span>00:20 · 4K · Sound on</span></figcaption>
+</figure>
+<figure class="mo-film mo-film-side">
+<div class="film-frame square"><video id="unicorn-film" controls playsinline preload="none" poster="assets/motion/capra-unicorn-mobile-poster.jpg" aria-label="Capra’s ribbon unicorn drawn by a single satin ribbon on an empty stage, from the tail tip to the horn"><source src="assets/motion/capra-unicorn-mobile.mp4" type="video/mp4"><a href="assets/motion/capra-unicorn-mobile.mp4">Watch the Capra unicorn film</a></video><button class="film-play" data-play-film="unicorn-film" aria-controls="unicorn-film" hidden><span aria-hidden="true">▷</span> Play</button></div>
+<figcaption class="mo-caption mono"><span>Capra / Ribbon unicorn</span><span>00:08 · Silent</span></figcaption>
+</figure>
+</div>
+</section>
+
+<section class="mo-section shell" id="drive" aria-labelledby="drive-title">
+<div class="mo-head">
+<div><p class="eyebrow">05 / Motion you drive</p><h2 id="drive-title">It answers<br><span>your hand.</span></h2></div>
+<p>Small responses to a pointer, a hover or a scroll. Each one is an extra: everything still works with a keyboard, on a phone, or with motion switched off.</p>
+</div>
+<div class="tiles">
+
+<article class="tile" data-tile="spot" aria-labelledby="t-spot">
+<div class="tile-stage spot-stage">
+<div class="spot mini-card"><span class="mono">01</span><b>Design</b><small>A presence of your own</small></div>
+<div class="spot mini-card"><span class="mono">02</span><b>Build</b><small>Everything in its place</small></div>
+<div class="spot mini-card"><span class="mono">03</span><b>Connect</b><small>Intelligence with purpose</small></div>
+</div>
+<h3 id="t-spot">Spotlight edges</h3><p>Cards light their border where the pointer is. For service lists and pricing tables.</p><span class="tile-touch mono">Best with a mouse</span>
+</article>
+
+<article class="tile" data-tile="lens" aria-labelledby="t-lens">
+<div class="tile-stage lens-stage">
+<div class="lens-layer lens-wire" aria-hidden="true"><div class="lm-nav"><i></i><i></i><i></i></div><div class="lm-hero"><i class="lm-h"></i><i class="lm-h short"></i><i class="lm-p"></i><i class="lm-b"></i></div><div class="lm-art"></div></div>
+<div class="lens-layer lens-final"><div class="lm-nav"><b>capra</b><span>Work</span><span>Motion</span></div><div class="lm-hero"><strong>Make an<br><em>impression.</em></strong><span>Designed to feel different.</span><u>Start a project</u></div><div class="lm-art"><img src="assets/motion/unicorn-turntable-poster.webp" alt="" width="480" height="600" loading="lazy"></div></div>
+</div>
+<h3 id="t-lens">Flashlight reveal</h3><p>A lens shows the finished design over its wireframe. For before-and-after and process stories.</p><span class="tile-touch mono">Best with a mouse</span>
+</article>
+
+<article class="tile" data-tile="roll" aria-labelledby="t-roll">
+<div class="tile-stage roll-stage">
+<a class="button primary" href="#contact">Start a project ↓</a>
+<a class="button" href="work.html">See the work →</a>
+</div>
+<h3 id="t-roll">Rolling labels</h3><p>Letters roll to a second copy, one after another. The buttons across this site already do it.</p>
+</article>
+
+<article class="tile tile-wide" data-tile="peek" aria-labelledby="t-peek">
+<div class="tile-stage peek-stage">
+<ul class="peek-list">
+<li><a href="trailgoat.html" data-img="assets/work/trailgoat-current.jpg"><span>TrailGoat</span><span class="mono">Web application</span></a></li>
+<li><a href="purple-squirrel.html" data-img="assets/work/purple-squirrel.jpg"><span>Purple Squirrel</span><span class="mono">Product design</span></a></li>
+<li><a href="trailgoat.html" data-img="assets/motion/trailgoat-character.jpg?v=4k-20260929"><span>TrailGoat film</span><span class="mono">Brand motion</span></a></li>
+<li><a href="#turntable" data-img="assets/motion/capra-unicorn-poster.jpg"><span>Ribbon unicorn</span><span class="mono">Identity</span></a></li>
+</ul>
+<div class="peek-card" aria-hidden="true"><img alt=""></div>
+</div>
+<h3 id="t-peek">A list with a preview</h3><p>A picture follows the pointer down a list and leans with its speed. For portfolios and menus.</p><span class="tile-touch mono">Best with a mouse</span>
+</article>
+
+<article class="tile" data-tile="dir" aria-labelledby="t-dir">
+<div class="tile-stage dir-stage">
+<a class="dir" href="#principles"><span>Strategy</span><i aria-hidden="true"></i></a>
+<a class="dir" href="#baked"><span>Design</span><i aria-hidden="true"></i></a>
+<a class="dir" href="#drive"><span>Build</span><i aria-hidden="true"></i></a>
+<a class="dir" href="#film"><span>Motion</span><i aria-hidden="true"></i></a>
+</div>
+<h3 id="t-dir">Fill from the edge you enter</h3><p>The colour follows the pointer in and out. For navigation grids and category menus.</p><span class="tile-touch mono">Best with a mouse</span>
+</article>
+
+<article class="tile" data-tile="words" aria-labelledby="t-words">
+<div class="tile-stage scroller" tabindex="0" aria-label="Scroll inside this frame to light the sentence">
+<div class="scroll-track"><div class="scroll-pin"><p class="words">Good motion is never decoration. It shows people where to look, what changed, and what happens next.</p></div></div>
+</div>
+<h3 id="t-words">Words that light up</h3><p>A sentence lights as you read it. For one statement per page, never for body copy.</p><span class="tile-touch mono">Scroll inside the frame</span>
+</article>
+
+<article class="tile" data-tile="route" aria-labelledby="t-route">
+<div class="tile-stage scroller" tabindex="0" aria-label="Scroll inside this frame to draw the process line">
+<div class="scroll-track"><div class="scroll-pin route-pin">
+<svg class="route" viewBox="0 0 600 220" aria-hidden="true"><defs><linearGradient id="route-light" x1="0" x2="1"><stop offset="0" stop-color="#7dcfff"/><stop offset=".55" stop-color="#bb9af7"/><stop offset="1" stop-color="#efa6de"/></linearGradient></defs><path class="route-ghost" d="M40 160 C140 160 150 60 250 60 S 360 170 450 150 S 540 70 560 70"/><path class="route-line" d="M40 160 C140 160 150 60 250 60 S 360 170 450 150 S 540 70 560 70"/><circle class="route-dot" r="7" cx="40" cy="160"/></svg>
+<ol class="route-steps"><li data-at="0">Define</li><li data-at="0.45">Create</li><li data-at="1">Refine</li></ol>
+</div></div>
+</div>
+<h3 id="t-route">A route that draws itself</h3><p>A line traces a process as you scroll, with a marker riding it. For timelines and how-we-work pages.</p><span class="tile-touch mono">Scroll inside the frame</span>
+</article>
+
+<article class="tile" data-tile="springs" aria-labelledby="t-springs">
+<div class="tile-stage springs-stage">
+<ol class="spring-list">
+<li><span class="mono">01</span>Websites</li>
+<li><span class="mono">02</span>Applications</li>
+<li><span class="mono">03</span>Brand motion</li>
+<li><span class="mono">04</span>Identity</li>
+<li><span class="mono">05</span>AI agents</li>
+</ol>
+<div class="spring-actions"><button type="button" data-sort="shuffle">Shuffle</button><button type="button" data-sort="az">A–Z</button><button type="button" data-sort="reset">Reset</button></div>
+</div>
+<h3 id="t-springs">Rows on springs</h3><p>A list re-sorts with springs, and a second sort mid-flight just changes course. For filters and leaderboards.</p>
+</article>
+</div>
+</section>
+
+<section class="mo-section shell" id="principles" aria-labelledby="principles-title">
+<div class="mo-head">
+<div><p class="eyebrow">06 / How we use motion</p><h2 id="principles-title">Five promises<br><span>we keep.</span></h2></div>
+<p>The difference between a site that feels made and one that feels generated is restraint. These are the rules we build to.</p>
+</div>
+<ol class="promises">
+<li class="spot-rule"><span class="mono">01</span><h3>It has a job.</h3><p>Every movement points somewhere: what changed, where to look, what happens next.</p></li>
+<li class="spot-rule"><span class="mono">02</span><h3>Your hand stays in charge.</h3><p>We keep native scrolling and the native cursor. Motion answers you; it never takes over.</p></li>
+<li class="spot-rule"><span class="mono">03</span><h3>Nothing depends on hover.</h3><p>Phones and keyboards get the same content and the same controls, with or without the effect.</p></li>
+<li class="spot-rule"><span class="mono">04</span><h3>Still is always an option.</h3><p>Reduced-motion settings and the switch in our footer show the finished frame. Nothing is hidden.</p></li>
+<li class="spot-rule"><span class="mono">05</span><h3>One signature per page.</h3><p>One moment people remember. Everything around it stays quiet.</p></li>
+</ol>
+</section>
+
+<section class="contact shell" id="contact" aria-labelledby="contact-title">
+<p class="eyebrow">Something that moves</p>
+<div class="contact-heading">
+<h2 id="contact-title">Let’s make<br>an impression.</h2>
+<a class="contact-arrow" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20motion%20project" aria-label="Email Kris about a motion project">↗</a>
+</div>
+<div class="contact-bottom">
+<p>A logo that assembles. A hero people play with.<br>Tell us what you want people to feel.</p>
+<a class="email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20motion%20project">kris@caprastudios.ai ↗</a>
+</div>
+</section>
+</main>
+<footer class="site-footer shell">
+<div class="footer-grid">
+<div class="footer-brand">
+<a class="brand" href="./">
+<img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
+</a>
+<p>Atlanta roots.<br>Wide-open possibilities.</p>
+</div>
+<nav class="footer-nav" aria-label="Footer">
+<p class="eyebrow">Explore</p>
+<a href="work.html">Work</a>
+<a href="motion.html">Motion</a>
+<a href="ai-consulting.html">AI consulting</a>
+<a href="index.html#services">Expertise</a>
+<a href="index.html#studio">Studio</a>
+</nav>
+<div class="footer-contact">
+<p class="eyebrow">Start a project</p>
+<a class="footer-email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a>
+<a class="footer-top-link" href="#main">Back to top ↑</a>
+</div>
+</div>
+<div class="footer-bottom mono">
+<span>© <span id="year">2026</span> CAPRA, LLC</span>
+<span>Design / Web / Motion / AI</span>
+<span class="footer-meta"><a href="privacy.html">Privacy</a><button class="motion-toggle" type="button" aria-pressed="true" hidden>Motion effects <span aria-hidden="true">on</span></button></span>
+</div>
+</footer>
+<button class="agent-launch" id="agent-launch" aria-haspopup="dialog" aria-controls="capra-agent" hidden><i aria-hidden="true"></i>Ask Capra</button>
+<dialog class="agent-dialog" id="capra-agent" aria-labelledby="agent-title"><div class="agent-shell"><div class="agent-header"><div><h2 id="agent-title">Let’s explore your idea.</h2><p id="agent-mode">Studio guide · prepared answers</p></div><button id="agent-close" aria-label="Close studio assistant">×</button></div><div class="agent-body"><div id="agent-guide"><p class="agent-intro" id="agent-intro">Explore our services or put together a project brief. Choose a topic for prepared guidance.</p><div class="agent-topics"><button data-topic="services">What can you help with? ↗</button><button data-topic="ai">AI for my business ↗</button><button data-topic="rag">An agent for my knowledge ↗</button><button data-topic="work">Explore the work ↗</button></div><div class="agent-log" id="agent-log" role="log" aria-live="polite" aria-relevant="additions"></div><p class="agent-status" id="agent-status" role="status"></p></div><div id="agent-brief" hidden><form class="agent-brief" id="brief-form"><h3>A little about your project.</h3><p id="brief-storage">Prepare a draft, then review and send it in your email app.</p><label>Your name<input name="name" autocomplete="name" maxlength="100" required></label><label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label><label>Business or team<input name="company" autocomplete="organization" maxlength="160"></label><label>What would you like to make or improve?<textarea name="goal" rows="4" maxlength="2000" required></textarea></label><label>Budget range<select name="budget"><option>Not sure yet</option><option>Under $5,000</option><option>$5,000–$15,000</option><option>$15,000–$50,000</option><option>$50,000+</option></select></label><label>Ideal timing<input name="timeline" maxlength="120" placeholder="A target date, or still exploring"></label><label class="consent"><input name="consent" type="checkbox" required><span>Kris may contact me about this project using the details I provide. <a href="privacy.html">Privacy</a></span></label><div class="brief-actions"><button class="button" id="brief-submit" type="submit" hidden>Submit project brief ↗</button><a class="button" id="brief-email" href="mailto:kris@caprastudios.ai">Open email draft ↗</a><button type="button" id="brief-back">Back to the conversation</button></div><p class="agent-result" id="brief-result" role="status"></p></form></div></div><form class="agent-input" id="agent-input" hidden><label for="agent-question">Ask about your project</label><textarea id="agent-question" maxlength="2000" rows="2" required placeholder="What are you hoping to make possible?"></textarea><button type="submit">Send ↗</button></form><div class="agent-toolbar" id="agent-toolbar"><button id="agent-brief-open">Prepare a project brief ↗</button><button id="agent-reset">Clear conversation</button></div><p class="agent-privacy" id="agent-privacy">Prepared guidance stays in this page. <a href="privacy.html">Privacy &amp; data use</a></p></div></dialog>
+
+</body>
+</html>

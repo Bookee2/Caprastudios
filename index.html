@@ -19,34 +19,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&amp;family=Red+Hat+Text:wght@400;500;600;700&amp;family=Red+Hat+Mono:wght@400;500&amp;family=Sedgwick+Ave+Display&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/studio-next.css">
+<link rel="stylesheet" href="assets/interactions.css">
 <link rel="stylesheet" href="assets/page-transitions.css">
 <script src="assets/studio-next.js" defer>
 </script>
+<script src="assets/nav.js" defer></script>
+<script src="assets/interactions.js" defer></script>
 <script src="assets/pond.js" defer></script>
 <link rel="stylesheet" href="assets/chapters.css">
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/chapters.js" defer></script>
+<script src="assets/home.js" defer></script>
 <meta name="capra-agent-endpoint" content="">
 <link rel="stylesheet" href="assets/agent.css">
 <script src="assets/agent.js" defer></script>
 </head>
 <body class="home-chapters">
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header shell">
+<header class="site-header" id="site-header">
+<div class="nav-bar shell">
 <a class="brand" href="./" aria-label="Capra Studios home">
 <img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
 </a>
 <nav class="main-nav" id="navigation" aria-label="Main navigation">
-<a href="work.html">Work <sup>02</sup>
-</a>
+<a href="work.html" data-spy="work">Work <sup>02</sup></a>
+<a href="motion.html" data-spy="motion">Motion</a>
 <a href="ai-consulting.html">AI consulting</a>
-<a href="#services">Expertise</a>
-<a href="#studio">Studio</a>
-<a class="nav-contact" href="#contact">Start a conversation ↗</a>
+<a href="#studio" data-spy="studio">Studio</a>
+<a class="nav-contact" href="#contact">Start a conversation</a>
 </nav>
 <button class="menu-toggle" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>+</span>
 </button>
+</div>
+<div class="nav-progress" aria-hidden="true"></div>
 </header>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -106,11 +112,6 @@
   }
 }
 </script>
-<nav class="chapter-nav" aria-label="Page chapters">
-<a class="chapter-brand" href="#imagination" aria-label="Back to imagination"><img src="assets/brand/mark.svg" alt="" width="20" height="27"></a>
-<div class="chapter-links"><a href="#work">Work</a><a href="#motion">Motion</a><a href="#services">Expertise</a><a href="#contact">Let’s talk ↗</a></div>
-<button class="scroll-toggle" aria-pressed="false" hidden>Scroll effects on <span aria-hidden="true">◉</span></button>
-</nav>
 <main id="main">
 <div class="hero-chapter" id="imagination"><div class="hero-hold">
 <section class="hero shell" aria-labelledby="hero-title">
@@ -164,50 +165,71 @@
 <section class="work-chapter" id="work" aria-labelledby="work-title"><div class="work-hold">
 <div class="work-heading shell"><div><p class="eyebrow">01 / Selected work · Founder-built products</p><h2 id="work-title">Different worlds.<br>  <span>The same care.</span></h2></div><div class="work-switch" role="group" hidden aria-label="Choose a featured project"><button data-project="0" aria-pressed="true">01 <span>TrailGoat</span></button><button data-project="1" aria-pressed="false">02 <span>Purple Squirrel</span></button></div></div>
 <div class="project-stage shell">
-<article class="project-panel trail-panel" aria-labelledby="trail-title"><div class="project-editorial"><p class="eyebrow">TrailGoat / Product + motion</p><h3 id="trail-title">Built for<br>  the long run.</h3><p>A connected running product with a character all its own.</p><a class="button" href="trailgoat.html">Explore TrailGoat ↗</a><span class="mono">Web application / Identity in motion</span></div><a class="project-visual" href="trailgoat.html" aria-label="Explore the TrailGoat project"><div class="project-orbit" aria-hidden="true"></div><img src="assets/work/trailgoat-current.jpg" width="1440" height="980" decoding="async" alt="TrailGoat’s trail-running product website, with course planning and fueling tools"><span class="visual-caption mono">01 / Built for the trail. Designed for the journey.</span></a></article>
-<article class="project-panel squirrel-panel" aria-labelledby="squirrel-title"><div class="project-backdrop" aria-hidden="true"></div><div class="project-editorial"><p class="eyebrow">Purple Squirrel / Digital product</p><h3 id="squirrel-title">A better kind<br>  of handoff.</h3><p>A clearer journey from candidate submission to client review.</p><a class="button" href="purple-squirrel.html">Explore Purple Squirrel ↗</a><span class="mono">Product design / Web application</span></div><a class="project-visual" href="purple-squirrel.html" aria-label="Explore the Purple Squirrel project"><div class="project-orbit" aria-hidden="true"></div><img src="assets/work/purple-squirrel.jpg" width="1440" height="980" loading="lazy" decoding="async" alt="Purple Squirrel’s staffing platform, showing sample candidate cards and review states"><span class="visual-caption mono">02 / Complex workflows. Clear next steps.</span></a></article>
-</div><div class="work-bottom shell"><span class="mono work-cue">Two products. One considered approach.</span><a class="text-link" href="work.html">All work &amp; process ↗</a></div>
+<article class="project-panel trail-panel" aria-labelledby="trail-title"><div class="project-editorial"><p class="eyebrow">TrailGoat / Product + motion</p><h3 id="trail-title">Built for<br>  the long run.</h3><p>A connected running product with a character all its own.</p><a class="button" href="trailgoat.html">Explore TrailGoat →</a><span class="mono">Web application / Identity in motion</span></div><a class="project-visual" href="trailgoat.html" aria-label="Explore the TrailGoat project"><div class="project-orbit" aria-hidden="true"></div><img src="assets/work/trailgoat-current.jpg" width="1440" height="980" decoding="async" alt="TrailGoat’s trail-running product website, with course planning and fueling tools"><span class="visual-caption mono">01 / Built for the trail. Designed for the journey.</span></a></article>
+<article class="project-panel squirrel-panel" aria-labelledby="squirrel-title"><div class="project-backdrop" aria-hidden="true"></div><div class="project-editorial"><p class="eyebrow">Purple Squirrel / Digital product</p><h3 id="squirrel-title">A better kind<br>  of handoff.</h3><p>A clearer journey from candidate submission to client review.</p><a class="button" href="purple-squirrel.html">Explore Purple Squirrel →</a><span class="mono">Product design / Web application</span></div><a class="project-visual" href="purple-squirrel.html" aria-label="Explore the Purple Squirrel project"><div class="project-orbit" aria-hidden="true"></div><img src="assets/work/purple-squirrel.jpg" width="1440" height="980" loading="lazy" decoding="async" alt="Purple Squirrel’s staffing platform, showing sample candidate cards and review states"><span class="visual-caption mono">02 / Complex workflows. Clear next steps.</span></a></article>
+</div><div class="work-bottom shell"><span class="mono work-cue">Two products. One considered approach.</span><a class="text-link" href="work.html">All work &amp; process →</a></div>
 </div></section>
-<section class="motion-chapter shell" id="motion" aria-labelledby="motion-title">
-<div class="chapter-heading"><p class="eyebrow">02 / Motion design</p><span class="mono">A little character changes everything.</span></div>
-<div class="cinema-stage surface-stage">
-<div class="cinema-copy"><p class="eyebrow">TrailGoat / Brand film</p><h2 id="motion-title">From fragments.<br> To character.</h2><p>Color, form, and a moment of recognition. A brand built to move.</p><span class="mono">4K brand film · 00:20 · Sound on</span><a class="text-link" href="trailgoat.html">Inside the project ↗</a></div>
-<div class="cinema-media"><div class="film-frame"><video id="brand-film" class="project-film" controls playsinline preload="none" poster="assets/motion/trailgoat-detail.jpg?v=4k-20260929" aria-label="TrailGoat 4K brand film with music: blocks assemble into a goat, flip, and resolve into the wordmark"><source src="assets/motion/trailgoat-brand-film.mp4?v=4k-20260929" type="video/mp4"><a href="assets/motion/trailgoat-brand-film.mp4?v=4k-20260929">Watch the TrailGoat brand film</a></video><button class="film-play" data-play-film="brand-film" aria-controls="brand-film" hidden><span aria-hidden="true">▷</span> Play with sound</button></div>
-<div class="film-chapters" role="group" aria-label="Explore the film" hidden><button data-film-time="0" aria-controls="brand-film"><img src="assets/motion/trailgoat-detail.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>01</b> Assemble</span></button><button data-film-time="7" aria-controls="brand-film"><img src="assets/motion/trailgoat-character.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>02</b> Become</span></button><button data-film-time="16.5" aria-controls="brand-film"><img src="assets/motion/trailgoat-resolve.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>03</b> Resolve</span></button></div></div>
-</div></section>
-<section class="capability-chapter" id="services" aria-labelledby="capability-title"><div class="capability-hold shell">
-<div class="chapter-heading"><div><p class="eyebrow">03 / Design, development &amp; AI</p><h2 id="capability-title">The idea is only<br> the beginning.</h2></div><div class="capability-switch" role="group" aria-label="Explore our capabilities" hidden><button data-capability="0" aria-pressed="true">01 / Design</button><button data-capability="1" aria-pressed="false">02 / Build</button><button data-capability="2" aria-pressed="false">03 / Connect</button></div></div>
-<div class="capability-stage surface-stage">
-<div class="capability-stories">
-<article class="capability-story" data-story="0"><p class="eyebrow">Make it distinctive</p><h3>A presence<br> of your own.</h3><p>Websites and digital identities with a clear point of view. Considered from the first impression to the smallest interaction.</p><a class="text-link" href="#contact">Let’s shape your idea ↗</a><span class="mono">Strategy / Web design / Interactive experiences</span></article>
-<article class="capability-story" data-story="1"><p class="eyebrow">Make it useful</p><h3>Everything<br> in its place.</h3><p>Custom applications that turn a complicated process into a clear, connected experience. Designed around the people using them.</p><a class="text-link" href="work.html">Explore our applications ↗</a><span class="mono">Product design / Development / Integrations</span></article>
-<article class="capability-story" id="ai-consulting" data-story="2"><p class="eyebrow">Make it work together</p><h3>Intelligence.<br> With purpose.</h3><p>Chat agents, RAG knowledge systems, customer service, and connected operations. AI consulting built around how your business works.</p><a class="button" href="ai-consulting.html">Explore AI consulting ↗</a><span class="mono">Knowledge / Agents / Business workflows</span></article>
+<section class="motion-chapter" id="motion" aria-labelledby="motion-title">
+<div class="cinema-bleed">
+<div class="film-frame cinema-frame"><video id="brand-film" class="project-film" controls playsinline preload="none" poster="assets/motion/trailgoat-detail.jpg?v=4k-20260929" aria-label="TrailGoat 4K brand film with music: blocks assemble into a goat, flip, and resolve into the wordmark"><source src="assets/motion/trailgoat-brand-film.mp4?v=4k-20260929" type="video/mp4"><a href="assets/motion/trailgoat-brand-film.mp4?v=4k-20260929">Watch the TrailGoat brand film</a></video><button class="film-play" data-play-film="brand-film" aria-controls="brand-film" hidden><span aria-hidden="true">▷</span> Play with sound</button></div>
+<div class="cinema-copy"><p class="eyebrow">TrailGoat / Brand film</p><h2 id="motion-title">From fragments.<br> To character.</h2><p>Color, form, and a moment of recognition. A brand built to move.</p><span class="mono">4K brand film · 00:20 · Sound on</span><a class="text-link" href="trailgoat.html">Inside the project →</a><a class="text-link" href="motion.html">See all motion →</a></div>
 </div>
-<div class="capability-art" aria-hidden="true"><div class="model-orbit"></div><div class="model-grid"></div>
-<div class="design-model"><div class="model-browser"><div class="browser-top"><span>● ● ●</span><span>capra / a new perspective</span><span>↗</span></div><div class="model-browser-body"><div class="model-type">Make an<br> <em>impression.</em><i></i><small>Designed to feel different.</small></div><img src="assets/brand/ribbon-hero.png" alt="" width="1024" height="1536" loading="lazy"></div><div class="browser-foot"><span>01 / A point of view</span><span>Design that moves you ↗</span></div></div><div class="design-chip chip-color"><span>Color, with intention.</span><i></i><i></i><i></i></div><div class="design-chip chip-type">Aa<span>Type with a voice.</span></div></div>
-<div class="build-model"><div class="app-sheet"><div class="app-top"><span>WORKSPACE / OVERVIEW</span><i></i></div><div class="app-title">Clarity at every step.</div><div class="app-columns"><div><span>REQUESTS</span><div class="app-task">A new idea<i></i><i></i></div><div class="app-task">Project brief<i></i><i></i></div></div><div><span>IN PROGRESS</span><div class="app-task selected">Taking shape<i></i><i></i></div></div><div><span>READY</span><div class="app-task">Ready for review<i></i><i></i></div></div></div></div><div class="app-detail"><span>ONE CONNECTED WORKFLOW</span><b>Request → Create → Review</b><div class="app-progress"><i></i></div></div></div>
-<div class="intelligence-model"><svg class="network-lines" viewBox="0 0 600 440" preserveAspectRatio="none"><defs><linearGradient id="network-light"><stop stop-color="#7dcfff"/><stop offset=".5" stop-color="#bb9af7"/><stop offset="1" stop-color="#efa6de"/></linearGradient></defs><path class="network-path" pathLength="1" d="M100 90H175Q205 90 205 125V180Q205 220 250 220H300M100 220H300M100 350H175Q205 350 205 310V260Q205 220 250 220M350 220H405Q430 220 430 185V145Q430 115 465 115H510M350 220H405Q430 220 430 260V300Q430 330 465 330H510"/></svg><div class="knowledge-input input-one">Your knowledge<span>Documents &amp; context</span></div><div class="knowledge-input input-two">Your customers<span>Questions &amp; requests</span></div><div class="knowledge-input input-three">Your tools<span>Connected operations</span></div><div class="agent-core"><img src="assets/brand/mark.svg" alt=""><span>Purpose-built AI</span></div><div class="knowledge-output output-one">A useful answer<span>Informed by context</span></div><div class="knowledge-output output-two">The next action<span>With your approval</span></div></div>
-<span class="model-caption mono">An illustration of what we can build together.</span></div>
-</div></div></section>
+<div class="cinema-foot shell"><p class="mono">02 / Motion design · A little character changes everything.</p><div class="film-chapters" role="group" aria-label="Explore the film" hidden><button data-film-time="0" aria-controls="brand-film"><img src="assets/motion/trailgoat-detail.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>01</b> Assemble</span></button><button data-film-time="7" aria-controls="brand-film"><img src="assets/motion/trailgoat-character.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>02</b> Become</span></button><button data-film-time="16.5" aria-controls="brand-film"><img src="assets/motion/trailgoat-resolve.jpg?v=4k-20260929" alt="" width="1280" height="720" loading="lazy"><span><b>03</b> Resolve</span></button></div></div>
+</section>
+<section class="capability-chapter shell" id="services" aria-labelledby="capability-title">
+<div class="chapter-heading"><div><p class="eyebrow">03 / Design, development &amp; AI</p><h2 id="capability-title">The idea is only<br> the beginning.</h2></div><span class="mono">Design. Build. Connect.</span></div>
+<div class="capability-stack">
+<article class="capability-card surface-stage" data-capability="0">
+<div class="capability-story"><p class="eyebrow">Make it distinctive</p><h3>A presence<br> of your own.</h3><p>Websites and digital identities with a clear point of view. Considered from the first impression to the smallest interaction.</p><a class="text-link" href="#contact">Let’s shape your idea ↓</a><span class="mono">Strategy / Web design / Interactive experiences</span></div>
+<div class="capability-art" aria-hidden="true"><div class="model-orbit"></div><div class="model-grid"></div><div class="design-model"><div class="model-browser"><div class="browser-top"><span>● ● ●</span><span>capra / a new perspective</span><span>↗</span></div><div class="model-browser-body"><div class="model-type">Make an<br> <em>impression.</em><i></i><small>Designed to feel different.</small></div><picture><source srcset="assets/brand/ribbon-hero.avif" type="image/avif"><img src="assets/brand/ribbon-hero.webp" alt="" width="800" height="1200" loading="lazy"></picture></div><div class="browser-foot"><span>01 / A point of view</span><span>Design that moves you ↗</span></div></div><div class="design-chip chip-color"><span>Color, with intention.</span><i></i><i></i><i></i></div><div class="design-chip chip-type">Aa<span>Type with a voice.</span></div></div>
+</div>
+</article>
+<article class="capability-card surface-stage" data-capability="1">
+<div class="capability-story"><p class="eyebrow">Make it useful</p><h3>Everything<br> in its place.</h3><p>Custom applications that turn a complicated process into a clear, connected experience. Designed around the people using them.</p><a class="text-link" href="work.html">Explore our applications →</a><span class="mono">Product design / Development / Integrations</span></div>
+<div class="capability-art" aria-hidden="true"><div class="model-orbit"></div><div class="model-grid"></div><div class="build-model"><div class="app-sheet"><div class="app-top"><span>WORKSPACE / OVERVIEW</span><i></i></div><div class="app-title">Clarity at every step.</div><div class="app-columns"><div><span>REQUESTS</span><div class="app-task">A new idea<i></i><i></i></div><div class="app-task">Project brief<i></i><i></i></div></div><div><span>IN PROGRESS</span><div class="app-task selected">Taking shape<i></i><i></i></div></div><div><span>READY</span><div class="app-task">Ready for review<i></i><i></i></div></div></div></div><div class="app-detail"><span>ONE CONNECTED WORKFLOW</span><b>Request → Create → Review</b><div class="app-progress"><i></i></div></div></div>
+</div>
+</article>
+<article class="capability-card surface-stage" data-capability="2" id="ai-consulting">
+<div class="capability-story"><p class="eyebrow">Make it work together</p><h3>Intelligence.<br> With purpose.</h3><p>Chat agents, RAG knowledge systems, customer service, and connected operations. AI consulting built around how your business works.</p><a class="button" href="ai-consulting.html">Explore AI consulting →</a><span class="mono">Knowledge / Agents / Business workflows</span></div>
+<div class="capability-art" aria-hidden="true"><div class="model-orbit"></div><div class="model-grid"></div><div class="intelligence-model"><svg class="network-lines" viewBox="0 0 600 440" preserveAspectRatio="none"><defs><linearGradient id="network-light"><stop stop-color="#7dcfff"/><stop offset=".5" stop-color="#bb9af7"/><stop offset="1" stop-color="#efa6de"/></linearGradient></defs><path class="network-path" pathLength="1" d="M100 90H175Q205 90 205 125V180Q205 220 250 220H300M100 220H300M100 350H175Q205 350 205 310V260Q205 220 250 220M350 220H405Q430 220 430 185V145Q430 115 465 115H510M350 220H405Q430 220 430 260V300Q430 330 465 330H510"/></svg><div class="knowledge-input input-one">Your knowledge<span>Documents &amp; context</span></div><div class="knowledge-input input-two">Your customers<span>Questions &amp; requests</span></div><div class="knowledge-input input-three">Your tools<span>Connected operations</span></div><div class="agent-core"><img src="assets/brand/mark.svg" alt=""><span>Purpose-built AI</span></div><div class="knowledge-output output-one">A useful answer<span>Informed by context</span></div><div class="knowledge-output output-two">The next action<span>With your approval</span></div></div>
+</div>
+</article>
+</div>
+<p class="model-caption mono">Illustrations of what we can build together.</p>
+</section>
 <section class="closing-chapter shell" aria-labelledby="studio-title">
 <div class="chapter-heading"><p class="eyebrow">04 / Independent by design</p><span class="mono">Atlanta roots. Wide-open possibilities.</span></div>
-<div class="closing-stage surface-stage"><div class="closing-art" aria-hidden="true"><div class="signature-plane plane-back"></div><div class="signature-plane plane-middle"></div><div class="signature-plane plane-front"><img src="assets/brand/ribbon-hero.png" alt="" width="1024" height="1536" loading="lazy"></div></div>
-<div class="closing-copy"><div class="studio-introduction" id="studio"><p class="eyebrow">Meet your creative partner</p><h2 id="studio-title">Small by design.<br> <span>Ambitious by default.</span></h2><p>I’m Kris Brown. Capra brings design, development, motion, and AI consulting together under one roof. You work directly with the person shaping the idea and building the experience.</p><a class="text-link" href="work.html#working-together">How we work together ↗</a></div>
-<div class="contact" id="contact" aria-labelledby="contact-title"><p class="eyebrow">Your next idea starts here</p><h2 id="contact-title">Let’s make<br> <em>an impression.</em></h2><p>A new venture. A better experience.<br> Something you haven’t seen before.</p><a class="email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a></div></div>
+<div class="closing-stage surface-stage"><div class="closing-art" aria-hidden="true"><div class="signature-plane plane-back"></div><div class="signature-plane plane-middle"></div><div class="signature-plane plane-front"><picture><source srcset="assets/brand/ribbon-hero.avif" type="image/avif"><img src="assets/brand/ribbon-hero.webp" alt="" width="800" height="1200" loading="lazy"></picture></div></div>
+<div class="closing-copy"><div class="studio-introduction" id="studio"><p class="eyebrow">Meet your creative partner</p><h2 id="studio-title">Small by design.<br> <span>Ambitious by default.</span></h2><p>I’m Kris Brown. Capra brings design, development, motion, and AI consulting together under one roof. You work directly with the person shaping the idea and building the experience.</p><a class="text-link" href="work.html#working-together">How we work together →</a></div>
+<div class="contact" id="contact" aria-labelledby="contact-title"><p class="eyebrow">Your next idea starts here</p><h2 id="contact-title" data-light-words>Let’s make<br> <em>an impression.</em></h2><p>A new venture. A better experience.<br> Something you haven’t seen before.</p><a class="email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a></div></div>
 </div></section>
 </main>
 <footer class="site-footer shell">
-<div class="footer-top">
+<div class="footer-grid">
+<div class="footer-brand">
 <a class="brand" href="./">
 <img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
 </a>
-<p>Atlanta roots.<br>  Wide-open possibilities.</p>
-<a href="#main">Back to top ↑</a>
+<p>Atlanta roots.<br>Wide-open possibilities.</p>
+</div>
+<nav class="footer-nav" aria-label="Footer">
+<p class="eyebrow">Explore</p>
+<a href="work.html">Work</a>
+<a href="motion.html">Motion</a>
+<a href="ai-consulting.html">AI consulting</a>
+<a href="#services">Expertise</a>
+<a href="#studio">Studio</a>
+</nav>
+<div class="footer-contact">
+<p class="eyebrow">Start a project</p>
+<a class="footer-email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a>
+<a class="footer-top-link" href="#main">Back to top ↑</a>
+</div>
 </div>
 <div class="footer-bottom mono">
 <span>© <span id="year">2026</span> CAPRA, LLC</span>
 <span>Design / Web / Motion / AI</span>
-<a href="privacy.html">Privacy</a>
+<span class="footer-meta"><a href="privacy.html">Privacy</a><button class="motion-toggle" type="button" aria-pressed="true" hidden>Motion effects <span aria-hidden="true">on</span></button></span>
 </div>
 </footer>
 <button class="agent-launch" id="agent-launch" aria-haspopup="dialog" aria-controls="capra-agent" hidden><i aria-hidden="true"></i>Ask Capra</button>

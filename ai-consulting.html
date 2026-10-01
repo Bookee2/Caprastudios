@@ -19,30 +19,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&amp;family=Red+Hat+Text:wght@400;500;600;700&amp;family=Red+Hat+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/studio-next.css">
+<link rel="stylesheet" href="assets/chapters.css">
+<link rel="stylesheet" href="assets/interactions.css">
 <script src="assets/studio-next.js" defer>
 </script>
+<script src="assets/nav.js" defer></script>
+<script src="assets/interactions.js" defer></script>
 <meta name="capra-agent-endpoint" content="">
 <link rel="stylesheet" href="assets/agent.css">
 <script src="assets/agent.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header shell">
+<header class="site-header" id="site-header">
+<div class="nav-bar shell">
 <a class="brand" href="./" aria-label="Capra Studios home">
 <img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
 </a>
 <nav class="main-nav" id="navigation" aria-label="Main navigation">
-<a href="work.html">Work <sup>02</sup>
-</a>
-<a href="ai-consulting.html">AI consulting</a>
-<a href="index.html#services">Expertise</a>
+<a href="work.html">Work <sup>02</sup></a>
+<a href="motion.html">Motion</a>
+<a href="ai-consulting.html" aria-current="page">AI consulting</a>
 <a href="index.html#studio">Studio</a>
-<a class="nav-contact" href="index.html#contact">Start a conversation ↗</a>
+<a class="nav-contact" href="index.html#contact">Start a conversation</a>
 </nav>
 <button class="menu-toggle" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>+</span>
 </button>
+</div>
+<div class="nav-progress" aria-hidden="true"></div>
 </header>
-<main id="main"><section class="page-intro shell"><p class="eyebrow">AI consulting / Atlanta &amp; beyond</p><h1>Put intelligence<br><em>to work.</em></h1><p class="lead">From a helpful website agent to a connected system across your business. We turn AI possibilities into a practical plan—and build the parts that make it work.</p><a class="button primary" href="#ai-start">Find your starting point ↗</a></section><section class="shell ai-intro"><p class="eyebrow">More than a chat window</p><h2>Connect what your business knows<br>to what it needs to do.</h2><p>Answer a customer’s question. Find the right internal document. Qualify an inquiry. Move a request to the right person or system. The opportunity is in how these steps fit together.</p></section><section class="shell ai-offers" aria-label="AI consulting capabilities"><article><span class="mono">01 / Conversation</span><h3>Chat agents that know their job.</h3><p>Website assistants, lead qualification, onboarding, and product guidance. Give every conversation a purpose, a clear scope, and a useful next step.</p></article><article><span class="mono">02 / Knowledge</span><h3>Your knowledge, within reach.</h3><p>RAG systems retrieve relevant information from your documents, policies, and knowledge bases so an agent can answer with context and reference its sources.</p><p class="ai-detail">Search and retrieval · Source references · Access controls · Content updates</p></article><article><span class="mono">03 / Customer service</span><h3>Support that can move things forward.</h3><p>Answer repeat questions, collect the details a team needs, and route requests. Connect approved actions to your support tools, with clear handoffs when someone needs a person.</p></article><article><span class="mono">04 / Business operations</span><h3>Build the connected operation.</h3><p>Map the work across sales, service, administration, and delivery. Design agents and automations that share the right context and move work between systems.</p><p class="ai-detail">Workflow design · Tool integrations · Permissions · Monitoring · Human review</p></article></section><section class="studio-band"><div class="shell studio-layout"><div><p class="eyebrow">The bigger picture</p><p class="mono">From one useful agent<br>to a connected business.</p></div><div><h2>Let AI handle more.<br><span>Keep the business in control.</span></h2><div class="studio-copy"><p>We start with how your business runs: who does the work, where information lives, and where time gets lost. Then we identify what can be automated, what needs a better system, and where your team’s judgment matters.</p><p>The result is a practical operating plan: connected tools, defined responsibilities, and a phased implementation. Start with one workflow, measure the result, and expand what works.</p></div></div></div></section><section class="shell process" id="ai-start"><div class="section-heading"><div><p class="eyebrow">A practical way to begin</p><h2>Strategy you can use.<br>Systems you can run.</h2></div></div><ol class="process-grid"><li><span class="mono">01 / Discover</span><h3>Map the opportunity.</h3><p>Review your workflows, tools, and knowledge. Prioritize the use cases by their potential value, data readiness, and implementation effort.</p></li><li><span class="mono">02 / Prove</span><h3>Build a focused pilot.</h3><p>Connect one defined workflow or knowledge source. Test real questions, failure cases, permissions, and handoffs before expanding.</p></li><li><span class="mono">03 / Operate</span><h3>Make it part of the business.</h3><p>Agree how the system will be monitored, maintained, and improved. Train the people using it and expand into the next useful workflow.</p></li></ol></section><section class="shell faq"><div><p class="eyebrow">Good questions</p><h2>Start with<br>the useful part.</h2></div><div><details><summary>What is RAG?<span>+</span></summary><p>Retrieval-augmented generation connects an AI assistant to relevant information from a knowledge source. It retrieves useful passages and gives them to the model as context. It is a knowledge-system approach, not necessarily training a new model.</p></details><details><summary>Can an agent take actions in our tools?<span>+</span></summary><p>Yes, when the integration and permissions support it. We define which actions it can take, which require approval, and how errors or unusual requests reach a person.</p></details><details><summary>Can you help rethink our whole operation?<span>+</span></summary><p>Yes. Consulting can cover the broader operating approach: workflows, knowledge, roles, tools, and a phased implementation roadmap. We build around the business’s actual requirements.</p></details><details><summary>Do we need to replace our current software?<span>+</span></summary><p>Not automatically. We first review what you already use and what its integrations allow. The right plan may connect existing tools, add an agent, or build a focused custom application.</p></details><details><summary>How do we know it is helping?<span>+</span></summary><p>We agree on a baseline and success criteria before the pilot: useful answers, successful handoffs, time spent, error rates, and operating costs. Measure the results before scaling up.</p></details></div></section><section class="contact shell" id="contact" aria-labelledby="contact-title">
+<main id="main"><section class="page-intro shell ai-hero"><div class="ai-hero-copy"><p class="eyebrow">AI consulting / Atlanta &amp; beyond</p><h1>Put intelligence<br><em>to work.</em></h1><p class="lead">From a helpful website agent to a connected system across your business. We turn AI possibilities into a practical plan—and build the parts that make it work.</p><a class="button primary" href="#ai-start">Find your starting point ↓</a></div><div class="capability-art ai-hero-art" aria-hidden="true" data-draw><div class="model-orbit"></div><div class="model-grid"></div><div class="intelligence-model"><svg class="network-lines" viewBox="0 0 600 440" preserveAspectRatio="none"><defs><linearGradient id="network-light"><stop stop-color="#7dcfff"/><stop offset=".5" stop-color="#bb9af7"/><stop offset="1" stop-color="#efa6de"/></linearGradient></defs><path class="network-path" pathLength="1" d="M100 90H175Q205 90 205 125V180Q205 220 250 220H300M100 220H300M100 350H175Q205 350 205 310V260Q205 220 250 220M350 220H405Q430 220 430 185V145Q430 115 465 115H510M350 220H405Q430 220 430 260V300Q430 330 465 330H510"/></svg><div class="knowledge-input input-one">Your knowledge<span>Documents &amp; context</span></div><div class="knowledge-input input-two">Your customers<span>Questions &amp; requests</span></div><div class="knowledge-input input-three">Your tools<span>Connected operations</span></div><div class="agent-core"><img src="assets/brand/mark.svg" alt=""><span>Purpose-built AI</span></div><div class="knowledge-output output-one">A useful answer<span>Informed by context</span></div><div class="knowledge-output output-two">The next action<span>With your approval</span></div></div></div></section><section class="shell ai-intro"><p class="eyebrow">More than a chat window</p><h2>Connect what your business knows<br>to what it needs to do.</h2><p>Answer a customer’s question. Find the right internal document. Qualify an inquiry. Move a request to the right person or system. The opportunity is in how these steps fit together.</p></section><section class="shell ai-offers" aria-label="AI consulting capabilities"><article><span class="mono">01 / Conversation</span><h3>Chat agents that know their job.</h3><p>Website assistants, lead qualification, onboarding, and product guidance. Give every conversation a purpose, a clear scope, and a useful next step.</p></article><article><span class="mono">02 / Knowledge</span><h3>Your knowledge, within reach.</h3><p>RAG systems retrieve relevant information from your documents, policies, and knowledge bases so an agent can answer with context and reference its sources.</p><p class="ai-detail">Search and retrieval · Source references · Access controls · Content updates</p></article><article><span class="mono">03 / Customer service</span><h3>Support that can move things forward.</h3><p>Answer repeat questions, collect the details a team needs, and route requests. Connect approved actions to your support tools, with clear handoffs when someone needs a person.</p></article><article><span class="mono">04 / Business operations</span><h3>Build the connected operation.</h3><p>Map the work across sales, service, administration, and delivery. Design agents and automations that share the right context and move work between systems.</p><p class="ai-detail">Workflow design · Tool integrations · Permissions · Monitoring · Human review</p></article></section><section class="studio-band"><div class="shell studio-layout"><div><p class="eyebrow">The bigger picture</p><p class="mono">From one useful agent<br>to a connected business.</p></div><div><h2>Let AI handle more.<br><span>Keep the business in control.</span></h2><div class="studio-copy"><p data-light-words>We start with how your business runs: who does the work, where information lives, and where time gets lost. Then we identify what can be automated, what needs a better system, and where your team’s judgment matters.</p><p>The result is a practical operating plan: connected tools, defined responsibilities, and a phased implementation. Start with one workflow, measure the result, and expand what works.</p></div></div></div></section><section class="shell process" id="ai-start"><div class="section-heading"><div><p class="eyebrow">A practical way to begin</p><h2>Strategy you can use.<br>Systems you can run.</h2></div></div><ol class="process-grid"><li><span class="mono">01 / Discover</span><h3>Map the opportunity.</h3><p>Review your workflows, tools, and knowledge. Prioritize the use cases by their potential value, data readiness, and implementation effort.</p></li><li><span class="mono">02 / Prove</span><h3>Build a focused pilot.</h3><p>Connect one defined workflow or knowledge source. Test real questions, failure cases, permissions, and handoffs before expanding.</p></li><li><span class="mono">03 / Operate</span><h3>Make it part of the business.</h3><p>Agree how the system will be monitored, maintained, and improved. Train the people using it and expand into the next useful workflow.</p></li></ol></section><section class="shell faq"><div><p class="eyebrow">Good questions</p><h2>Start with<br>the useful part.</h2></div><div><details><summary>What is RAG?<span>+</span></summary><p>Retrieval-augmented generation connects an AI assistant to relevant information from a knowledge source. It retrieves useful passages and gives them to the model as context. It is a knowledge-system approach, not necessarily training a new model.</p></details><details><summary>Can an agent take actions in our tools?<span>+</span></summary><p>Yes, when the integration and permissions support it. We define which actions it can take, which require approval, and how errors or unusual requests reach a person.</p></details><details><summary>Can you help rethink our whole operation?<span>+</span></summary><p>Yes. Consulting can cover the broader operating approach: workflows, knowledge, roles, tools, and a phased implementation roadmap. We build around the business’s actual requirements.</p></details><details><summary>Do we need to replace our current software?<span>+</span></summary><p>Not automatically. We first review what you already use and what its integrations allow. The right plan may connect existing tools, add an agent, or build a focused custom application.</p></details><details><summary>How do we know it is helping?<span>+</span></summary><p>We agree on a baseline and success criteria before the pilot: useful answers, successful handoffs, time spent, error rates, and operating costs. Measure the results before scaling up.</p></details></div></section><section class="contact shell" id="contact" aria-labelledby="contact-title">
 <p class="eyebrow">A new idea. A better next version.</p>
 <div class="contact-heading">
 <h2 id="contact-title">Let’s make<br>an impression.</h2>
@@ -55,17 +61,31 @@
 </section>
 </main>
 <footer class="site-footer shell">
-<div class="footer-top">
+<div class="footer-grid">
+<div class="footer-brand">
 <a class="brand" href="./">
 <img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
 </a>
 <p>Atlanta roots.<br>Wide-open possibilities.</p>
-<a href="#main">Back to top ↑</a>
+</div>
+<nav class="footer-nav" aria-label="Footer">
+<p class="eyebrow">Explore</p>
+<a href="work.html">Work</a>
+<a href="motion.html">Motion</a>
+<a href="ai-consulting.html">AI consulting</a>
+<a href="index.html#services">Expertise</a>
+<a href="index.html#studio">Studio</a>
+</nav>
+<div class="footer-contact">
+<p class="eyebrow">Start a project</p>
+<a class="footer-email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a>
+<a class="footer-top-link" href="#main">Back to top ↑</a>
+</div>
 </div>
 <div class="footer-bottom mono">
 <span>© <span id="year">2026</span> CAPRA, LLC</span>
 <span>Design / Web / Motion / AI</span>
-<a href="privacy.html">Privacy</a>
+<span class="footer-meta"><a href="privacy.html">Privacy</a><button class="motion-toggle" type="button" aria-pressed="true" hidden>Motion effects <span aria-hidden="true">on</span></button></span>
 </div>
 </footer>
 <button class="agent-launch" id="agent-launch" aria-haspopup="dialog" aria-controls="capra-agent" hidden><i aria-hidden="true"></i>Ask Capra</button>

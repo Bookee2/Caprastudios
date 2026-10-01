@@ -1,0 +1,89 @@
+/* Five shared behaviours: underlines that draw, labels that roll, edges that light, images that lift,
+   and neighbours that step back. Hover and keyboard focus get the same answer. The motion toggle and
+   reduced motion (html.motion-off) leave every control in its resting state. */
+
+/* 1. Underlines that draw: a quiet resting rule, and a bright one that draws in from the left. */
+.text-link:not(.hero .text-link),.email,.footer-email{text-decoration:none;background-image:linear-gradient(90deg,#7dcfff,#bb9af7 55%,#efa6de),linear-gradient(var(--edge-soft),var(--edge-soft));background-repeat:no-repeat;background-size:0 1px,100% 1px;background-position:100% calc(50% + 12px),0 calc(50% + 12px);transition:color .25s}
+.email{background-image:linear-gradient(90deg,#7dcfff,#bb9af7 55%,#efa6de);background-size:0 1px;background-origin:border-box;background-position:100% 100%}
+.footer-email{background-position:100% calc(50% + 13px),0 calc(50% + 13px)}
+:is(.text-link:not(.hero .text-link),.email,.footer-email):is(:hover,:focus-visible){color:var(--ink-bright);background-size:100% 1px,100% 1px;background-position:0 calc(50% + 12px),0 calc(50% + 12px)}
+.email:is(:hover,:focus-visible){background-size:100% 1px;background-position:0 100%}
+.footer-email:is(:hover,:focus-visible){background-position:0 calc(50% + 13px),0 calc(50% + 13px)}
+html:not(.motion-off) :is(.text-link,.email,.footer-email){transition:color .25s,background-size .55s cubic-bezier(.65,0,.2,1)}
+
+/* 2. Labels that roll: each letter rises to reveal its copy, one after another. */
+.roll{display:inline-flex;overflow:hidden;height:1.5em;line-height:1.5em;vertical-align:top}
+.roll .ch{display:inline-block;white-space:pre;text-shadow:0 1.5em var(--roll-ink,currentColor)}
+.button:has(.roll){gap:10px}.button .arrow{display:inline-block}
+.button:not(.primary),.nav-contact{--roll-ink:#f5c1e8}
+html:not(.motion-off) .roll .ch{transition:transform .55s cubic-bezier(.7,0,.2,1) calc(var(--i)*12ms)}
+html:not(.motion-off) .button .arrow{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+html:not(.motion-off) :is(.button,.nav-contact):focus-visible .ch{transform:translateY(-1.5em)}
+html:not(.motion-off) .button:focus-visible .arrow[data-dir=right]{transform:translateX(3px)}
+html:not(.motion-off) .button:focus-visible .arrow[data-dir=down]{transform:translateY(3px)}
+html:not(.motion-off) .button:focus-visible .arrow[data-dir=out]{transform:translate(3px,-3px)}
+@media(hover:hover){
+ html:not(.motion-off) :is(.button,.nav-contact):hover .ch{transform:translateY(-1.5em)}
+ html:not(.motion-off) .button:hover .arrow[data-dir=right]{transform:translateX(3px)}
+ html:not(.motion-off) .button:hover .arrow[data-dir=down]{transform:translateY(3px)}
+ html:not(.motion-off) .button:hover .arrow[data-dir=out]{transform:translate(3px,-3px)}
+}
+
+/* 3. Edges that light: the border follows the pointer; keyboard focus lights the whole edge. */
+.spot::after{content:'';position:absolute;inset:0;z-index:4;border-radius:inherit;padding:1px;pointer-events:none;background:radial-gradient(var(--spot-r,280px) circle at var(--mx,50%) var(--my,0),#efa6dee6,#bb9af799 30%,#7dcfff38 55%,transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0}
+.spot-rule{position:relative}
+.spot-rule::after{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;pointer-events:none;background:radial-gradient(200px 2px at var(--mx,50%) 50%,#efa6de,#bb9af788 45%,transparent);opacity:0}
+html:not(.motion-off) :is(.spot,.spot-rule)::after{transition:opacity .35s}
+html:not(.motion-off) .spot:is(:focus-visible,:has(:focus-visible))::after{opacity:1;--spot-r:1600px}
+@media(hover:hover) and (pointer:fine){html:not(.motion-off) :is(.spot,.spot-rule):hover::after{opacity:1}}
+
+/* 4. Images that lift inside their frame, with the caption wiping in. */
+.project-visual img{transition:filter .3s}
+html:not(.motion-off) .project-visual img{transition:filter .3s,translate .8s cubic-bezier(.2,.8,.2,1),scale .8s cubic-bezier(.2,.8,.2,1)}
+html:not(.motion-off) .project-visual:focus-visible img{translate:0 -8px;scale:1.02}
+html:not(.motion-off) .project-screen img{transition:scale .9s cubic-bezier(.2,.8,.2,1)}
+html:not(.motion-off) .project-image:focus-visible .project-screen img{scale:1.04}
+@media(hover:hover) and (pointer:fine){
+ html:not(.motion-off) .project-visual:hover img{translate:0 -8px;scale:1.02}
+ html:not(.motion-off) .project-image:hover .project-screen img{scale:1.04}
+ html:not(.motion-off) .project-open{clip-path:inset(0 100% 0 0 round 6px);transition:clip-path .55s cubic-bezier(.65,0,.2,1)}
+ html:not(.motion-off) .project-image:is(:hover,:focus-visible) .project-open{clip-path:inset(0 0 0 0 round 6px)}
+}
+
+/* 5. Neighbours step back so the one in hand stands forward. */
+.footer-nav a,.faq details,.film-chapters button{transition:opacity .3s}
+.main-nav:has(a:not(.nav-contact):focus-visible) a:not(:focus-visible,.nav-contact,.nav-pill),
+.footer-nav:has(a:focus-visible) a:not(:focus-visible),
+.faq:has(summary:focus-visible) details:not(:has(summary:focus-visible)),
+.film-chapters:has(button:focus-visible) button:not(:focus-visible){opacity:.45}
+@media(hover:hover){
+ .main-nav:has(a:not(.nav-contact):hover) a:not(:hover,.nav-contact),
+ .footer-nav:has(a:hover) a:not(:hover),
+ .faq:has(details:hover) details:not(:hover),
+ .film-chapters:has(button:hover) button:not(:hover){opacity:.45}
+}
+
+/* Headlines rise once, line by line (inner pages). Content is never hidden without the script. */
+rise-line{display:block;clip-path:inset(-1em -1em 0 -1em);padding-bottom:.1em;margin-bottom:-.1em}rise-in{display:block}
+html.rise-ready:not(.motion-off) :not(.risen)>rise-line>rise-in{transform:translateY(108%)}
+html.rise-ready:not(.motion-off) .risen>rise-line>rise-in{transform:none;transition:transform .9s cubic-bezier(.2,.8,.2,1) calc(var(--i)*90ms)}
+
+/* Process steps share one line that draws with reading progress; reached steps light up. */
+.process-live{position:relative;--p:0}
+.process-live::before,.process-live::after{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;pointer-events:none}
+.process-live::before{background:var(--edge-soft)}
+.process-live::after{height:2px;top:-1.5px;transform-origin:0 50%;transform:scaleX(var(--p));background:linear-gradient(90deg,#7dcfff,#bb9af7 55%,#efa6de)}
+.process-live>li{border-top-color:transparent!important}
+.process-live>li .mono{transition:color .3s}.process-live>li.reached .mono{color:#efa6de}
+.process-live>li::before{content:'';position:absolute;top:-5px;width:9px;height:9px;margin-left:-4px;border-radius:50%;background:var(--bg-0);border:1px solid var(--edge-soft)}
+.process-live>li{position:relative}.process-live>li.reached::before{background:#efa6de;border-color:#efa6de;box-shadow:0 0 12px #efa6de99}
+html:not(.motion-off) .process-live>li::before{transition:background .3s,border-color .3s,box-shadow .3s}
+@media(max-width:800px){.process-live::before,.process-live::after,.process-live>li::before{display:none}.process-live>li{border-top-color:var(--edge-soft)!important}}
+
+/* Statements that light word by word. */
+.words-ready .w{color:#3a3f5c}.words-ready .w.lit{color:inherit}
+html:not(.motion-off) .words-ready .w{transition:color .3s}
+.motion-off .words-ready .w{color:inherit}
+
+/* FAQ: the plus turns into a close mark. */
+html:not(.motion-off) summary span{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
