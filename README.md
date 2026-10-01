@@ -37,6 +37,8 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Shared Tokyo Night tokens | `assets/tokens.css` |
 | Layout, responsive rules, motion, hover states | `assets/studio-next.css` |
 | Navigation, supporting loops, media behavior | `assets/studio-next.js` |
+| Shared navigation bar, homepage section tracking, site motion preference | `assets/nav.js` |
+| Shared hover and focus behaviours (underlines, rolling labels, spotlight edges, image lift, neighbour dimming) | `assets/interactions.css`, `assets/interactions.js` |
 | WebGPU koi pond hero | `assets/pond.js` |
 | Work index and case studies | `work.html`, `trailgoat.html`, `purple-squirrel.html` |
 | Public privacy explanation | `privacy.html` |
@@ -59,7 +61,7 @@ The build validates local asset paths, anchor targets, one H1 per page, and stru
 
 ### Homepage scroll chapters
 
-The current homepage follows the user's September 28 critique: the rejected ribbon bridge is removed, and the approved two-project stage anchors a consistent family of framed, layered scenes. The film has three chapter controls; Design, Build, and Connect share an illustrated capability stage; studio and contact share a signature composition. Desktop scrolling drives the work and capability stages. Smaller/touch layouts use normal flow and direct capability buttons. Scroll-effects off and reduced motion preserve usable content, and missing JavaScript leaves all service descriptions readable.
+The current homepage follows the user's September 28 critique: the rejected ribbon bridge is removed, and the approved two-project stage anchors a consistent family of framed, layered scenes. The film has three chapter controls; Design, Build, and Connect share an illustrated capability stage; studio and contact share a signature composition. Desktop scrolling drives the work and capability stages. Smaller/touch layouts use normal flow and direct capability buttons. The footer's motion toggle (remembered per browser) and reduced motion both preserve usable content, and missing JavaScript leaves all service descriptions readable.
 
 GSAP/ScrollTrigger is self-hosted. Supported browsers also transition images between real project pages. Detailed process and FAQs remain on the work page. See `docs/STUDIO-REFRESH.md` for the current scope and verification; rejected first-pass source snapshots are preserved under `docs/capra-motion-study/archive-scroll-v1/` and excluded from deployment.
 
