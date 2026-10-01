@@ -29,7 +29,7 @@ for (const url of [defaultURL, 'https://caprastudios.ai/']) {
       if (url !== defaultURL) assert.equal(html.includes(defaultURL), false);
       const sitemap = await readFile(path.join(output, 'sitemap.xml'), 'utf8');
       assert.ok(sitemap.includes(`<loc>${url}</loc>`));
-      for (const page of ['work.html', 'ai-consulting.html', 'trailgoat.html', 'purple-squirrel.html']) {
+      for (const page of ['work.html', 'motion.html', 'ai-consulting.html', 'trailgoat.html', 'purple-squirrel.html']) {
         const content = await readFile(path.join(output, page), 'utf8');
         assert.ok(content.includes(`<link rel="canonical" href="${url}${page}">`));
         assert.ok(sitemap.includes(`<loc>${url}${page}</loc>`));

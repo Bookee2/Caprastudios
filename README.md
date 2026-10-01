@@ -41,6 +41,8 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Shared hover and focus behaviours (underlines, rolling labels, spotlight edges, image lift, neighbour dimming) | `assets/interactions.css`, `assets/interactions.js` |
 | WebGPU koi pond hero | `assets/pond.js` |
 | Work index and case studies | `work.html`, `trailgoat.html`, `purple-squirrel.html` |
+| Motion showcase page | `motion.html`, `assets/motion-page.css`, `assets/motion-page.js`, `assets/motion-governor.js` |
+| Baked motion assets: unicorn turntable sprite sheet and shard rebuild film | `blender/bake_turntable.py`, `blender/bake_shards.py`, `blender/encode_shards.py` → `assets/motion/unicorn-*` |
 | Public privacy explanation | `privacy.html` |
 | Deployment URL used by the build | `site.config.json` or the `SITE_URL` environment variable |
 | Vector logos and hero artwork | `assets/brand/` |

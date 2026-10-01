@@ -53,3 +53,18 @@ Frames and intermediate outputs live under ignored `output/blender/v2/`. Use a n
 Use the wide film on desktop and the square film on phones. The full animation remains contained in the square crop. Preserve the stage's HTML captions and stable height. Use muted inline playback, the matching opening poster and visible pause/replay controls. Honor reduced motion and data-saving preferences with the finished still, and pause offscreen. Failed playback should also show the finished still. This finite eight-second sequence settles into the mark instead of jumping back into an automatic loop.
 
 Keep `.blend` sources and frame sequences outside deployable assets. Only compressed films and posters belong on Pages.
+
+## Motion page bakes
+
+Two further assets for `motion.html` are baked from the same identity:
+
+```sh
+/Applications/Blender.app/Contents/MacOS/Blender -b blender/capra-ribbon-unicorn.blend --python-exit-code 1 -P blender/bake_turntable.py -- --out assets/motion/unicorn-turntable.webp --frames 60 --cols 10 --width 480 --height 600
+/Applications/Blender.app/Contents/MacOS/Blender -b --python-exit-code 1 -P blender/bake_shards.py -- --frames-dir output/shards --size 1600x900
+python3 blender/encode_shards.py --frames-dir output/shards
+```
+
+- `bake_turntable.py` turns the finished sculpture once in Cycles on a transparent background and packs 60 frames into one WebP sprite sheet (about 1.1 MB), plus a single-frame poster.
+- `bake_shards.py` cuts a tile printed with `assets/brand/ribbon-hero.png` into 150 Voronoi shards, breaks it with Blender's rigid-body solver and renders 150 EEVEE frames to `output/` (ignored by git). `encode_shards.py` reverses them into `unicorn-shards.mp4` (about 0.9 MB) so the tile rebuilds, and writes the whole-tile poster.
+
+Both adapt scripts from the September 30 Motion Frontier lab. Built with Blender 5.2.2 LTS.

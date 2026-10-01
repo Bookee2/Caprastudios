@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-export const publicPages = ['index.html', 'work.html', 'ai-consulting.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
+export const publicPages = ['index.html', 'work.html', 'ai-consulting.html', 'motion.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
 export const defaultURL = 'https://bookee2.github.io/Caprastudios/';
 export function normalizeURL(value) {
   const url = new URL(value);
