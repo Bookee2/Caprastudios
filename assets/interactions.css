@@ -62,3 +62,28 @@ html:not(.motion-off) .project-image:focus-visible .project-screen img{scale:1.0
  .faq:has(details:hover) details:not(:hover),
  .film-chapters:has(button:hover) button:not(:hover){opacity:.45}
 }
+
+/* Headlines rise once, line by line (inner pages). Content is never hidden without the script. */
+rise-line{display:block;clip-path:inset(-1em -1em 0 -1em);padding-bottom:.1em;margin-bottom:-.1em}rise-in{display:block}
+html.rise-ready:not(.motion-off) :not(.risen)>rise-line>rise-in{transform:translateY(108%)}
+html.rise-ready:not(.motion-off) .risen>rise-line>rise-in{transform:none;transition:transform .9s cubic-bezier(.2,.8,.2,1) calc(var(--i)*90ms)}
+
+/* Process steps share one line that draws with reading progress; reached steps light up. */
+.process-live{position:relative;--p:0}
+.process-live::before,.process-live::after{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;pointer-events:none}
+.process-live::before{background:var(--edge-soft)}
+.process-live::after{height:2px;top:-1.5px;transform-origin:0 50%;transform:scaleX(var(--p));background:linear-gradient(90deg,#7dcfff,#bb9af7 55%,#efa6de)}
+.process-live>li{border-top-color:transparent!important}
+.process-live>li .mono{transition:color .3s}.process-live>li.reached .mono{color:#efa6de}
+.process-live>li::before{content:'';position:absolute;top:-5px;width:9px;height:9px;margin-left:-4px;border-radius:50%;background:var(--bg-0);border:1px solid var(--edge-soft)}
+.process-live>li{position:relative}.process-live>li.reached::before{background:#efa6de;border-color:#efa6de;box-shadow:0 0 12px #efa6de99}
+html:not(.motion-off) .process-live>li::before{transition:background .3s,border-color .3s,box-shadow .3s}
+@media(max-width:800px){.process-live::before,.process-live::after,.process-live>li::before{display:none}.process-live>li{border-top-color:var(--edge-soft)!important}}
+
+/* Statements that light word by word. */
+.words-ready .w{color:#3a3f5c}.words-ready .w.lit{color:inherit}
+html:not(.motion-off) .words-ready .w{transition:color .3s}
+.motion-off .words-ready .w{color:inherit}
+
+/* FAQ: the plus turns into a close mark. */
+html:not(.motion-off) summary span{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
