@@ -1,8 +1,9 @@
-import { cp, mkdir, readFile, writeFile, readdir } from 'node:fs/promises';
+import { cp, mkdir, readFile, writeFile, readdir, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
+export const publicPages = ['index.html', 'work.html', 'ai-consulting.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
 export const defaultURL = 'https://bookee2.github.io/Caprastudios/';
 export function normalizeURL(value) {
   const url = new URL(value);
@@ -16,18 +17,25 @@ export function normalizeURL(value) {
 export async function build(output = path.join(root, 'dist'), override) {
   const config = JSON.parse(await readFile(path.join(root, 'site.config.json'), 'utf8'));
   const url = normalizeURL(override || process.env.SITE_URL || config.url);
+  const endpoint = process.env.SITE_AGENT_ENDPOINT || '';
+  if (endpoint) { const parsed = new URL(endpoint); if(parsed.protocol !== 'https:' || parsed.username || parsed.password || parsed.search || parsed.hash || /[<>"'&]/.test(endpoint)) throw Error('SITE_AGENT_ENDPOINT must be a plain HTTPS endpoint URL.'); }
   await mkdir(output, { recursive: true });
   // Allowlist only public files. Never publish the repository, docs, scripts or environment.
-  for (const name of ['index.html', 'privacy.html', '404.html']) {
+  for (const name of publicPages) {
     const source = await readFile(path.join(root, name), 'utf8');
-    await writeFile(path.join(output, name), source.replaceAll(defaultURL, url));
+    await writeFile(path.join(output, name), source.replaceAll(defaultURL, url).replace('<meta name="capra-agent-endpoint" content="">', `<meta name="capra-agent-endpoint" content="${endpoint.replace(/\/$/, '')}">`));
   }
-  await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true });
+  // Remove retired media from an existing output too; keep source assets intact.
+  for (const name of (await readdir(path.join(root, 'assets/motion'))).filter(name => name.startsWith('atlanta-'))) {
+    await rm(path.join(output, 'assets/motion', name), { force: true });
+  }
+  await rm(path.join(output, 'assets/work/caprahr.jpg'), { force: true });
+  await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true, filter: source => !/^atlanta-/.test(path.basename(source)) && path.basename(source) !== 'caprahr.jpg' });
   await writeFile(path.join(output, '.nojekyll'), '');
   await writeFile(path.join(output, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${url}sitemap.xml\n`);
-  await writeFile(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${url}</loc></url>\n  <url><loc>${url}privacy.html</loc></url>\n</urlset>\n`);
+  await writeFile(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicPages.filter(p => p !== '404.html').map(p => `  <url><loc>${url}${p === 'index.html' ? '' : p}</loc></url>`).join('\n')}\n</urlset>\n`);
   // Local relative assets must resolve equally at /Caprastudios/ and at a custom domain root.
-  for (const name of ['index.html', 'privacy.html']) {
+  for (const name of publicPages.filter(p => p !== '404.html')) {
     const html = await readFile(path.join(output, name), 'utf8');
     const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
     for (const [, reference] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {

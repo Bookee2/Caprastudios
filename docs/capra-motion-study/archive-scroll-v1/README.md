@@ -1,0 +1,1 @@
+Source snapshots of the first scroll implementation, preserved before the user's September 28 critique. Not a standalone preview. The flat ribbon transition and plain lower sections were rejected; the two-project stage was approved and retained.

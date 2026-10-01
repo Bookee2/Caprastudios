@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Capra Studios — independent web design and AI development",
+  "description": "Capra Studios — independent design, web applications, 3D motion and AI consulting",
   "scripts": {
     "brand": "node scripts/generate-brand.mjs",
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
-    "check": "node --check assets/studio.js && node --test scripts/build.test.mjs"
+    "check": "node --check assets/studio-next.js && node --check assets/pond.js && node --check assets/agent.js && node --check assets/chapters.js && node --test scripts/build.test.mjs server/agent.test.mjs"
   },
   "engines": {"node": ">=22"}
 }

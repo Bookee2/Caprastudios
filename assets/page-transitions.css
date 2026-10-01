@@ -1,0 +1,7 @@
+/* A short image handoff between real documents; ordinary navigation is the fallback. */
+@view-transition{navigation:auto}
+::view-transition-group(root){animation-duration:.18s}
+::view-transition-group(trailgoat-project),::view-transition-group(squirrel-project){animation-duration:.45s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+.project-trail .project-screen img,.trail-panel .project-visual img,img[data-project-image="trailgoat"]{view-transition-name:trailgoat-project}
+.project-squirrel .project-screen img,.squirrel-panel .project-visual img,img[data-project-image="squirrel"]{view-transition-name:squirrel-project}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}

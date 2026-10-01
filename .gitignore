@@ -8,3 +8,5 @@ qa-output/
 output/
 *.blend1
 __pycache__/
+
+.local/
