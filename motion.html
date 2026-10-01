@@ -28,6 +28,7 @@
 <script src="assets/interactions.js" defer></script>
 <script src="assets/motion-governor.js" defer></script>
 <script src="assets/motion-page.js" defer></script>
+<script src="assets/motion-gpu.js" defer></script>
 <meta name="capra-agent-endpoint" content="">
 <link rel="stylesheet" href="assets/agent.css">
 <script src="assets/agent.js" defer></script>
@@ -58,16 +59,17 @@
 <h1 id="motion-title">Made to move.<br><em>Meant to matter.</em></h1>
 <p class="lead">Motion is how a brand shows its character before anyone reads a word. Everything here runs live on this page, and every piece is something we can build into yours.</p>
 <div class="mo-actions">
-<a class="button primary" href="#baked">See it move ↓</a>
+<a class="button primary" href="#gpu">See it move ↓</a>
 <button class="mo-pause" type="button" aria-pressed="false" hidden>Pause all motion <span aria-hidden="true">Ⅱ</span></button>
 </div>
 <p class="sr-only" id="mo-status" aria-live="polite"></p>
 <ol class="mo-index mono" aria-label="On this page">
 <li><a href="#turntable">01 Turn it</a></li>
-<li><a href="#baked">02 Built in Blender</a></li>
-<li><a href="#film">03 Film</a></li>
-<li><a href="#drive">04 Motion you drive</a></li>
-<li><a href="#principles">05 How we use motion</a></li>
+<li><a href="#gpu">02 Live on the GPU</a></li>
+<li><a href="#baked">03 Built in Blender</a></li>
+<li><a href="#film">04 Film</a></li>
+<li><a href="#drive">05 Motion you drive</a></li>
+<li><a href="#principles">06 How we use motion</a></li>
 </ol>
 </div>
 <figure class="mo-turntable" id="turntable" data-sheet="assets/motion/unicorn-turntable.webp" data-frames="60" data-cols="10">
@@ -82,9 +84,57 @@
 </figure>
 </section>
 
+<section class="mo-section shell" id="gpu" aria-labelledby="gpu-title">
+<div class="mo-head">
+<div><p class="eyebrow">02 / Live on the GPU</p><h2 id="gpu-title">Drawn fresh,<br><span>every frame.</span></h2></div>
+<p>Four pieces your graphics card renders as you watch, with WebGPU. Move over them, press, change them. Where WebGPU isn’t available, each one shows a still.</p>
+</div>
+<div class="gpu-pieces">
+<article class="gpu-piece" aria-labelledby="g-metal">
+<div class="gpu-stage" data-gpu="metal" data-rest="40"><img class="gpu-poster" src="assets/motion/gpu-metal.jpg" width="1280" height="800" loading="lazy" alt="Capra’s unicorn as a chrome badge, with mercury drops flowing around and into it"><canvas role="img" aria-label="Live render: Capra’s unicorn as a chrome badge, with mercury drops flowing around and into it"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">Liquid metal</p>
+<h3 id="g-metal">The mark, pulled<br>out of mercury.</h3>
+<p>The unicorn becomes a signed-distance shape, and light is traced across it every frame. Drops of mercury orbit and fuse with it wherever they touch. Bring your pointer in to add one of your own.</p>
+<p class="gpu-fits mono">Where it fits: a hero, a launch, a product reveal</p>
+</div>
+</article>
+<article class="gpu-piece" aria-labelledby="g-grow">
+<div class="gpu-stage" data-gpu="grow" data-rest="260"><img class="gpu-poster" src="assets/motion/gpu-grow.jpg" width="1280" height="800" loading="lazy" alt="The word capra grown as a violet and pink maze pattern"><canvas role="img" aria-label="Live simulation: the word capra growing from a chemical-reaction pattern"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">Letters that grow</p>
+<h3 id="g-grow">Type that<br>grows itself.</h3>
+<p>A reaction-diffusion simulation runs inside the letters. Change two numbers and the same word grows as a maze, loops or spots. Touch the letters to seed new growth.</p>
+<div class="gpu-controls" role="group" aria-label="Growth pattern"><button type="button" data-pattern="0" aria-pressed="true">Maze</button><button type="button" data-pattern="1" aria-pressed="false">Loops</button><button type="button" data-pattern="2" aria-pressed="false">Spots</button><button type="button" data-regrow>Grow again <span aria-hidden="true">↺</span></button></div>
+<p class="gpu-fits mono">Where it fits: logo stings, loaders, title cards</p>
+</div>
+</article>
+<article class="gpu-piece" aria-labelledby="g-ink">
+<div class="gpu-stage" data-gpu="ink" data-rest="420"><img class="gpu-poster" src="assets/motion/gpu-ink.jpg" width="1280" height="800" loading="lazy" alt="Cyan, violet and pink ink swirling through dark water"><canvas role="img" aria-label="Live fluid simulation: cyan, violet and pink ink swirling through dark water"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">Ink in water</p>
+<h3 id="g-ink">Stir it<br>with your hand.</h3>
+<p>A fluid solver carries three inks from the studio palette through dark water. Two brushes drift on their own; your pointer is the third. Press to change colour.</p>
+<div class="gpu-controls" role="group" aria-label="Ink"><button type="button" data-ink>Ink: <span>Violet</span></button><button type="button" data-clear>Clear the water</button></div>
+<p class="gpu-fits mono">Where it fits: backgrounds that respond, event pages, an interactive hero</p>
+</div>
+</article>
+<article class="gpu-piece" aria-labelledby="g-print">
+<div class="gpu-stage" data-gpu="print" data-rest="20"><img class="gpu-poster" src="assets/motion/gpu-print.jpg" width="1280" height="800" loading="lazy" alt="Capra’s unicorn printed as a one-bit dither in lavender on navy"><canvas role="img" aria-label="Live filter: the Capra unicorn film shown as dither, halftone or ASCII type"></canvas></div>
+<div class="gpu-copy">
+<p class="eyebrow">One film, three printers</p>
+<h3 id="g-print">One asset,<br>restyled live.</h3>
+<p>The unicorn film runs through three print processes as it plays: a one-bit dither, a two-ink halftone and ASCII type. One source becomes a whole family of brand moments.</p>
+<div class="gpu-controls" role="group" aria-label="Print process"><button type="button" data-print="0" aria-pressed="false">Original</button><button type="button" data-print="1" aria-pressed="true">Dither</button><button type="button" data-print="2" aria-pressed="false">Halftone</button><button type="button" data-print="3" aria-pressed="false">ASCII</button></div>
+<p class="gpu-fits mono">Where it fits: campaign variations, posters, a terminal mode</p>
+</div>
+</article>
+</div>
+</section>
+
 <section class="mo-section shell" id="baked" aria-labelledby="baked-title">
 <div class="mo-head">
-<div><p class="eyebrow">02 / Built in Blender</p><h2 id="baked-title">Broken on purpose.<br><span>Rebuilt in seconds.</span></h2></div>
+<div><p class="eyebrow">03 / Built in Blender</p><h2 id="baked-title">Broken on purpose.<br><span>Rebuilt in seconds.</span></h2></div>
 <p>A tile carrying the unicorn is cut into 150 shards and struck. Blender’s physics solver works out where every piece falls; we render it and play it backwards, so the mark puts itself together.</p>
 </div>
 <figure class="mo-stage mo-shards">
@@ -103,7 +153,7 @@
 
 <section class="mo-section shell" id="film" aria-labelledby="film-title">
 <div class="mo-head">
-<div><p class="eyebrow">03 / Film</p><h2 id="film-title">Characters,<br><span>not just logos.</span></h2></div>
+<div><p class="eyebrow">04 / Film</p><h2 id="film-title">Characters,<br><span>not just logos.</span></h2></div>
 <p>Two short films from the studio’s own identities, each made in 3D and delivered as ordinary video that plays anywhere.</p>
 </div>
 <div class="mo-films">
@@ -121,7 +171,7 @@
 
 <section class="mo-section shell" id="drive" aria-labelledby="drive-title">
 <div class="mo-head">
-<div><p class="eyebrow">04 / Motion you drive</p><h2 id="drive-title">It answers<br><span>your hand.</span></h2></div>
+<div><p class="eyebrow">05 / Motion you drive</p><h2 id="drive-title">It answers<br><span>your hand.</span></h2></div>
 <p>Small responses to a pointer, a hover or a scroll. Each one is an extra: everything still works with a keyboard, on a phone, or with motion switched off.</p>
 </div>
 <div class="tiles">
@@ -209,7 +259,7 @@
 
 <section class="mo-section shell" id="principles" aria-labelledby="principles-title">
 <div class="mo-head">
-<div><p class="eyebrow">05 / How we use motion</p><h2 id="principles-title">Five promises<br><span>we keep.</span></h2></div>
+<div><p class="eyebrow">06 / How we use motion</p><h2 id="principles-title">Five promises<br><span>we keep.</span></h2></div>
 <p>The difference between a site that feels made and one that feels generated is restraint. These are the rules we build to.</p>
 </div>
 <ol class="promises">
