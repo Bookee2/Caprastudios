@@ -10,8 +10,10 @@ const reduced=matchMedia('(prefers-reduced-motion: reduce)'),phone=matchMedia('(
 const stones=[[.17,.25,.05],[.21,.8,.066],[.82,.2,.06],[.84,.76,.046]];
 // The approved vector mark (assets/brand/mark.svg, viewBox 400×540).
 const mark=['M96 511C155 449 172 406 130 364C105 341 57 323 33 293C6 259 19 202 44 161C71 116 122 91 177 83L205 106C155 110 122 128 100 158C67 201 60 244 85 271C108 295 154 307 194 334C251 372 260 411 216 453C184 483 136 500 96 511Z','M96 511C160 491 214 456 225 416C233 388 219 358 194 334C244 367 261 405 232 438C202 474 152 498 96 511Z','M221 110L364 20L247 145L229 127Z','M198 80C196 107 205 125 228 143L286 191C316 215 321 237 305 255C294 267 277 269 265 258C290 263 302 242 279 223C262 210 237 207 217 200C188 190 165 173 162 151C180 172 208 183 235 186C251 190 266 196 279 205L222 148C197 126 180 106 174 85Z','M174 85C159 61 168 43 184 48C207 52 224 76 222 99L204 120C194 103 202 85 190 68C184 58 178 65 174 85Z'];
-// Each koi's light, per palette: Koi, Solar, Arctic.
+// Each koi's light, per palette: Black light, Koi, Solar, Arctic; and how hard each makes the paint fluoresce.
+const fluoresce=[1,.22,.22,.22];
 const palettes=[
+ [[.36,.08,1],[.5,.14,1],[.26,.1,.95],[.6,.2,1],[.42,.05,.9]],
  [[1,.36,.1],[1,.95,.85],[1,.7,.2],[.2,.85,.9],[1,.25,.3]],
  [[1,.85,.4],[1,.45,.3],[.94,.22,.55],[1,.6,.1],[1,.93,.8]],
  [[.68,.98,1],[.1,.84,.81],[.32,.49,1],[.85,1,1],[.6,.45,1]]
@@ -173,21 +175,33 @@ const SHOW=/* wgsl */`
     // pond floor: pebbles that only exist where light reaches them
     let q = vec2f(i.uv.x * u.a.z, i.uv.y);
     let peb = 0.7 + 0.5 * (fbm(q * 34.0) - 0.5) + 0.25 * (fbm(q * 9.0 + 4.0) - 0.5);
-    let bed = vec3f(0.3, 0.38, 0.4) * peb;
+    // one ring of taps around the pixel serves the slabs' bevel and the paint's soft overspray
+    var slope = vec2f(0.0); var cover = 0.0; var mist = 0.0;
+    for (var j = 0; j < 8; j++) {
+        let a = f32(j) * 0.7853982; let dir = vec2f(cos(a), sin(a));
+        let v = textureSampleLevel(mask, smp, i.uv + dir * vec2f(0.009 / u.a.z, 0.009), 0.0);
+        slope += dir * v.r; cover += v.r; mist += v.b;
+    }
+    cover *= 0.125; mist *= 0.125;
+    // Graffiti on the floor: a fat dark outline, then the fill in a neon fade, laid on a touch unevenly.
+    let fog = fbm(q * 23.0 + 7.0);
+    let fill = smoothstep(0.62, 0.85, m.b) * (0.84 + 0.16 * fog);
+    let line = smoothstep(0.2, 0.42, m.b) * (1.0 - smoothstep(0.62, 0.85, m.b));
+    let across = clamp((i.uv.x - 0.19) / 0.56, 0.0, 1.0); let down = clamp((q.y - 0.04) / 0.13, 0.0, 1.0);
+    let neon = mix(mix(vec3f(0.55, 1.0, 0.1), vec3f(0.05, 1.0, 0.85), across), mix(vec3f(1.0, 0.95, 0.1), vec3f(1.0, 0.15, 0.75), across), down);
+    var bed = vec3f(0.3, 0.38, 0.4) * peb;
+    bed = mix(mix(bed, vec3f(0.015), line * 0.92), neon * 0.8, fill);
     // 2D light falls off slowly; weighting by brightness makes each pool of light read
     let lum = dot(fl, vec3f(0.3, 0.5, 0.2));
     var col = bed * fl * (0.6 + 3.2 * lum) + vec3f(0.01, 0.013, 0.022);
+    // The paint is glow-in-the-dark: a faint charge of its own always, and under black light
+    // (cols[0].a) it fluoresces in its own colour wherever the lamps reach, with a soft bloom.
+    let charge = 0.1 + u.cols[0].a * (0.35 + min((fl.r + fl.g + fl.b) * 1.6, 2.4));
+    col += neon * charge * (fill + 0.3 * mist * (1.0 - line));
     // Stones and the mark are cast slabs standing proud of the floor: a bevelled edge from the
     // blurred mask, a poured-concrete surface, and light from each koi falling across the top.
     let px = fwidth(q.y);
     let solid = smoothstep(0.35, 0.65, m.r);
-    var slope = vec2f(0.0); var cover = 0.0;
-    for (var j = 0; j < 8; j++) {
-        let a = f32(j) * 0.7853982; let dir = vec2f(cos(a), sin(a));
-        let v = textureSampleLevel(mask, smp, i.uv + dir * vec2f(0.009 / u.a.z, 0.009), 0.0).r;
-        slope += dir * v; cover += v;
-    }
-    cover *= 0.125;
     // the floor darkens where a slab stands over it
     col *= 1.0 - 0.55 * cover * (1.0 - solid);
     if (solid > 0.001) {
@@ -230,9 +244,31 @@ const bind=(pipe,entries)=>device.createBindGroup({layout:pipe.getBindGroupLayou
 function pipeline(label,code,target){const module=device.createShaderModule({code:VS+code,label});return device.createRenderPipeline({label,layout:'auto',vertex:{module,entryPoint:'vs'},fragment:{module,entryPoint:'fs',targets:[{format:target}]}});}
 function pass(enc,pipe,group,view){const p=enc.beginRenderPass({colorAttachments:[{view,loadOp:'clear',storeOp:'store',clearValue:[0,0,0,0]}]});p.setPipeline(pipe);p.setBindGroup(0,group);p.draw(3);p.end();}
 
-// Occluders painted at any size: red marks every solid, green only the mark.
+/* The studio's name as a graffiti tag on the floor above the mark, in the blue channel only so it
+   blocks nothing: full blue is the fill, half blue the fat outline round it. Drips hang from the
+   lowest ink in a few columns, found on a small scratch canvas, and splatter lands around it. */
+const WORD='Capra Studios',FACE='"Sedgwick Ave Display","Red Hat Display",cursive';
+function tag(x,w,h){
+ let size=h*.15;x.font=`${size}px ${FACE}`;size*=Math.min(1,w*.56/x.measureText(WORD).width);x.font=`${size}px ${FACE}`;
+ const tw=x.measureText(WORD).width,sw=420,k=sw/(tw*1.1),sh=Math.ceil(size*2*k),sc=document.createElement('canvas');sc.width=sw;sc.height=sh;
+ const sx=sc.getContext('2d',{willReadFrequently:true});sx.font=`${size*k}px ${FACE}`;sx.textAlign='center';sx.textBaseline='middle';sx.fillText(WORD,sw/2,sh/2);
+ const ink=sx.getImageData(0,0,sw,sh).data,drips=[];
+ [.07,.2,.31,.46,.58,.73,.88].forEach((f,i)=>{const c=Math.round(sw*(.05+.9*f));for(let y=sh-1;y>=0;y--)if(ink[(y*sw+c)*4+3]>128){drips.push([(c-sw/2)/k,(y-sh/2)/k-size*.04,size*(.22+.5*((i*.618+.3)%1))]);break;}});
+ const dots=Array.from({length:16},(_,i)=>{const a=(i*.618+.11)%1,b=(i*.381+.47)%1;return [(a-.5)*tw*1.12,(b<.5?-1:1)*size*(.42+.5*Math.abs(b-.5)),size*(.018+.035*((i*.29)%1))];});
+ x.save();x.translate(w*.47,h*.12);x.rotate(-.04);x.textAlign='center';x.textBaseline='middle';x.lineJoin='round';x.lineCap='round';
+ for(const [color,grow] of [['rgb(0,0,128)',size*.07],['#00f',0]]){
+  x.strokeStyle=x.fillStyle=color;
+  if(grow){x.lineWidth=grow*2;x.strokeText(WORD,0,0);}else x.fillText(WORD,0,0);
+  x.lineWidth=size*.055+grow*2;for(const [dx,dy,len] of drips){x.beginPath();x.moveTo(dx,dy);x.lineTo(dx,dy+len);x.stroke();}
+  for(const [dx,dy,r] of dots){x.beginPath();x.arc(dx,dy,r+grow*.6,0,Math.PI*2);x.fill();}
+ }
+ x.restore();
+}
+// Occluders painted at any size: red marks every solid, green only the mark, blue the floor paint.
 function occluders(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d',{willReadFrequently:true});
- x.fillStyle='#000';x.fillRect(0,0,w,h);x.fillStyle='#f00';for(const [sx,sy,r] of stones){x.beginPath();x.arc(sx*w,sy*h,r*h,0,Math.PI*2);x.fill();}
+ x.fillStyle='#000';x.fillRect(0,0,w,h);
+ tag(x,w,h);
+ x.fillStyle='#f00';for(const [sx,sy,r] of stones){x.beginPath();x.arc(sx*w,sy*h,r*h,0,Math.PI*2);x.fill();}
  const s=Math.min(h*.68/540,w*.62/400);x.translate(w/2-191.5*s,h/2-265.5*s);x.scale(s,s);x.fillStyle='#ff0';for(const d of mark)x.fill(new Path2D(d));
  return c;}
 function upload(c){const t=tex(c.width,c.height,'rgba8unorm');device.queue.copyExternalImageToTexture({source:c},{texture:t},[c.width,c.height]);return t;}
@@ -316,7 +352,7 @@ function build(w,h){
 }
 function draw(){if(lost||!res)return;
  const age=time-burst,flare=age>=0&&age<4?Math.exp(-age*1.6)*1.6:0;
- sceneData.set([time,flare,asp,W,lx,ly,lamp,H]);palettes[palette].forEach((c,k)=>sceneData.set(c,8+k*4));
+ sceneData.set([time,flare,asp,W,lx,ly,lamp,H]);palettes[palette].forEach((c,k)=>sceneData.set(c,8+k*4));sceneData[11]=fluoresce[palette];
  koi.forEach((f,k)=>sceneData.set([f.x,f.y,Math.cos(f.a),Math.sin(f.a)],28+k*4));
  device.queue.writeBuffer(uScene,0,sceneData);
  const enc=device.createCommandEncoder();let i=0;
@@ -344,6 +380,8 @@ async function start(){
  if(!adapter){hint.textContent='Static signature · WebGPU unavailable';return;}
  device=await adapter.requestDevice();format=navigator.gpu.getPreferredCanvasFormat();
  device.lost.then(info=>{if(info.reason!=='destroyed')fallback('Static signature · reload to restore motion');});
+ // the tag is set in a graffiti handstyle face; a fallback face is fine if it is slow
+ try{await Promise.race([document.fonts.load('40px "Sedgwick Ave Display"'),new Promise(r=>setTimeout(r,1500))]);}catch{}
  device.pushErrorScope('validation');
  gctx=canvas.getContext('webgpu');gctx.configure({device,format,alphaMode:'opaque'});
  pipes={scene:pipeline('pond-scene',KOI+SCENE,'rgba16float'),seed:pipeline('pond-seed',SEED,'rgba16float'),flood:pipeline('pond-flood',FLOOD,'rgba16float'),dist:pipeline('pond-dist',DIST,'rgba16float'),cascade:pipeline('pond-cascade',CASCADE,'rgba16float'),show:pipeline('pond-show',NOISE+KOI+SHOW,format)};
