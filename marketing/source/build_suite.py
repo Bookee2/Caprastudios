@@ -299,7 +299,7 @@ for theme in ['day','night']:
    else:
     name='Kris Brown' if variant=='personal' else 'Capra Studios';email='kris@caprastudios.co' if variant=='personal' else 'info@caprastudios.co'
     a.text(80,145,name,61,'Display',a.fg,-2);a.text(82,207,'Software. Web. AI.',31,'Bold',LIME if theme=='night' else UV)
-    a.text(82,345,email,36,'Text');a.text(82,402,'770-757-3000' if variant=='personal' else 'Atlanta, Georgia',36,'Text');a.text(82,505,'caprastudios.co',36,'Bold')
+    a.text(82,345,email,36,'Text');a.text(82,402,'Atlanta, Georgia',36,'Text');a.text(82,505,'caprastudios.co',36,'Bold')
     a.qr(815,300,215);a.text(830,552,'Meet the studio',23,'Text')
    a.finish('Print',variant.title()+' business card / '+theme+' / '+side,['Business card'],True,{'format':'business-card','trim':'3.5 x 2 in','bleed':'0.125 in','color':'RGB; printer proof recommended'})
    pages.append(a.path.with_suffix('.pdf'))
@@ -319,11 +319,11 @@ for side in ['front','back']:
  else:
   a.text(95,265,'A note from Capra.',70,'Display',INK,-2)
   for y in [400,510,620,730]:a.line(100,y,1050,y,'#c4c0b4',2)
-  a.qr(1160,550,230);a.text(100,910,'kris@caprastudios.co  /  770-757-3000',35,'Text')
+  a.qr(1160,550,230);a.text(100,910,'kris@caprastudios.co  /  caprastudios.co',35,'Text')
  a.finish('Print','Leave-behind postcard / '+side,['Postcard','Thank-you card'],True,{'format':'6x4-postcard','trim':'6 x 4 in','bleed':'0.125 in'})
 
 # Capabilities booklet: reader-friendly PDF, no fabricated clients or results.
-BOOK=[('Imagination.\nMade tangible.','A small team of specialists in Atlanta. We build software, websites that move, and AI that earns its keep.','Studio overview',LIME),('Make the\ncomplicated clear.','Custom applications shaped around the people using them. We map the inputs, decisions, states and handoffs, then design and build the experience.','Software',LAGOON),('Websites with\na point of view.','Distinctive web experiences with clear content and purposeful movement. Browser interactions, 3D pieces and brand films give the work a story.','Web + motion',MAGENTA),('Put intelligence\nto work.','Chat agents, RAG knowledge systems, customer service agents and connected operations. Map an opportunity, build a focused pilot, and measure before expanding.','AI consulting',SOLAR),('Real work.\nClear purpose.','TrailGoat brings course, pace and fueling into a planning tool for trail and ultra runners. Purple Squirrel supports the handoff from recruiter submission to client review. Explore both project stories on our site.','Selected projects',BLUE),('Let’s make\nan impression.','Tell us what you want to make or improve. We will find the right way to build it.\n\nKris Brown\nkris@caprastudios.co\n770-757-3000\ncaprastudios.co','Start a conversation',LIME)]
+BOOK=[('Imagination.\nMade tangible.','A small team of specialists in Atlanta. We build software, websites that move, and AI that earns its keep.','Studio overview',LIME),('Make the\ncomplicated clear.','Custom applications shaped around the people using them. We map the inputs, decisions, states and handoffs, then design and build the experience.','Software',LAGOON),('Websites with\na point of view.','Distinctive web experiences with clear content and purposeful movement. Browser interactions, 3D pieces and brand films give the work a story.','Web + motion',MAGENTA),('Put intelligence\nto work.','Chat agents, RAG knowledge systems, customer service agents and connected operations. Map an opportunity, build a focused pilot, and measure before expanding.','AI consulting',SOLAR),('Real work.\nClear purpose.','TrailGoat brings course, pace and fueling into a planning tool for trail and ultra runners. Purple Squirrel supports the handoff from recruiter submission to client review. Explore both project stories on our site.','Selected projects',BLUE),('Let’s make\nan impression.','Tell us what you want to make or improve. We will find the right way to build it.\n\nKris Brown\nkris@caprastudios.co\ncaprastudios.co','Start a conversation',LIME)]
 bookpages=[]
 for i,(title,body,kicker,accent) in enumerate(BOOK):
  theme='night' if i in [0,5] else 'day';a=Art(ROOT/'print'/f'capabilities-page-{i+1}',1080,1398,theme,(612,792));a.brand(80,100,38);a.text(80,206,kicker.upper(),25,'Bold',accent if theme=='night' else UV);a.headline(75,360,title,940,370,125,True,accent);a.paragraph(82,715,body,900,35,leading=1.48);a.footer(1320,f'{i+1:02d} / 06',80);a.finish('Print','Capabilities / '+kicker,['Capabilities PDF'],False,{'format':'us-letter'});bookpages.append(a.pdf)

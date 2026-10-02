@@ -22,7 +22,8 @@ for a in A:
 for p in (R/'print').glob('business-card-personal-*-duplex.pdf'):
  reader=PdfReader(p);assert len(reader.pages)==2
  text=' '.join(page.extract_text() for page in reader.pages)
- for term in ['Kris Brown','kris@caprastudios.co','770-757-3000']:assert term in text,(p,term)
+ for term in ['Kris Brown','kris@caprastudios.co']:assert term in text,(p,term)
+ assert '757-3000' not in text,(p,'phone number must stay off public files')
  for page in reader.pages:
   assert abs(float(page.trimbox.width)-252)<.1 and abs(float(page.trimbox.height)-144)<.1
 pdfs=list((R/'print').glob('*.pdf'))+list((R/'carousels').glob('*/*.pdf'))

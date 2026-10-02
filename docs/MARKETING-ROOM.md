@@ -4,7 +4,7 @@
 
 Kris requested a full marketing suite based on the redesigned caprastudios.co site, including the lights-off edition. The suite preserves the live site's original unicorn, Red Hat typography, Sedgwick handwriting, paper/ink colors and flat accents. It uses the current Software, Web and AI positioning and real TrailGoat/Purple Squirrel work.
 
-Kris supplied kris@caprastudios.co and 770-757-3000 for personal cards. Studio promotions retain info@caprastudios.co. No invented social handles, testimonials, prices or measured results are included.
+Kris supplied kris@caprastudios.co for personal cards. On 2026-10-02 his phone number was removed from every published file (cards, booklet, postcard, signatures, email drafts and the page) to avoid spam once the room became indexable. Print-ready personal cards with the number remain in the original suite at `/Volumes/KB SS/Capra Studios/Marketing/2026-10-02-launch-suite/print/`. Studio promotions retain info@caprastudios.co. No invented social handles, testimonials, prices or measured results are included.
 
 On October 2 Kris explicitly requested commit, PR and merge. Merging publishes the library at `/marketing/` via the existing GitHub Pages workflow. The homepage and portfolio remain unchanged. The temporary tunnel is not part of the site or deployment.
 

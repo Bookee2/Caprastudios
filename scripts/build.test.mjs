@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm, access, mkdir, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, access, mkdir, writeFile, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { build, normalizeURL, defaultURL, publicPages } from './build.mjs';
@@ -49,7 +49,10 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       const marketing = await readFile(path.join(output, 'marketing/index.html'), 'utf8');
       assert.match(marketing, /The Marketing Room/);
       assert.match(marketing, /kris@caprastudios.co/);
-      assert.match(marketing, /770-757-3000/);
+      // Kris's phone number must never be published (spam); print versions with it live off-site.
+      for (const file of await readdir(path.join(output, 'marketing'), { recursive: true })) {
+        if (/\.(html|js|json|txt|csv|svg)$/.test(file)) assert.doesNotMatch(await readFile(path.join(output, 'marketing', file), 'utf8'), /757[-. ]?3000|7707573000/, file);
+      }
       assert.doesNotMatch(marketing, /noindex/);
       assert.ok(marketing.includes('<link rel="canonical" href="https://caprastudios.co/marketing/">'));
       assert.ok(sitemap.includes(`<loc>${url}marketing/</loc>`));
