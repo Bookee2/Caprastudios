@@ -2,7 +2,7 @@
 
 An independent design and web studio in Atlanta: websites, web applications, 3D motion, and AI consulting. Operated by Capra, LLC.
 
-Built around the `/kb-tokyo` design philosophy: Tokyo Night, Red Hat typography, neutral controls, precise borders, a clear accent CTA, and motion with a purpose. Capra's ribbon unicorn, oversized editorial typography, and interactive koi pond hero give the studio its own identity.
+One wall, two lights: a chalk page with flat paint colours taken from the koi pond's palettes, and a black light switch that turns the wall dark and makes the paint glow. Red Hat typography, the ribbon unicorn, hand-tagged notes, and the interactive koi pond hero give the studio its own identity. The direction and its reasoning are in `docs/SITE-CHARACTER-AUDIT.html`.
 
 ## Run it
 
@@ -34,11 +34,10 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Content | File |
 | --- | --- |
 | All landing-page copy, portfolio links, contact links, structured data | `index.html` |
-| Shared Tokyo Night tokens | `assets/tokens.css` |
-| Layout, responsive rules, motion, hover states | `assets/studio-next.css` |
-| Navigation, supporting loops, media behavior | `assets/studio-next.js` |
-| Shared navigation bar, homepage section tracking, site motion preference | `assets/nav.js` |
-| Shared hover and focus behaviours (underlines, rolling labels, spotlight edges, image lift, neighbour dimming) | `assets/interactions.css`, `assets/interactions.js` |
+| Palette, type, layout and every shared component (daylight, black light, dark rooms, colour fields, paste-ups) | `assets/site.css` |
+| Menu, year, film playback | `assets/studio-next.js` |
+| Navigation bar, the lights switch (daylight or black light) and the motion switch | `assets/nav.js` |
+| Shared behaviours: headline rise, process line, word lighting, diagram draw | `assets/interactions.js` |
 | WebGPU koi pond hero | `assets/pond.js` |
 | Work index and case studies | `work.html`, `trailgoat.html`, `purple-squirrel.html` |
 | Motion showcase page | `motion.html`, `assets/motion-page.css`, `assets/motion-page.js`, `assets/motion-governor.js` |
@@ -62,10 +61,8 @@ The build validates local asset paths, anchor targets, one H1 per page, and stru
 - Portfolio descriptions and screenshots use the founder's actual websites: TrailGoat and Purple Squirrel. TrailGoat was rechecked and captured September 28, 2026. Purple Squirrel uses the existing product capture; its former public URL returned 404 on September 28, so no live-demo link is published.
 - Capra ribbon-unicorn identity selected from concept 03. Native SVG applications and the shaded hero artwork are documented in `docs/RIBBON-ASSET.md`. The original C assets are preserved in `docs/brand-archive/cut-c/`. Portfolio pages may include their own third-party resources; screenshots represent the sites as accessed on September 9, 2026.
 
-### Homepage scroll chapters
+### Homepage
 
-The current homepage follows the user's September 28 critique: the rejected ribbon bridge is removed, and the approved two-project stage anchors a consistent family of framed, layered scenes. The film has three chapter controls; Design, Build, and Connect share an illustrated capability stage; studio and contact share a signature composition. Desktop scrolling drives the work and capability stages. Smaller/touch layouts use normal flow and direct capability buttons. The footer's motion toggle (remembered per browser) and reduced motion both preserve usable content, and missing JavaScript leaves all service descriptions readable.
-
-GSAP/ScrollTrigger is self-hosted. Supported browsers also transition images between real project pages. Detailed process and FAQs remain on the work page. See `docs/STUDIO-REFRESH.md` for the current scope and verification; rejected first-pass source snapshots are preserved under `docs/capra-motion-study/archive-scroll-v1/` and excluded from deployment.
+The October 1 remake replaces the dark, framed chapters with hard-edged sections: a chalk hero with the pond as a taped paste-up, one colour field per project, a dark room for the film, a ruled list of services, an orange studio band and a large contact line. GSAP and the pinned scroll stages are gone; the remaining motion is CSS plus small scripts. Motion off, reduced motion and missing JavaScript all leave every section readable.
 
 The TrailGoat film now uses the September 29 4K render with its original music. Both the homepage and case study play it only on request. Updated posters, encoding details, and verification are recorded in the refresh scope.

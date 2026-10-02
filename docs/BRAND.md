@@ -10,26 +10,30 @@ Keep clear space around the horn and lower ribbon tip. Use a minimum height of 3
 
 The original C identity is preserved in `docs/brand-archive/cut-c/` and Git history. It is outside the deployed website artifact.
 
-## Palette
+## Palette — remade October 1, 2026
 
-| Color | Hex | Role |
+One wall, two lights. Daylight is a chalk wall with flat paint; black light (`html.bl`, the "Lights off" switch) turns the wall dark and the paint glows. Sections that hold glowing things (the pond, films, live pieces) are dark "rooms" in both lights. The paint colours come from the koi pond's four light palettes and the logo.
+
+| Colour | Hex | Role |
 | --- | --- | --- |
-| Tokyo Midnight | `#1a1b26` | Main canvas |
-| Tokyo Well | approximately `#15161e` | Media stage and recessed sections |
-| Storm | `#24283b` | Contact section and raised ground |
-| Signal Blue | `#7aa2f7` | One primary CTA, emphasis, mark |
-| Periwinkle | `#c0caf5` | Main text |
-| Streetlight Slate | `#9aa5ce` | Secondary copy |
-| Arcade Violet | `#bb9af7` | Brand-study lighting and portfolio identity |
-| Pale Sky | `#7dcfff` | Brand-study highlights |
+| Chalk | `#f3f1ea` | The wall in daylight |
+| Ink | `#15141c` | Text and edges in daylight |
+| Ribbon blue | `#7aa2f7` | The logo, always; one field on AI consulting |
+| UV violet | `#7a2df5` | Purple Squirrel; hand notes in daylight |
+| Acid lime | `#b6ff3b` | Marker swipes, hovers, hand notes and buttons under black light |
+| Koi orange | `#ff5c1a` | The studio band |
+| Solar yellow | `#ffd23f` | AI consulting, tape and stickers |
+| Hot magenta | `#ef388d` | Large type accents only |
+| Lagoon | `#1ad7ce` | TrailGoat |
 
-Prefer the CSS tokens over copied hex values. Chrome uses the neutral ladder and Signal Blue. Portfolio previews carry the colors of the actual products.
+Rules: flat fields only, with gradients kept inside artwork; one colour per section and one per project or page; text on a field is ink or chalk; the logo stays ribbon blue. Use the CSS tokens in `assets/site.css`. The earlier Tokyo Night palette is retired from the site.
 
 ## Typography
 
 - Red Hat Display: wordmark and headlines, 700–900.
 - Red Hat Text: body and navigation, 400–600.
-- Red Hat Mono: labels and numbers, 400–500.
+- Sedgwick Ave Display: hand-tagged notes, a handful per page at most. It stands in for Kris's own marker lettering, which should replace it.
+- Red Hat Mono and the all-caps numbered labels are retired.
 
 The oversized 900-weight typography is a deliberate departure from the tool-oriented TrailGoat scale, made for the user's studio statement-piece brief. The core type family, palette, two radii, neutral hover behavior, and mobile label floor come from `/kb-tokyo`.
 
