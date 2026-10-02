@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Red Hat Display';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redhatdisplay/v21/8vIf7wUr0m80wwYf0QCXZzYzUoTK8RZQvRd-D1NYbsWRckg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redhattext/v19/RrQCbohi_ic6B3yVSzGBrMx6ZI_cy1A6Ok2ML7hwVrY.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redhattext/v19/RrQCbohi_ic6B3yVSzGBrMx6ZI_cy1A6Ok2ML2Z3VrY.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Red Hat Text';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redhattext/v19/RrQCbohi_ic6B3yVSzGBrMx6ZI_cy1A6Ok2ML193VrY.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Sedgwick Ave Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sedgwickavedisplay/v23/xfuu0XPgU3jZPUoUo3ScvmPi-NapQ8OxM2cz.ttf) format('truetype');
+}

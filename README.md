@@ -66,3 +66,11 @@ The build validates local asset paths, anchor targets, one H1 per page, and stru
 The October 1 remake replaces the dark, framed chapters with hard-edged sections: a chalk hero with the pond as a taped paste-up, one colour field per project, a dark room for the film, a ruled list of services, an orange studio band and a large contact line. GSAP and the pinned scroll stages are gone; the remaining motion is CSS plus small scripts. Motion off, reduced motion and missing JavaScript all leave every section readable.
 
 The TrailGoat film now uses the September 29 4K render with its original music. Both the homepage and case study play it only on request. Updated posters, encoding details, and verification are recorded in the refresh scope.
+
+## Marketing Room
+
+The asset library is published at [caprastudios.co/marketing/](https://caprastudios.co/marketing/). It includes 420 PNG designs and editable SVGs, 14 silent videos, 43 print/carousel PDFs, 21 platform starter kits, signatures and campaign copy. Personal contact details are Kris Brown, kris@caprastudios.co and 770-757-3000.
+
+The `marketing/` folder contains the reviewed exports and their generation source. `npm run build` copies the allowlisted library and assembles downloadable ZIPs with Python 3's standard library. Archives and the duplicate source film are generated in `dist/marketing/`, not committed. The page has `noindex` metadata and is omitted from the public sitemap; it is publicly accessible to anyone with the URL.
+
+Use `npm run dev` to preview `/marketing/`; use the built `dist/` output when checking ZIP downloads. See [Marketing Room delivery](docs/MARKETING-ROOM.md) for provenance, editing and verification.

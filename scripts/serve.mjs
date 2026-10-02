@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const port = Number(process.env.PORT || 4173);
-const types = {'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.webm':'video/webm','.mp4':'video/mp4','.json':'application/json'};
+const types = {'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.webm':'video/webm','.mp4':'video/mp4','.json':'application/json','.pdf':'application/pdf','.zip':'application/zip','.csv':'text/csv','.ttf':'font/ttf'};
 const agentHandler = createAgentHandler({origins: [`http://127.0.0.1:${port}`, `http://localhost:${port}`]});
 createServer(async (req,res) => {
   if (await agentHandler(req,res)) return;
@@ -15,7 +15,7 @@ createServer(async (req,res) => {
     const decoded = decodeURIComponent(url.pathname);
     const file = path.resolve(root, '.' + decoded);
     const relative = path.relative(root, file);
-    if (relative.startsWith('..') || relative.split(path.sep).some(p=>p.startsWith('.')) || (!['','index.html','work.html','ai-consulting.html','motion.html','trailgoat.html','purple-squirrel.html','privacy.html','404.html','blender/preview.html'].includes(relative) && !relative.startsWith('assets' + path.sep))) {
+    if (relative.startsWith('..') || relative.split(path.sep).some(p=>p.startsWith('.')) || (!['','index.html','work.html','ai-consulting.html','motion.html','trailgoat.html','purple-squirrel.html','privacy.html','404.html','blender/preview.html'].includes(relative) && !relative.startsWith('assets' + path.sep) && relative !== 'marketing' && !relative.startsWith('marketing' + path.sep))) {
       res.writeHead(404); res.end('Not found'); return;
     }
     const target = (await stat(file)).isDirectory() ? path.join(file, 'index.html') : file;

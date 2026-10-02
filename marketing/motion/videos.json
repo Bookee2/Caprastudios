@@ -1,0 +1,156 @@
+[
+  {
+    "title": "01 Imagination",
+    "video": "motion/01-imagination-vertical.mp4",
+    "poster": "motion/01-imagination-vertical.jpg",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 328613
+  },
+  {
+    "title": "01 Imagination",
+    "video": "motion/01-imagination-square.mp4",
+    "poster": "motion/01-imagination-square.jpg",
+    "format": "square",
+    "width": 1080,
+    "height": 1080,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 272002
+  },
+  {
+    "title": "02 Two Lights",
+    "video": "motion/02-two-lights-vertical.mp4",
+    "poster": "motion/02-two-lights-vertical.jpg",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 300033
+  },
+  {
+    "title": "02 Two Lights",
+    "video": "motion/02-two-lights-square.mp4",
+    "poster": "motion/02-two-lights-square.jpg",
+    "format": "square",
+    "width": 1080,
+    "height": 1080,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 254209
+  },
+  {
+    "title": "05 Software",
+    "video": "motion/05-software-vertical.mp4",
+    "poster": "motion/05-software-vertical.jpg",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 320442
+  },
+  {
+    "title": "05 Software",
+    "video": "motion/05-software-square.mp4",
+    "poster": "motion/05-software-square.jpg",
+    "format": "square",
+    "width": 1080,
+    "height": 1080,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 295890
+  },
+  {
+    "title": "10 Web",
+    "video": "motion/10-web-vertical.mp4",
+    "poster": "motion/10-web-vertical.jpg",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 325824
+  },
+  {
+    "title": "10 Web",
+    "video": "motion/10-web-square.mp4",
+    "poster": "motion/10-web-square.jpg",
+    "format": "square",
+    "width": 1080,
+    "height": 1080,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 253938
+  },
+  {
+    "title": "15 Ai",
+    "video": "motion/15-ai-vertical.mp4",
+    "poster": "motion/15-ai-vertical.jpg",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 307230
+  },
+  {
+    "title": "15 Ai",
+    "video": "motion/15-ai-square.mp4",
+    "poster": "motion/15-ai-square.jpg",
+    "format": "square",
+    "width": 1080,
+    "height": 1080,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 261169
+  },
+  {
+    "title": "22 Project Invitation",
+    "video": "motion/22-project-invitation-vertical.mp4",
+    "poster": "motion/22-project-invitation-vertical.jpg",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 292718
+  },
+  {
+    "title": "22 Project Invitation",
+    "video": "motion/22-project-invitation-square.mp4",
+    "poster": "motion/22-project-invitation-square.jpg",
+    "format": "square",
+    "width": 1080,
+    "height": 1080,
+    "duration": 7.8,
+    "audio": "Silent",
+    "bytes": 249512
+  },
+  {
+    "title": "TrailGoat brand film / silent excerpt",
+    "video": "motion/trailgoat-film-excerpt-vertical.mp4",
+    "poster": "motion/trailgoat-film-excerpt-vertical.jpg",
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "duration": 8.0,
+    "audio": "Silent",
+    "bytes": 1940441
+  },
+  {
+    "title": "TrailGoat brand film / silent excerpt",
+    "video": "motion/trailgoat-film-excerpt-square.mp4",
+    "poster": "motion/trailgoat-film-excerpt-square.jpg",
+    "format": "square",
+    "width": 1080,
+    "height": 1080,
+    "duration": 8.0,
+    "audio": "Silent",
+    "bytes": 903924
+  }
+]

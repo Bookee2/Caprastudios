@@ -8,7 +8,7 @@
     "brand": "node scripts/generate-brand.mjs",
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
-    "check": "node --check assets/studio-next.js && node --check assets/pond.js && node --check assets/agent.js && node --check assets/nav.js && node --check assets/interactions.js && node --check assets/gallery.js && node --check assets/motion-governor.js && node --check assets/motion-page.js && node --check assets/motion-gpu.js && for f in assets/gpu/*.js; do node --check $f || exit 1; done && node --test scripts/build.test.mjs server/agent.test.mjs"
+    "check": "node --check marketing/app.js && node --check scripts/marketing.mjs && node --check assets/studio-next.js && node --check assets/pond.js && node --check assets/agent.js && node --check assets/nav.js && node --check assets/interactions.js && node --check assets/gallery.js && node --check assets/motion-governor.js && node --check assets/motion-page.js && node --check assets/motion-gpu.js && for f in assets/gpu/*.js; do node --check $f || exit 1; done && node --test scripts/build.test.mjs server/agent.test.mjs"
   },
   "engines": {"node": ">=22"}
 }

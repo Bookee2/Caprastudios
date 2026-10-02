@@ -37,6 +37,16 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       await assert.rejects(access(path.join(output, 'server')));
       await assert.rejects(access(path.join(output, '.env')));
       await assert.rejects(access(path.join(output, '.local')));
+      const marketing = await readFile(path.join(output, 'marketing/index.html'), 'utf8');
+      assert.match(marketing, /The Marketing Room/);
+      assert.match(marketing, /kris@caprastudios.co/);
+      assert.match(marketing, /770-757-3000/);
+      assert.match(marketing, /name="robots" content="noindex, nofollow"/);
+      assert.ok(!sitemap.includes('marketing/'));
+      await access(path.join(output, 'marketing/print/business-card-personal-day-duplex.pdf'));
+      await access(path.join(output, 'marketing/motion/01-imagination-vertical.mp4'));
+      await assert.rejects(access(path.join(output, 'marketing/.env')));
+      await assert.rejects(access(path.join(output, 'marketing/source/__pycache__')));
       await assert.rejects(access(path.join(output, 'assets/work/caprahr.jpg')));
       await assert.rejects(access(path.join(output, 'assets/motion/atlanta-wide.mp4')));
       assert.doesNotMatch(html, /AI-native|AI adoption|AI training|caprahr|atlanta-film/i);
@@ -44,7 +54,7 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       assert.ok(film.length > 1000);
       const notFound = await readFile(path.join(output, '404.html'), 'utf8');
       assert.ok(notFound.includes(`href="${url}"`));
-      assert.deepEqual(result.files.sort(), ['.nojekyll','assets',...publicPages,'robots.txt','sitemap.xml'].sort());
+      assert.deepEqual(result.files.sort(), ['.nojekyll','assets','marketing',...publicPages,'robots.txt','sitemap.xml'].sort());
     } finally { await rm(output, { recursive: true, force: true }); }
   });
 }

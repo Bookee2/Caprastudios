@@ -1,0 +1,10 @@
+{
+  "static_designs": 420,
+  "videos": 14,
+  "pdfs": 43,
+  "out_of_bounds": [],
+  "text_overlaps": [],
+  "contact_details": "correct in both personal duplex PDFs",
+  "video_codec": "H.264 / yuv420p",
+  "status": "PASS"
+}
