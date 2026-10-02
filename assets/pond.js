@@ -18,7 +18,7 @@ const palettes=[
  [[1,.85,.4],[1,.45,.3],[.94,.22,.55],[1,.6,.1],[1,.93,.8]],
  [[.68,.98,1],[.1,.84,.81],[.32,.49,1],[.85,1,1],[.6,.45,1]]
 ];
-let device,format,gctx,raf=0,last=0,time=0,paused=false,visible=true,lost=false,live=false,palette=0,burst=-20,lamp=0,lampOn=false,lx=.5,ly=.5,W=0,H=0,res=null;
+let device,format,gctx,raf=0,last=0,time=0,paused=false,visible=true,lost=false,live=false,palette=1,burst=-20,lamp=0,lampOn=false,lx=.5,ly=.5,W=0,H=0,res=null;
 const stop=()=>{cancelAnimationFrame(raf);raf=0;last=0;};
 function fallback(message){lost=true;stop();canvas.hidden=true;still.hidden=false;controls.hidden=true;stage.classList.remove('pond-live');hint.textContent=message;}
 
