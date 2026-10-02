@@ -11,7 +11,7 @@ test('rejects unsafe deployment origins', () => {
   }
 });
 
-for (const url of [defaultURL, 'https://caprastudios.ai/']) {
+for (const url of [defaultURL, 'https://caprastudios.co/']) {
   test(`build preserves links and consistent metadata for ${url}`, async () => {
     const output = await mkdtemp(path.join(tmpdir(), 'capra-build-'));
     try {
@@ -25,7 +25,7 @@ for (const url of [defaultURL, 'https://caprastudios.ai/']) {
       assert.ok(html.includes(`<link rel="canonical" href="${url}">`));
       assert.ok(html.includes(`"url": "${url}"`));
       assert.match(html, /href="assets\/site\.css(?:\?[^\"]*)?"/);
-      assert.ok(html.includes('href="mailto:kris@caprastudios.ai'));
+      assert.ok(html.includes('href="mailto:kris@caprastudios.co'));
       if (url !== defaultURL) assert.equal(html.includes(defaultURL), false);
       const sitemap = await readFile(path.join(output, 'sitemap.xml'), 'utf8');
       assert.ok(sitemap.includes(`<loc>${url}</loc>`));
