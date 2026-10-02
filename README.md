@@ -49,7 +49,7 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Shared ribbon curves; regenerate with `npm run brand` | `scripts/ribbon-shapes.json` |
 | Real portfolio screenshots | `assets/work/` |
 
-The contact is **kris@caprastudios.co**. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site.
+The contact is **info@caprastudios.co**. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site.
 
 ## Validation
 

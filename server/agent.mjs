@@ -39,7 +39,7 @@ export function createAgentHandler({apiKey=process.env.ANTHROPIC_API_KEY,leadsFi
  const now=Date.now();if(now-windowStart>600000){windowStart=now;requests=0;buckets.clear();}
  // Do not trust visitor-supplied X-Forwarded-For. Add a trusted-proxy adapter at deployment if needed.
  const ip=req.socket.remoteAddress||'unknown',used=buckets.get(ip)||0;
- if(used>=rateLimit||requests>=totalLimit||inflight>=3){send(429,{error:'Please try again shortly, or email Kris directly.'});return true;}
+ if(used>=rateLimit||requests>=totalLimit||inflight>=3){send(429,{error:'Please try again shortly, or email info@caprastudios.co.'});return true;}
  buckets.set(ip,used+1);requests++;inflight++;
  try{let input;try{input=await body(req);}catch{send(400,{error:'Invalid or oversized request.'});return true;}
  if(!input||typeof input!=='object'||Array.isArray(input)){send(400,{error:'Send a JSON object.'});return true;}
@@ -49,7 +49,7 @@ export function createAgentHandler({apiKey=process.env.ANTHROPIC_API_KEY,leadsFi
  let messages;try{messages=validateMessages(input.messages);}catch(e){send(400,{error:e.message});return true;}
  if(!apiKey){send(503,{error:'Live AI is not connected. Explore the studio guide or prepare a brief.'});return true;}
  const result=await answer(messages,{apiKey,fetchImpl});send(200,result);
- }catch{send(502,{error:'The service could not complete this request. Please try again or email Kris.'});}finally{inflight--;}
+ }catch{send(502,{error:'The service could not complete this request. Please try again or email info@caprastudios.co.'});}finally{inflight--;}
  return true;
  };
 }

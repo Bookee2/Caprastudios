@@ -25,7 +25,7 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       assert.ok(html.includes(`<link rel="canonical" href="${url}">`));
       assert.ok(html.includes(`"url": "${url}"`));
       assert.match(html, /href="assets\/site\.css(?:\?[^\"]*)?"/);
-      assert.ok(html.includes('href="mailto:kris@caprastudios.co'));
+      assert.ok(html.includes('href="mailto:info@caprastudios.co'));
       if (url !== defaultURL) assert.equal(html.includes(defaultURL), false);
       const sitemap = await readFile(path.join(output, 'sitemap.xml'), 'utf8');
       assert.ok(sitemap.includes(`<loc>${url}</loc>`));
