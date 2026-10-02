@@ -58,9 +58,9 @@ fn L(t: texture_2d<f32>, p: vec2i) -> vec4f { return textureLoad(t, clamp(p, vec
 @group(0) @binding(1) var smp: sampler;
 @fragment fn fs(i: VO) -> @location(0) vec4f {
   let d = max(textureSample(src, smp, i.uv).rgb, vec3f(0.0));
-  // Three inks, the site's cyan, violet and pink, glowing in dark water.
-  let ink = d.r * vec3f(0.49, 0.81, 1.0) + d.g * vec3f(0.73, 0.6, 0.97) + d.b * vec3f(0.94, 0.62, 0.87);
-  let water = vec3f(0.032, 0.036, 0.062) + fbm(i.pos.xy * 0.004 + 3.0) * vec3f(0.02, 0.02, 0.035);
+  // Three inks from the site's paint set (lagoon, koi orange, lime), glowing in dark water.
+  let ink = d.r * vec3f(0.10, 0.84, 0.81) + d.g * vec3f(1.0, 0.36, 0.10) + d.b * vec3f(0.71, 1.0, 0.23);
+  let water = vec3f(0.034, 0.033, 0.05) + fbm(i.pos.xy * 0.004 + 3.0) * vec3f(0.02, 0.02, 0.026);
   var col = water + ink * 1.9;
   col = col / (1.0 + col * 0.32);
   let vig = 1.0 - 0.35 * dot(i.uv - 0.5, i.uv - 0.5);
@@ -73,7 +73,7 @@ fn L(t: texture_2d<f32>, p: vec2i) -> vec4f { return textureLoad(t, clamp(p, vec
   const bgJac=[0,1].map(i=>G.bind(jacobi,[prs.t[i],div]));
   const bgPrj=[0,1].map(p=>[0,1].map(v=>G.bind(project,[prs.t[p],vel.t[v]])));
   const bgShow=[0,1].map(i=>G.bind(show,[dye.t[i],smp]));
-  const pig=[[1,0,0],[0,1,0],[0,0,1]],A=new Float32Array(32),names=['Cyan','Violet','Pink'];
+  const pig=[[1,0,0],[0,1,0],[0,0,1]],A=new Float32Array(32),names=['Lagoon','Koi orange','Lime'];
   let pcol=1,wasDown=false,clear=false;
   const piece=ctx.stage.closest('.gpu-piece'),inkButton=piece?.querySelector('[data-ink]'),clearButton=piece?.querySelector('[data-clear]');
   const label=()=>{if(inkButton)inkButton.querySelector('span').textContent=names[pcol];};

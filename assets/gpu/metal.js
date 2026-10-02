@@ -92,11 +92,11 @@ fn march(ro: vec3f, rd: vec3f, steps: i32) -> f32 {
   return -1.0;
 }
 fn env(rd: vec3f) -> vec3f {
-  var c = mix(vec3f(0.035, 0.035, 0.07), vec3f(0.24, 0.22, 0.36), smoothstep(-0.6, 0.9, rd.y));
+  var c = mix(vec3f(0.04, 0.04, 0.055), vec3f(0.27, 0.27, 0.31), smoothstep(-0.6, 0.9, rd.y));
   c += vec3f(0.92, 0.94, 1.0) * smoothstep(0.35, 0.65, rd.y) * smoothstep(0.85, 0.15, abs(rd.x + 0.15)) * 2.6;
   c += vec3f(0.9, 0.95, 1.0) * smoothstep(0.2, 0.0, abs(rd.y + 0.05)) * smoothstep(0.35, 0.85, rd.x) * 1.5;
-  c += vec3f(0.94, 0.55, 0.86) * pow(max(dot(rd, normalize(vec3f(-0.9, 0.15, 0.35))), 0.0), 3.0) * 1.7;
-  c += vec3f(0.49, 0.81, 1.0) * pow(max(dot(rd, normalize(vec3f(0.85, -0.35, 0.4))), 0.0), 3.0) * 1.4;
+  c += vec3f(1.0, 0.36, 0.10) * pow(max(dot(rd, normalize(vec3f(-0.9, 0.15, 0.35))), 0.0), 3.0) * 1.7;
+  c += vec3f(0.71, 1.0, 0.23) * pow(max(dot(rd, normalize(vec3f(0.85, -0.35, 0.4))), 0.0), 3.0) * 1.2;
   return c;
 }
 @fragment fn fs(i: VO) -> @location(0) vec4f {
@@ -104,13 +104,13 @@ fn env(rd: vec3f) -> vec3f {
   let ro = vec3f(0.0, 0.0, 3.9);
   let rd = normalize(vec3f(q, -1.25));
   let r2 = dot(q, q);
-  var col = vec3f(0.04, 0.042, 0.07) + vec3f(0.18, 0.12, 0.32) * exp(-r2 * 5.0) * 0.5;
+  var col = vec3f(0.043, 0.04, 0.07) + vec3f(0.16, 0.15, 0.2) * exp(-r2 * 5.0) * 0.5;
   let t = march(ro, rd, 72);
   if (t > 0.0) {
     let p = ro + rd * t; let n = normal(p); let r = reflect(rd, n);
     let ndv = max(dot(n, -rd), 0.0); let fr = pow(1.0 - ndv, 4.0);
     let film = 0.5 + 0.5 * cos(6.2832 * (ndv * 1.3 + vec3f(0.0, 0.33, 0.67)) + u.a.x * 0.2);
-    let base = mix(vec3f(0.86, 0.87, 0.95), film, 0.2);
+    let base = mix(vec3f(0.9, 0.9, 0.92), film, 0.1);
     col = env(r) * mix(base, vec3f(1.0), fr);
     let t2 = march(p + n * 0.02, r, 36);
     if (t2 > 0.0) { let p2 = p + n * 0.02 + r * t2; col = mix(col, env(reflect(r, normal(p2))) * base * 0.75, 0.7); }
