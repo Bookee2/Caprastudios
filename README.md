@@ -21,7 +21,7 @@ The website frontend is ordinary HTML, CSS and JavaScript. The optional server-s
 1. Review and merge the website pull request.
 2. In **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions** if it is not already configured.
 3. The included workflow checks, builds, and publishes on a push to `main`. Pull requests run validation without deploying.
-4. The initial address is `https://bookee2.github.io/Caprastudios/`. A manual workflow run from `main` can also publish.
+4. The site is served at `https://caprastudios.co/` (set in `site.config.json`); the GitHub project address `https://bookee2.github.io/Caprastudios/` redirects there. A manual workflow run from `main` can also publish.
 
 Only `dist/` is uploaded. Source, docs, tests, and repository internals are not included in the public website artifact.
 
@@ -49,7 +49,7 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Shared ribbon curves; regenerate with `npm run brand` | `scripts/ribbon-shapes.json` |
 | Real portfolio screenshots | `assets/work/` |
 
-The contact is **kris@caprastudios.ai**. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site.
+The contact is **kris@caprastudios.co**. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site.
 
 ## Validation
 
