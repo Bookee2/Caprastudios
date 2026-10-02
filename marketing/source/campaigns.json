@@ -1,0 +1,242 @@
+[
+  [
+    "01-imagination",
+    "Studio",
+    "Imagination.\nMade tangible.",
+    "Software, websites that move, and AI that earns its keep. A small team of specialists in Atlanta.",
+    "ink",
+    "#b6ff3b",
+    "start here",
+    "Imagination is a good place to start. Making it useful is where we come in. Capra Studios brings software, web, motion and practical AI together around the thing you want to build."
+  ],
+  [
+    "02-two-lights",
+    "Studio",
+    "One studio.\nTwo lights.",
+    "Daylight or blacklight. Same point of view. Explore both sides of Capra Studios.",
+    "metal",
+    "#b6ff3b",
+    "lights off?",
+    "Our site has two sides. Paper, ink and a little attitude in daylight. Luminous color after dark. Turn the lights off at caprastudios.co and explore the work."
+  ],
+  [
+    "03-small-mighty",
+    "Studio",
+    "Small team.\nBig imagination.",
+    "Talk directly to the designers, engineers and specialists doing the work.",
+    null,
+    "#ffd23f",
+    "small but mighty",
+    "A smaller team can mean a more direct conversation. At Capra, the people shaping your project are the people you talk to. Tell us what you are imagining."
+  ],
+  [
+    "04-atlanta",
+    "Studio",
+    "Made with\nAtlanta energy.",
+    "A small team of specialists in Atlanta. Software. Web. AI.",
+    null,
+    "#ff5c1a",
+    "hello, Atlanta",
+    "Atlanta is home. Curiosity is the starting point. We design and build software, websites with motion, and AI systems around real business needs."
+  ],
+  [
+    "05-software",
+    "Software",
+    "Make the\ncomplicated clear.",
+    "Custom applications designed around the people who use them.",
+    null,
+    "#1ad7ce",
+    "built for people",
+    "When a process lives across spreadsheets, messages and workarounds, another tool is not always the answer. Start by making the work clear. Then build the application around it."
+  ],
+  [
+    "06-handoff",
+    "Software",
+    "Better software.\nBetter handoffs.",
+    "Give every step a clear owner, useful context and a next action.",
+    null,
+    "#1ad7ce",
+    "less friction",
+    "A handoff should move the work forward. We design applications around who needs what, what happens next, and where information gets lost along the way."
+  ],
+  [
+    "07-idea-product",
+    "Software",
+    "From what if\nto what works.",
+    "Bring the idea. We will help shape the product and build it.",
+    null,
+    "#7aa2f7",
+    "make it real",
+    "You do not need a perfect specification to begin a useful conversation. Bring the idea, the problem and the people it needs to help. We can work from there."
+  ],
+  [
+    "08-trailgoat",
+    "Project",
+    "Built for\nthe long run.",
+    "TrailGoat: course planning, pace and fueling for trail and ultra runners.",
+    "trail",
+    "#1ad7ce",
+    "real work",
+    "TrailGoat brings course, pace and fueling into one planning tool for trail and ultra runners. We designed it, built it, and made the brand film. See the project story."
+  ],
+  [
+    "09-purple-squirrel",
+    "Project",
+    "A better\nnext step.",
+    "Purple Squirrel: the handoff from recruiter submission to client review.",
+    "squirrel",
+    "#7a2df5",
+    "real work",
+    "Purple Squirrel focuses on a specific moment in staffing: a recruiter submits a candidate and a client needs to review them. Clear context and a clear next step shape the application."
+  ],
+  [
+    "10-web",
+    "Web",
+    "A website with\na point of view.",
+    "Distinctive design. Clear content. Motion with a reason to be there.",
+    "print",
+    "#b6ff3b",
+    "make an impression",
+    "Your website should feel like your business and help people understand what to do next. We bring design, development and motion together around that job."
+  ],
+  [
+    "11-motion",
+    "Web",
+    "Move people.\nThen pixels.",
+    "Motion and video graphics that give the work a story.",
+    "ink",
+    "#ef388d",
+    "built to move",
+    "Motion earns its place when it explains, guides or makes something memorable. From browser interactions to 3D brand films, we design the movement around the message."
+  ],
+  [
+    "12-brand-film",
+    "Project",
+    "A pile of blocks.\nA brand with life.",
+    "TrailGoat: a goat takes shape, flips and resolves into a wordmark.",
+    "film",
+    "#ffd23f",
+    "press play",
+    "A pile of blocks becomes a goat. The goat flips. The wordmark lands. Our TrailGoat brand film turns a simple transformation into a short story. Watch the 4K film with sound on the site."
+  ],
+  [
+    "13-webgl",
+    "Web",
+    "Your browser.\nOur playground.",
+    "Interactive web experiences with color, motion and a point of view.",
+    "grow",
+    "#1ad7ce",
+    "try it yourself",
+    "A browser can be a place to explore. Our web and motion experiments respond to interaction, play with color and turn technical possibilities into a visual experience."
+  ],
+  [
+    "14-3d",
+    "Web",
+    "Give your\nidea dimension.",
+    "3D pieces and brand films for websites, launches and the moments that matter.",
+    "metal",
+    "#7aa2f7",
+    "another dimension",
+    "Some ideas deserve more than a flat frame. We create 3D pieces and brand films that give an identity form, atmosphere and movement."
+  ],
+  [
+    "15-ai",
+    "AI",
+    "Put intelligence\nto work.",
+    "Chat agents, knowledge systems and connected operations built around your business.",
+    null,
+    "#ffd23f",
+    "practical AI",
+    "The useful AI question is not what is possible in a demo. It is what should happen in your business. We start with the workflow, the knowledge and the people, then build a focused system."
+  ],
+  [
+    "16-knowledge",
+    "AI",
+    "Your knowledge.\nWithin reach.",
+    "Connect an assistant to the documents and context it needs to answer well.",
+    null,
+    "#b6ff3b",
+    "find the answer",
+    "The answer may already be in your business. A RAG knowledge system retrieves relevant information from your documents and gives an assistant context, with source references and access controls designed into the workflow."
+  ],
+  [
+    "17-support",
+    "AI",
+    "Better answers.\nClearer handoffs.",
+    "Customer service agents that gather context and know when to bring in a person.",
+    null,
+    "#ff5c1a",
+    "support, connected",
+    "A support agent should do more than reply. It can collect the details a team needs, answer repeat questions and route the request, with clear handoffs when a person needs to step in."
+  ],
+  [
+    "18-pilot",
+    "AI",
+    "Start small.\nProve it useful.",
+    "Map one opportunity. Build a focused pilot. Measure before expanding.",
+    null,
+    "#ffd23f",
+    "one useful pilot",
+    "Choose one workflow. Agree what success looks like. Test real questions, edge cases and handoffs. Then decide what deserves to grow. That is how we approach practical AI adoption."
+  ],
+  [
+    "19-operations",
+    "AI",
+    "Connect the work.\nKeep control.",
+    "Agents and automations with defined roles, permissions and human review.",
+    null,
+    "#ef388d",
+    "business first",
+    "Sales, service, administration and delivery do not happen in isolation. We help map the work between them and design connected operations with responsibilities, permissions and review built in."
+  ],
+  [
+    "20-business-first",
+    "AI",
+    "Better business\nbegins with the work.",
+    "Practical AI consulting, from a first use case to an operating roadmap.",
+    null,
+    "#7aa2f7",
+    "map it first",
+    "Before picking an AI tool, map how the business runs. Where does information live? Who owns the decision? Where is time lost? Those answers create a better implementation plan."
+  ],
+  [
+    "21-three-disciplines",
+    "Studio",
+    "Software.\nWeb. AI.",
+    "Three ways to make an idea tangible. One team to bring it together.",
+    null,
+    "#b6ff3b",
+    "all connected",
+    "A new product may need an application, a website that tells its story and an agent that helps people use it. Capra brings those conversations together."
+  ],
+  [
+    "22-project-invitation",
+    "Studio",
+    "What are you\nimagining?",
+    "Tell us what you want to make or improve. We will find the right way to build it.",
+    null,
+    "#7a2df5",
+    "your move",
+    "A better customer experience? A process that finally makes sense? A website with a stronger point of view? Tell us what you are imagining. Let us find the right way to build it."
+  ],
+  [
+    "23-impression",
+    "Studio",
+    "Let’s make\nan impression.",
+    "Design, development and motion for your next chapter.",
+    "ink",
+    "#b6ff3b",
+    "say hi",
+    "The next version of your business deserves a clear idea and a considered execution. Bring us the challenge. We will help turn it into something people can use, understand and remember."
+  ],
+  [
+    "24-direct",
+    "Studio",
+    "Meet the people\nmaking the work.",
+    "A small team of specialists, led by Kris Brown in Atlanta.",
+    null,
+    "#ffd23f",
+    "direct connection",
+    "Capra is led by Kris Brown. Designers, engineers, motion artists and AI builders come together around the project, with direct conversations and a shared understanding of the work."
+  ]
+]

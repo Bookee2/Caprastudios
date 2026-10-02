@@ -1,0 +1,86 @@
+{
+  "Instagram": {
+    "format": "portrait",
+    "notes": "4:5 feed posts, square alternatives, 9:16 Stories/Reels covers, six-slide carousels, avatars and Highlights. Use vertical MP4s for Reels."
+  },
+  "Facebook": {
+    "format": "portrait",
+    "notes": "Feed graphics, 9:16 Stories, page covers and silent video edits."
+  },
+  "LinkedIn": {
+    "format": "landscape",
+    "notes": "1200x627 feed graphics, 4:5 alternatives, six-page carousel PDFs, personal and company banners."
+  },
+  "X": {
+    "format": "landscape",
+    "notes": "Landscape posts, 1500x500 header, avatar and short copy."
+  },
+  "Threads": {
+    "format": "square",
+    "notes": "Square and portrait graphics; use conversational short copy."
+  },
+  "Bluesky": {
+    "format": "landscape",
+    "notes": "Landscape posts, a 1500x500 header and short copy. Check the profile crop in-app."
+  },
+  "Mastodon": {
+    "format": "landscape",
+    "notes": "Landscape posts and square avatar. Header crops and upload limits vary by instance."
+  },
+  "TikTok": {
+    "format": "vertical",
+    "notes": "1080x1920 silent video posts, covers, title cards and avatar. Add platform-licensed audio if desired."
+  },
+  "YouTube": {
+    "format": "vertical",
+    "notes": "Shorts videos, 1280x720 thumbnails, 2560x1440 banner and avatar. Banner text is within a conservative central safe region."
+  },
+  "Pinterest": {
+    "format": "pin",
+    "notes": "1000x1500 Pins, descriptions and destination links."
+  },
+  "Snapchat": {
+    "format": "vertical",
+    "notes": "9:16 Story graphics and silent videos. Preview app overlays before posting."
+  },
+  "WhatsApp": {
+    "format": "vertical",
+    "notes": "9:16 Status graphics/videos and square business avatar."
+  },
+  "Google Business Profile": {
+    "format": "square",
+    "notes": "Square update images, profile copy and project links. Preview platform cropping."
+  },
+  "Reddit": {
+    "format": "landscape",
+    "notes": "Landscape images and square avatar. Adapt copy to the community and its posting rules."
+  },
+  "Behance": {
+    "format": "portrait",
+    "notes": "3200x410 profile banner, project-story carousel images and 1600x1200 overview shots."
+  },
+  "Dribbble": {
+    "format": "square",
+    "notes": "1600x1200 studio shots plus avatar. Source work is presented as Capra work."
+  },
+  "Twitch": {
+    "format": "landscape",
+    "notes": "1200x480 profile banner, square avatar and video title cards."
+  },
+  "Discord": {
+    "format": "square",
+    "notes": "Community graphics, square icon and 960x540 banner master. Profile/server features may crop differently."
+  },
+  "Telegram": {
+    "format": "square",
+    "notes": "Channel avatar, square/portrait posts and 9:16 Story masters."
+  },
+  "Substack / email": {
+    "format": "landscape",
+    "notes": "Newsletter headers, campaign banners, studio copy and six email drafts."
+  },
+  "Zoom / Meet / Teams": {
+    "format": "landscape",
+    "notes": "1920x1080 meeting backgrounds keep the middle clear for the speaker."
+  }
+}

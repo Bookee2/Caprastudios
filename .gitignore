@@ -10,3 +10,8 @@ output/
 __pycache__/
 
 .local/
+
+# Marketing archives are assembled for Pages, not stored in Git.
+marketing/*.zip
+marketing/platform-kits/*.zip
+marketing/brand/media/trailgoat-brand-film-source.mp4

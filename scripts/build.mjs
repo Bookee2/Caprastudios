@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, writeFile, readdir, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { copyMarketing, packageMarketing } from './marketing.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 export const publicPages = ['index.html', 'work.html', 'ai-consulting.html', 'motion.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
@@ -31,6 +32,7 @@ export async function build(output = path.join(root, 'dist'), override) {
   }
   await rm(path.join(output, 'assets/work/caprahr.jpg'), { force: true });
   await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true, filter: source => !/^atlanta-/.test(path.basename(source)) && path.basename(source) !== 'caprahr.jpg' });
+  await copyMarketing(root, output);
   await writeFile(path.join(output, '.nojekyll'), '');
   await writeFile(path.join(output, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${url}sitemap.xml\n`);
   await writeFile(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicPages.filter(p => p !== '404.html').map(p => `  <url><loc>${url}${p === 'index.html' ? '' : p}</loc></url>`).join('\n')}\n</urlset>\n`);
@@ -55,5 +57,6 @@ export async function build(output = path.join(root, 'dist'), override) {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const result = await build();
+  await packageMarketing(root, result.output);
   console.log(`Built static website for ${result.url}\nOutput: ${result.output}`);
 }

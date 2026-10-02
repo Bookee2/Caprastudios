@@ -1,0 +1,30 @@
+{
+  "desktop": [
+    1440,
+    1000
+  ],
+  "phone": [
+    390,
+    844
+  ],
+  "fonts": "loaded",
+  "horizontal_page_overflow": false,
+  "reviewed": [
+    "daylight hero",
+    "blacklight hero",
+    "phone hero",
+    "phone signatures",
+    "asset filter and preview",
+    "platform format shortcut",
+    "post-copy control",
+    "formatted signature control",
+    "video plays through 7.8 seconds",
+    "download URLs return 200"
+  ],
+  "QR_scans": {
+    "personal_day": "https://caprastudios.co/",
+    "personal_night": "https://caprastudios.co/",
+    "studio_flyer": "https://caprastudios.co/"
+  },
+  "email_client_rendering": "HTML preview reviewed; not sent to external email clients"
+}
