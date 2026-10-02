@@ -43,18 +43,18 @@ fn dots(px: vec2f, res: vec2f, ang: f32, cell: f32, ch: i32) -> f32 {
   } else if (mode == 1) {
     let cell = 3.0 * k; let c = floor(px / cell);
     let v = lum(S((c + 0.5) * cell / res));
-    col = mix(vec3f(0.07, 0.07, 0.13), vec3f(0.78, 0.72, 0.98), step(b8(c) * 0.98 + 0.01, v));
+    col = mix(vec3f(0.082, 0.078, 0.11), vec3f(0.71, 1.0, 0.23), step(b8(c) * 0.98 + 0.01, v));
   } else if (mode == 2) {
-    let paper = vec3f(0.95, 0.93, 0.89);
+    let paper = vec3f(0.953, 0.945, 0.918);
     let a = dots(px, res, 0.26, 7.0 * k, 0);
     let b = dots(px + vec2f(1.5 * k, 0.0), res, 1.31, 7.0 * k, 1);
-    col = paper * mix(vec3f(1.0), vec3f(0.2, 0.25, 0.55), a * 0.9) * mix(vec3f(1.0), vec3f(0.95, 0.45, 0.78), b * 0.85);
+    col = paper * mix(vec3f(1.0), vec3f(0.10, 0.62, 0.66), a * 0.92) * mix(vec3f(1.0), vec3f(0.94, 0.22, 0.55), b * 0.85);
   } else {
     let cell = vec2f(9.0, 14.0) * k; let c = floor(px / cell);
     let v = lum(S((c + 0.5) * cell / res));
     let gi = min(floor(pow(v, 0.8) * 10.0), 9.0); let f = fract(px / cell);
     let g = textureSampleLevel(atlas, smp, vec2f((gi + f.x) / 10.0, f.y), 0.0).r;
-    col = vec3f(0.045, 0.045, 0.075) + mix(vec3f(0.49, 0.81, 1.0), vec3f(0.94, 0.62, 0.87), v) * g * (0.45 + 0.75 * v);
+    col = vec3f(0.045, 0.045, 0.075) + mix(vec3f(0.71, 1.0, 0.23), vec3f(1.0, 0.82, 0.25), v) * g * (0.45 + 0.75 * v);
   }
   return vec4f(col, 1.0);
 }`,[G.format]);

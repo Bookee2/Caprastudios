@@ -48,8 +48,8 @@ fn at(p: vec2i) -> vec2f { let s = vec2i(textureDimensions(src)); return texture
   let n = normalize(vec3f(-bx * 7.0, -by * 7.0, 1.0));
   let lit = dot(n, normalize(vec3f(-0.5, -0.65, 0.55)));
   let v = smoothstep(0.1, 0.3, b);
-  let bg = vec3f(0.04, 0.042, 0.07) + m * vec3f(0.03, 0.025, 0.05);
-  let lo = vec3f(0.42, 0.36, 0.92); let hi = vec3f(0.97, 0.68, 0.9);
+  let bg = vec3f(0.043, 0.04, 0.07) + m * vec3f(0.028, 0.028, 0.036);
+  let lo = vec3f(0.10, 0.84, 0.81); let hi = vec3f(0.71, 1.0, 0.23);
   var col = mix(bg, mix(lo, hi, smoothstep(0.22, 0.45, b)), v);
   col += (lit - 0.55) * 0.5 * v;
   return vec4f(col, 1.0);
