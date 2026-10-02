@@ -337,3 +337,4 @@ html:not(.motion-off) .art.gpu-stage canvas,html:not(.motion-off) .art .gpu-post
 @media(max-width:800px){.gallery-arrow{width:46px; height:46px; min-height:46px; margin-top:-23px} .gallery-arrow.prev{left:-12px} .gallery-arrow.next{right:-12px}}
 .hero-controls.is-away{display:none}
 .film-head .kicker{color:var(--hand); margin:0 0 10px; max-width:none}
+.rows .text-link+.text-link{margin-left:22px}

@@ -35,7 +35,7 @@ export async function build(output = path.join(root, 'dist'), override) {
   await copyMarketing(root, output);
   await writeFile(path.join(output, '.nojekyll'), '');
   await writeFile(path.join(output, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${url}sitemap.xml\n`);
-  await writeFile(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicPages.filter(p => p !== '404.html').map(p => `  <url><loc>${url}${p === 'index.html' ? '' : p}</loc></url>`).join('\n')}\n</urlset>\n`);
+  await writeFile(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicPages.filter(p => p !== '404.html').map(p => `  <url><loc>${url}${p === 'index.html' ? '' : p}</loc></url>`).join('\n')}\n  <url><loc>${url}marketing/</loc></url>\n</urlset>\n`);
   // Local relative assets must resolve equally at /Caprastudios/ and at a custom domain root.
   for (const name of publicPages.filter(p => p !== '404.html')) {
     const html = await readFile(path.join(output, name), 'utf8');
@@ -46,7 +46,7 @@ export async function build(output = path.join(root, 'dist'), override) {
       } else if (!/^(https?:|mailto:|data:)/.test(reference)) {
         const target = path.resolve(output, reference.split(/[?#]/)[0]);
         if (!target.startsWith(path.resolve(output))) throw new Error(`Invalid asset path: ${reference}`);
-        if (reference !== './') await readFile(target);
+        if (reference !== './') await readFile(reference.split(/[?#]/)[0].endsWith('/') ? path.join(target, 'index.html') : target);
       }
     }
     if ([...html.matchAll(/<h1\b/g)].length !== 1) throw new Error(`${name}: expected exactly one H1`);

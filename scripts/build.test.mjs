@@ -41,8 +41,9 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       assert.match(marketing, /The Marketing Room/);
       assert.match(marketing, /kris@caprastudios.co/);
       assert.match(marketing, /770-757-3000/);
-      assert.match(marketing, /name="robots" content="noindex, nofollow"/);
-      assert.ok(!sitemap.includes('marketing/'));
+      assert.doesNotMatch(marketing, /noindex/);
+      assert.ok(marketing.includes('<link rel="canonical" href="https://caprastudios.co/marketing/">'));
+      assert.ok(sitemap.includes(`<loc>${url}marketing/</loc>`));
       await access(path.join(output, 'marketing/print/business-card-personal-day-duplex.pdf'));
       await access(path.join(output, 'marketing/motion/01-imagination-vertical.mp4'));
       await assert.rejects(access(path.join(output, 'marketing/.env')));
