@@ -69,7 +69,7 @@ The TrailGoat film now uses the September 29 4K render with its original music. 
 
 ## Marketing Room
 
-The asset library is published at [caprastudios.co/marketing/](https://caprastudios.co/marketing/). It includes 420 PNG designs and editable SVGs, 14 silent videos, 43 print/carousel PDFs, 21 platform starter kits, signatures and campaign copy. Personal contact details are Kris Brown, kris@caprastudios.co and 770-757-3000.
+The asset library is published at [caprastudios.co/marketing/](https://caprastudios.co/marketing/). It includes 420 PNG designs and editable SVGs, 14 silent videos, 43 print/carousel PDFs, 21 platform starter kits, signatures and campaign copy. Personal contact details are Kris Brown and kris@caprastudios.co. The phone number is deliberately kept off every published file; print-ready personal cards with it live in the original suite on the external SSD.
 
 The `marketing/` folder contains the reviewed exports and their generation source. `npm run build` copies the allowlisted library and assembles downloadable ZIPs with Python 3's standard library. Archives and the duplicate source film are generated in `dist/marketing/`, not committed. The page has `noindex` metadata and is omitted from the public sitemap; it is publicly accessible to anyone with the URL.
 

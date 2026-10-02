@@ -9,7 +9,7 @@ After downloading and unzipping the full suite, the library works offline.
 Links to the studio and reference websites require an internet connection.
 
 PERSONAL CONTACT
-Kris Brown | kris@caprastudios.co | 770-757-3000
+Kris Brown | kris@caprastudios.co
 General studio campaigns use info@caprastudios.co.
 
 CONTENTS
