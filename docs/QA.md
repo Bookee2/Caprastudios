@@ -46,3 +46,17 @@ Checked in the Chromium preview pane at 1440×900 and 375×812, and in headless 
 - Hover states at desktop size were checked by mirroring the `:hover` rules onto a test class, because the preview pane is narrower than 1440 px.
 
 Not verified: real-mouse hover at desktop size, Safari 26, Firefox (no scroll-driven animations yet, so the film opening and progress line are absent there), a physical phone, frame-rate measurement, and a screen reader pass.
+
+## Daylight remake — October 1, 2026
+
+Checked in headless Google Chrome through Playwright against the local server.
+
+- `npm run check` and `npm run build` pass.
+- All seven pages at 1440×900 and 375×812, in daylight and under black light: full-page screenshots reviewed, no horizontal overflow, no page or console errors.
+- Homepage hero: the pond runs on WebGPU inside the new paste-up frame.
+- Without JavaScript: every heading and paragraph on the homepage, work, motion and AI consulting pages is visible; the navigation works.
+- Reduced motion: the motion switch reports "reduced", the headline is in place, the process line is complete.
+- The lights switch sets `html.bl`, updates its pressed state and persists across a reload. The phone menu opens as a solid panel.
+- Contrast was computed for the text and field pairs in use (ink on lagoon, koi, solar, lime, ribbon and magenta; chalk on UV violet; muted text on chalk and on the dark rooms). All are at or above 4.5:1.
+
+Not verified: real-mouse hover, Safari, Firefox, a physical phone, a screen reader pass.

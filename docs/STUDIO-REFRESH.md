@@ -107,3 +107,16 @@ Built from `docs/MOTION-PAGE-AND-UI-BRIEF.md` and `docs/MOTION-PAGE-AND-UI-PLAN.
 - **Phase 5, inner pages and polish.** Headlines rise once on inner pages. Process steps share a line that draws with reading. AI consulting opens on its connected-systems diagram. Case studies end on a next-project band with its picture. Small labels have a 12 px floor (11 px on phones). Ask Capra is an icon-sized button on phones that steps aside while scrolling down. The ribbon artwork ships as AVIF with a WebP fallback (about 20 KB, from 1.37 MB). `assets/studio.css` and `studio.js` were removed; `assets/filament.js` stays because an archived study in `docs/` uses it.
 
 Not done: the 70 MB TrailGoat film is unchanged pending a decision on serving a 1080p cut by default.
+
+## Daylight remake — October 1, 2026
+
+The user approved the direction sketched in `docs/SITE-CHARACTER-AUDIT.html` ("Paint the walls", with the black light switch) and asked for the site to be remade in it.
+
+- New single stylesheet `assets/site.css`; `tokens.css`, `studio-next.css`, `chapters.css`, `interactions.css`, `chapters.js`, `home.js` and the vendored GSAP are removed.
+- Every page is rebuilt: chalk reading sections, one flat colour field per project or page, dark rooms for the pond, films and live pieces, paste-up pictures with tape and a sticker, hand-tagged notes.
+- All-caps mono labels, decorative numbering, two-tone headlines, rounded glowing panels and the cyan-violet-pink gradient are gone. The spotlight border and rolling label survive only as two demonstrations on the motion page.
+- A "Lights off" switch in the navigation turns the site to black light and is remembered per browser.
+- Copy is first person and plain. Headlines and intros were drafted from facts already on the site and are placeholders for Kris's own wording.
+- The pond graphic and `assets/pond.js` are unchanged; the hero around it is new.
+
+Still to come from Kris: a real photo for the studio band (the ribbon artwork stands in), his own hand-lettered marks to replace the stand-in font, and his own wording for the headlines. The halftone picture treatment from the audit was not built.

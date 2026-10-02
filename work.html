@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#1a1b26">
+<meta name="theme-color" content="#f3f1ea">
 <title>Selected Work — Capra Studios</title>
 <meta name="description" content="Explore founder-built web applications and brand motion by Capra Studios: TrailGoat and Purple Squirrel.">
 <link rel="canonical" href="https://bookee2.github.io/Caprastudios/work.html">
@@ -16,204 +16,92 @@
 <link rel="icon" href="assets/brand/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&amp;family=Red+Hat+Text:wght@400;500;600;700&amp;family=Red+Hat+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/tokens.css">
-<link rel="stylesheet" href="assets/studio-next.css">
-<link rel="stylesheet" href="assets/interactions.css">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&amp;family=Red+Hat+Text:wght@400;500;600;700&amp;family=Sedgwick+Ave+Display&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/page-transitions.css">
-<script src="assets/studio-next.js" defer>
-</script>
+<link rel="stylesheet" href="assets/agent.css">
+<script>try{if(localStorage.getItem('capra-light')==='bl')document.documentElement.classList.add('bl')}catch(e){}</script>
+<script src="assets/studio-next.js" defer></script>
 <script src="assets/nav.js" defer></script>
 <script src="assets/interactions.js" defer></script>
-<meta name="capra-agent-endpoint" content="">
-<link rel="stylesheet" href="assets/agent.css">
 <script src="assets/agent.js" defer></script>
+<meta name="capra-agent-endpoint" content="">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" id="site-header">
 <div class="nav-bar shell">
-<a class="brand" href="./" aria-label="Capra Studios home">
-<img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
-</a>
+<a class="brand" href="./" aria-label="Capra Studios home"><img src="assets/brand/mark.svg" width="26" height="35" alt="">capra studios</a>
 <nav class="main-nav" id="navigation" aria-label="Main navigation">
-<a href="work.html" aria-current="page">Work <sup>02</sup></a>
+<a href="work.html" aria-current="page">Work</a>
 <a href="motion.html">Motion</a>
 <a href="ai-consulting.html">AI consulting</a>
-<a href="index.html#studio">Studio</a>
-<a class="nav-contact" href="index.html#contact">Start a conversation</a>
+<a href="index.html#studio">Kris</a>
+<a class="nav-contact" href="#contact">Start a conversation</a>
 </nav>
-<button class="menu-toggle" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>+</span>
-</button>
+<button class="lamp" type="button" aria-pressed="false" hidden><i aria-hidden="true"></i><span>Lights off</span></button>
+<button class="menu-toggle" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>+</span></button>
 </div>
 <div class="nav-progress" aria-hidden="true"></div>
 </header>
 <main id="main">
-<section class="page-intro shell">
-<p class="eyebrow">Selected work / 2026</p>
-<h1>Ideas with<br>
-<em>somewhere to go.</em>
-</h1>
-<p class="lead">Products to use. Characters to remember.<br>A closer look at two founder-built ventures.</p>
+<section class="page-top shell">
+<h1>Two products I designed and built.</h1>
+<p class="lead">TrailGoat and Purple Squirrel are my own ventures. Here is a closer look at both, and at how a project with me goes.</p>
 </section>
-<section class="shell work-index" aria-label="Selected projects">
-<div class="project-grid">
-<article class="project project-trail">
-<a class="project-image" href="trailgoat.html">
-<div class="project-label mono">
-<span>01 / TrailGoat</span>
-<span>Product + motion</span>
-</div>
-<div class="project-screen">
-<img src="assets/work/trailgoat-current.jpg" width="1440" height="980" loading="lazy" decoding="async" alt="TrailGoat’s trail-running product website, with course planning and fueling tools">
-</div>
-<span class="project-open" aria-hidden="true">Explore the project →</span>
-</a>
-<div class="project-info">
-<h3>
-<a href="trailgoat.html">Built for the long run.</a>
-</h3>
-<p>A connected running product with a character all its own.</p>
-<span class="mono">Web application / Identity in motion</span>
-</div>
-</article>
-<article class="project project-squirrel">
-<a class="project-image" href="purple-squirrel.html">
-<div class="project-label mono">
-<span>02 / Purple Squirrel</span>
-<span>Digital product</span>
-</div>
-<div class="project-screen">
-<img src="assets/work/purple-squirrel.jpg" width="1440" height="980" loading="lazy" decoding="async" alt="Purple Squirrel’s staffing platform presentation, showing sample candidate cards and review states">
-</div>
-<span class="project-open" aria-hidden="true">Explore the project →</span>
-</a>
-<div class="project-info">
-<h3>
-<a href="purple-squirrel.html">A better kind of handoff.</a>
-</h3>
-<p>A clearer journey from candidate submission to client review.</p>
-<span class="mono">Product design / Web application</span>
-</div>
-</article>
-</div>
+<section aria-label="Selected projects">
+<article class="band field f-lagoon" aria-labelledby="trail-title"><div class="shell band-grid">
+<div><h3 class="field-title" id="trail-title">TrailGoat</h3><p>A planning tool for trail and ultra runners: the course, the pace, and what to eat along the way. I designed it, built it and made the film.</p><a class="text-link" href="trailgoat.html">Read the TrailGoat story →</a></div>
+<a class="paste" href="trailgoat.html" aria-label="Open the TrailGoat project"><img data-project-image="trailgoat" src="assets/work/trailgoat-current.jpg" width="1440" height="980" decoding="async" alt="TrailGoat’s trail-running website, with course planning and fueling tools"><span class="sticker">live at<br>trailgoat.run</span></a>
+</div></article>
+<article class="band field f-uv flip" aria-labelledby="squirrel-title"><div class="shell band-grid">
+<div><h3 class="field-title" id="squirrel-title">Purple Squirrel</h3><p>A staffing application for the handoff from a recruiter’s submission to a client’s review.</p><a class="text-link" href="purple-squirrel.html">Read the Purple Squirrel story →</a></div>
+<a class="paste" href="purple-squirrel.html" aria-label="Open the Purple Squirrel project"><img data-project-image="squirrel" src="assets/work/purple-squirrel.jpg" width="1440" height="980" loading="lazy" decoding="async" alt="Purple Squirrel’s staffing platform, showing sample candidate cards and review states"></a>
+</div></article>
 </section>
-<section class="shell motion-section">
-<div class="section-heading">
-<div>
-<p class="eyebrow">Motion / TrailGoat</p>
-<h2>From a thousand pieces,<br>a little personality.</h2>
-</div>
-<a class="text-link" href="trailgoat.html">The TrailGoat story →</a>
-</div>
-<div class="film-frame">
-<video class="project-film" controls playsinline preload="none" poster="assets/motion/trailgoat-brand-poster.jpg" aria-label="TrailGoat brand film: blocks assemble into a goat, flip, and resolve into the wordmark">
-<source src="assets/motion/trailgoat-brand-film.mp4" type="video/mp4">
-<a href="assets/motion/trailgoat-brand-film.mp4">Watch the TrailGoat brand film</a>
-</video>
-</div>
-<div class="film-caption mono">
-<span>TrailGoat / Identity in motion</span>
-<span>00:20 · 3D brand film</span>
-</div>
-</section>
-<section class="process shell" id="working-together">
-<div class="section-heading">
-<div>
-<p class="eyebrow">Working together</p>
-<h2>A clear path.<br>Room to explore.</h2>
-</div>
-<p>One partner, from the first question<br>to the finishing touches.</p>
-</div>
+<section class="film room" aria-labelledby="film-title"><div class="shell">
+<div class="film-head"><h2 id="film-title">From a thousand pieces, a little personality.</h2><a class="text-link" href="trailgoat.html">The TrailGoat story →</a></div>
+<div class="film-frame"><video class="project-film" controls playsinline preload="none" poster="assets/motion/trailgoat-brand-poster.jpg" aria-label="TrailGoat brand film: blocks assemble into a goat, flip, and resolve into the wordmark"><source src="assets/motion/trailgoat-brand-film.mp4" type="video/mp4"><a href="assets/motion/trailgoat-brand-film.mp4">Watch the TrailGoat brand film</a></video></div>
+<div class="film-foot note"><span>TrailGoat, identity in motion</span><span>20 seconds · 3D brand film</span></div>
+</div></section>
+<section class="block shell" id="working-together" aria-labelledby="process-title">
+<div class="block-head"><h2 id="process-title">How a project goes.</h2><p>One person, from the first question to the finishing touches.</p></div>
 <ol class="process-grid">
-<li>
-<span class="mono">01 / Define</span>
-<h3>Find the important part.</h3>
-<p>Your audience, your ambition, and the problem to solve. We agree on the scope, deliverables, timeline, and budget.</p>
-</li>
-<li>
-<span class="mono">02 / Create</span>
-<h3>Make the idea real.</h3>
-<p>Explore a visual direction, then review a working experience or motion study. You see the work take shape.</p>
-</li>
-<li>
-<span class="mono">03 / Refine</span>
-<h3>Carry it through.</h3>
-<p>Refine the details, test the experience, and prepare the launch. Finish with a clear handoff and the support your project needs.</p>
-</li>
+<li><b>Define</b><h3>Find the important part.</h3><p>Your audience, your ambition, and the problem to solve. We agree on the scope, deliverables, timeline, and budget.</p></li>
+<li><b>Create</b><h3>Make the idea real.</h3><p>I explore a visual direction, then you review a working experience or motion study. You see the work take shape.</p></li>
+<li><b>Refine</b><h3>Carry it through.</h3><p>I refine the details, test the experience, and prepare the launch. You finish with a clear handoff and the support your project needs.</p></li>
 </ol>
 </section>
-<section class="faq shell">
+<section class="faq shell" aria-labelledby="faq-title">
+<div><h2 id="faq-title">Questions people ask first.</h2></div>
 <div>
-<p class="eyebrow">Before we begin</p>
-<h2>A few good<br>questions.</h2>
-</div>
-<div>
-<details>
-<summary>Can we start with just a website or a film?<span>+</span>
-</summary>
-<p>Yes. Websites, applications, and motion projects can stand alone or work together. We’ll shape the scope around what you need.</p>
-</details>
-<details>
-<summary>Can you improve something we already have?<span>+</span>
-</summary>
-<p>Yes. We’ll look at what works, what gets in the way, and whether a focused update or a full redesign makes sense.</p>
-</details>
-<details>
-<summary>How do you price a project?<span>+</span>
-</summary>
-<p>Every project begins with a defined scope and an upfront quote. The proposal sets out deliverables, review stages, timing, and any hosting or third-party costs.</p>
-</details>
-<details>
-<summary>What does the handoff include?<span>+</span>
-</summary>
-<p>Your proposal specifies the source files, final media formats, ownership, and support included. Any third-party licenses are identified before work begins.</p>
-</details>
-<details>
-<summary>Do you work outside Atlanta?<span>+</span>
-</summary>
-<p>Yes. Atlanta is home, and we collaborate remotely with businesses and creative teams across the United States.</p>
-</details>
+<details><summary>Can we start with just a website or a film?<span>+</span></summary><p>Yes. Websites, applications, and motion projects can stand alone or work together. I’ll shape the scope around what you need.</p></details>
+<details><summary>Can you improve something we already have?<span>+</span></summary><p>Yes. I’ll look at what works, what gets in the way, and whether a focused update or a full redesign makes sense.</p></details>
+<details><summary>How do you price a project?<span>+</span></summary><p>Every project begins with a defined scope and an upfront quote. The proposal sets out deliverables, review stages, timing, and any hosting or third-party costs.</p></details>
+<details><summary>What does the handoff include?<span>+</span></summary><p>Your proposal specifies the source files, final media formats, ownership, and support included. Any third-party licenses are identified before work begins.</p></details>
+<details><summary>Do you work outside Atlanta?<span>+</span></summary><p>Yes. Atlanta is home, and I work remotely with businesses and creative teams across the United States.</p></details>
 </div>
 </section>
 <section class="contact shell" id="contact" aria-labelledby="contact-title">
-<p class="eyebrow">A new idea. A better next version.</p>
-<div class="contact-heading">
-<h2 id="contact-title">Let’s make<br>an impression.</h2>
-<a class="contact-arrow" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project" aria-label="Email Kris to start a project">↗</a>
-</div>
+<p class="hand">say hi</p>
+<h2 id="contact-title" data-light-words>Let’s make<br>an impression.</h2>
 <div class="contact-bottom">
-<p>Tell us what you’re imagining.<br>We’ll find the right way to bring it to life.</p>
-<a class="email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a>
+<p>Tell me what you’re imagining. I’ll find the right way to build it.</p>
+<a class="email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project" aria-label="Email Kris to start a project: kris@caprastudios.ai">kris@caprastudios.ai ↗</a>
 </div>
 </section>
 </main>
-<footer class="site-footer shell">
+<footer class="site-footer room">
+<div class="shell">
 <div class="footer-grid">
-<div class="footer-brand">
-<a class="brand" href="./">
-<img src="assets/brand/mark.svg" width="26" height="35" alt="">capra <span>studios</span>
-</a>
-<p>Atlanta roots.<br>Wide-open possibilities.</p>
+<div class="footer-brand"><a class="brand" href="./"><img src="assets/brand/mark.svg" width="26" height="35" alt="">capra studios</a><p>Made in Atlanta by Kris Brown.</p></div>
+<nav class="footer-nav" aria-label="Footer"><b>Explore</b><a href="work.html">Work</a><a href="motion.html">Motion</a><a href="ai-consulting.html">AI consulting</a><a href="index.html#services">Services</a><a href="index.html#studio">Kris</a></nav>
+<div class="footer-contact"><b>Start a project</b><a class="footer-email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a><a class="footer-top-link" href="#main">Back to top ↑</a></div>
 </div>
-<nav class="footer-nav" aria-label="Footer">
-<p class="eyebrow">Explore</p>
-<a href="work.html">Work</a>
-<a href="motion.html">Motion</a>
-<a href="ai-consulting.html">AI consulting</a>
-<a href="index.html#services">Expertise</a>
-<a href="index.html#studio">Studio</a>
-</nav>
-<div class="footer-contact">
-<p class="eyebrow">Start a project</p>
-<a class="footer-email" href="mailto:kris@caprastudios.ai?subject=Capra%20Studios%20project">kris@caprastudios.ai ↗</a>
-<a class="footer-top-link" href="#main">Back to top ↑</a>
-</div>
-</div>
-<div class="footer-bottom mono">
-<span>© <span id="year">2026</span> CAPRA, LLC</span>
-<span>Design / Web / Motion / AI</span>
+<div class="footer-bottom">
+<span>© <span id="year">2026</span> Capra, LLC</span>
 <span class="footer-meta"><a href="privacy.html">Privacy</a><button class="motion-toggle" type="button" aria-pressed="true" hidden>Motion effects <span aria-hidden="true">on</span></button></span>
+</div>
 </div>
 </footer>
 <button class="agent-launch" id="agent-launch" aria-haspopup="dialog" aria-controls="capra-agent" hidden><i aria-hidden="true"></i>Ask Capra</button>

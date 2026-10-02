@@ -1,5 +1,5 @@
 /* One navigation bar: it steps aside on the way down, returns on the way up, and marks where you are.
-   It also owns the site's motion preference, set by the footer toggle or by reduced motion. */
+   It also owns two site preferences: motion (the footer toggle, or reduced motion) and light (the lamp). */
 (()=>{'use strict';
  const root=document.documentElement,header=document.querySelector('.site-header'),nav=document.querySelector('#navigation');
  if(!header||!nav)return;
@@ -14,6 +14,12 @@
  toggles.forEach(b=>b.addEventListener('click',()=>{chosenOff=!chosenOff;try{localStorage.setItem('capra-motion',chosenOff?'off':'on');}catch{}applyMotion();announce();}));
  reduced.addEventListener('change',()=>{applyMotion();announce();});
  applyMotion();root.classList.add('nav-enhanced');
+
+ // The lamp: the same wall in daylight or under black light, remembered per browser. The page head applies it before paint.
+ const lamps=[...document.querySelectorAll('.lamp')],theme=document.querySelector('meta[name="theme-color"]');
+ function light(){const on=root.classList.contains('bl');lamps.forEach(b=>{b.hidden=false;b.setAttribute('aria-pressed',String(on));});theme?.setAttribute('content',on?'#0e0b16':'#f3f1ea');}
+ lamps.forEach(b=>b.addEventListener('click',()=>{const on=root.classList.toggle('bl');try{localStorage.setItem('capra-light',on?'bl':'day');}catch{}light();}));
+ light();
 
  // A single line slides to the hovered or focused link and rests on the current one.
  const pill=document.createElement('span'),links=[...nav.querySelectorAll('a:not(.nav-contact)')];
