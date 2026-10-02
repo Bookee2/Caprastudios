@@ -331,9 +331,9 @@ html.bl .diagram{color:var(--f)}
 .art.gpu-stage canvas{opacity:0} .art.gpu-stage.is-live canvas{opacity:1} .art.gpu-stage.is-live .gpu-poster{opacity:0}
 html:not(.motion-off) .art.gpu-stage canvas,html:not(.motion-off) .art .gpu-poster{transition:opacity .6s}
 .art .gpu-note{position:absolute; left:12px; right:12px; bottom:12px; margin:0; padding:8px 12px; background:#0b0a12e6; border:2px solid #ece9ff2e; font-size:13px; color:#c9c3e6}
-.gallery-bar{display:flex; align-items:center; gap:12px 20px; flex-wrap:wrap; padding-block:18px 14px; border-top:2px solid var(--ink)}
-.gallery-bar b{font-weight:700}
-.gallery-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-right:auto}
-.gallery-bar+.hero-controls{border-top:0; padding-top:0}
+.gallery-arrow{position:absolute; top:50%; z-index:3; width:52px; height:52px; min-height:52px; padding:0; margin-top:-26px; border-radius:50%; background:var(--paper); color:var(--ink); border:2px solid var(--ink); font-size:22px; line-height:1}
+.gallery-arrow.prev{left:-26px} .gallery-arrow.next{right:-26px}
+.gallery-arrow:hover,.gallery-arrow:focus-visible{background:var(--lime); color:#15141c; border-color:#15141c}
+@media(max-width:800px){.gallery-arrow{width:46px; height:46px; min-height:46px; margin-top:-23px} .gallery-arrow.prev{left:-12px} .gallery-arrow.next{right:-12px}}
 .hero-controls.is-away{display:none}
 .film-head .kicker{color:var(--hand); margin:0 0 10px; max-width:none}

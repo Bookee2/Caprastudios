@@ -128,7 +128,7 @@ KB's direction after the remake went live at caprastudios.co:
 - **Three sections: Software, Web, AI.** The navigation, footer, homepage sections and services list use those names. `work.html` is the Software page, `motion.html` is the Web page (websites, motion and video graphics), `ai-consulting.html` is the AI page. File names are unchanged so existing links keep working.
 - **Team voice.** Copy says "we": a small but mighty team of specialists in Atlanta, led by Kris Brown. "Capra is one person" is retired. No team size or names are claimed.
 - **Six Sigma.** One short note on the AI page (rollouts follow DMAIC where it fits; the work is led by a Six Sigma Green Belt) and a clause in the homepage AI row.
-- **Hero gallery.** The hero frame holds five featured pieces chosen by tabs: the glow pond (unchanged `pond.js`), KB's Koi Pond (framed live from `bookee2.github.io/koi-pond/?embed=1`, loaded only when chosen), liquid metal, ink, and the shards film. Nothing auto-rotates. `assets/gallery.js`.
+- **Hero gallery.** The hero frame holds five featured pieces stepped through with arrows on either side: the glow pond (unchanged `pond.js`), KB's Koi Pond (framed live from `bookee2.github.io/koi-pond/?embed=1`, loaded only when chosen), liquid metal, ink, and the shards film. Nothing auto-rotates. `assets/gallery.js`.
 - **Recoloured GPU pieces.** Liquid metal, letters that grow, ink and the three printers now use the paint set (lagoon, koi orange, lime, magenta, chalk and ink) in place of the cyan-violet-pink scheme. Their stills were recaptured. The Blender unicorn pieces keep the logo's ribbon blue.
 
 The Koi Pond slide needs `Bookee2/koi-pond#1` (the `?embed` option) deployed; until then its control panel covers the frame.
