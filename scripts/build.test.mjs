@@ -4,6 +4,15 @@ import { mkdtemp, readFile, rm, access, mkdir, writeFile } from 'node:fs/promise
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { build, normalizeURL, defaultURL, publicPages } from './build.mjs';
+import { checkSEO } from './seo.mjs';
+
+test('SEO standard rejects a page missing its basics', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'capra-seo-'));
+  try {
+    await writeFile(path.join(dir, 'bare.html'), '<!doctype html><html lang="en"><head><title>Hi</title></head><body><h1>Hi</h1><img src="x.png"></body></html>');
+    await assert.rejects(checkSEO(dir, 'https://example.com/', ['bare.html']), error => ['title should be', 'description should be', 'canonical should be', 'missing og:image', 'twitter:card', 'apple-touch-icon', 'image without alt', 'missing structured data'].every(part => error.message.includes(part)));
+  } finally { await rm(dir, { recursive: true, force: true }); }
+});
 
 test('rejects unsafe deployment origins', () => {
   for (const bad of ['http://example.com', 'https://user:pass@example.com', 'https://example.com/?x=1', 'https://example.com/#foo']) {

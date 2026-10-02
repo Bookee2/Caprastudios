@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # full history, so the sitemap can give each page its real last-modified date
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
