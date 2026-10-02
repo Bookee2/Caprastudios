@@ -8,14 +8,14 @@ The website's source is delivered through a pull request. Merging to `main` trig
 
 ## Business details to settle
 
-- **Contact:** `kris@caprastudios.co`. Set up its mailbox or forwarding before relying on it.
+- **Contact:** `info@caprastudios.co`. Set up its mailbox or forwarding before relying on it.
 - **Location:** Atlanta, GA, with remote US clients, inferred from Capra HR. No street address is published.
 - **Offer:** Clear scope and upfront project quotes. No unapproved dollar pricing or delivery guarantees are published. Add a starting price only after deciding what the entry offer includes.
 - **Portfolio:** The projects are described as the founder's ventures, not as unrelated paying clients.
 
 ## The domain: caprastudios.co
 
-Bought by KB at Porkbun on October 2, 2026. The site's canonical address is `https://caprastudios.co/` (`site.config.json`), and the contact address is `kris@caprastudios.co`.
+Bought by KB at Porkbun on October 2, 2026. The site's canonical address is `https://caprastudios.co/` (`site.config.json`), and the contact address is `info@caprastudios.co`.
 
 1. In this repository's **Settings → Pages**, the custom domain is **caprastudios.co**.
 2. At Porkbun, under **DNS** for caprastudios.co, delete the default parking records (the `A` records for `@` pointing at Porkbun's servers and the `www` / `*` `CNAME` to `pixie.porkbun.com`), then add:
@@ -30,7 +30,7 @@ Bought by KB at Porkbun on October 2, 2026. The site's canonical address is `htt
 
 3. Optional but recommended: verify the domain under your GitHub account's **Settings → Pages → Verified domains** with the TXT record GitHub provides, so no one else can claim it on GitHub.
 4. When GitHub's DNS check passes and the certificate is issued (minutes to a day), enable **Enforce HTTPS**.
-5. Email: the address `kris@caprastudios.co` does not receive mail until a mailbox or forwarding is set up. Porkbun's free email forwarding (or a mail host such as Google Workspace or Fastmail) adds the `MX` records it needs.
+5. Email: the address `info@caprastudios.co` does not receive mail until a mailbox or forwarding is set up. Porkbun's free email forwarding (or a mail host such as Google Workspace or Fastmail) adds the `MX` records it needs.
 
 GitHub Actions publishing uses the Pages custom-domain setting; a `CNAME` file is not required for this workflow. See GitHub's [custom-domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
