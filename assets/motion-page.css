@@ -157,6 +157,15 @@ html:not(.motion-off) .words .w{transition:color .25s}
 .spring-actions{display:flex; gap:8px} .spring-actions button{min-height:38px; font-size:13px}
 
 /* rules */
+/* Marketing HQ: three posters on the wall, then the pitch */
+.hq-show{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.2fr); gap:clamp(14px,2vw,28px); align-items:center}
+.hq-poster{display:block; transform:rotate(var(--r)); transition:transform .3s ease}
+.hq-poster img{display:block; width:100%; height:auto; border:2px solid var(--ink); box-shadow:8px 12px 0 rgba(21,20,28,.12)}
+.hq-poster:hover,.hq-poster:focus-visible{transform:rotate(0) translateY(-6px)}
+.motion-off .hq-poster{transition:none}
+.hq-copy .hand{margin:0 0 10px}
+.hq-copy p{margin:0 0 16px}
+.hq-copy .text-link{display:inline-block; margin-top:6px}
 .promises{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:0; border:2px solid var(--ink)}
 .promises li{grid-column:span 2; padding:22px 22px 24px; border-right:2px solid var(--ink); border-bottom:2px solid var(--ink)}
 .promises li:nth-child(n+4){grid-column:span 3; border-bottom:0} .promises li:nth-child(3),.promises li:nth-child(5){border-right:0}
@@ -168,6 +177,7 @@ html.bl .promises li{background:none; color:inherit} html.bl .promises li:nth-ch
 @media(max-width:900px){.gpu-piece,.gpu-piece:nth-child(even){grid-template-columns:1fr} .gpu-piece:nth-child(even) .gpu-stage{order:0}}
 @media(max-width:800px){
   .mo-opener,.mo-head,.mo-films{grid-template-columns:1fr}
+  .hq-show{grid-template-columns:repeat(3,minmax(0,1fr))} .hq-copy{grid-column:1/-1}
   .tt-stage{max-height:none; width:min(100%,460px)} .tt-dial,.mo-turntable .mo-caption{width:min(100%,460px); margin-inline:auto}
   .mo-film-side{width:min(100%,460px)}
   .tiles{grid-template-columns:1fr} .tile-wide{grid-column:auto}
