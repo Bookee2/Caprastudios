@@ -143,6 +143,8 @@ html.bl .band .paste img{border-color:var(--glow,var(--f))}
 .film-play{position:absolute; left:50%; top:50%; translate:-50% -50%; display:flex; align-items:center; gap:10px; min-height:54px; padding:0 22px; background:var(--lime); color:#15141c; border-color:var(--lime); font-weight:700; font-size:15px; white-space:nowrap}
 .film-play:hover{background:#d2ff7a}
 .film-play span{font-size:20px; line-height:1}
+.film-second{margin-top:clamp(28px,4vw,48px)}
+.film-note{margin:0 0 14px; max-width:44em; color:var(--muted)} .film-note b{color:var(--ink)}
 .film-chapters{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px}
 .film-chapters button{padding:0; text-align:left; border-color:var(--line); overflow:hidden}
 .film-chapters img{width:100%; height:auto; aspect-ratio:16/7; object-fit:cover; opacity:.7}
