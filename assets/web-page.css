@@ -1,0 +1,71 @@
+/* The Web page: the two-lights hero, what a site comes with, the demo wall, the process and three motion picks.
+   Section frames (.mo-section, .mo-head) and the dark stages come from motion-page.css. */
+
+/* The hero: the homepage in daylight with the black-light version showing through a lamp, or swept in by the slider. */
+.lens-hero{position:relative; margin:0; min-width:0}
+.lens-hero .hand{position:absolute; right:-4px; top:-30px; --r:5deg; z-index:2}
+.lens-hero-stage{--clip:circle(0px at 50% 50%); position:relative; aspect-ratio:16/10; border:2px solid var(--ink); background:#0e0b16; overflow:hidden; isolation:isolate; cursor:crosshair; box-shadow:10px 14px 0 rgba(21,20,28,.12)}
+html.bl .lens-hero-stage{border-color:#b58cff; box-shadow:0 0 60px #7a2df555}
+.lens-hero-stage img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; display:block}
+.lh-night{z-index:1; clip-path:var(--clip)}
+/* Under the site's own black light the roles swap: the page is dark and the lamp shows daylight. */
+html.bl .lh-night{clip-path:none; z-index:0}
+html.bl .lh-day{clip-path:var(--clip); z-index:1}
+.lh-dial{display:block; margin:14px 0 0}
+.lh-dial input{-webkit-appearance:none; appearance:none; width:100%; height:28px; background:transparent; cursor:pointer; margin:0}
+.lh-dial input::-webkit-slider-runnable-track{height:2px; background:var(--ink)}
+.lh-dial input::-moz-range-track{height:2px; background:var(--ink)}
+.lh-dial input::-webkit-slider-thumb{-webkit-appearance:none; width:22px; height:22px; margin-top:-10px; border-radius:50%; background:var(--hand); border:2px solid var(--ink)}
+.lh-dial input::-moz-range-thumb{width:18px; height:18px; border-radius:50%; background:var(--hand); border:2px solid var(--ink)}
+.lh-dial input:focus-visible{outline:3px solid var(--uv); outline-offset:6px}
+.lens-hero.is-lit .hand{opacity:0} html:not(.motion-off) .lens-hero .hand{transition:opacity .4s}
+
+/* What a site comes with: eight numbered rows that light their edge under the pointer. */
+.comes-with{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; border:2px solid var(--ink)}
+.comes-with li{position:relative; padding:22px 22px 26px; border-right:2px solid var(--ink); border-bottom:2px solid var(--ink); background:var(--paper)}
+.comes-with li:nth-child(4n){border-right:0} .comes-with li:nth-child(n+5){border-bottom:0}
+.comes-with b{display:block; font:800 14px/1 var(--display); color:var(--c,var(--hand)); margin-bottom:34px}
+.comes-with h3{font-size:clamp(20px,1.7vw,24px); margin:0 0 10px; letter-spacing:-.03em}
+.comes-with p{margin:0; color:var(--muted); font-size:15px}
+.comes-with p a{color:var(--ink)}
+.comes-with .spot::after{background:radial-gradient(260px circle at var(--mx,50%) var(--my,0),var(--c,var(--lime)),transparent 70%)}
+
+/* The demo wall: three shots of pages we built, pinned at slight angles. */
+.demo-wall{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,2.6vw,36px); align-items:start}
+.demo-shot{display:block; color:inherit; text-decoration:none; rotate:var(--r,0deg); transition:rotate .3s var(--ease),translate .3s var(--ease)}
+.demo-shot img{display:block; width:100%; height:auto; border:2px solid var(--ink); box-shadow:8px 12px 0 rgba(21,20,28,.12); background:#0e0b16}
+.demo-shot span{display:block; margin-top:12px; font-weight:700; font-size:15px}
+.demo-shot span::after{content:' →'}
+.demo-shot:hover,.demo-shot:focus-visible{rotate:0deg; translate:0 -6px}
+html.motion-off .demo-shot{transition:none}
+
+/* Five steps instead of three. */
+.web-process{grid-template-columns:repeat(5,minmax(0,1fr))}
+
+/* Three motion picks, each on a dark stage. */
+.motion-picks{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px}
+.pick h3{font-size:clamp(20px,1.7vw,24px); margin:16px 0 6px} .pick>p{margin:0; color:var(--muted); font-size:15px}
+.words-stage{display:grid; place-items:center; padding:22px}
+.words-line{margin:0; font:900 clamp(24px,2vw,30px)/1.15 var(--display); letter-spacing:-.03em; max-width:12em; text-align:center}
+.film-stage{padding:0} .pick-film{width:100%; height:100%; object-fit:cover; display:block; background:#0e0b16}
+.lab-link{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px 32px; align-items:center; margin-top:clamp(26px,3vw,40px); padding-top:22px; border-top:2px solid var(--ink)}
+.lab-link p{margin:0; max-width:40em; color:var(--muted)}
+
+/* The lab's opener has no artwork beside it; the headline takes the width. */
+.mo-opener.solo{grid-template-columns:1fr} .mo-opener.solo .lead{max-width:38em}
+.mo-opener .kicker a{text-decoration:none; color:inherit} .mo-opener .kicker a:hover{box-shadow:inset 0 -.4em var(--lime)}
+
+@media(max-width:980px){
+  .comes-with{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .comes-with li:nth-child(4n){border-right:2px solid var(--ink)} .comes-with li:nth-child(2n){border-right:0}
+  .comes-with li:nth-child(n+5){border-bottom:2px solid var(--ink)} .comes-with li:nth-child(n+7){border-bottom:0}
+  .web-process{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .motion-picks{grid-template-columns:1fr 1fr} .motion-picks .pick:last-child{grid-column:1/-1}
+}
+@media(max-width:640px){
+  .comes-with{grid-template-columns:1fr} .comes-with li{border-right:0!important; border-bottom:2px solid var(--ink)!important} .comes-with li:last-child{border-bottom:0!important}
+  .comes-with b{margin-bottom:16px}
+  .demo-wall,.web-process,.motion-picks,.lab-link{grid-template-columns:1fr}
+  .demo-shot{rotate:0deg}
+  .lens-hero .hand{top:-26px; right:6px}
+}
