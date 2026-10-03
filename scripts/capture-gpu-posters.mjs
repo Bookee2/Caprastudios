@@ -14,7 +14,7 @@ const pieces = [['metal', 240], ['grow', 900], ['ink', 700], ['print', 90]];
 
 const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--enable-unsafe-webgpu', '--use-angle=metal'] });
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1.5 });
-await page.goto(new URL('motion.html', site).href);
+await page.goto(new URL('motion-lab.html', site).href);
 for (const [id, frames] of pieces) {
   await page.locator(`[data-gpu="${id}"]`).scrollIntoViewIfNeeded();
   await page.waitForFunction(name => window.CapraGPU?.state(name) === 'ready', id, { timeout: 20000 });

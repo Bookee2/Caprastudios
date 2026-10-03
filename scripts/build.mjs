@@ -6,7 +6,7 @@ import { checkSEO } from './seo.mjs';
 import { copyMarketing, packageMarketing } from './marketing.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-export const publicPages = ['index.html', 'work.html', 'ai-consulting.html', 'motion.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
+export const publicPages = ['index.html', 'work.html', 'ai-consulting.html', 'motion.html', 'motion-lab.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
 export const defaultURL = 'https://bookee2.github.io/Caprastudios/';
 export function normalizeURL(value) {
   const url = new URL(value);
