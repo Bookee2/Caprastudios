@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capra SEO Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800;900&family=Red+Hat+Text:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f1ea;--ink:#15141c;--muted:#5d5a6b;--line:#15141c26;--lime:#b6ff3b;--koi:#ff5c1a;--lagoon:#1ad7ce;--uv:#7a2df5;--panel:#e9e6dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a}}
+:root[data-theme="dark"]{--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Red Hat Text",system-ui,sans-serif}
+main{max-width:960px;margin:auto;padding:56px 16px 80px}
+h1,h2{font-family:"Red Hat Display",sans-serif;letter-spacing:-.04em;line-height:1.02}
+h1{font-size:clamp(40px,7vw,72px);margin:8px 0 18px}
+h1 span{background:linear-gradient(transparent 60%,var(--lime) 60% 94%,transparent 94%);color:#15141c;padding:0 4px}
+h2{font-size:clamp(28px,4vw,40px);margin:56px 0 16px;border-top:2px solid var(--ink);padding-top:20px}
+.kicker{font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--muted)}
+.lead{font-size:21px;max-width:44em}
+.verdict{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:2px solid var(--ink);margin:28px 0}
+.verdict div{padding:18px;border-right:2px solid var(--ink)}
+.verdict div:last-child{border-right:0}
+.verdict b{display:block;font:900 34px/1 "Red Hat Display";margin-bottom:6px}
+.verdict div:nth-child(1){background:var(--lime);color:#15141c}
+.verdict div:nth-child(3){background:var(--koi);color:#15141c}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ok{color:#0a8f5a;font-weight:700}.no{color:#d23a1a;font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ok{color:var(--lime)} :root:not([data-theme="light"]) .no{color:var(--koi)}}
+ol.todo{padding-left:22px}ol.todo li{margin-bottom:14px}
+.card{background:var(--panel);padding:20px 22px;margin:18px 0;border-left:6px solid var(--uv)}
+code{font-size:.9em;background:var(--panel);padding:1px 5px}
+a{color:inherit;text-underline-offset:4px}
+@media(max-width:640px){.verdict{grid-template-columns:1fr}.verdict div{border-right:0;border-bottom:2px solid var(--ink)}.verdict div:last-child{border-bottom:0}}
+</style>
+</head>
+<body>
+<main>
+<p class="kicker">Capra Studios · SEO audit · 2 October 2026</p>
+<h1>Found, and <span>shared well.</span></h1>
+<p class="lead">caprastudios.co already had good foundations. The biggest gap was link previews: no page had a share image, so links on LinkedIn or in iMessage showed as plain text. That's fixed now, and the build blocks any page that misses the basics, for this site and every site we build.</p>
+
+<div class="verdict">
+<div><b>Fixed</b>Share images, titles, structured data, sitemap dates, touch icon, build gate</div>
+<div><b>Healthy</b>HTTPS, redirects, canonicals, robots, 404, alt text, one H1 per page</div>
+<div><b>Yours</b>Search Console, Bing, Google Business Profile, merge #18 then #19</div>
+</div>
+
+<h2>What the audit found</h2>
+<div class="table-wrap"><table>
+<tr><th>Item</th><th>Before</th><th>Now (PR #19)</th></tr>
+<tr><td>Share image (og:image)</td><td class="no">None on any page</td><td class="ok">A 1200×627 image per page, taken from the marketing suite</td></tr>
+<tr><td>Twitter / X card</td><td class="no">Small summary</td><td class="ok">Large image card</td></tr>
+<tr><td>Page titles</td><td class="no">"Web — Capra Studios", "AI — Capra Studios"</td><td class="ok">"Web Design, Motion Graphics &amp; 3D — Capra Studios", etc.</td></tr>
+<tr><td>Structured data</td><td>Homepage only</td><td class="ok">Homepage adds logo, Atlanta address, SEO and Marketing HQ services, and a WebSite entry; every other page gets breadcrumbs plus Service or CreativeWork</td></tr>
+<tr><td>Sitemap</td><td>Pages only, no dates</td><td class="ok">Adds the Marketing Room and real last-modified dates</td></tr>
+<tr><td>Apple touch icon</td><td class="no">Missing</td><td class="ok">180×180 unicorn</td></tr>
+<tr><td>Marketing Room</td><td class="no">Hidden from search</td><td class="ok">Indexed, with share tags (PR #18)</td></tr>
+<tr><td>HTTPS and redirects</td><td class="ok">http→https, www→apex, real 404</td><td class="ok">Unchanged</td></tr>
+<tr><td>Canonicals, robots.txt, descriptions, alt text, H1s</td><td class="ok">All present</td><td class="ok">Now checked on every build</td></tr>
+</table></div>
+
+<h2>Standard on every site we build</h2>
+<p>Two pieces make this standard rather than a one-off:</p>
+<div class="card"><b>The build gate</b> (<code>scripts/seo.mjs</code>). The site won't build, and nothing publishes, if any page misses any of these:
+<ul>
+<li>a title and description of the right length, not repeated on another page</li>
+<li>a canonical link</li>
+<li>share tags with an image file that actually exists</li>
+<li>a favicon and touch icon</li>
+<li>exactly one H1</li>
+<li>alt text on every image</li>
+<li>valid structured data</li>
+</ul>
+A test proves it rejects a bare page.</div>
+<div class="card"><b>The written standard</b> (<code>docs/SEO-STANDARD.md</code>). It covers what's automated, which structured data to include for each kind of page, and the seven launch steps done by hand for each client. It also has the line we tell clients: we make the site fully ready for search, but rankings depend on content, competition and time, so we don't promise positions.</div>
+<p>On the site itself, the homepage's Web line, the Web page and the chat assistant now say every site launches ready for search. The homepage structured data also lists SEO as a service.</p>
+
+<h2>Your to-do list</h2>
+<ol class="todo">
+<li><b>Merge #18, then #19.</b> #19 builds on #18. Say the word and I'll merge both and check the live site.</li>
+<li><b>Google Search Console.</b> Add a "Domain" property for <code>caprastudios.co</code> at search.google.com/search-console. Google gives you a TXT record; add it at Porkbun under DNS. Once it's verified, submit <code>sitemap.xml</code>. I can check the TXT record once it's in.</li>
+<li><b>Bing Webmaster Tools.</b> Sign in and import from Search Console. One click once Google is done.</li>
+<li><b>Google Business Profile.</b> Set it up as a service-area business in Atlanta, with no street address shown. Use the same name, city, website and info@ email as the site. This matters most for searches like "web design Atlanta".</li>
+<li><b>Social profiles.</b> When Capra has LinkedIn, Instagram or other profiles, send me the links. I'll add them to the structured data so Google connects them to the studio.</li>
+</ol>
+
+<h2>Not done yet, worth considering</h2>
+<ul>
+<li><b>Page speed.</b> The homepage hero runs live GPU pieces. I didn't run PageSpeed Insights in this pass; it's the next check once #19 is live.</li>
+<li><b>Content.</b> The site has seven pages. Ranking for service searches mostly comes from useful pages: a write-up per project, or short guides like "what a RAG chatbot costs". That's ongoing work, not setup.</li>
+<li><b>Contact details in the Marketing Room.</b> Now that it's indexed, your phone number and kris@ address in its "Start here" guide are searchable too. I can switch that guide to info@ if you'd like.</li>
+</ul>
+</main>
+</body>
+</html>

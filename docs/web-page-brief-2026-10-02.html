@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web Page Rebalance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800;900&family=Red+Hat+Text:wght@400;600;700&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f1ea;--ink:#15141c;--muted:#5d5a6b;--line:#15141c26;--lime:#b6ff3b;--koi:#ff5c1a;--lagoon:#1ad7ce;--uv:#7a2df5;--solar:#ffd23f;--panel:#e9e6dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a}}
+:root[data-theme="dark"]{--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Red Hat Text",system-ui,sans-serif}
+main{max-width:980px;margin:auto;padding:56px 16px 80px}
+h1,h2,h3{font-family:"Red Hat Display",sans-serif;letter-spacing:-.04em;line-height:1.02}
+h1{font-size:clamp(40px,7vw,72px);margin:8px 0 18px}
+h1 span{background:linear-gradient(transparent 60%,var(--lime) 60% 94%,transparent 94%);color:#15141c;padding:0 4px}
+h2{font-size:clamp(28px,4vw,40px);margin:56px 0 16px;border-top:2px solid var(--ink);padding-top:20px}
+h3{font-size:22px;margin:28px 0 8px}
+.kicker{font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--muted)}
+.lead{font-size:21px;max-width:44em}
+.hand{font-family:"Sedgwick Ave Display",cursive;color:var(--uv);font-size:26px;transform:rotate(-2deg);display:inline-block}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:600px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--panel);padding:20px 22px;margin:18px 0;border-left:6px solid var(--uv)}
+.card.pick{border-left-color:var(--lime)}
+.card h3{margin-top:0}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}
+.opt{border:2px solid var(--ink);padding:18px}
+.opt.pick{background:var(--lime);color:#15141c}
+.opt b{display:block;font:900 24px/1.05 "Red Hat Display";margin-bottom:8px;letter-spacing:-.03em}
+.opt small{display:block;color:inherit;opacity:.8;margin-top:8px}
+.draft{background:var(--panel);padding:16px 20px;margin:10px 0;border-radius:2px}
+.draft b{display:block;margin-bottom:4px}
+.pro{color:#0a8f5a;font-weight:700}.con{color:#d23a1a;font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pro{color:var(--lime)} :root:not([data-theme="light"]) .con{color:var(--koi)}}
+ol li,ul li{margin-bottom:8px}
+code{font-size:.9em;background:var(--panel);padding:1px 5px}
+</style>
+</head>
+<body>
+<main>
+<p class="kicker">Capra Studios · Web page · 2 October 2026</p>
+<h1>A web page with <span>personality.</span></h1>
+<p class="lead">Right now motion.html is a motion lab wearing a website headline. Six of its eight sections are demos, the headline sells movement, and the first thing a visitor meets is a unicorn on a turntable. Here's a shape where the page sells websites, motion is one ingredient among six, and nothing from the studies is thrown away.</p>
+
+<h2>1. Headline and lead</h2>
+<div class="opts">
+<div class="opt pick"><b>Websites with personality.</b>Says what you asked for, and it's a phrase people actually search for and remember.<small>Recommended</small></div>
+<div class="opt"><b>A website that sounds like you.</b>Puts voice first. Good if the copywriting side is a big part of the offer.</div>
+<div class="opt"><b>Websites people remember.</b>Outcome-led. Slightly generic; many agencies say it.</div>
+<div class="opt"><b>Built by hand, with character.</b>Leads with craft over templates. Strong against Wix/Squarespace comparisons.</div>
+<div class="opt"><b>Your site. Your voice.</b>Short and bold. Loses the word "website" from the headline, which costs a little search value.</div>
+</div>
+<div class="draft"><b>Lead copy (goes under the headline)</b>We design and build websites by hand for businesses in Atlanta and beyond. Clear to read, quick on a phone, found on Google, and with enough character that people remember whose site they were on. Motion and video are part of the kit, used where they earn their place.</div>
+<div class="draft"><b>Buttons</b>Start a project ↓ &nbsp;·&nbsp; See how a site comes together →</div>
+<p>Page title for search: <code>Web Design &amp; Development in Atlanta — Capra Studios</code>. Description: "Hand-built websites with personality: clear, fast, search-ready from launch, with motion and video where it earns its place. A small Atlanta team."</p>
+
+<h2>2. The new shape of the page</h2>
+<div class="table-wrap"><table>
+<tr><th>#</th><th>Section</th><th>What it does</th><th>Where it comes from</th></tr>
+<tr><td>1</td><td><b>Opener</b></td><td>Headline, lead, one hero (options below), a short on-page index.</td><td>Rewritten. Turntable removed.</td></tr>
+<tr><td>2</td><td><b>What every Capra website comes with</b></td><td>Eight tiles: the offer in plain words. This is the section that was missing.</td><td>New. Copy in section 4.</td></tr>
+<tr><td>3</td><td><b>This site is the demo</b></td><td>Two or three framed shots of real pages: this site in both lights, the Marketing Room, TrailGoat. A lamp toggle flips them. Honest proof instead of abstract pieces.</td><td>New. Screenshots captured by script so they stay current.</td></tr>
+<tr><td>4</td><td><b>How a website project goes</b></td><td>Five steps with rough timing, web-specific. Reuses the "route that draws itself" study as the one scroll effect here.</td><td>Adapted from work.html's process, plus the route demo.</td></tr>
+<tr><td>5</td><td><b>Motion, where it earns its place</b></td><td>Three picks, each tied to a use: a hover that lights a card (service lists), a sentence that lights as you read (one statement per page), a 3D brand film (identity). One link: "Explore the motion lab →".</td><td>Trimmed from the current GPU, films and drive sections.</td></tr>
+<tr><td>6</td><td><b>Your website, plus a marketing HQ</b></td><td>As it is now.</td><td>Kept.</td></tr>
+<tr><td>7</td><td><b>Five rules every site is built to</b></td><td>Rewritten from motion rules to website rules.</td><td>Copy in section 4.</td></tr>
+<tr><td>8</td><td><b>Questions people ask first</b></td><td>Six web FAQs: time, cost, WordPress/Shopify, updating it yourself, who writes the words, hosting.</td><td>New. Same pattern as work.html's FAQ.</td></tr>
+<tr><td>9</td><td><b>Contact</b></td><td>As it is now.</td><td>Kept.</td></tr>
+</table></div>
+<div class="card"><h3>Nothing from the studies is lost: a Motion lab page</h3>The four GPU pieces, the shards film, the two films, all eight pointer-and-scroll demos and the five motion rules move to a new page, <code>motion-lab.html</code>, titled "Motion Graphics &amp; 3D — Capra Studios". The Web page links to it, the footer links to it, and the homepage's Web row says "and a motion lab to play in". So the Web page ranks for web design and the lab ranks for motion graphics, instead of one page trying to do both.</div>
+
+<h2>3. What to lead with instead of the turntable</h2>
+<div class="card pick"><h3>A. Two lights, one lens <span class="hand">recommended</span></h3>
+A framed shot of this site's homepage in daylight. Move your pointer over it and the lamp goes out under your hand: the same page, in black light, shows through a soft-edged lens. On a phone it's a drag handle that sweeps the dark across. Caption: "Same site, two moods. This one's ours."
+<ul>
+<li><span class="pro">For:</span> says "personality" without a word of explanation; proves we built the thing we're selling; no GPU, loads instantly; works with touch and keyboard; it's the flashlight study you already approved, promoted to hero.</li>
+<li><span class="con">Against:</span> the screenshots need re-capturing when the homepage changes. We'd script the capture so it's one command.</li>
+</ul></div>
+<div class="card"><h3>B. The word with personality</h3>
+The headline's last word changes voice each time you hover or tap it: hand-lettered, serif, mono, ribbon-blue, lime highlight. Five voices, one word.
+<ul><li><span class="pro">For:</span> cheapest to build; the idea and the copy are the same thing; tiny, so it never competes with the content.</li><li><span class="con">Against:</span> a small moment for a hero; the opener would still need a picture beside it.</li></ul></div>
+<div class="card"><h3>C. A site reel in a browser frame</h3>
+Short screen recordings of real pages (this site, the Marketing Room, TrailGoat) play in a drawn browser frame with a hand-written "this one's ours" label.
+<ul><li><span class="pro">For:</span> reads as a portfolio, which is what a prospect wants to see.</li><li><span class="con">Against:</span> video weight on the opener; needs re-recording when pages change; feels more like an agency showreel than a Capra move.</li></ul></div>
+<div class="card"><h3>D. Stir the ink</h3>
+Promote the ink GPU piece to the hero.
+<ul><li><span class="pro">For:</span> the most tactile piece you have.</li><li><span class="con">Against:</span> it's already on the homepage carousel; and it says "motion" again, which is the thing this page is stepping back from.</li></ul></div>
+<div class="card"><h3>E. The poster wall</h3>
+Still screenshots pinned at slight angles, like the marketing section lower down, with the lamp toggle flipping all of them at once.
+<ul><li><span class="pro">For:</span> zero motion, pure proof, loads instantly. Also the natural motion-off state for option A.</li><li><span class="con">Against:</span> quieter than the rest of the site; no signature moment.</li></ul></div>
+<p>The turntable goes. The shards film (the tile that breaks and rebuilds) stays, in the motion lab.</p>
+
+<h2>4. Copy drafts</h2>
+<h3>What every Capra website comes with</h3>
+<div class="draft"><b>A point of view</b>Design that starts from who you are, not from a theme. Colour, type and voice chosen for your business, with a daylight and a lights-off version if your brand can carry it.</div>
+<div class="draft"><b>Built by hand</b>No page builders, no plugin pile-up. Plain, fast code that loads in a blink on a phone, and is yours to keep.</div>
+<div class="draft"><b>Search-ready from launch</b>Titles, descriptions, share images, structured data and a sitemap, checked before anything goes live. Set up in Google Search Console on launch day.</div>
+<div class="draft"><b>Words that sound like you</b>We write or edit the copy with you, so the site says what you'd say, only tidier.</div>
+<div class="draft"><b>Motion where it earns its place</b>One signature moment per page, from a hover that lights up to a 3D brand film. Everything still works with motion off.</div>
+<div class="draft"><b>A marketing HQ</b>Posts, print, signatures and copy in your brand, ready to download, so the launch doesn't stop at the browser.</div>
+<div class="draft"><b>Grows into software</b>Need a booking flow, a client portal, a product? The same team builds the application behind the site.</div>
+<div class="draft"><b>You own it</b>Source files, domain, hosting and accounts in your name. Leave any time and take everything with you.</div>
+
+<h3>How a website project goes</h3>
+<div class="draft"><b>01 Listen</b> A conversation about the business, who visits, and what they should do next. <b>02 Shape</b> A sitemap, the words, and a direction in both lights. <b>03 Build</b> Hand-coded, and you watch it come together on a live link. <b>04 Launch</b> Search set-up, the marketing HQ, and a handover that leaves you in control. <b>05 Keep it alive</b> A monthly hour from us, or we teach you the parts that change. <i>Most sites: four to eight weeks.</i></div>
+
+<h3>Five rules every site is built to</h3>
+<div class="draft"><b>It has a job.</b> Every page points somewhere: what to read, where to look, what to do next.<br><b>Quick on a phone.</b> If it isn't fast on a mid-range phone on a weak signal, it isn't done.<br><b>Found on Google.</b> Search set-up is part of the build, not an extra.<br><b>Works for everyone.</b> Keyboard, screen reader, motion off: same content, same controls.<br><b>One signature moment.</b> One thing people remember. Everything around it stays quiet.</div>
+
+<h3>Questions people ask first</h3>
+<div class="draft"><b>How long does a website take?</b> Four to eight weeks for most, depending on how many pages and how much is already written.<br><b>What does it cost?</b> Quoted per project after a conversation. We don't publish invented prices.<br><b>Do you build on WordPress, Squarespace or Shopify?</b> By hand, by default. If you need a shop or a team updating content daily, we choose the simplest tool that fits and set it up properly.<br><b>Can we update it ourselves?</b> Yes. Either a simple editor for the parts that change, or a monthly hour where we do it for you.<br><b>Who writes the words?</b> You know the business; we know what reads well on a screen. Usually both of us.<br><b>Where does it live?</b> Fast static hosting is often free. We set it up in your accounts, not ours.</div>
+
+<h2>5. What I need from you</h2>
+<ol>
+<li>Pick a headline (I'd go with "Websites with personality.").</li>
+<li>Pick a hero (I'd go with A, the lens between the two lights).</li>
+<li>Say yes or no to the motion lab page. If no, the motion section on the Web page gets a little longer and the GPU pieces stay there.</li>
+</ol>
+<p>With those three answers I can build it in one pass: the rebalanced Web page, the motion lab, updated nav links, share image, and the structured data and search titles for both pages.</p>
+</main>
+</body>
+</html>
