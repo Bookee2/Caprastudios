@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GitHub Trending Picks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800;900&family=Red+Hat+Text:wght@400;600;700&family=Red+Hat+Mono:wght@400;500&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f1ea;--ink:#15141c;--muted:#5d5a6b;--line:#15141c26;--lime:#b6ff3b;--koi:#ff5c1a;--uv:#7a2df5;--panel:#e9e6dc;--code:#e2dfd3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a;--code:#1f1936}}
+:root[data-theme="dark"]{--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a;--code:#1f1936}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Red Hat Text",system-ui,sans-serif}
+main{max-width:960px;margin:auto;padding:56px 16px 80px}
+h1,h2,h3{font-family:"Red Hat Display",sans-serif;letter-spacing:-.03em;line-height:1.04}
+h1{font-size:clamp(38px,7vw,68px);margin:8px 0 18px}
+h1 span{background:linear-gradient(transparent 60%,var(--lime) 60% 94%,transparent 94%);padding:0 4px}
+h2{font-size:clamp(26px,4vw,38px);margin:52px 0 14px;border-top:2px solid var(--ink);padding-top:18px}
+h3{font-size:23px;margin:0 0 4px}
+.date{font-size:14px;color:var(--muted)}
+.lead{font-size:20px;max-width:44em}
+.hand{font-family:"Sedgwick Ave Display",cursive;color:var(--uv);font-size:24px;display:inline-block;transform:rotate(-2deg)}
+.verdict{border:2px solid var(--ink);background:var(--lime);color:#15141c;padding:20px 22px;margin:26px 0}
+.verdict b{font:900 26px/1.1 "Red Hat Display";display:block;margin-bottom:6px;letter-spacing:-.03em}
+.pick{background:var(--panel);padding:22px 22px 18px;margin:16px 0}
+.pick .meta{font-size:14px;color:var(--muted);margin:0 0 10px}
+.pick p{margin:0 0 10px}
+.pick ul{margin:6px 0 10px;padding-left:20px}
+.pick li{margin-bottom:6px}
+.tag{display:inline-block;font:700 12px "Red Hat Text";padding:3px 9px;margin-left:8px;vertical-align:middle;letter-spacing:0}
+.t1{background:var(--lime);color:#15141c}.t2{background:var(--uv);color:#fff}.t3{background:var(--ink);color:var(--paper)}
+code{font-family:"Red Hat Mono",ui-monospace,monospace;font-size:.86em;background:var(--code);padding:1px 5px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:600px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+a{color:inherit;text-underline-offset:4px}
+.small{font-size:14px;color:var(--muted)}
+::selection{background:var(--lime);color:#15141c}
+</style>
+</head>
+<body>
+<main>
+<p class="date">4 October 2026 · GitHub Trending, today and this week</p>
+<h1>What's trending that <span>helps Capra</span></h1>
+<p class="lead">I went through all 34 repositories on GitHub Trending (15 today, 19 this week) and read the code of the five that touch what Capra does: motion, video, marketing, testing and engineering practice. One stands out clearly.</p>
+
+<div class="verdict"><b>Short version</b>HyperFrames is the find. It turns HTML pages into frame-exact MP4 videos, supports raw WebGPU, and comes as a Claude Code plugin. It could turn the motion lab and the koi pond into real video for social posts and the marketing room. Everything else on the list is either "maybe, for client work" or overlaps something you already have.</div>
+
+<h2>Worth trying</h2>
+
+<div class="pick">
+<h3><a href="https://github.com/heygen-com/hyperframes">heygen-com/hyperframes</a><span class="tag t1">Try first</span></h3>
+<p class="meta">Write HTML, render video · Apache-2.0 · by HeyGen · updated today · 3,011 stars this week</p>
+<p>It renders an HTML page into a deterministic MP4: the same input always gives exactly the same frames. Animations must be <em>seekable</em>, meaning the renderer can jump to any moment and draw that exact frame. It has adapters for GSAP (the default), CSS keyframes, Lottie, Three.js, Anime.js and <strong>raw WebGPU</strong>. It installs as a Claude Code plugin with 21 skills, including <code>motion-graphics</code>, <code>product-launch-video</code>, <code>embedded-captions</code> and <code>music-to-video</code>.</p>
+<ul>
+<li><b>Why it fits:</b> our showpieces are already HTML and WebGPU (<code>pond.js</code>, the motion lab, the GPU stages). Today, turning them into video means screen recording or a Blender render. With HyperFrames, the same page becomes a clean 4K clip for social posts, the marketing room's video tab, or client pitches.</li>
+<li><b>The catch:</b> WebGPU pieces must draw from the time HyperFrames gives them, not the clock, and must redraw when it seeks. The pond's koi are a step-by-step simulation, so jumping to second 8 means running the simulation forward from the start. That's possible, but it's real work. The CSS and canvas pieces in the motion lab would be easier first targets.</li>
+<li><b>Trial:</b> install the plugin in a scratch folder and render one motion-lab piece to a 10-second MP4. Its renderer launches Chrome with WebGPU flags; check that against our GPU code.</li>
+</ul>
+</div>
+
+<div class="pick">
+<h3><a href="https://github.com/coreyhaines31/marketingskills">coreyhaines31/marketingskills</a><span class="tag t2">Cherry-pick</span></h3>
+<p class="meta">Marketing skills for Claude Code · MIT · updated 2 Oct · 270 stars today</p>
+<p>About 50 marketing skills, including CRO, copywriting, <code>ai-seo</code>, <code>programmatic-seo</code>, <code>schema</code>, <code>site-architecture</code>, <code>directory-submissions</code>, <code>free-tools</code>, <code>lead-magnets</code>, <code>marketing-psychology</code>, <code>launch</code> and <code>video</code>.</p>
+<ul>
+<li><b>Why it fits:</b> Capra has an SEO standard, a marketing room and a growth note in the vault.</li>
+<li><b>The catch:</b> it overlaps heavily with what you already have, namely the claude-seo suite (schema, GEO/AI search, sitemaps) and the marketing plugin (campaigns, content, SEO audit). Installing all of it would mean three tools competing for every SEO question.</li>
+<li><b>Worth taking:</b> the few with no equivalent here. <code>directory-submissions</code> and <code>free-tools</code> suit a local studio building links, and <code>lead-magnets</code> fits the AI consulting page. Since it's MIT, you can copy just those skills.</li>
+</ul>
+</div>
+
+<div class="pick">
+<h3><a href="https://github.com/tester-army/e2e">tester-army/e2e</a><span class="tag t3">For client apps</span></h3>
+<p class="meta">AI-driven end-to-end tests for web and mobile · Apache-2.0 · updated today · 344 stars today</p>
+<p>Tests are written partly in plain English (for example, an agent step like "upgrade the workspace to the Pro plan"), run on Playwright or iOS and Android simulators, and are checked by normal assertions. The smart part is that once an agent step passes, its actions are recorded and replayed with no AI calls until the app changes. That keeps tests cheap and repeatable.</p>
+<ul>
+<li><b>Why it fits:</b> not the studio site, which is static and already well covered by build checks. It does fit the apps: TrailGoat's planner and Purple Squirrel's hiring flow are multi-step journeys where brittle selector-based tests are painful. It also covers iOS simulators.</li>
+<li><b>The catch:</b> the project is young and the record-and-replay idea is unproven at scale. It's worth one pilot test on a single TrailGoat flow before committing.</li>
+</ul>
+</div>
+
+<div class="pick">
+<h3><a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a><span class="tag t3">Read, don't install</span></h3>
+<p class="meta">Engineering-practice skills · MIT · by Addy Osmani (Chrome team) · updated 3 Oct</p>
+<p>About 25 skills covering a spec, plan, build, test, review and ship cycle, plus <code>performance-optimization</code>, <code>browser-testing-with-devtools</code> and a <code>/webperf</code> command. It's solid but generic, and your engineering plugin and existing review loop already cover most of it. The performance-optimization skill and the <code>/webperf</code> command are worth reading for the Core Web Vitals side of the SEO standard, since Addy is a leading voice on web performance.</p>
+</div>
+
+<h2>The rest of the list</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Repo</th><th>What it is</th><th>For us</th></tr></thead>
+<tbody>
+<tr><td>calesthio/OpenMontage</td><td>Agent-driven video production: 12 pipelines, Remotion</td><td>Overlaps HyperFrames, and it's <b>AGPL</b>, which is risky to build client work on. Skip.</td></tr>
+<tr><td>pbakaus/impeccable</td><td>Design skill (reviewed already)</td><td>See the <a href="impeccable-lessons-2026-10-04.html">Impeccable brief</a>.</td></tr>
+<tr><td>thedotmack/claude-mem, vectorize-io/hindsight</td><td>Agent memory across sessions</td><td>You already have Claude memory plus the SecondBrain vault. A third memory system would only fragment it.</td></tr>
+<tr><td>debpalash/VoiceStudio</td><td>Local voice cloning and dubbing</td><td>Possibly useful for voice-over on films; check its licence and consent terms first. Low priority.</td></tr>
+<tr><td>OpenCut-app/OpenCut</td><td>Open-source CapCut alternative</td><td>Only if you want a free editor; the film pipeline already runs through Blender and ffmpeg.</td></tr>
+<tr><td>garrytan/gstack, alirezarezvani/claude-skills, ponytail</td><td>Opinionated Claude Code setups and skill bundles</td><td>Mostly overlap with skills you have. Ponytail's "write the least code" stance is a good review prompt, not a tool.</td></tr>
+<tr><td>earthtojake/text-to-cad</td><td>CAD from text for agents</td><td>No current use; Capra's 3D work is in Blender.</td></tr>
+<tr><td>Panniantong/Agent-Reach</td><td>Scrapes Twitter, Reddit, YouTube and others for agents</td><td>Skip: it works around platform APIs, so terms-of-service risk.</td></tr>
+<tr><td>HunxByts/GhostTrack</td><td>Tracks phone numbers and locations</td><td>Skip: a privacy tool for tracking people.</td></tr>
+<tr><td>Others (Sentry, Caddy, Next.js, Effect, Paperclip, t3code, tilelang, Octop, OpenShell, openrig, yoinks, MoneyPrinterTurbo, coursebook, ds4, ai-engineering-from-scratch)</td><td>Infrastructure, frameworks, models, courses</td><td>Nothing Capra needs right now.</td></tr>
+</tbody></table></div>
+
+<h2>Suggested next step</h2>
+<p>Run one HyperFrames trial: install the plugin in a scratch folder (not the site repo) and render a motion-lab piece to a 10-second 4K MP4. If it's frame-exact and fast, the koi pond is the second test. That one needs the simulation driven by HyperFrames' clock.</p>
+<p class="small">Method: fetched github.com/trending (today and this week) on 4 October 2026, then shallow-cloned and read HyperFrames, marketingskills, e2e, agent-skills and OpenMontage (READMEs, licences, skill lists, and HyperFrames' animation and WebGPU adapter docs). Nothing was installed or run. Star counts are as shown on Trending at the time.</p>
+<p class="hand">one keeper, three maybes</p>
+</main>
+</body>
+</html>

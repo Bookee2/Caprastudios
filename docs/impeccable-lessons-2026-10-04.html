@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lessons from Impeccable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800;900&family=Red+Hat+Text:wght@400;600;700&family=Red+Hat+Mono:wght@400;500&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f1ea;--ink:#15141c;--muted:#5d5a6b;--line:#15141c26;--lime:#b6ff3b;--koi:#ff5c1a;--uv:#7a2df5;--panel:#e9e6dc;--code:#e2dfd3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a;--code:#1f1936}}
+:root[data-theme="dark"]{--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a;--code:#1f1936}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Red Hat Text",system-ui,sans-serif}
+main{max-width:960px;margin:auto;padding:56px 16px 80px}
+h1,h2,h3{font-family:"Red Hat Display",sans-serif;letter-spacing:-.03em;line-height:1.04}
+h1{font-size:clamp(38px,7vw,68px);margin:8px 0 18px}
+h1 span{background:linear-gradient(transparent 60%,var(--lime) 60% 94%,transparent 94%);padding:0 4px}
+h2{font-size:clamp(26px,4vw,38px);margin:52px 0 14px;border-top:2px solid var(--ink);padding-top:18px}
+h3{font-size:21px;margin:0 0 6px}
+.date{font-size:14px;color:var(--muted)}
+.lead{font-size:20px;max-width:44em}
+.hand{font-family:"Sedgwick Ave Display",cursive;color:var(--uv);font-size:24px;display:inline-block;transform:rotate(-2deg)}
+.verdict{border:2px solid var(--ink);background:var(--lime);color:#15141c;padding:20px 22px;margin:26px 0}
+.verdict b{font:900 26px/1.1 "Red Hat Display";display:block;margin-bottom:6px;letter-spacing:-.03em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}
+.card{background:var(--panel);padding:18px 20px;min-width:0}
+.card p{margin:0 0 8px;color:var(--muted);font-size:15.5px}.card p:last-child{margin:0}
+code,pre{font-family:"Red Hat Mono",ui-monospace,monospace;font-size:.86em}
+code{background:var(--code);padding:1px 5px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:600px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ok{font-weight:700;color:#2a7a00}.gap{font-weight:700;color:var(--koi)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ok{color:var(--lime)}}
+:root[data-theme="dark"] .ok{color:var(--lime)}
+ol.steps{padding-left:22px}ol.steps li{margin-bottom:12px}
+.small{font-size:14px;color:var(--muted)}
+::selection{background:var(--lime);color:#15141c}
+</style>
+</head>
+<body>
+<main>
+<p class="date">4 October 2026 · follow-up to the Animate.css brief</p>
+<h1>What <span>Impeccable</span> can teach us</h1>
+<p class="lead">Impeccable, by Paul Bakaus, is a design skill for AI coding agents. It gives an agent like Claude one skill with 24 commands (<code>animate</code>, <code>polish</code>, <code>audit</code>, <code>quieter</code>…), a set of "don't do this" rules for AI-looking design, and a Rust engine with 61 automatic checks that run with no AI at all. It's Apache-2.0 licensed and very active: the latest commit is from today.</p>
+
+<div class="verdict"><b>Short version</b>Where Animate.css offered building blocks, Impeccable offers judgement, and its motion guidance is the best written-down version I've seen. It confirms most of what we just did. It also suggests three refinements: let colour and opacity feedback survive reduced motion, cap slow reveals at about 0.8 s, and add a very fast speed for press feedback. Beyond motion, it flags our section kickers.</div>
+
+<h2>Its motion rules, against our site</h2>
+<p>From <code>skill/reference/animate.md</code> and <code>craft-floor.md</code>:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Impeccable says</th><th>Capra today</th><th></th></tr></thead>
+<tbody>
+<tr><td>Write a "motion thesis" first: one focal moment, then only continuity, feedback and budget.</td><td>The koi pond is the focal moment; everything else is small UI motion.</td><td class="ok">Matches</td></tr>
+<tr><td>Not one identical entrance on every section. Content stays visible if scripts fail.</td><td>Rise is for headlines only, and the stylesheet says content is "never hidden without the script".</td><td class="ok">Matches</td></tr>
+<tr><td>Exits are faster than entrances.</td><td><code>.settle</code> uses the quick speed with an ease-in curve.</td><td class="ok">Matches</td></tr>
+<tr><td>Go beyond transform and opacity: clip-path, mask, blur.</td><td>Rise reveals through a <code>clip-path</code>, and motion-lab pieces use masks.</td><td class="ok">Matches</td></tr>
+<tr><td>No bounce or elastic curves. Don't transition width, height, top, left or margins. (Two of its automatic checks.)</td><td>No matches in any of our stylesheets.</td><td class="ok">Clean</td></tr>
+<tr><td>Timing: 100–150 ms feedback · 150–300 ms routine · 300–500 ms layout or overlays · 500–800 ms a deliberate entrance.</td><td><code>--dur-quick</code> (≈225 ms) and <code>--dur</code> (450 ms) fit. We have nothing for instant feedback, and <code>--dur-slow</code> (900 ms) runs past the ceiling.</td><td class="gap">Adjust</td></tr>
+<tr><td>Reduced motion means "fewer and gentler", not none. Remove movement, but keep opacity and colour changes that confirm something happened.</td><td>Our new 1 ms rule snaps every transition, including fades and hover colours. Nothing is lost, but meaningful fades become hard cuts.</td><td class="gap">Refine</td></tr>
+<tr><td>Cap the total delay of a stagger.</td><td>The headline rise adds 90 ms per line with no cap.</td><td class="gap">Small</td></tr>
+</tbody></table></div>
+
+<h2>Lessons beyond motion</h2>
+<div class="grid">
+  <div class="card"><h3>Product facts vs visual system</h3><p><code>PRODUCT.md</code> records who the product is for, its purpose and its voice. <code>DESIGN.md</code> records the visual system. Keeping them separate stops "who it's for" from getting mixed up with "what it looks like". We spread this across <code>BRAND.md</code>, <code>STUDIO-REFRESH.md</code> and others.</p></div>
+  <div class="card"><h3>Kickers are its one absolute ban</h3><p>It refuses any label above a heading ("no brief earns it back"). We use the hand-lettered <code>.kicker</code> three times: twice on the home page and once on the motion lab. Ours is a brand device rather than a template habit, but this is the call worth making deliberately.</p></div>
+  <div class="card"><h3>Style the browser's own parts</h3><p>Text selection, the text cursor, scrollbars, focus rings and form controls usually ship with browser defaults. We style text selection and focus rings, but not <code>caret-color</code>, <code>scrollbar-color</code> or <code>accent-color</code>. It's a cheap, telling detail.</p></div>
+  <div class="card"><h3>Defaults with a reason are fine</h3><p>Hard offset shadows are allowed "only if the world is actually neobrutalist". Our paint-on-a-wall look, with taped posters and flat colour, is such a world. The principle is that a default is fine when the brand chose it. (Its rule against thick coloured side stripes also caught the card style in my own Animate.css brief, so this brief doesn't use them.)</p></div>
+</div>
+
+<h2>Should we install it?</h2>
+<p>Possibly, but not yet. It installs into Claude Code with <code>npx impeccable install</code>, which downloads a signed engine binary and adds a hook that runs its checks on every edit. That overlaps with our own skills (<code>kb-motion</code>, the design plugin, your memory notes on AI-made-looking sites). It would also push opinions our brand deliberately breaks, such as the kicker ban. A safer first step is to run only its automatic checks once against <code>dist/</code> and read the report. I haven't run anything from it; I only read the source.</p>
+
+<h2>Recommended next steps</h2>
+<ol class="steps">
+<li><b>Add <code>--dur-instant</code></b> (≈120 ms) for press and toggle feedback, and <b>lower <code>--dur-slow</code></b> to about 0.8 s (<code>calc(var(--dur)*1.75)</code>).</li>
+<li><b>Cap the rise stagger</b>: <code>min(calc(var(--i)*90ms), 360ms)</code>.</li>
+<li><b>Refine reduced motion</b>: let opacity, colour and background transitions keep a short fade (around 150 ms), and snap only movement. This takes a few targeted rules rather than one universal rule.</li>
+<li><b>Decide on the kickers</b>: keep them as a brand choice and write that down, or drop them.</li>
+<li><b>Style the remaining browser parts</b>: <code>caret-color</code>, <code>accent-color</code> and <code>scrollbar-color</code> from the palette.</li>
+<li><b>Optional:</b> run Impeccable's automatic checks once against the built site and compare.</li>
+</ol>
+<p class="small">Source read: github.com/pbakaus/impeccable at its 4 October 2026 commit: README, <code>skill/reference/animate.md</code>, <code>craft-floor.md</code> and the detector rules in <code>crates/detect</code>. Compared against this repo's <code>assets/*.css</code> and pages on the <code>motion-tokens</code> branch.</p>
+<p class="hand">same instincts, better written down</p>
+</main>
+</body>
+</html>
