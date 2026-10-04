@@ -1,7 +1,7 @@
 /* A short image handoff between real documents; ordinary navigation is the fallback. */
 @view-transition{navigation:auto}
-::view-transition-group(root){animation-duration:.18s}
-::view-transition-group(trailgoat-project),::view-transition-group(squirrel-project),::view-transition-group(trailgoat-film){animation-duration:.45s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+::view-transition-group(root){animation-duration:var(--dur-quick)}
+::view-transition-group(trailgoat-project),::view-transition-group(squirrel-project),::view-transition-group(trailgoat-film){animation-duration:var(--dur);animation-timing-function:var(--ease)}
 img[data-project-image="trailgoat"]{view-transition-name:trailgoat-project}
 img[data-project-image="squirrel"]{view-transition-name:squirrel-project}
 #brand-film{view-transition-name:trailgoat-film}

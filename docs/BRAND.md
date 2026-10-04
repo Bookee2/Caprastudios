@@ -34,6 +34,7 @@ Rules: flat fields only, with gradients kept inside artwork; one colour per sect
 - Red Hat Text: body and navigation, 400–600.
 - Sedgwick Ave Display: hand-tagged notes, a handful per page at most. It stands in for Kris's own marker lettering, which should replace it.
 - Red Hat Mono and the all-caps numbered labels are retired.
+- Section names (`.kicker`: Red Hat Display 800 in the hand colour, above a section heading) are a deliberate design choice, kept on October 4, 2026 although Impeccable bans labels above headings outright. They name a section in the studio's voice rather than restating the heading. Keep them few: currently two on the homepage and one on the motion lab.
 
 The oversized 900-weight typography is a deliberate departure from the tool-oriented TrailGoat scale, made for the user's studio statement-piece brief. The core type family, palette, two radii, neutral hover behavior, and mobile label floor come from `/kb-tokyo`.
 

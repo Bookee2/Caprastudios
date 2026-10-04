@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lessons from Animate.css</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800;900&family=Red+Hat+Text:wght@400;600;700&family=Red+Hat+Mono:wght@400;500&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f1ea;--ink:#15141c;--muted:#5d5a6b;--line:#15141c26;--lime:#b6ff3b;--koi:#ff5c1a;--uv:#7a2df5;--panel:#e9e6dc;--code:#e2dfd3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a;--code:#1f1936}}
+:root[data-theme="dark"]{--paper:#0e0b16;--ink:#ece9ff;--muted:#aaa4c8;--line:#ece9ff2e;--panel:#17122a;--code:#1f1936}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "Red Hat Text",system-ui,sans-serif}
+main{max-width:960px;margin:auto;padding:56px 16px 80px}
+h1,h2,h3{font-family:"Red Hat Display",sans-serif;letter-spacing:-.04em;line-height:1.04}
+h1{font-size:clamp(38px,7vw,68px);margin:8px 0 18px}
+h1 span{background:linear-gradient(transparent 60%,var(--lime) 60% 94%,transparent 94%);color:inherit;padding:0 4px}
+h2{font-size:clamp(26px,4vw,38px);margin:52px 0 14px;border-top:2px solid var(--ink);padding-top:18px}
+h3{font-size:21px;margin:0 0 6px}
+.kicker{font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--muted)}
+.lead{font-size:20px;max-width:44em}
+.hand{font-family:"Sedgwick Ave Display",cursive;color:var(--uv);font-size:24px;display:inline-block;transform:rotate(-2deg)}
+.verdict{border:2px solid var(--ink);background:var(--lime);color:#15141c;padding:20px 22px;margin:26px 0}
+.verdict b{font:900 26px/1.1 "Red Hat Display";display:block;margin-bottom:6px;letter-spacing:-.03em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}
+.card{background:var(--panel);padding:18px 20px;border-left:6px solid var(--uv);min-width:0}
+.card.koi{border-left-color:var(--koi)}
+.card.lime{border-left-color:var(--lime)}
+.card p{margin:0 0 8px;color:var(--muted);font-size:15.5px}
+.card p:last-child{margin-bottom:0}
+code,pre{font-family:"Red Hat Mono",ui-monospace,monospace;font-size:.86em}
+code{background:var(--code);padding:1px 5px}
+pre{background:var(--code);padding:14px 16px;overflow-x:auto;line-height:1.5;margin:12px 0}
+pre code{background:none;padding:0}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;background:var(--lime);color:#15141c}
+.tag.skip{background:var(--panel);color:var(--muted);border:1px solid var(--line)}
+ol.steps{padding-left:22px}ol.steps li{margin-bottom:12px}
+a{color:inherit;text-underline-offset:4px}
+.small{font-size:14px;color:var(--muted)}
+/* demo */
+.demo{background:var(--panel);padding:20px;margin:18px 0}
+.stage{display:flex;gap:18px;flex-wrap:wrap;align-items:center;min-height:120px;overflow:hidden;padding:12px 0}
+.chip{display:inline-block;padding:14px 18px;background:var(--ink);color:var(--paper);font:800 18px "Red Hat Display";letter-spacing:-.02em}
+.chip.err{background:var(--koi);color:#15141c}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+button{font:700 14px "Red Hat Text";min-height:44px;padding:8px 16px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+button:hover{background:var(--lime);color:#15141c}
+button:focus-visible,input:focus-visible{outline:3px solid var(--uv);outline-offset:3px}
+label{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px}
+input[type=range]{width:160px;accent-color:var(--uv)}
+.demo .note{font-size:14px;color:var(--muted);margin:10px 0 0}
+/* the library's pattern, scoped to the demo */
+.demo{--dur:600ms}
+.run{animation-duration:var(--dur);animation-fill-mode:both}
+.run.fadeInUp{animation-name:fadeInUp;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+.run.headShake{animation-name:headShake;animation-timing-function:ease-in-out}
+.run.slow{animation-duration:calc(var(--dur)*2)}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes headShake{0%{transform:translateX(0)}6.5%{transform:translateX(-6px) rotateY(-9deg)}18.5%{transform:translateX(5px) rotateY(7deg)}31.5%{transform:translateX(-3px) rotateY(-5deg)}43.5%{transform:translateX(2px) rotateY(3deg)}50%{transform:translateX(0)}}
+@media (prefers-reduced-motion:reduce){.run{animation-duration:1ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<main>
+<div class="kicker">Research brief · 4 October 2026</div>
+<h1>What <span>Animate.css</span> can teach us</h1>
+<p class="lead">Animate.css is the best-known library of ready-made CSS animations: about 100 named keyframes (bounce, fadeInUp, headShake and so on) that you switch on by adding a class. We shouldn't install it. The parts worth taking are its <em>system</em>: a few motion tokens, a reduced-motion rule that respects end states, and rules about when to animate at all.</p>
+
+<div class="verdict"><b>Short version</b>Take three ideas: duration as one token with multipliers, the "1&nbsp;ms, not none" reduced-motion rule, and a short list of named, purposeful animations. Leave the library itself. Its keyframes come from 2015–2020 browsers, its 1-second default is too slow for UI, and the Hippocratic licence isn't a standard open-source licence.</div>
+
+<h2>What the repo actually is</h2>
+<div class="grid">
+  <div class="card"><h3>Small</h3><p>One file of variables, one base file, and one file per animation in 16 folders (<code>fading_entrances/</code>, <code>attention_seekers/</code>…). PostCSS joins them and adds the <code>animate__</code> prefix.</p></div>
+  <div class="card"><h3>Stable</h3><p>v4.1.1 dates from 2020. The last commit, from March 2024, was a docs typo. It is finished rather than maintained, so it shows nothing of scroll timelines, view transitions or WAAPI.</p></div>
+  <div class="card koi"><h3>Licensed unusually</h3><p>Hippocratic License 2.1 is an ethical-use licence, not an OSI one. Before copying keyframes into client work, rewrite them or check the terms.</p></div>
+</div>
+
+<h2>1. Motion as tokens, not numbers</h2>
+<p>The whole library runs from three custom properties. Every speed and delay is a multiple of them:</p>
+<pre><code>:root { --animate-duration: 1s; --animate-delay: 1s; --animate-repeat: 1; }
+.animated        { animation-duration: var(--animate-duration); animation-fill-mode: both; }
+.animated.fast   { animation-duration: calc(var(--animate-duration) * 0.8); }
+.animated.slow   { animation-duration: calc(var(--animate-duration) * 2); }
+.animated.delay-2s { animation-delay: calc(var(--animate-delay) * 2); }</code></pre>
+<p>Changing one variable re-times the whole site, or one component when you set it on that component's element (<code>el.style.setProperty('--animate-duration','.5s')</code>).</p>
+<div class="card koi"><h3>Where we are</h3>
+<p>We have one shared curve, <code>--ease: cubic-bezier(.2,.8,.2,1)</code>, in <code>assets/site.css</code>, but four other hard-coded curves across <code>site.css</code>, <code>page-transitions.css</code> and <code>motion-page.css</code>. We have no duration token, and <code>site.css</code> alone uses eight durations: .25, .3, .4, .45, .5, .6, .9 and 1.2&nbsp;s.</p>
+<p><b>Suggestion:</b> add <code>--dur</code> (≈ .45s) with <code>--dur-quick</code> and <code>--dur-slow</code> derived from it, plus <code>--ease-out</code> and <code>--ease-in-out</code>. Then fold the existing values into those tokens.</p></div>
+
+<div class="demo" id="demo">
+  <h3>Try it: one knob re-times everything</h3>
+  <div class="stage" aria-live="polite">
+    <span class="chip" data-a="fadeInUp">fadeInUp</span>
+    <span class="chip" data-a="fadeInUp" data-slow>fadeInUp · slow (×2)</span>
+    <span class="chip err" data-a="headShake">headShake</span>
+  </div>
+  <div class="controls">
+    <label for="dur">--dur <input id="dur" type="range" min="150" max="1500" step="50" value="600"> <output id="durOut">600 ms</output></label>
+    <button type="button" id="play">Replay</button>
+  </div>
+  <p class="note">The two fadeInUp chips stay in step at any setting because "slow" is a multiple, not a separate number. With reduced motion turned on, they jump straight to their final state.</p>
+</div>
+
+<h2>2. Reduced motion: shorten to 1&nbsp;ms, don't switch off</h2>
+<pre><code>@media print, (prefers-reduced-motion: reduce) {
+  .animated { animation-duration: 1ms !important; transition-duration: 1ms !important;
+              animation-iteration-count: 1 !important; }
+  .animated[class*='Out'] { opacity: 0; }
+}</code></pre>
+<p>This is the cleverest part of the library. With <code>fill-mode: both</code> plus a 1&nbsp;ms run, every element still <em>lands on its final frame</em>, and <code>animationend</code> and <code>transitionend</code> still fire. <code>animation: none</code> leaves an element in its un-animated style, which for an entrance often means invisible, and code waiting for an end event never resumes. The library also applies the same rule to <code>print</code>.</p>
+<div class="card lime"><h3>Where we are</h3>
+<p><code>site.css</code> line 326 uses <code>animation:none!important; transition:none!important</code>. That's safe today: our reveals are transitions to class-set end states, and no script listens for end events. It breaks as soon as someone adds a keyframe entrance that starts at <code>opacity:0</code>. Switching to the 1&nbsp;ms form now is a two-line change that prevents it.</p>
+<p>Our pond, governor and film already go further than the library with still frames, off-screen pausing and a footer motion switch. Keep that approach.</p></div>
+
+<h2>3. A vocabulary sorted by purpose</h2>
+<p>Its folders are its design guidance: <b>entrances</b>, <b>exits</b> and <b>attention seekers</b>. The docs say attention seekers are for "something special" only, entrances and exits exist to explain a change of state, and infinite loops "should be avoided".</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Their category</th><th>Job</th><th>A Capra equivalent we could name</th></tr></thead>
+<tbody>
+<tr><td>Fading entrances</td><td>New content arrives</td><td><code>rise</code>: 24&nbsp;px lift with a fade, staggered with <code>--i</code> (we already stagger like this)</td></tr>
+<tr><td>Exits</td><td>Something goes away</td><td><code>settle</code>: a shorter, ease-in fade, so exits run faster than entrances</td></tr>
+<tr><td>Attention seekers</td><td>Look here, now</td><td><code>nudge</code> (headShake) for form errors only, never decoration</td></tr>
+<tr><td>Bounces, flips, light-speed, rolls</td><td>Novelty</td><td><span class="tag skip">skip</span> They don't suit the brand</td></tr>
+</tbody></table></div>
+<p class="small">A short named set matters more than the effects themselves. "Use <code>rise</code>" is a decision; "add some animation" isn't.</p>
+
+<h2>4. Smaller craft lessons</h2>
+<div class="grid">
+  <div class="card"><h3>Hand-tuned keyframes</h3><p><code>bounce</code> changes its timing curve <em>within</em> each keyframe and adds a little <code>scaleY</code> squash at each landing. <code>headShake</code> shrinks each swing (−6, 5, −3, 2&nbsp;px) and finishes at 50%, leaving the second half still. Decaying amplitude is what makes it feel physical.</p></div>
+  <div class="card"><h3>Set the pivot</h3><p>Each animation sets its own <code>transform-origin</code>: bounce from <code>center bottom</code>, swing from <code>top center</code>. The pivot does as much work as the curve.</p></div>
+  <div class="card"><h3>Promise wrapper</h3><p>The docs' <code>animateCSS(el, name)</code> adds the classes, waits for <code>animationend</code> with <code>{once:true}</code>, removes the classes and resolves a promise. It's a good pattern for chaining. Today, <code>el.animate()</code> with <code>.finished</code> does the same without class juggling.</p></div>
+  <div class="card"><h3>Its "gotchas" still apply</h3><p>Inline elements can't be animated (use <code>inline-block</code>). Moving elements create scrollbars (clip the parent). Don't animate <code>html</code> or <code>body</code>. Don't animate large areas.</p></div>
+</div>
+
+<h2>What's outdated, so don't copy it</h2>
+<ul>
+<li><b>1&nbsp;s default.</b> That's right for showpieces but slow for interface. Use about 200–450&nbsp;ms for UI.</li>
+<li><b><code>translate3d(0,0,0)</code> everywhere.</b> This GPU-promotion trick predates modern compositors. Plain <code>translate</code>, <code>scale</code> and <code>rotate</code> are cleaner and stack independently. We already use them.</li>
+<li><b>Huge fixed distances.</b> <code>backInDown</code> starts at <code>-1200px</code>, so it behaves differently on every screen size. Use small distances or percentages.</li>
+<li><b>Class-per-animation with a fixed delay ladder.</b> Steps like <code>delay-1s…5s</code> are clumsy. A <code>--i</code> custom property for stagger, which we already use, is better.</li>
+<li><b>Nothing tied to scroll or navigation.</b> We're past it here: <code>animation-timeline: scroll()</code> drives the nav progress bar and view transitions handle page changes.</li>
+</ul>
+
+<h2>Recommended next steps</h2>
+<ol class="steps">
+<li><b>Add motion tokens</b> to <code>assets/site.css</code> <code>:root</code>: <code>--dur</code>, <code>--dur-quick</code>, <code>--dur-slow</code>, <code>--ease-out</code>, <code>--ease-in-out</code>. Fold the eight durations and five curves into them. <span class="tag">small</span></li>
+<li><b>Swap the reduced-motion rule</b> to the 1&nbsp;ms form, and add <code>print</code>. <span class="tag">tiny</span></li>
+<li><b>Name three moves</b> (<code>rise</code>, <code>settle</code>, <code>nudge</code>) and record them in <code>docs/ANIMATION.md</code> as the only stock UI motions. Everything else stays in the motion lab. <span class="tag">small</span></li>
+</ol>
+<p class="small">Source read: github.com/animate-css/animate.css at commit from 2 March 2024 (v4.1.1): <code>source/_vars.css</code>, <code>source/_base.css</code>, sample keyframes, <code>postcss.config.js</code>, and the best-practices, JavaScript and accessibility docs. Compared against this repo's <code>assets/*.css</code> and <code>*.js</code>.</p>
+<p class="hand">steal the system, not the bounces</p>
+</main>
+<script>
+(()=>{const demo=document.getElementById('demo'),dur=document.getElementById('dur'),out=document.getElementById('durOut'),chips=[...demo.querySelectorAll('.chip')];
+function play(){chips.forEach(c=>{c.className=c.className.replace(/\s?run.*$/,'');void c.offsetWidth;c.classList.add('run',c.dataset.a);if(c.hasAttribute('data-slow'))c.classList.add('slow');});}
+dur.addEventListener('input',()=>{demo.style.setProperty('--dur',dur.value+'ms');out.textContent=dur.value+' ms';});
+dur.addEventListener('change',play);document.getElementById('play').addEventListener('click',play);play();})();
+</script>
+</body>
+</html>

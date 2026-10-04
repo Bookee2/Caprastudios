@@ -18,7 +18,7 @@ html.bl .lh-day{clip-path:var(--clip); z-index:1}
 .lh-dial input::-webkit-slider-thumb{-webkit-appearance:none; width:22px; height:22px; margin-top:-10px; border-radius:50%; background:var(--hand); border:2px solid var(--ink)}
 .lh-dial input::-moz-range-thumb{width:18px; height:18px; border-radius:50%; background:var(--hand); border:2px solid var(--ink)}
 .lh-dial input:focus-visible{outline:3px solid var(--uv); outline-offset:6px}
-.lens-hero.is-lit .hand{opacity:0} html:not(.motion-off) .lens-hero .hand{transition:opacity .4s}
+.lens-hero.is-lit .hand{opacity:0} html:not(.motion-off) .lens-hero .hand{transition:opacity var(--dur)}
 
 /* What a site comes with: eight numbered rows that light their edge under the pointer. */
 .comes-with{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0; border:2px solid var(--ink)}
@@ -32,7 +32,7 @@ html.bl .lh-day{clip-path:var(--clip); z-index:1}
 
 /* The demo wall: three shots of pages we built, pinned at slight angles. */
 .demo-wall{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,2.6vw,36px); align-items:start}
-.demo-shot{display:block; color:inherit; text-decoration:none; rotate:var(--r,0deg); transition:rotate .3s var(--ease),translate .3s var(--ease)}
+.demo-shot{display:block; color:inherit; text-decoration:none; rotate:var(--r,0deg); transition:rotate var(--dur-quick) var(--ease),translate var(--dur-quick) var(--ease)}
 .demo-shot img{display:block; width:100%; height:auto; border:2px solid var(--ink); box-shadow:8px 12px 0 rgba(21,20,28,.12); background:#0e0b16}
 .demo-shot span{display:block; margin-top:12px; font-weight:700; font-size:15px}
 .demo-shot span::after{content:' →'}
