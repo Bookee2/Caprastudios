@@ -273,6 +273,10 @@ details p{max-width:36em; padding:0 30px 12px 0; color:var(--muted)}
 .legal a{text-decoration:underline; text-underline-offset:3px}
 
 /* inner-page headlines rise once; content is never hidden without the script */
+/* The page head marks the headline as waiting, so it is not painted in place and then hidden to rise.
+   If the script never arrives, it shows itself after a moment. */
+html.rise-pending body:not(.home) main h1{opacity:0; animation:rise-failsafe 0s 2.5s forwards}
+@keyframes rise-failsafe{to{opacity:1}}
 rise-line{display:block; clip-path:inset(-1em -1em 0 -1em); padding-bottom:.12em; margin-bottom:-.12em} rise-in{display:block}
 html.rise-ready:not(.motion-off) :not(.risen)>rise-line>rise-in{transform:translateY(108%)}
 html.rise-ready:not(.motion-off) .risen>rise-line>rise-in{transform:none; transition:transform var(--dur-slow) var(--ease) min(calc(var(--i)*90ms),360ms)}
