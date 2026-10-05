@@ -8,11 +8,17 @@
  const once=(els,cls,threshold=.2)=>{if(!('IntersectionObserver' in window)){els.forEach(el=>el.classList.add(cls));return;}const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add(cls);io.unobserve(e.target);}}),{threshold,rootMargin:'0px 0px -6% 0px'});els.forEach(el=>io.observe(el));};
 
  // The page's main headline rises once, line by line. One entrance per page; the homepage has the pond instead.
+ // Each word rises in its own mask, so a headline that wraps never slides one line through another's place;
+ // words on the same visual line share a delay, so it still reads as lines.
  if(!document.body.classList.contains('home')){
   const heads=[...document.querySelectorAll('main h1')];
+  const wrap=node=>{const line=document.createElement('rise-line'),inner=document.createElement('rise-in');inner.append(node);line.append(inner);return line;};
   heads.forEach(h=>{
-   const lines=[[]];[...h.childNodes].forEach(n=>{if(n.nodeName==='BR')lines.push([]);else lines[lines.length-1].push(n);});
-   h.replaceChildren(...lines.map((nodes,i)=>{const line=document.createElement('rise-line'),inner=document.createElement('rise-in');inner.style.setProperty('--i',i);inner.append(...nodes);line.append(inner);return line;}));
+   const parts=[];
+   [...h.childNodes].forEach(n=>{if(n.nodeType===3)n.textContent.split(/(\s+)/).forEach(t=>{if(t)parts.push(/^\s+$/.test(t)?document.createTextNode(t):wrap(document.createTextNode(t)));});else parts.push(n.nodeName==='BR'?n:wrap(n));});
+   h.replaceChildren(...parts);
+   let line=-1,last=-Infinity;
+   h.querySelectorAll('rise-line').forEach(w=>{const r=w.getBoundingClientRect();if(r.top>last+r.height/2){line++;last=r.top;}w.firstChild.style.setProperty('--i',line);});
   });
   root.classList.add('rise-ready');once(heads,'risen');
  }
