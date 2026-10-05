@@ -19,8 +19,9 @@ const palettes=[
  [[.68,.98,1],[.1,.84,.81],[.32,.49,1],[.85,1,1],[.6,.45,1]]
 ];
 let device,format,gctx,raf=0,last=0,time=0,paused=false,visible=true,lost=false,live=false,palette=1,burst=-20,lamp=0,lampOn=false,lx=.5,ly=.5,W=0,H=0,res=null;
-// Under black light the pond opens on its Black light palette.
-if(document.documentElement.classList.contains('bl')){palette=0;document.querySelectorAll('[data-palette]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.palette==='0')));}
+// Under black light the pond wears its Black light palette; in daylight, Koi. Flipping the lamp resets it.
+function lightPalette(){palette=document.documentElement.classList.contains('bl')?0:1;document.querySelectorAll('[data-palette]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.palette)===palette)));}
+lightPalette();addEventListener('capra:light',()=>{lightPalette();if(live&&koi)draw();});
 const stop=()=>{cancelAnimationFrame(raf);raf=0;last=0;};
 function fallback(message){lost=true;stop();canvas.hidden=true;still.hidden=false;controls.hidden=true;stage.classList.remove('pond-live');hint.textContent=message;}
 

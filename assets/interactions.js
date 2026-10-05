@@ -16,6 +16,7 @@
   });
   root.classList.add('rise-ready');once(heads,'risen');
  }
+ root.classList.remove('rise-pending');
 
  // Process steps: a line draws through the steps as they are read, and each step lights as it is reached.
  document.querySelectorAll('.process-grid').forEach(list=>{

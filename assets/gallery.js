@@ -24,5 +24,8 @@
  arrows.forEach(arrow=>{arrow.hidden=false;arrow.addEventListener('click',()=>show(current+(arrow.classList.contains('next')?1:-1),true));});
  gallery.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(current+1,true);else if(e.key==='ArrowLeft')show(current-1,true);});
  // Daylight opens on the koi pond; black light opens on the glow pond, which belongs to the dark.
- show(root.classList.contains('bl')?Math.max(0,slides.findIndex(s=>s.dataset.slide==='glow')):0);
+ const forLight=()=>root.classList.contains('bl')?Math.max(0,slides.findIndex(s=>s.dataset.slide==='glow')):0;
+ show(forLight());
+ // Flipping the lamp brings up the piece that belongs to that light; the arrows still step through the rest.
+ addEventListener('capra:light',()=>show(forLight(),true));
 })();
