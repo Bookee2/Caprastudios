@@ -1,0 +1,20 @@
+# Ask Capra chat backend. The Anthropic key is a Worker secret, never a value in this file:
+#   npx wrangler secret put ANTHROPIC_API_KEY
+name = "capra-agent"
+main = "worker.mjs"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+[vars]
+AGENT_ALLOWED_ORIGINS = "https://caprastudios.co,https://www.caprastudios.co"
+
+# Per-visitor and whole-site caps on chat requests. Set a monthly spend limit in the Anthropic console as well.
+[[ratelimits]]
+name = "CHAT_LIMIT"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }
+
+[[ratelimits]]
+name = "TOTAL_LIMIT"
+namespace_id = "1002"
+simple = { limit = 60, period = 60 }

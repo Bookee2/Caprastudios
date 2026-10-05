@@ -50,3 +50,15 @@ Retrieval smoke baseline: 4/4 fixed representative questions retrieved the expec
 Browser checks: 1440, 390 and 320 widths, consulting page rendering, dialog open/close/Escape focus return, prepared answers, no-JavaScript static content, and mocked live chat/lead flows. Model HTML is rendered literally and unapproved source URLs are rejected. Backend capture is tested separately against a disposable directory; browser QA does not insert dummy leads into the real local inbox.
 
 Final state: all eight automated checks pass, public builds pass, final desktop/tablet/phone navigation and dialog renders were inspected, and no key or backend files are present in the static artifact. As of this pass, `/api/agent/status` reports `live: false, leads: true`: the local capture endpoint is available, but no Anthropic key is configured in the running server. The live provider has not been called.
+
+## October 5, 2026: Sonnet 5.5 and a Cloudflare Worker host
+
+Kris chose Claude Sonnet 5.5 (`claude-sonnet-5-5`) for visitor chat, Cloudflare as the backend host, and email-draft-only briefs when hosted. This supersedes the Opus 5.0 choice and the open hosting question above.
+
+- `server/core.mjs` holds the model, system prompt, message validation and the Anthropic call, with no Node-only imports. `server/agent.mjs` (local Node server) and `server/worker.mjs` (Cloudflare Worker) both use it.
+- The model now receives the whole public corpus on every question, since it is only a few kilobytes. Keyword retrieval still chooses the related pages shown under an answer.
+- The Worker reports `leads: false`, so the dialog offers the visitor's own email draft. It rate-limits per visitor (by `CF-Connecting-IP`) and site-wide with Cloudflare rate-limit bindings in `server/wrangler.toml`.
+
+Deploy, from `server/`: `npx wrangler login`, `npx wrangler deploy`, then `npx wrangler secret put ANTHROPIC_API_KEY`. Set the GitHub Actions variable `SITE_AGENT_ENDPOINT` to the Worker URL ending in `/api/agent` and re-run the Pages workflow. Allowed origins are in `wrangler.toml`.
+
+Verified: ten automated checks pass, including Worker origin, limit, size, error-privacy and answer tests against a mock provider. Not verified: a real answer from the provider. A local attempt with a key copied from another project failed immediately, before reaching the provider, and the key was not inspected. The Worker has not been deployed.

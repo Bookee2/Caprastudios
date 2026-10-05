@@ -15,10 +15,13 @@
  reduced.addEventListener('change',()=>{applyMotion();announce();});
  applyMotion();root.classList.add('nav-enhanced');
 
- // The lamp: the same wall in daylight or under black light, remembered per browser. The page head applies it before paint.
- const lamps=[...document.querySelectorAll('.lamp')],theme=document.querySelector('meta[name="theme-color"]');
- function light(){const on=root.classList.contains('bl');lamps.forEach(b=>{b.hidden=false;b.setAttribute('aria-pressed',String(on));});theme?.setAttribute('content',on?'#0e0b16':'#f3f1ea');}
- lamps.forEach(b=>b.addEventListener('click',()=>{const on=root.classList.toggle('bl');try{localStorage.setItem('capra-light',on?'bl':'day');}catch{}light();}));
+ // The lamp: the same wall in daylight or under black light. It follows the system theme until the visitor
+ // flips it; a choice that differs from the system is remembered per browser. The page head applies it before paint.
+ const lamps=[...document.querySelectorAll('.lamp')],theme=document.querySelector('meta[name="theme-color"]'),systemDark=matchMedia('(prefers-color-scheme: dark)');
+ const saved=()=>{try{return localStorage.getItem('capra-light');}catch{return null;}};
+ function light(){const on=root.classList.contains('bl');lamps.forEach(b=>{b.hidden=false;b.setAttribute('aria-pressed',String(on));const label=b.querySelector('span');if(label)label.textContent=on?'Lights on':'Lights off';});theme?.setAttribute('content',on?'#0e0b16':'#f3f1ea');}
+ lamps.forEach(b=>b.addEventListener('click',()=>{const on=root.classList.toggle('bl');try{if(on===systemDark.matches)localStorage.removeItem('capra-light');else localStorage.setItem('capra-light',on?'bl':'day');}catch{}light();}));
+ systemDark.addEventListener('change',()=>{if(saved())return;root.classList.toggle('bl',systemDark.matches);light();});
  light();
 
  // A single line slides to the hovered or focused link and rests on the current one.

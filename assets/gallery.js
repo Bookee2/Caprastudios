@@ -1,5 +1,6 @@
 /* The hero carousel: several featured motion pieces in one frame, stepped through with the arrows.
-   Nothing rotates on its own, and only the piece on show runs. Without this script the first piece (the koi pond's poster) shows alone. */
+   Nothing rotates on its own, and only the piece on show runs. The page opens on the koi pond in daylight and the glow pond under black light.
+   Without this script the first piece (the koi pond's poster) shows alone. */
 (()=>{'use strict';
  const gallery=document.getElementById('gallery');if(!gallery)return;
  const root=document.documentElement,slides=[...gallery.querySelectorAll('.slide')],arrows=[...document.querySelectorAll('.gallery-arrow')];
@@ -22,5 +23,6 @@
  }
  arrows.forEach(arrow=>{arrow.hidden=false;arrow.addEventListener('click',()=>show(current+(arrow.classList.contains('next')?1:-1),true));});
  gallery.addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(current+1,true);else if(e.key==='ArrowLeft')show(current-1,true);});
- show(0);
+ // Daylight opens on the koi pond; black light opens on the glow pond, which belongs to the dark.
+ show(root.classList.contains('bl')?Math.max(0,slides.findIndex(s=>s.dataset.slide==='glow')):0);
 })();
