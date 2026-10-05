@@ -5,7 +5,8 @@
       "name": "capra-site",
       "runtimeExecutable": "node",
       "runtimeArgs": ["scripts/serve.mjs"],
-      "port": 4173
+      "port": 4173,
+      "autoPort": true
     }
   ]
 }
