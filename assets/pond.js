@@ -366,14 +366,15 @@ function draw(){if(lost||!res)return;
  pass(enc,pipes.show,res.bShow,gctx.getCurrentTexture().createView());
  device.queue.submit([enc.finish()]);
 }
-function tick(ts){raf=0;if(lost||paused||reduced.matches||!visible||document.hidden){last=0;return;}const dt=last?Math.min((ts-last)/1000,.05):0;last=ts;time+=dt;swimStep(dt);lamp+=((lampOn&&clearance(lx*asp,ly)>.03?1:0)-lamp)*Math.min(dt*6,1);draw();raf=requestAnimationFrame(tick);}
+// The koi are placed on the first resize with a visible stage, so there is nothing to step until then.
+function tick(ts){raf=0;if(lost||paused||reduced.matches||!visible||document.hidden||!koi){last=0;return;}const dt=last?Math.min((ts-last)/1000,.05):0;last=ts;time+=dt;swimStep(dt);lamp+=((lampOn&&clearance(lx*asp,ly)>.03?1:0)-lamp)*Math.min(dt*6,1);draw();raf=requestAnimationFrame(tick);}
 function wake(){if(!raf&&live&&!lost&&!paused&&!reduced.matches&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
 // Desktop draws the final pass on a 4K-class canvas (long side 2160 px or the display's own density,
 // whichever is larger); the light itself is solved on a 1024-wide grid, which is all its soft shapes need.
 function resize(){if(lost||!live)return;const r=stage.getBoundingClientRect();if(r.width<2||r.height<2)return;
  const dpr=devicePixelRatio||1,long=Math.max(r.width,r.height),scale=phone?Math.min(dpr,2):Math.min(Math.max(dpr,2160/long),3840/long);
  canvas.width=Math.round(r.width*scale);canvas.height=Math.round(r.height*scale);
- const w=phone?640:1024,h=Math.max(256,Math.min(1024,Math.round(w*r.height/r.width/32)*32));if(w!==W||h!==H||res.size!==canvas.width+'x'+canvas.height)build(w,h);draw();}
+ const w=phone?640:1024,h=Math.max(256,Math.min(1024,Math.round(w*r.height/r.width/32)*32));if(w!==W||h!==H||res.size!==canvas.width+'x'+canvas.height)build(w,h);draw();wake();}
 function preference(){stop();pause.hidden=reduced.matches;pulse.hidden=reduced.matches;lampOn=false;lamp=0;hint.textContent=reduced.matches?'Reduced motion · still water':matchMedia('(pointer:coarse)').matches?'Tap the pond to send light.':'Move the lantern.';status.textContent=reduced.matches?'Reduced motion: select a palette for a still composition.':'Select a palette to change the light.';draw();wake();}
 
 async function start(){

@@ -15,3 +15,6 @@ __pycache__/
 marketing/*.zip
 marketing/platform-kits/*.zip
 marketing/brand/media/trailgoat-brand-film-source.mp4
+
+# Wrangler's local cache
+server/.wrangler/
