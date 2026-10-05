@@ -58,7 +58,7 @@ The build validates local asset paths, anchor targets, one H1 per page, and stru
 ## Reference provenance
 
 - Design tokens adapted from `Bookee2/SkillZ`, branch `add/kb-tokyo`, `skills/kb-tokyo/assets/tokyo.css` (September 9, 2026).
-- Portfolio descriptions and screenshots use the founder's actual websites: TrailGoat and Purple Squirrel. TrailGoat was rechecked and captured September 28, 2026. Purple Squirrel uses the existing product capture; its former public URL returned 404 on September 28, so no live-demo link is published.
+- Portfolio descriptions and screenshots use the founder's actual websites: TrailGoat and Purple Squirrel. TrailGoat was rechecked and captured September 28, 2026. Purple Squirrel was recaptured from purplesquirrel.icu on October 5, 2026, after its public site was rebuilt; the case study links to it.
 - Capra ribbon-unicorn identity selected from concept 03. Native SVG applications and the shaded hero artwork are documented in `docs/RIBBON-ASSET.md`. The original C assets are preserved in `docs/brand-archive/cut-c/`. Portfolio pages may include their own third-party resources; screenshots represent the sites as accessed on September 9, 2026.
 
 ### Homepage
