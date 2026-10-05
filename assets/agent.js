@@ -26,6 +26,8 @@
  }catch(e){if(thisGeneration!==generation)return;status.textContent=e.name==='TimeoutError'?'The answer took too long. Try again or prepare a brief.':e.message;question.value=text;}
  finally{if(thisGeneration===generation){pending=false;input.querySelector('button').disabled=false;controller=null;}}}
  input.addEventListener('submit',e=>{e.preventDefault();const text=question.value.trim();if(text)ask(text);});
+ // Enter sends; Shift+Enter starts a new line.
+ question.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();input.requestSubmit();}});
  document.querySelector('#agent-reset').addEventListener('click',()=>{generation++;controller?.abort();pending=false;history=[];log.replaceChildren();status.textContent='';question.value='';input.querySelector('button').disabled=false;});
  document.querySelector('#agent-brief-open').addEventListener('click',()=>{guide.hidden=true;brief.hidden=false;input.hidden=true;document.querySelector('#agent-toolbar').hidden=true;privacy.firstChild.textContent='Your brief is sent only when you submit it or send the email draft. ';form.elements.name.focus();});
  document.querySelector('#brief-back').addEventListener('click',()=>{brief.hidden=true;guide.hidden=false;input.hidden=!live;document.querySelector('#agent-toolbar').hidden=false;privacy.firstChild.textContent=live?'Questions are processed by Anthropic. Avoid private or sensitive information. ':'Prepared guidance stays in this page. ';document.querySelector('#agent-brief-open').focus();});
