@@ -531,3 +531,16 @@ html:not(.motion-off) .art.gpu-stage canvas,html:not(.motion-off) .art .gpu-post
   .proof-art .hero-note{position:static; margin-top:18px}
   .js .main-nav .nav-apart{margin-left:0} .main-nav .nav-apart::before{display:none}
 }
+
+/* ---------- the facts page: plain statements, one price table ---------- */
+.facts-date{margin:18px 0 0}
+.fact-list{margin:0 0 14px; padding-left:1.15em}
+.fact-list li{margin-bottom:8px; max-width:34em}
+.fact-list a,.facts-rows p a{text-decoration:underline; text-underline-offset:3px}
+.fact-scroll{overflow-x:auto; margin:0 0 14px}
+.fact-table{width:100%; border-collapse:collapse; font-size:16px; line-height:1.45}
+.fact-table th,.fact-table td{padding:12px 18px 12px 0; border-bottom:2px solid var(--line); text-align:left; vertical-align:top}
+.fact-table thead th{padding-top:0; border-bottom-color:var(--ink); font:700 14px/1.35 var(--text); color:var(--muted)}
+.fact-table tbody th{font-weight:700}
+.fact-table td:nth-child(2){white-space:nowrap; font-weight:700; font-variant-numeric:tabular-nums}
+.fact-table th:last-child,.fact-table td:last-child{padding-right:0}

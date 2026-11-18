@@ -98,12 +98,16 @@ html:not(.motion-off) .demo .is-new{animation:capra-demo-fade var(--dur) var(--e
 }
 
 /* On a wide screen the desk stays in view while the trace grows, and a long log scrolls inside its own box.
-   The extra room at the bottom keeps the newest log entry clear of the site's fixed Ask Capra button. */
-@media(min-width:801px) and (min-height:560px){
-  .demo .agent-desk{position:sticky; top:calc(var(--nav-h,64px) + 16px); max-height:calc(100vh - var(--nav-h,64px) - 48px)}
+   The desk stops 90px above the bottom of the window so its corner stays clear of the site's fixed Ask Capra
+   button. From 1540px that button sits in the page margin beside the demo, so the desk takes the full height. */
+@media(min-width:801px) and (min-height:620px){
+  .demo .agent-desk{position:sticky; top:calc(var(--nav-h,64px) + 16px); max-height:calc(100vh - var(--nav-h,64px) - 106px)}
   .demo .agent-controls,.demo .agent-progress{flex:none}
   .demo .agent-logbox{display:flex; flex-direction:column; flex:0 1 auto; min-height:13em}
   .demo .agent-log-scroll{flex:1 1 auto; min-height:0; overflow-y:auto}
+}
+@media(min-width:1540px) and (min-height:620px){
+  .demo .agent-desk{max-height:calc(100vh - var(--nav-h,64px) - 48px)}
 }
 
 /* ---------- one column at 800px and below ---------- */

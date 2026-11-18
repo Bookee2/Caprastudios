@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { checkSEO } from './seo.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-export const publicPages = ['index.html', 'ai-consulting.html', 'web-apps.html', 'work.html', 'about.html', 'contact.html', 'land-films.html', 'market-pulse.html', 'motion-lab.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
+export const publicPages = ['index.html', 'ai-consulting.html', 'web-apps.html', 'work.html', 'about.html', 'facts.html', 'contact.html', 'land-films.html', 'market-pulse.html', 'motion-lab.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
 // Retired addresses. GitHub Pages has no server redirects, so each becomes a small page that forwards.
 export const redirects = { 'motion.html': 'web-apps.html' };
 export const defaultURL = 'https://bookee2.github.io/Caprastudios/';

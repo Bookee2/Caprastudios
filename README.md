@@ -39,6 +39,7 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | AI Systems: five products, the audit and workshop prices, the demos | `ai-consulting.html`, `assets/demos/ai/` |
 | Web Apps: what a build includes, the product sprint price | `web-apps.html` |
 | About and the method | `about.html` |
+| The plain facts page (what we sell, prices, proof). Keep it in step with the other pages | `facts.html` |
 | Contact page and its brief form | `contact.html`, `assets/contact.js` |
 | Land Films: plates, the two films, sources, sending a parcel | `land-films.html`, `assets/films/` |
 | Palette, type, layout and every shared component (daylight, black light, dark rooms, colour fields, paste-ups) | `assets/site.css` |
