@@ -16,5 +16,9 @@ marketing/*.zip
 marketing/platform-kits/*.zip
 marketing/brand/media/trailgoat-brand-film-source.mp4
 
+# Internal planning documents stay on the studio machine, not in the public repository.
+docs/rebrand-plan-*.html
+docs/rebrand-research-*/
+
 # Wrangler's local cache
 server/.wrangler/

@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f1ea">
+<title>Market Pulse: A Reporting Dashboard Demo — Capra Studios</title>
+<meta name="description" content="Try Market Pulse, a reporting dashboard demo on synthetic data: pick a market, move a what-if slider, sort the scorecard and ask questions in plain English.">
+<link rel="canonical" href="https://bookee2.github.io/Caprastudios/market-pulse.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Capra Studios">
+<meta property="og:title" content="Market Pulse: A Reporting Dashboard Demo — Capra Studios">
+<meta property="og:description" content="Try Market Pulse, a reporting dashboard demo on synthetic data: pick a market, move a what-if slider, sort the scorecard and ask questions in plain English.">
+<meta property="og:url" content="https://bookee2.github.io/Caprastudios/market-pulse.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bookee2.github.io/Caprastudios/assets/share/market-pulse.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="Market Pulse: a reporting dashboard demo by Capra Studios">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/brand/favicon.svg">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&amp;family=Red+Hat+Text:wght@400;500;600;700&amp;family=Sedgwick+Ave+Display&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/page-transitions.css">
+<link rel="stylesheet" href="assets/agent.css">
+<link rel="stylesheet" href="assets/demos/market-pulse/market-pulse.css">
+<script>try{var d=document.documentElement,l=null,m=null;try{l=localStorage.getItem('capra-light');m=localStorage.getItem('capra-motion')}catch(e){}if(l==='bl'||(l!=='day'&&matchMedia('(prefers-color-scheme: dark)').matches))d.classList.add('bl');if(m!=='off'&&!matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('rise-pending')}catch(e){}</script>
+<script src="assets/studio-next.js" defer></script>
+<script src="assets/nav.js" defer></script>
+<script src="assets/interactions.js" defer></script>
+<script src="assets/demos/market-pulse/market-pulse-data.js" defer></script>
+<script src="assets/demos/market-pulse/market-pulse.js" defer></script>
+<script src="assets/agent.js" defer></script>
+<meta name="capra-agent-endpoint" content="">
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Capra Studios",
+     "item": "https://bookee2.github.io/Caprastudios/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Market Pulse",
+     "item": "https://bookee2.github.io/Caprastudios/market-pulse.html"
+    }
+   ]
+  },
+  {
+   "@type": "CreativeWork",
+   "name": "Market Pulse",
+   "description": "An interactive reporting dashboard demo on synthetic data.",
+   "url": "https://bookee2.github.io/Caprastudios/market-pulse.html",
+   "creator": {
+    "@type": "ProfessionalService",
+    "name": "Capra Studios",
+    "url": "https://bookee2.github.io/Caprastudios/"
+   }
+  }
+ ]
+}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header">
+<div class="nav-bar shell">
+<a class="brand" href="./" aria-label="Capra Studios home"><img src="assets/brand/mark.svg" width="26" height="35" alt="">capra studios</a>
+<nav class="main-nav" id="navigation" aria-label="Main navigation">
+<a href="ai-consulting.html">AI Systems</a>
+<a href="web-apps.html">Web Apps</a>
+<a href="work.html" aria-current="page">Work</a>
+<a href="about.html">About</a>
+<a class="nav-apart" href="land-films.html">Land Films</a>
+<a class="nav-contact" href="contact.html">Start a conversation</a>
+</nav>
+<button class="lamp" type="button" aria-pressed="false" hidden><i aria-hidden="true"></i><span>Lights off</span></button>
+<button class="menu-toggle" aria-controls="navigation" aria-expanded="false" hidden>Menu <span>+</span></button>
+</div>
+<div class="nav-progress" aria-hidden="true"></div>
+</header>
+<main id="main">
+<section class="page-top field f-solar sentence"><div class="shell">
+<a class="breadcrumb" href="work.html">← All work</a>
+<h1>A reporting dashboard you can try.</h1>
+<p class="lead">Market Pulse shows what Reporting and Monitoring looks like when it is built: one set of numbers, each defined once, with charts, a scorecard, a summary and questions in plain English on top. The data is synthetic.</p>
+</div></section>
+<section class="mp-host" aria-label="Market Pulse demo">
+<div id="market-pulse" class="mp">
+  <div class="mp-wrap">
+
+    <header class="mp-top">
+      <div class="mp-top-text">
+        <p class="mp-kicker">Interactive demo</p>
+        <h2 class="mp-title">Market Pulse</h2>
+        <p class="mp-disclaimer">A Capra demo on synthetic data. Not real market figures.</p>
+        <p class="mp-lede">Ten markets, three property types and one fictional occupier's 26 leases, from 2018 to mid-2026. Pick a market, move the what-if slider, sort the scorecard or ask a question in plain English.</p>
+        <nav class="mp-jump" aria-label="Market Pulse sections">
+          <a href="#mp-market">Market</a>
+          <a href="#mp-portfolio">Portfolio</a>
+          <a href="#mp-definitions">Definitions</a>
+        </nav>
+      </div>
+      <aside class="mp-snapshot" aria-labelledby="mp-hs-caption">
+        <p class="mp-snap-title" id="mp-hs-caption">Vacancy snapshot</p>
+        <div class="mp-snap-stats" id="mp-hero-stats"></div>
+        <p class="mp-viewing" id="mp-subtitle"></p>
+      </aside>
+    </header>
+
+    <noscript><p class="mp-notice">Market Pulse needs JavaScript to draw the dashboard.</p></noscript>
+
+    <div class="mp-ticker" id="mp-ticker-band" role="region" aria-label="Highlights computed from the sample data">
+      <div class="mp-ticker-viewport">
+        <div class="mp-ticker-track" id="mp-ticker"></div>
+      </div>
+      <button class="mp-ticker-toggle" id="mp-ticker-toggle" type="button" aria-label="Pause the highlights ticker" aria-pressed="false">
+        <svg class="mp-i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        <svg class="mp-i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+
+    <!-- ============ MARKET ============ -->
+    <section id="mp-market" class="mp-section" aria-labelledby="mp-market-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">Market</p>
+        <h3 class="mp-section-title" id="mp-market-title">Market dashboard</h3>
+      </div>
+
+      <div class="mp-filters" role="group" aria-label="Filters">
+        <div class="mp-field">
+          <label for="mp-f-range">Time range</label>
+          <select id="mp-f-range">
+            <option value="12">Last 3 years</option>
+            <option value="20" selected>Last 5 years</option>
+            <option value="34">Since 2018</option>
+          </select>
+        </div>
+        <div class="mp-field">
+          <span class="mp-field-label" id="mp-f-type-label">Property type</span>
+          <div class="mp-segmented" id="mp-f-type" role="radiogroup" aria-labelledby="mp-f-type-label"></div>
+        </div>
+        <div class="mp-field">
+          <label for="mp-f-market">Market</label>
+          <select id="mp-f-market"></select>
+        </div>
+        <p class="mp-asof" id="mp-asof"></p>
+      </div>
+
+      <div class="mp-kpi-grid" id="mp-kpis"></div>
+
+      <div class="mp-ai-grid">
+        <article class="mp-card" aria-labelledby="mp-summary-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-summary-title">Summary</h4>
+              <p class="mp-card-sub">Written by rules from the numbers on this page. No model is involved.</p>
+            </div>
+          </div>
+          <div id="mp-summary-body" class="mp-summary"></div>
+        </article>
+
+        <article class="mp-card mp-chat-card" aria-labelledby="mp-chat-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-chat-title">Ask the data</h4>
+              <p class="mp-card-sub">Answers come from rules written for this demo. Each answer also refilters the dashboard.</p>
+            </div>
+          </div>
+          <div id="mp-chat-log" class="mp-chat-log" role="log" aria-live="polite" aria-label="Questions and answers" tabindex="0"></div>
+          <p class="mp-chips-label" id="mp-chips-label">Try one</p>
+          <div class="mp-chips" id="mp-chips" role="group" aria-labelledby="mp-chips-label">
+            <button type="button" class="mp-chip">What's unusual this quarter?</button>
+            <button type="button" class="mp-chip">Which market has the highest industrial vacancy?</button>
+            <button type="button" class="mp-chip">Compare Dallas and Atlanta office</button>
+            <button type="button" class="mp-chip">Forecast vacancy for Miami office</button>
+            <button type="button" class="mp-chip">Which leases should we prioritize?</button>
+          </div>
+          <form id="mp-chat-form" class="mp-chat-form">
+            <label class="mp-sr-only" for="mp-chat-input">Ask a question about the sample data</label>
+            <input id="mp-chat-input" type="text" autocomplete="off" placeholder="e.g. Which market has the highest office vacancy?">
+            <button class="mp-btn mp-btn-primary" type="submit">Ask</button>
+          </form>
+        </article>
+      </div>
+
+      <div class="mp-chart-grid">
+        <article class="mp-card mp-span-2" aria-labelledby="mp-vac-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-vac-title">Vacancy rate and 4-quarter forecast</h4>
+              <p class="mp-card-sub" id="mp-vac-sub"></p>
+            </div>
+            <div class="mp-scenario">
+              <label for="mp-scenario">What-if: extra demand per year</label>
+              <input type="range" id="mp-scenario" min="-2" max="2" step="0.25" value="0">
+              <output id="mp-scenario-out" for="mp-scenario">Baseline (no change)</output>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-vac-legend"></div>
+          <div class="mp-chart mp-chart-300" id="mp-chart-vacancy"></div>
+        </article>
+
+        <article class="mp-card" aria-labelledby="mp-sd-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-sd-title">Demand vs. new supply</h4>
+              <p class="mp-card-sub">Net absorption and deliveries, sf per quarter</p>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-sd-legend"></div>
+          <div class="mp-chart mp-chart-260" id="mp-chart-supply"></div>
+        </article>
+
+        <article class="mp-card" aria-labelledby="mp-cap-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-cap-title">Cap rate vs. 10-year Treasury</h4>
+              <p class="mp-card-sub" id="mp-cap-sub"></p>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-cap-legend"></div>
+          <div class="mp-chart mp-chart-260" id="mp-chart-cap"></div>
+        </article>
+
+        <article class="mp-card mp-span-2" aria-labelledby="mp-ex-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-ex-title">Market explorer: 2018 to today</h4>
+              <p class="mp-card-sub" id="mp-ex-sub"></p>
+            </div>
+            <div class="mp-ex-controls">
+              <button class="mp-play" id="mp-ex-play" type="button" aria-label="Play the time-lapse">
+                <svg class="mp-i-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                <svg class="mp-i-pause" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              </button>
+              <label class="mp-sr-only" for="mp-ex-slider">Quarter shown in the market explorer</label>
+              <input type="range" id="mp-ex-slider" step="1">
+              <output id="mp-ex-quarter" for="mp-ex-slider"></output>
+            </div>
+          </div>
+          <div class="mp-explorer">
+            <div>
+              <p class="mp-ex-title" id="mp-ex-map-title">Vacancy by market</p>
+              <div class="mp-tilemap" id="mp-ex-map" role="group" aria-labelledby="mp-ex-map-title"></div>
+              <div class="mp-ramp" id="mp-ex-ramp" aria-hidden="true"></div>
+            </div>
+            <div>
+              <p class="mp-ex-title">Vacancy vs. rent growth <span class="mp-muted">(bubble size = inventory; lines = all-market average)</span></p>
+              <div class="mp-chart mp-chart-320" id="mp-ex-bubble"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="mp-card mp-span-2" aria-labelledby="mp-score-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-score-title">Market scorecard</h4>
+              <p class="mp-card-sub" id="mp-score-sub">Latest quarter. Choose a market to focus the dashboard on it. Choose a column heading to sort.</p>
+            </div>
+            <button id="mp-dl-market" class="mp-btn mp-btn-ghost" type="button">Download CSV</button>
+          </div>
+          <div class="mp-table-wrap" role="region" aria-labelledby="mp-score-title" tabindex="0">
+            <table class="mp-table" id="mp-scorecard"></table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PORTFOLIO ============ -->
+    <section id="mp-portfolio" class="mp-section" aria-labelledby="mp-portfolio-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">Portfolio</p>
+        <h3 class="mp-section-title" id="mp-portfolio-title">Occupier portfolio: lease rollover risk</h3>
+        <p class="mp-muted">A fictional occupier's 26 leases, scored against current asking rents from the dataset above.</p>
+      </div>
+      <div class="mp-kpi-grid mp-kpi-grid-4" id="mp-pf-kpis"></div>
+      <div class="mp-chart-grid">
+        <article class="mp-card" aria-labelledby="mp-exp-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-exp-title">Square feet expiring by year</h4>
+              <p class="mp-card-sub">Stacked by property type</p>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-pf-legend"></div>
+          <div class="mp-chart mp-chart-260" id="mp-chart-expiry"></div>
+        </article>
+        <article class="mp-card" aria-labelledby="mp-actions-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-actions-title">Priority actions</h4>
+              <p class="mp-card-sub">Leases ranked by an exposure score: size, time to expiry and market conditions</p>
+            </div>
+          </div>
+          <ol class="mp-actions" id="mp-pf-actions"></ol>
+        </article>
+        <article class="mp-card mp-span-2" aria-labelledby="mp-leases-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-leases-title">Lease schedule</h4>
+              <p class="mp-card-sub">Positive mark-to-market means renewal at today's asking rent costs more than the current rent</p>
+            </div>
+            <button id="mp-dl-portfolio" class="mp-btn mp-btn-ghost" type="button">Download CSV</button>
+          </div>
+          <div class="mp-table-wrap" role="region" aria-labelledby="mp-leases-title" tabindex="0">
+            <table class="mp-table" id="mp-leases"></table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ DEFINITIONS ============ -->
+    <section id="mp-definitions" class="mp-section" aria-labelledby="mp-definitions-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">Definitions</p>
+        <h3 class="mp-section-title" id="mp-definitions-title">One definition per metric</h3>
+        <p class="mp-muted">Each metric is calculated in one place. The tiles, charts, scorecard, summary and answers all read that same calculation, so a number cannot disagree with itself.</p>
+      </div>
+      <div class="mp-chart-grid">
+        <article class="mp-card mp-span-2" aria-labelledby="mp-defs-title">
+          <h4 id="mp-defs-title">How each number is defined</h4>
+          <dl class="mp-defs" id="mp-defs"></dl>
+        </article>
+        <article class="mp-card" aria-labelledby="mp-trust-title">
+          <h4 id="mp-trust-title">How the words stay tied to the numbers</h4>
+          <ul class="mp-bullets">
+            <li>Every number in a summary or an answer is computed first, then put into words. Nothing is estimated in the wording.</li>
+            <li>"Ask the data" matches your words against a fixed list of markets, property types, metrics and question types. When a question falls outside that list, it says so and shows what it can answer.</li>
+            <li>The forecast is a damped trend model with an error band. It is a transparent baseline, not a market call.</li>
+            <li>A market is flagged as unusual when a quarter's vacancy change is 2.5 or more standard deviations from that market's own history.</li>
+            <li>Everything runs in this page. Nothing you type is sent anywhere.</li>
+          </ul>
+        </article>
+        <article class="mp-card" aria-labelledby="mp-data-title">
+          <h4 id="mp-data-title">About the data</h4>
+          <ul class="mp-bullets">
+            <li>The market and lease figures are synthetic, produced by a seeded generator so the same numbers appear on every visit.</li>
+            <li>The market names are real places. The vacancy, rent, cap rate, construction, sales and lease figures attached to them are invented.</li>
+            <li>The 10-year Treasury line is based on the published history of that rate. It is the one series here that is not invented, and it is not a live rate feed.</li>
+            <li>The series are internally consistent: inventory grows by deliveries, and net absorption is the change in occupied space.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <p class="mp-foot">Market Pulse is a demonstration. Do not use these figures for decisions about real property.</p>
+  </div>
+
+  <div id="mp-tooltip" class="mp-tooltip" aria-hidden="true" hidden></div>
+</div>
+</section>
+<section class="block shell" aria-labelledby="pulse-what-title">
+<div class="block-head"><h2 id="pulse-what-title">What goes into yours.</h2><p>The demo is about commercial property because the numbers are easy to follow. The same parts go into a reporting system for any business.</p></div>
+<ol class="rows compact" aria-label="What a reporting system includes">
+<li style="--c:var(--solar)"><h3><span>One definition for each number.</span></h3><div><p>Every figure is defined once, in writing, so the chart, the summary and the answer to a question all agree. The definitions are on the page.</p></div></li>
+<li style="--c:var(--solar)"><h3><span>Your data streams in one place.</span></h3><div><p>Sales, bookings, costs, tickets or leases, brought together from the tools you already run and refreshed on a schedule.</p></div></li>
+<li style="--c:var(--solar)"><h3><span>Questions in plain English.</span></h3><div><p>Ask what changed, which is highest or what to look at first. The answer shows the figures it used, and the dashboard moves to match.</p></div></li>
+<li style="--c:var(--solar)"><h3><span>A digest and an alert.</span></h3><div><p>A short summary on a schedule, and a message when a number moves past a line you set.</p></div></li>
+</ol>
+<p class="after-grid"><a class="button" href="ai-consulting.html#reporting">See Reporting and Monitoring →</a></p>
+</section>
+<section class="contact shell" id="contact" aria-labelledby="contact-title">
+<p class="hand">say hi</p>
+<h2 id="contact-title" data-light-words>Let’s make<br>an impression.</h2>
+<div class="contact-bottom">
+<div class="contact-ask"><p>Tell us what you want your business to know, do or see. We’ll find the smallest useful place to start.</p><a class="button" href="contact.html">Send a project brief</a></div>
+<a class="email" href="mailto:info@caprastudios.co?subject=Capra%20Studios%20project" aria-label="Email Capra Studios to start a project: info@caprastudios.co">info@caprastudios.co ↗</a>
+</div>
+<p class="hand signoff">Imagination. Made tangible.</p>
+</section>
+</main>
+<footer class="site-footer room">
+<div class="shell">
+<div class="footer-grid">
+<div class="footer-brand"><a class="brand" href="./"><img src="assets/brand/mark.svg" width="26" height="35" alt="">capra studios</a><p>A small but mighty studio in Atlanta. AI systems and web apps.</p></div>
+<nav class="footer-nav" aria-label="Footer"><b>Explore</b><a href="ai-consulting.html">AI Systems</a><a href="web-apps.html">Web Apps</a><a href="work.html">Work</a><a href="about.html">About</a><a href="land-films.html">Land Films</a><a href="motion-lab.html">The lab</a></nav>
+<div class="footer-contact"><b>Start a project</b><a class="footer-email" href="mailto:info@caprastudios.co?subject=Capra%20Studios%20project">info@caprastudios.co ↗</a><a href="contact.html">Send a project brief</a><a class="footer-top-link" href="#main">Back to top ↑</a></div>
+</div>
+<div class="footer-bottom">
+<span>© <span id="year">2026</span> Capra, LLC</span>
+<span class="footer-meta"><a href="privacy.html">Privacy</a><button class="motion-toggle" type="button" aria-pressed="true" hidden>Motion effects <span aria-hidden="true">on</span></button></span>
+</div>
+</div>
+</footer>
+<button class="agent-launch" id="agent-launch" aria-haspopup="dialog" aria-controls="capra-agent" hidden><i aria-hidden="true"></i>Ask Capra</button>
+<dialog class="agent-dialog" id="capra-agent" aria-labelledby="agent-title"><div class="agent-shell"><div class="agent-header"><div><h2 id="agent-title">Let’s explore your idea.</h2><p id="agent-mode">Studio guide · prepared answers</p></div><button id="agent-close" aria-label="Close studio assistant">×</button></div><div class="agent-body"><div id="agent-guide"><p class="agent-intro" id="agent-intro">Explore our services or put together a project brief. Choose a topic for prepared guidance.</p><div class="agent-topics"><button data-topic="services">What can you help with? ↗</button><button data-topic="ai">AI for my business ↗</button><button data-topic="rag">What is a second brain? ↗</button><button data-topic="work">Explore the work ↗</button></div><div class="agent-log" id="agent-log" role="log" aria-live="polite" aria-relevant="additions"></div><p class="agent-status" id="agent-status" role="status"></p></div><div id="agent-brief" hidden><form class="agent-brief" id="brief-form"><h3>A little about your project.</h3><p id="brief-storage">Prepare a draft, then review and send it in your email app.</p><label>Your name<input name="name" autocomplete="name" maxlength="100" required></label><label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label><label>Business or team<input name="company" autocomplete="organization" maxlength="160"></label><label>What would you like to make or improve?<textarea name="goal" rows="4" maxlength="2000" required></textarea></label><label>Budget range<select name="budget"><option>Not sure yet</option><option>Under $5,000</option><option>$5,000–$15,000</option><option>$15,000–$50,000</option><option>$50,000+</option></select></label><label>Ideal timing<input name="timeline" maxlength="120" placeholder="A target date, or still exploring"></label><label class="consent"><input name="consent" type="checkbox" required><span>Kris may contact me about this project using the details I provide. <a href="privacy.html">Privacy</a></span></label><div class="brief-actions"><button class="button" id="brief-submit" type="submit" hidden>Submit project brief ↗</button><a class="button" id="brief-email" href="mailto:info@caprastudios.co">Open email draft ↗</a><button type="button" id="brief-back">Back to the conversation</button></div><p class="agent-result" id="brief-result" role="status"></p></form></div></div><form class="agent-input" id="agent-input" hidden><label for="agent-question">Ask about your project</label><textarea id="agent-question" maxlength="2000" rows="2" required placeholder="What are you hoping to make possible?"></textarea><button type="submit">Send ↗</button></form><div class="agent-toolbar" id="agent-toolbar"><button id="agent-brief-open">Prepare a project brief ↗</button><button id="agent-reset">Clear conversation</button></div><p class="agent-privacy" id="agent-privacy">Prepared guidance stays in this page. <a href="privacy.html">Privacy &amp; data use</a></p></div></dialog>
+
+</body>
+</html>

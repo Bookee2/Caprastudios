@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtemp, readFile, rm, access, mkdir, writeFile, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { build, normalizeURL, defaultURL, publicPages } from './build.mjs';
+import { build, normalizeURL, defaultURL, publicPages, redirects } from './build.mjs';
 import { checkSEO } from './seo.mjs';
 
 test('SEO standard rejects a page missing its basics', async () => {
@@ -29,6 +29,8 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       await mkdir(path.join(output, 'assets/work'), {recursive: true});
       await writeFile(path.join(output, 'assets/motion/atlanta-wide.mp4'), 'old-output');
       await writeFile(path.join(output, 'assets/work/caprahr.jpg'), 'old-output');
+      await mkdir(path.join(output, 'marketing'), {recursive: true});
+      await writeFile(path.join(output, 'marketing/index.html'), 'old-output');
       const result = await build(output, url);
       const html = await readFile(path.join(output, 'index.html'), 'utf8');
       assert.ok(html.includes(`<link rel="canonical" href="${url}">`));
@@ -38,28 +40,35 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       if (url !== defaultURL) assert.equal(html.includes(defaultURL), false);
       const sitemap = await readFile(path.join(output, 'sitemap.xml'), 'utf8');
       assert.ok(sitemap.includes(`<loc>${url}</loc>`));
-      for (const page of ['work.html', 'motion.html', 'motion-lab.html', 'ai-consulting.html', 'trailgoat.html', 'purple-squirrel.html']) {
+      for (const page of publicPages.filter(p => !['index.html', '404.html'].includes(p))) {
         const content = await readFile(path.join(output, page), 'utf8');
-        assert.ok(content.includes(`<link rel="canonical" href="${url}${page}">`));
-        assert.ok(sitemap.includes(`<loc>${url}${page}</loc>`));
+        assert.ok(content.includes(`<link rel="canonical" href="${url}${page}">`), page);
+        assert.ok(sitemap.includes(`<loc>${url}${page}</loc>`), page);
+        // Kris's phone number must never be published (spam).
+        assert.doesNotMatch(content, /757[-. ]?3000|7707573000/, page);
+      }
+      // A retired address forwards to its successor and stays out of the sitemap.
+      for (const [from, to] of Object.entries(redirects)) {
+        const stub = await readFile(path.join(output, from), 'utf8');
+        assert.ok(stub.includes(`url=${to}`) && stub.includes('noindex') && stub.includes(`<link rel="canonical" href="${url}${to}">`), from);
+        assert.equal(sitemap.includes(`${url}${from}`), false);
       }
       await assert.rejects(access(path.join(output, 'server')));
       await assert.rejects(access(path.join(output, '.env')));
       await assert.rejects(access(path.join(output, '.local')));
-      const marketing = await readFile(path.join(output, 'marketing/index.html'), 'utf8');
-      assert.match(marketing, /The Marketing Room/);
-      assert.match(marketing, /kris@caprastudios.co/);
-      // Kris's phone number must never be published (spam); print versions with it live off-site.
-      for (const file of await readdir(path.join(output, 'marketing'), { recursive: true })) {
-        if (/\.(html|js|json|txt|csv|svg)$/.test(file)) assert.doesNotMatch(await readFile(path.join(output, 'marketing', file), 'utf8'), /757[-. ]?3000|7707573000/, file);
+      // The Marketing Room is retired: it is not published, not in the sitemap, and an older copy is removed.
+      await assert.rejects(access(path.join(output, 'marketing')));
+      assert.equal(sitemap.includes('marketing'), false);
+      // The land films page ships its two films and their posters.
+      for (const film of ['petit-ridge-film', 'buckeye-road-film']) {
+        assert.ok((await readFile(path.join(output, `assets/films/${film}.mp4`))).length > 1000000, film);
+        await access(path.join(output, `assets/films/${film}-poster.jpg`));
       }
-      assert.doesNotMatch(marketing, /noindex/);
-      assert.ok(marketing.includes('<link rel="canonical" href="https://caprastudios.co/marketing/">'));
-      assert.ok(sitemap.includes(`<loc>${url}marketing/</loc>`));
-      await access(path.join(output, 'marketing/print/business-card-personal-day-duplex.pdf'));
-      await access(path.join(output, 'marketing/motion/01-imagination-vertical.mp4'));
-      await assert.rejects(access(path.join(output, 'marketing/.env')));
-      await assert.rejects(access(path.join(output, 'marketing/source/__pycache__')));
+      // Demo scripts and styles ship; the source fragments the pages were assembled from do not.
+      await access(path.join(output, 'assets/demos/market-pulse/market-pulse.js'));
+      await access(path.join(output, 'assets/demos/ai/brain-demo.js'));
+      await assert.rejects(access(path.join(output, 'assets/demos/market-pulse/demo.html')));
+      await assert.rejects(access(path.join(output, 'assets/demos/ai/brain-demo.html')));
       await assert.rejects(access(path.join(output, 'assets/work/caprahr.jpg')));
       await assert.rejects(access(path.join(output, 'assets/motion/atlanta-wide.mp4')));
       assert.doesNotMatch(html, /AI-native|AI adoption|AI training|caprahr|atlanta-film/i);
@@ -67,7 +76,7 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       assert.ok(film.length > 1000);
       const notFound = await readFile(path.join(output, '404.html'), 'utf8');
       assert.ok(notFound.includes(`href="${url}"`));
-      assert.deepEqual(result.files.sort(), ['.nojekyll','assets','marketing',...publicPages,'robots.txt','sitemap.xml'].sort());
+      assert.deepEqual(result.files.sort(), ['.nojekyll','assets',...publicPages,...Object.keys(redirects),'robots.txt','sitemap.xml'].sort());
     } finally { await rm(output, { recursive: true, force: true }); }
   });
 }

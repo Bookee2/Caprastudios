@@ -1,0 +1,61 @@
+<div class="demo demo-brain" id="brain-demo">
+<p class="demo-flag">Sample company. Invented documents. Prepared answers.</p>
+<div class="demo-head">
+<h3>Fourteen documents, ten questions, three roles.</h3>
+<p>Tallgrass Landscaping is an invented nine-person company. We wrote its documents and prepared the answers by hand, so you can see how a second brain answers and what changes with who is asking.</p>
+</div>
+
+<div class="brain-grid">
+
+<div class="brain-ask" data-brain="ask" hidden>
+<label class="demo-label" for="brain-filter">Filter the prepared questions</label>
+<input class="brain-filter" id="brain-filter" type="search" autocomplete="off" spellcheck="false" placeholder="Try: aeration, rain, pay" aria-describedby="brain-filter-status">
+<p class="brain-filter-status" id="brain-filter-status" data-brain="filter-status" role="status"></p>
+<ul class="brain-questions" data-brain="questions" aria-label="Prepared questions"></ul>
+</div>
+
+<div class="brain-view" data-brain="view">
+<div class="brain-who" data-brain="who" hidden>
+<div class="brain-group" role="group" aria-labelledby="brain-mode-label">
+<p class="demo-label" id="brain-mode-label">Which brain</p>
+<button type="button" data-mode="second" aria-pressed="true">Second Brain: Dana, crew lead</button>
+<button type="button" data-mode="third" aria-pressed="false">Third Brain: whole company</button>
+</div>
+<div class="brain-group" role="group" aria-labelledby="brain-role-label" data-brain="roles" hidden>
+<p class="demo-label" id="brain-role-label">Asking as</p>
+<button type="button" data-role="crew lead" aria-pressed="true">Crew lead</button>
+<button type="button" data-role="office manager" aria-pressed="false">Office manager</button>
+<button type="button" data-role="owner" aria-pressed="false">Owner</button>
+</div>
+</div>
+<p class="brain-scope" data-brain="scope" role="status">Dana’s second brain holds 6 of the 14 documents: her own notes and the crew documents.</p>
+
+<div class="brain-panel">
+<div class="brain-panel-top">
+<p class="demo-label" data-brain="count">Prepared question 1 of 10</p>
+<button type="button" data-brain="next" hidden>Next question</button>
+</div>
+<div class="brain-result" data-brain="result" aria-live="polite" aria-atomic="true">
+<div class="brain-fade">
+<h4>What is included in a spring cleanup?</h4>
+<p class="brain-text">Clearing leaves and winter debris, cutting back perennials and grasses to four inches, edging the beds and pruning dead or broken wood. The debris is hauled away the same day. Shaping shrubs is a separate job.</p>
+<p class="brain-cite">Source: <b>Spring cleanup procedure</b></p>
+</div>
+</div>
+<div class="brain-sources" data-brain="sources">
+<div class="brain-fade">
+<div class="brain-sources-head"><p class="demo-label">The source</p><p class="hand">underlined: what it rests on</p></div>
+<details class="brain-source" open>
+<summary><b>Spring cleanup procedure<small>Procedure · Crews · February 16, 2026</small></b><span aria-hidden="true">+</span></summary>
+<p class="brain-doc-body">A spring cleanup is one visit by a two-person crew. <mark>Clear leaves, sticks and winter debris from the beds and the lawn. Cut back perennials and ornamental grasses to four inches. Edge every bed along walks and drives. Prune only dead or broken wood; shaping shrubs is a separate job on the price sheet. Haul all debris away the same day.</mark> A standard lot takes three to four crew hours. Before leaving, the crew lead walks the property with the customer or leaves a door tag, then logs the visit with before and after photos.</p>
+<p class="brain-doc-readers">Open to: crew lead, office manager and owner.</p>
+</details>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<p class="demo-foot">In a real install, the documents are yours, the answers are generated from them, and every answer shows its source.</p>
+</div>

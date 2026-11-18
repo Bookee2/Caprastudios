@@ -1,4 +1,5 @@
 import { createAgentHandler } from '../server/agent.mjs';
+import { publicPages } from './build.mjs';
 try { process.loadEnvFile(); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
@@ -15,7 +16,7 @@ createServer(async (req,res) => {
     const decoded = decodeURIComponent(url.pathname);
     const file = path.resolve(root, '.' + decoded);
     const relative = path.relative(root, file);
-    if (relative.startsWith('..') || relative.split(path.sep).some(p=>p.startsWith('.')) || (!['','index.html','work.html','ai-consulting.html','motion.html','motion-lab.html','trailgoat.html','purple-squirrel.html','privacy.html','404.html','blender/preview.html'].includes(relative) && !relative.startsWith('assets' + path.sep) && relative !== 'marketing' && !relative.startsWith('marketing' + path.sep))) {
+    if (relative.startsWith('..') || relative.split(path.sep).some(p=>p.startsWith('.')) || (!['', ...publicPages, 'blender/preview.html'].includes(relative) && !relative.startsWith('assets' + path.sep) && relative !== 'marketing' && !relative.startsWith('marketing' + path.sep))) {
       res.writeHead(404); res.end('Not found'); return;
     }
     const target = (await stat(file)).isDirectory() ? path.join(file, 'index.html') : file;

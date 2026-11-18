@@ -1,0 +1,161 @@
+<div class="demo demo-agent" id="agent-demo">
+<p class="demo-flag">A simulation on sample data. Nothing is sent anywhere.</p>
+<div class="demo-head">
+<h3>One customer email, eight steps, one approval.</h3>
+<p>A customer asks Tallgrass Landscaping, our invented company, to move a visit and what aeration costs. Step through what an agent does with the email, where it waits for a person, and what it writes down.</p>
+</div>
+
+<div class="agent-grid">
+
+<ol class="agent-steps" aria-label="The workflow, one step at a time">
+
+<li class="agent-step" data-step="1">
+<h4>The email arrives</h4>
+<p class="agent-step-note">It lands in the shared Tallgrass inbox on Thursday, April 9, 2026.</p>
+<div class="agent-card agent-mail">
+<dl>
+<div><dt>From</dt><dd>Ngozi Okafor</dd></div>
+<div><dt>To</dt><dd>hello@tallgrass.example</dd></div>
+<div><dt>Received</dt><dd>Thursday, April 9, 2026, 7:42 a.m.</dd></div>
+<div><dt>Subject</dt><dd>Moving our spring cleanup</dd></div>
+</dl>
+<p>Hi,</p>
+<p>We have a spring cleanup booked for Tuesday the 14th in the morning. We will be away until Wednesday night. Could you come Thursday or Friday that week instead?</p>
+<p>Also, what would it cost to aerate the lawn?</p>
+<p>Thanks,<br>Ngozi</p>
+</div>
+</li>
+
+<li class="agent-step" data-step="2">
+<h4>The agent reads it</h4>
+<p class="agent-step-note">It finds two separate requests and keeps the customer’s own words beside each one.</p>
+<ul class="agent-list">
+<li><b>Move the spring cleanup booked for Tuesday, April 14.</b><q>Could you come Thursday or Friday that week instead?</q></li>
+<li><b>Give a price for aeration.</b><q>what would it cost to aerate the lawn?</q></li>
+</ul>
+</li>
+
+<li class="agent-step" data-step="3">
+<h4>It looks things up</h4>
+<p class="agent-step-note">Each fact names the document it came from.</p>
+<ul class="agent-list">
+<li><b data-doc="client-okafor">Client record: Okafor residence</b><q>Spring cleanup booked for Tuesday, April 14, morning block, with Dana’s crew.</q><span>The lot is 8,400 square feet.</span></li>
+<li><b data-doc="reschedule-policy">Scheduling and reschedule policy</b><q>A customer can move a visit at no charge with two business days’ notice.</q><span>The visit is three business days away, so there is no fee.</span></li>
+<li><b data-doc="price-sheet">2026 residential price sheet</b><q>Core aeration: $140. Aeration with overseeding: $245.</q><span>The sheet covers lots up to 10,000 square feet, so it applies here.</span></li>
+<li><b>Crew calendar</b><span>The live schedule, not a document. Dana’s crew is open on Thursday, April 16, from 12:30 to 4:30 p.m.</span></li>
+</ul>
+</li>
+
+<li class="agent-step" data-step="4">
+<h4>It drafts a reply and a calendar change</h4>
+<p class="agent-step-note">Both are proposals. Nothing has gone out and the calendar has not changed.</p>
+<div class="agent-card">
+<p class="demo-label">Draft reply to Ngozi Okafor</p>
+<div class="agent-draft" data-agent="draft">
+<p>Hi Ngozi,</p>
+<p>Yes, we can move your spring cleanup. We have you down for Thursday, April 16, between 12:30 and 4:30 p.m., with Dana’s crew. There is no charge for the change.</p>
+<p>Core aeration for your lawn is $140. With overseeding it is $245. If you would like either one, reply here and we will book it.</p>
+<p>Thanks,<br>Marcus Bell<br>Tallgrass Landscaping</p>
+</div>
+</div>
+<div class="agent-card">
+<p class="demo-label">Proposed calendar change</p>
+<dl>
+<div><dt>Job</dt><dd>Spring cleanup, Okafor residence</dd></div>
+<div><dt>From</dt><dd>Tuesday, April 14, 8:00 a.m. to 12:00 p.m.</dd></div>
+<div><dt>To</dt><dd>Thursday, April 16, 12:30 to 4:30 p.m.</dd></div>
+<div><dt>Crew</dt><dd>Dana’s crew</dd></div>
+</dl>
+</div>
+</li>
+
+<li class="agent-step" data-step="5">
+<h4>It rates each action for risk</h4>
+<p class="agent-step-note">The rules are set before the agent runs. It cannot change them.</p>
+<ul class="agent-list agent-risks">
+<li><b>Send the reply to the customer</b><span class="demo-tag">Needs approval</span><span>It contacts a customer.</span></li>
+<li><b>Move the booking on the calendar</b><span class="demo-tag">Needs approval</span><span>It changes a customer’s booking.</span></li>
+<li><b>File the email under the client record</b><span class="demo-tag is-plain">Allowed alone</span><span>It stays inside the company and can be undone.</span></li>
+</ul>
+</li>
+
+<li class="agent-step" data-step="6">
+<h4>A person decides</h4>
+<p class="agent-step-note">The agent waits here. In this demo you stand in for Marcus, the office manager.</p>
+<div class="agent-approval" data-agent="approval" hidden>
+<div class="agent-choices" role="group" aria-label="Decide what the agent may do">
+<button class="button" type="button" data-agent="approve">Approve</button>
+<button type="button" data-agent="edit" aria-expanded="false" aria-controls="agent-editor">Edit</button>
+<button type="button" data-agent="reject">Reject</button>
+</div>
+<div class="agent-editor" id="agent-editor" data-agent="editor" hidden>
+<label class="demo-label" for="agent-edit-text">Edit the reply. The calendar change stays as proposed.</label>
+<textarea id="agent-edit-text" rows="12" data-agent="edit-text"></textarea>
+<p class="agent-edit-error" data-agent="edit-error" role="alert"></p>
+<div class="agent-choices">
+<button class="button" type="button" data-agent="send-edit">Approve the edited reply</button>
+<button type="button" data-agent="cancel-edit">Cancel</button>
+</div>
+</div>
+</div>
+<p class="agent-decision" data-agent="decision">In this walk-through, Marcus approves the reply and the calendar change as written.</p>
+</li>
+
+<li class="agent-step" data-step="7">
+<h4 data-agent="outcome-title">It carries out what was approved</h4>
+<div class="agent-outcome" data-agent="outcome">
+<ul class="agent-list agent-done">
+<li>Reply sent to Ngozi Okafor.</li>
+<li>Booking moved to Thursday, April 16, 12:30 to 4:30 p.m.</li>
+<li>Email filed under the client record.</li>
+</ul>
+<p class="agent-simulated"><span class="demo-tag">Simulated. Nothing was sent.</span></p>
+</div>
+</li>
+
+<li class="agent-step" data-step="8">
+<h4>Everything is in the log</h4>
+<p class="agent-step-note">Every action in this run is in the log, with its time, its risk level and who approved it.</p>
+<p class="agent-summary" data-agent="summary">9 entries. Two actions needed approval, and neither happened before a person said yes.</p>
+</li>
+
+</ol>
+
+<div class="agent-desk">
+<div class="agent-controls" data-agent="controls" hidden>
+<div class="agent-transport">
+<button class="button" type="button" data-agent="next">Next step</button>
+<button type="button" data-agent="run">Run it</button>
+<button type="button" data-agent="reset" disabled>Reset</button>
+</div>
+<div class="agent-off">
+<button type="button" data-agent="switch" aria-pressed="false">Off switch</button>
+<p class="agent-off-state" data-agent="switch-state">The agent is on.</p>
+<p class="hand">stops it at any step</p>
+</div>
+</div>
+<p class="agent-progress" data-agent="status" role="status"></p>
+<div class="agent-logbox" data-agent="log-box">
+<h4 id="agent-log-title">The log</h4>
+<div class="agent-log-scroll" data-agent="log-scroll">
+<table role="table" aria-labelledby="agent-log-title">
+<thead role="rowgroup"><tr role="row"><th role="columnheader" scope="col">Time</th><th role="columnheader" scope="col">Action</th><th role="columnheader" scope="col">Risk level</th><th role="columnheader" scope="col">Approved by</th></tr></thead>
+<tbody role="rowgroup" data-agent="log">
+<tr role="row"><td role="cell" data-label="Time">7:42:08 a.m.</td><td role="cell" data-label="Action">Email arrived in the shared inbox</td><td role="cell" data-label="Risk level">Does not apply</td><td role="cell" data-label="Approved by">Not needed</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:42:10 a.m.</td><td role="cell" data-label="Action">Read the email and found two requests</td><td role="cell" data-label="Risk level"><span class="demo-tag is-plain">Allowed alone</span></td><td role="cell" data-label="Approved by">Not needed</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:42:13 a.m.</td><td role="cell" data-label="Action">Looked up three documents and the crew calendar</td><td role="cell" data-label="Risk level"><span class="demo-tag is-plain">Allowed alone</span></td><td role="cell" data-label="Approved by">Not needed</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:42:18 a.m.</td><td role="cell" data-label="Action">Drafted a reply and a calendar change</td><td role="cell" data-label="Risk level"><span class="demo-tag is-plain">Allowed alone</span></td><td role="cell" data-label="Approved by">Not needed</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:42:19 a.m.</td><td role="cell" data-label="Action">Rated three planned actions for risk</td><td role="cell" data-label="Risk level"><span class="demo-tag is-plain">Allowed alone</span></td><td role="cell" data-label="Approved by">Not needed</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:42:20 a.m.</td><td role="cell" data-label="Action">Paused and asked a person to decide</td><td role="cell" data-label="Risk level"><span class="demo-tag">Needs approval</span></td><td role="cell" data-label="Approved by">Asked Marcus</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:55:40 a.m.</td><td role="cell" data-label="Action">Sent the reply to the customer (simulated)</td><td role="cell" data-label="Risk level"><span class="demo-tag">Needs approval</span></td><td role="cell" data-label="Approved by">Marcus Bell</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:55:41 a.m.</td><td role="cell" data-label="Action">Moved the booking to Thursday, April 16 (simulated)</td><td role="cell" data-label="Risk level"><span class="demo-tag">Needs approval</span></td><td role="cell" data-label="Approved by">Marcus Bell</td></tr>
+<tr role="row"><td role="cell" data-label="Time">7:55:42 a.m.</td><td role="cell" data-label="Action">Filed the email under the client record (simulated)</td><td role="cell" data-label="Risk level"><span class="demo-tag is-plain">Allowed alone</span></td><td role="cell" data-label="Approved by">Not needed</td></tr>
+</tbody>
+</table>
+</div>
+<p class="agent-log-note">Simulated times on Thursday, April 9, 2026.</p>
+</div>
+</div>
+
+</div>
+</div>

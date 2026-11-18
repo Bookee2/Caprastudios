@@ -3,10 +3,11 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { checkSEO } from './seo.mjs';
-import { copyMarketing, packageMarketing } from './marketing.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-export const publicPages = ['index.html', 'work.html', 'ai-consulting.html', 'motion.html', 'motion-lab.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
+export const publicPages = ['index.html', 'ai-consulting.html', 'web-apps.html', 'work.html', 'about.html', 'contact.html', 'land-films.html', 'market-pulse.html', 'motion-lab.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
+// Retired addresses. GitHub Pages has no server redirects, so each becomes a small page that forwards.
+export const redirects = { 'motion.html': 'web-apps.html' };
 export const defaultURL = 'https://bookee2.github.io/Caprastudios/';
 export function normalizeURL(value) {
   const url = new URL(value);
@@ -28,18 +29,23 @@ export async function build(output = path.join(root, 'dist'), override) {
     const source = await readFile(path.join(root, name), 'utf8');
     await writeFile(path.join(output, name), source.replaceAll(defaultURL, url).replace('<meta name="capra-agent-endpoint" content="">', `<meta name="capra-agent-endpoint" content="${endpoint.replace(/\/$/, '')}">`));
   }
-  // Remove retired media from an existing output too; keep source assets intact.
+  for (const [from, to] of Object.entries(redirects)) {
+    await writeFile(path.join(output, from), `<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>This page has moved — Capra Studios</title>\n<meta name="robots" content="noindex">\n<link rel="canonical" href="${url}${to}">\n<meta http-equiv="refresh" content="0; url=${to}">\n</head>\n<body>\n<p>This page has moved to <a href="${to}">${url}${to}</a>.</p>\n</body>\n</html>\n`);
+  }
+  // Demo markup in assets/demos/**/*.html is source: each page carries its own copy, so the fragments are not published.
+  // Remove retired work from an existing output too; keep source assets intact.
+  // The Marketing Room left the site in November 2026. Its source stays in marketing/ (the land films use its fonts).
+  await rm(path.join(output, 'marketing'), { recursive: true, force: true });
   for (const name of (await readdir(path.join(root, 'assets/motion'))).filter(name => name.startsWith('atlanta-'))) {
     await rm(path.join(output, 'assets/motion', name), { force: true });
   }
   await rm(path.join(output, 'assets/work/caprahr.jpg'), { force: true });
-  await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true, filter: source => !/^atlanta-/.test(path.basename(source)) && path.basename(source) !== 'caprahr.jpg' });
-  await copyMarketing(root, output);
+  await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true, filter: source => !/^atlanta-/.test(path.basename(source)) && path.basename(source) !== 'caprahr.jpg' && path.basename(source) !== 'README.md' && !(source.includes(`${path.sep}demos${path.sep}`) && source.endsWith('.html')) });
   await writeFile(path.join(output, '.nojekyll'), '');
   await writeFile(path.join(output, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${url}sitemap.xml\n`);
   // Each page's lastmod is the date of the last commit that touched it, when history is available.
   const lastmod = file => { try { const d = execFileSync('git', ['log', '-1', '--format=%cs', '--', file], { cwd: root, encoding: 'utf8' }).trim(); return d ? `<lastmod>${d}</lastmod>` : ''; } catch { return ''; } };
-  const entries = [...publicPages.filter(p => p !== '404.html').map(p => [p === 'index.html' ? '' : p, p]), ['marketing/', 'marketing/index.html']];
+  const entries = publicPages.filter(p => p !== '404.html').map(p => [p === 'index.html' ? '' : p, p]);
   await writeFile(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.map(([loc, file]) => `  <url><loc>${url}${loc}</loc>${lastmod(file)}</url>`).join('\n')}\n</urlset>\n`);
   // Local relative assets must resolve equally at /Caprastudios/ and at a custom domain root.
   for (const name of publicPages.filter(p => p !== '404.html')) {
@@ -51,19 +57,18 @@ export async function build(output = path.join(root, 'dist'), override) {
       } else if (!/^(https?:|mailto:|data:)/.test(reference)) {
         const target = path.resolve(output, reference.split(/[?#]/)[0]);
         if (!target.startsWith(path.resolve(output))) throw new Error(`Invalid asset path: ${reference}`);
-        if (reference !== './') await readFile(reference.split(/[?#]/)[0].endsWith('/') ? path.join(target, 'index.html') : target);
+        if (reference !== './') await readFile(reference.split(/[?#]/)[0].endsWith('/') ? path.join(target, 'index.html') : target).catch(() => { throw new Error(`${name}: missing file ${reference}`); });
       }
     }
     if ([...html.matchAll(/<h1\b/g)].length !== 1) throw new Error(`${name}: expected exactly one H1`);
     for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(json);
   }
   // The SEO standard: every indexable page must pass before anything is published.
-  await checkSEO(output, url, [...publicPages.filter(p => p !== '404.html'), 'marketing/index.html']);
+  await checkSEO(output, url, publicPages.filter(p => p !== '404.html'));
   return { url, output, files: await readdir(output) };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const result = await build();
-  await packageMarketing(root, result.output);
   console.log(`Built static website for ${result.url}\nOutput: ${result.output}`);
 }

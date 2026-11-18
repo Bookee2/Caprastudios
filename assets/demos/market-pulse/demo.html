@@ -1,0 +1,263 @@
+<div id="market-pulse" class="mp">
+  <div class="mp-wrap">
+
+    <header class="mp-top">
+      <div class="mp-top-text">
+        <p class="mp-kicker">Interactive demo</p>
+        <h2 class="mp-title">Market Pulse</h2>
+        <p class="mp-disclaimer">A Capra demo on synthetic data. Not real market figures.</p>
+        <p class="mp-lede">Ten markets, three property types and one fictional occupier's 26 leases, from 2018 to mid-2026. Pick a market, move the what-if slider, sort the scorecard or ask a question in plain English.</p>
+        <nav class="mp-jump" aria-label="Market Pulse sections">
+          <a href="#mp-market">Market</a>
+          <a href="#mp-portfolio">Portfolio</a>
+          <a href="#mp-definitions">Definitions</a>
+        </nav>
+      </div>
+      <aside class="mp-snapshot" aria-labelledby="mp-hs-caption">
+        <p class="mp-snap-title" id="mp-hs-caption">Vacancy snapshot</p>
+        <div class="mp-snap-stats" id="mp-hero-stats"></div>
+        <p class="mp-viewing" id="mp-subtitle"></p>
+      </aside>
+    </header>
+
+    <noscript><p class="mp-notice">Market Pulse needs JavaScript to draw the dashboard.</p></noscript>
+
+    <div class="mp-ticker" id="mp-ticker-band" role="region" aria-label="Highlights computed from the sample data">
+      <div class="mp-ticker-viewport">
+        <div class="mp-ticker-track" id="mp-ticker"></div>
+      </div>
+      <button class="mp-ticker-toggle" id="mp-ticker-toggle" type="button" aria-label="Pause the highlights ticker" aria-pressed="false">
+        <svg class="mp-i-pause" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+        <svg class="mp-i-play" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+
+    <!-- ============ MARKET ============ -->
+    <section id="mp-market" class="mp-section" aria-labelledby="mp-market-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">Market</p>
+        <h3 class="mp-section-title" id="mp-market-title">Market dashboard</h3>
+      </div>
+
+      <div class="mp-filters" role="group" aria-label="Filters">
+        <div class="mp-field">
+          <label for="mp-f-range">Time range</label>
+          <select id="mp-f-range">
+            <option value="12">Last 3 years</option>
+            <option value="20" selected>Last 5 years</option>
+            <option value="34">Since 2018</option>
+          </select>
+        </div>
+        <div class="mp-field">
+          <span class="mp-field-label" id="mp-f-type-label">Property type</span>
+          <div class="mp-segmented" id="mp-f-type" role="radiogroup" aria-labelledby="mp-f-type-label"></div>
+        </div>
+        <div class="mp-field">
+          <label for="mp-f-market">Market</label>
+          <select id="mp-f-market"></select>
+        </div>
+        <p class="mp-asof" id="mp-asof"></p>
+      </div>
+
+      <div class="mp-kpi-grid" id="mp-kpis"></div>
+
+      <div class="mp-ai-grid">
+        <article class="mp-card" aria-labelledby="mp-summary-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-summary-title">Summary</h4>
+              <p class="mp-card-sub">Written by rules from the numbers on this page. No model is involved.</p>
+            </div>
+          </div>
+          <div id="mp-summary-body" class="mp-summary"></div>
+        </article>
+
+        <article class="mp-card mp-chat-card" aria-labelledby="mp-chat-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-chat-title">Ask the data</h4>
+              <p class="mp-card-sub">Answers come from rules written for this demo. Each answer also refilters the dashboard.</p>
+            </div>
+          </div>
+          <div id="mp-chat-log" class="mp-chat-log" role="log" aria-live="polite" aria-label="Questions and answers" tabindex="0"></div>
+          <p class="mp-chips-label" id="mp-chips-label">Try one</p>
+          <div class="mp-chips" id="mp-chips" role="group" aria-labelledby="mp-chips-label">
+            <button type="button" class="mp-chip">What's unusual this quarter?</button>
+            <button type="button" class="mp-chip">Which market has the highest industrial vacancy?</button>
+            <button type="button" class="mp-chip">Compare Dallas and Atlanta office</button>
+            <button type="button" class="mp-chip">Forecast vacancy for Miami office</button>
+            <button type="button" class="mp-chip">Which leases should we prioritize?</button>
+          </div>
+          <form id="mp-chat-form" class="mp-chat-form">
+            <label class="mp-sr-only" for="mp-chat-input">Ask a question about the sample data</label>
+            <input id="mp-chat-input" type="text" autocomplete="off" placeholder="e.g. Which market has the highest office vacancy?">
+            <button class="mp-btn mp-btn-primary" type="submit">Ask</button>
+          </form>
+        </article>
+      </div>
+
+      <div class="mp-chart-grid">
+        <article class="mp-card mp-span-2" aria-labelledby="mp-vac-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-vac-title">Vacancy rate and 4-quarter forecast</h4>
+              <p class="mp-card-sub" id="mp-vac-sub"></p>
+            </div>
+            <div class="mp-scenario">
+              <label for="mp-scenario">What-if: extra demand per year</label>
+              <input type="range" id="mp-scenario" min="-2" max="2" step="0.25" value="0">
+              <output id="mp-scenario-out" for="mp-scenario">Baseline (no change)</output>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-vac-legend"></div>
+          <div class="mp-chart mp-chart-300" id="mp-chart-vacancy"></div>
+        </article>
+
+        <article class="mp-card" aria-labelledby="mp-sd-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-sd-title">Demand vs. new supply</h4>
+              <p class="mp-card-sub">Net absorption and deliveries, sf per quarter</p>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-sd-legend"></div>
+          <div class="mp-chart mp-chart-260" id="mp-chart-supply"></div>
+        </article>
+
+        <article class="mp-card" aria-labelledby="mp-cap-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-cap-title">Cap rate vs. 10-year Treasury</h4>
+              <p class="mp-card-sub" id="mp-cap-sub"></p>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-cap-legend"></div>
+          <div class="mp-chart mp-chart-260" id="mp-chart-cap"></div>
+        </article>
+
+        <article class="mp-card mp-span-2" aria-labelledby="mp-ex-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-ex-title">Market explorer: 2018 to today</h4>
+              <p class="mp-card-sub" id="mp-ex-sub"></p>
+            </div>
+            <div class="mp-ex-controls">
+              <button class="mp-play" id="mp-ex-play" type="button" aria-label="Play the time-lapse">
+                <svg class="mp-i-play" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                <svg class="mp-i-pause" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+              </button>
+              <label class="mp-sr-only" for="mp-ex-slider">Quarter shown in the market explorer</label>
+              <input type="range" id="mp-ex-slider" step="1">
+              <output id="mp-ex-quarter" for="mp-ex-slider"></output>
+            </div>
+          </div>
+          <div class="mp-explorer">
+            <div>
+              <p class="mp-ex-title" id="mp-ex-map-title">Vacancy by market</p>
+              <div class="mp-tilemap" id="mp-ex-map" role="group" aria-labelledby="mp-ex-map-title"></div>
+              <div class="mp-ramp" id="mp-ex-ramp" aria-hidden="true"></div>
+            </div>
+            <div>
+              <p class="mp-ex-title">Vacancy vs. rent growth <span class="mp-muted">(bubble size = inventory; lines = all-market average)</span></p>
+              <div class="mp-chart mp-chart-320" id="mp-ex-bubble"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="mp-card mp-span-2" aria-labelledby="mp-score-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-score-title">Market scorecard</h4>
+              <p class="mp-card-sub" id="mp-score-sub">Latest quarter. Choose a market to focus the dashboard on it. Choose a column heading to sort.</p>
+            </div>
+            <button id="mp-dl-market" class="mp-btn mp-btn-ghost" type="button">Download CSV</button>
+          </div>
+          <div class="mp-table-wrap" role="region" aria-labelledby="mp-score-title" tabindex="0">
+            <table class="mp-table" id="mp-scorecard"></table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PORTFOLIO ============ -->
+    <section id="mp-portfolio" class="mp-section" aria-labelledby="mp-portfolio-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">Portfolio</p>
+        <h3 class="mp-section-title" id="mp-portfolio-title">Occupier portfolio: lease rollover risk</h3>
+        <p class="mp-muted">A fictional occupier's 26 leases, scored against current asking rents from the dataset above.</p>
+      </div>
+      <div class="mp-kpi-grid mp-kpi-grid-4" id="mp-pf-kpis"></div>
+      <div class="mp-chart-grid">
+        <article class="mp-card" aria-labelledby="mp-exp-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-exp-title">Square feet expiring by year</h4>
+              <p class="mp-card-sub">Stacked by property type</p>
+            </div>
+          </div>
+          <div class="mp-legend" id="mp-pf-legend"></div>
+          <div class="mp-chart mp-chart-260" id="mp-chart-expiry"></div>
+        </article>
+        <article class="mp-card" aria-labelledby="mp-actions-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-actions-title">Priority actions</h4>
+              <p class="mp-card-sub">Leases ranked by an exposure score: size, time to expiry and market conditions</p>
+            </div>
+          </div>
+          <ol class="mp-actions" id="mp-pf-actions"></ol>
+        </article>
+        <article class="mp-card mp-span-2" aria-labelledby="mp-leases-title">
+          <div class="mp-card-head">
+            <div>
+              <h4 id="mp-leases-title">Lease schedule</h4>
+              <p class="mp-card-sub">Positive mark-to-market means renewal at today's asking rent costs more than the current rent</p>
+            </div>
+            <button id="mp-dl-portfolio" class="mp-btn mp-btn-ghost" type="button">Download CSV</button>
+          </div>
+          <div class="mp-table-wrap" role="region" aria-labelledby="mp-leases-title" tabindex="0">
+            <table class="mp-table" id="mp-leases"></table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ DEFINITIONS ============ -->
+    <section id="mp-definitions" class="mp-section" aria-labelledby="mp-definitions-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">Definitions</p>
+        <h3 class="mp-section-title" id="mp-definitions-title">One definition per metric</h3>
+        <p class="mp-muted">Each metric is calculated in one place. The tiles, charts, scorecard, summary and answers all read that same calculation, so a number cannot disagree with itself.</p>
+      </div>
+      <div class="mp-chart-grid">
+        <article class="mp-card mp-span-2" aria-labelledby="mp-defs-title">
+          <h4 id="mp-defs-title">How each number is defined</h4>
+          <dl class="mp-defs" id="mp-defs"></dl>
+        </article>
+        <article class="mp-card" aria-labelledby="mp-trust-title">
+          <h4 id="mp-trust-title">How the words stay tied to the numbers</h4>
+          <ul class="mp-bullets">
+            <li>Every number in a summary or an answer is computed first, then put into words. Nothing is estimated in the wording.</li>
+            <li>"Ask the data" matches your words against a fixed list of markets, property types, metrics and question types. When a question falls outside that list, it says so and shows what it can answer.</li>
+            <li>The forecast is a damped trend model with an error band. It is a transparent baseline, not a market call.</li>
+            <li>A market is flagged as unusual when a quarter's vacancy change is 2.5 or more standard deviations from that market's own history.</li>
+            <li>Everything runs in this page. Nothing you type is sent anywhere.</li>
+          </ul>
+        </article>
+        <article class="mp-card" aria-labelledby="mp-data-title">
+          <h4 id="mp-data-title">About the data</h4>
+          <ul class="mp-bullets">
+            <li>The market and lease figures are synthetic, produced by a seeded generator so the same numbers appear on every visit.</li>
+            <li>The market names are real places. The vacancy, rent, cap rate, construction, sales and lease figures attached to them are invented.</li>
+            <li>The 10-year Treasury line is based on the published history of that rate. It is the one series here that is not invented, and it is not a live rate feed.</li>
+            <li>The series are internally consistent: inventory grows by deliveries, and net absorption is the change in occupied space.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <p class="mp-foot">Market Pulse is a demonstration. Do not use these figures for decisions about real property.</p>
+  </div>
+
+  <div id="mp-tooltip" class="mp-tooltip" aria-hidden="true" hidden></div>
+</div>

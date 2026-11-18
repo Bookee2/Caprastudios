@@ -1,0 +1,75 @@
+/* Capra Studios: "Ask a second brain" demo.
+   Every rule is scoped under .demo. Colour and type come from the tokens in site.css,
+   so daylight and black light both work from the same rules.
+   The first block is the shared demo base. agent-demo.css carries the same block, so either file works alone. */
+
+/* ---------- shared demo base (same in both demo stylesheets) ---------- */
+.demo{border:2px solid var(--ink); padding:clamp(16px,3vw,36px); color:var(--ink)}
+.demo [hidden]{display:none!important}
+.demo .demo-flag{display:inline-block; margin:0 0 clamp(16px,2vw,22px); padding:6px 11px; background:var(--solar); color:var(--ink); border:2px solid var(--ink); font:700 14px/1.35 var(--text)}
+.demo .demo-head{margin-bottom:clamp(22px,3vw,34px)}
+.demo h3{font-size:clamp(27px,3.3vw,42px); font-weight:900; letter-spacing:-.04em; line-height:1.04; margin:0 0 14px; max-width:16em; text-wrap:balance}
+.demo .demo-head p{margin:0; max-width:40em}
+.demo h4{font:800 clamp(19px,1.7vw,22px)/1.2 var(--display); letter-spacing:-.02em; margin:0}
+.demo .demo-label{display:block; margin:0 0 8px; font:700 13px/1.35 var(--text); color:var(--muted)}
+.demo .demo-tag{display:inline-block; padding:2px 8px; background:var(--solar); color:var(--ink); border:2px solid var(--ink); font:700 13px/1.35 var(--text)}
+.demo .demo-tag.is-plain{background:transparent; border-color:var(--line)}
+.demo .demo-foot{margin:clamp(22px,3vw,34px) 0 0; padding-top:16px; border-top:2px solid var(--line); font-size:14px; line-height:1.5; color:var(--muted)}
+.demo .hand{font-size:clamp(20px,1.9vw,25px)}
+.demo input[type=search],.demo textarea{display:block; width:100%; min-width:0; padding:10px 12px; font:16px/1.5 var(--text); color:var(--ink); background:var(--paper); border:2px solid var(--ink); border-radius:0; -webkit-appearance:none; appearance:none}
+.demo input::placeholder{color:var(--muted); opacity:1}
+.demo textarea:focus-visible{outline:3px solid var(--hand); outline-offset:3px}
+/* Under black light, and in a dark room, paint glows as an outline instead of a fill. */
+html.bl .demo .demo-flag,html.bl .demo .demo-tag:not(.is-plain),.room .demo .demo-flag,.room .demo .demo-tag:not(.is-plain){background:transparent; color:var(--solar); border-color:var(--solar)}
+/* Motion: one short fade when new content arrives. None with motion off or reduced motion. */
+@keyframes capra-demo-fade{from{opacity:0} to{opacity:1}}
+html:not(.motion-off) .demo .is-new{animation:capra-demo-fade var(--dur) var(--ease) both}
+@media print,(prefers-reduced-motion:reduce){html:not(.motion-off) .demo .is-new{animation:none}}
+
+/* ---------- layout: questions on the left, who is asking and the answer on the right ---------- */
+.demo .brain-grid{display:grid; gap:clamp(24px,4vw,56px); align-items:start}
+.demo.demo-live .brain-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+.demo .brain-view{max-width:46em}
+.demo.demo-live .brain-view{max-width:none}
+
+/* ---------- the prepared questions ---------- */
+.demo .brain-filter{min-height:48px}
+.demo .brain-filter-status{margin:8px 0 14px; min-height:3em; font-size:14px; line-height:1.5; color:var(--muted)}
+.demo .brain-questions{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+.demo .brain-questions button{display:block; width:100%; padding-block:11px; text-align:left}
+
+/* ---------- who is asking ---------- */
+.demo .brain-who{display:grid; gap:14px; margin-bottom:12px}
+.demo .brain-group{display:flex; flex-wrap:wrap; gap:8px}
+.demo .brain-group .demo-label{flex-basis:100%; margin:0}
+.demo .brain-group button{padding-block:8px; text-align:left}
+.demo .brain-scope{margin:0 0 16px; font-size:15px; line-height:1.5}
+
+/* ---------- the answer ---------- */
+.demo .brain-panel{background:var(--panel); border:2px solid var(--ink); padding:clamp(16px,2.4vw,28px)}
+.demo .brain-panel-top{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; margin-bottom:16px}
+.demo .brain-panel-top .demo-label{margin:0}
+.demo .brain-result h4{font-size:clamp(21px,2.1vw,27px); margin-bottom:12px; text-wrap:balance}
+.demo .brain-flagline{margin:0 0 10px}
+.demo .brain-text{margin:0 0 12px; max-width:34em; font-size:clamp(17px,1.5vw,19px); line-height:1.5}
+.demo .brain-why{margin:0 0 14px; max-width:34em; font-size:15px; line-height:1.5; color:var(--muted)}
+.demo .brain-cite{margin:0; font-size:14px; line-height:1.5; color:var(--muted)}
+.demo .brain-cite b{font-weight:700; color:var(--ink)}
+
+/* ---------- the sources: the site's own details pattern, with the supporting passage underlined ---------- */
+.demo .brain-sources{margin-top:clamp(18px,2.4vw,26px)}
+.demo .brain-sources-head{display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:6px 18px; margin-bottom:10px}
+.demo .brain-sources-head .demo-label{margin:0}
+.demo .brain-source summary{min-height:60px; padding:11px 0; gap:16px; font-size:16px}
+.demo .brain-source summary b{display:block; font-weight:700; line-height:1.3}
+.demo .brain-source summary small{display:block; margin-top:3px; font:500 13px/1.4 var(--text); color:var(--muted)}
+.demo .brain-doc-body{max-width:none; margin:0; padding:0 0 10px; font-size:15px; line-height:1.65; color:var(--muted)}
+.demo .brain-doc-readers{max-width:none; margin:0; padding:0 0 14px; font-size:13px; line-height:1.4; color:var(--muted)}
+.demo.demo-brain mark{background:none; color:var(--ink); font-weight:600; text-decoration:underline; text-decoration-color:var(--hand); text-decoration-thickness:2px; text-underline-offset:4px}
+.demo .brain-locked{padding:14px 16px; border:2px solid var(--line)}
+.demo .brain-locked p{margin:0; font-size:15px; line-height:1.5}
+
+/* ---------- one column at 800px and below ---------- */
+@media(max-width:800px){
+  .demo.demo-live .brain-grid{grid-template-columns:1fr}
+}

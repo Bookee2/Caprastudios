@@ -28,7 +28,7 @@ export async function checkSEO(output, url, pages) {
     if ((html.match(/<h1\b/g) || []).length !== 1) fail('needs exactly one <h1>');
     for (const [img] of html.matchAll(/<img\b[^>]*>/g)) if (!/\balt="/.test(img)) fail(`image without alt: ${img.slice(0, 80)}`);
     const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
-    if (!ld.length && page !== 'privacy.html' && !page.startsWith('marketing/')) fail('missing structured data (JSON-LD)');
+    if (!ld.length && page !== 'privacy.html') fail('missing structured data (JSON-LD)');
     for (const [, json] of ld) { try { JSON.parse(json); } catch { fail('structured data is not valid JSON'); } }
   }
   if (problems.length) throw new Error(`SEO standard not met:\n- ${problems.join('\n- ')}`);

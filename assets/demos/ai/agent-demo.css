@@ -1,0 +1,112 @@
+/* Capra Studios: "Watch one workflow" demo.
+   Every rule is scoped under .demo. Colour and type come from the tokens in site.css,
+   so daylight and black light both work from the same rules.
+   The first block is the shared demo base. brain-demo.css carries the same block, so either file works alone. */
+
+/* ---------- shared demo base (same in both demo stylesheets) ---------- */
+.demo{border:2px solid var(--ink); padding:clamp(16px,3vw,36px); color:var(--ink)}
+.demo [hidden]{display:none!important}
+.demo .demo-flag{display:inline-block; margin:0 0 clamp(16px,2vw,22px); padding:6px 11px; background:var(--solar); color:var(--ink); border:2px solid var(--ink); font:700 14px/1.35 var(--text)}
+.demo .demo-head{margin-bottom:clamp(22px,3vw,34px)}
+.demo h3{font-size:clamp(27px,3.3vw,42px); font-weight:900; letter-spacing:-.04em; line-height:1.04; margin:0 0 14px; max-width:16em; text-wrap:balance}
+.demo .demo-head p{margin:0; max-width:40em}
+.demo h4{font:800 clamp(19px,1.7vw,22px)/1.2 var(--display); letter-spacing:-.02em; margin:0}
+.demo .demo-label{display:block; margin:0 0 8px; font:700 13px/1.35 var(--text); color:var(--muted)}
+.demo .demo-tag{display:inline-block; padding:2px 8px; background:var(--solar); color:var(--ink); border:2px solid var(--ink); font:700 13px/1.35 var(--text)}
+.demo .demo-tag.is-plain{background:transparent; border-color:var(--line)}
+.demo .demo-foot{margin:clamp(22px,3vw,34px) 0 0; padding-top:16px; border-top:2px solid var(--line); font-size:14px; line-height:1.5; color:var(--muted)}
+.demo .hand{font-size:clamp(20px,1.9vw,25px)}
+.demo input[type=search],.demo textarea{display:block; width:100%; min-width:0; padding:10px 12px; font:16px/1.5 var(--text); color:var(--ink); background:var(--paper); border:2px solid var(--ink); border-radius:0; -webkit-appearance:none; appearance:none}
+.demo input::placeholder{color:var(--muted); opacity:1}
+.demo textarea:focus-visible{outline:3px solid var(--hand); outline-offset:3px}
+/* Under black light, and in a dark room, paint glows as an outline instead of a fill. */
+html.bl .demo .demo-flag,html.bl .demo .demo-tag:not(.is-plain),.room .demo .demo-flag,.room .demo .demo-tag:not(.is-plain){background:transparent; color:var(--solar); border-color:var(--solar)}
+/* Motion: one short fade when new content arrives. None with motion off or reduced motion. */
+@keyframes capra-demo-fade{from{opacity:0} to{opacity:1}}
+html:not(.motion-off) .demo .is-new{animation:capra-demo-fade var(--dur) var(--ease) both}
+@media print,(prefers-reduced-motion:reduce){html:not(.motion-off) .demo .is-new{animation:none}}
+
+/* ---------- layout: the trace on the left, the controls and the log on the right ---------- */
+.demo .agent-grid{display:grid; grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr); gap:clamp(24px,4vw,56px); align-items:start}
+
+/* ---------- the trace: a ruled list, one step per row ---------- */
+.demo .agent-steps{list-style:none; margin:0; padding:0; border-top:2px solid var(--ink)}
+.demo .agent-step{padding-block:clamp(18px,2.2vw,26px); border-bottom:2px solid var(--ink); scroll-margin-block:16px}
+.demo .agent-step-note{margin:6px 0 14px; max-width:36em; font-size:15px; line-height:1.5; color:var(--muted)}
+.demo .agent-card{margin-top:12px; padding:14px 16px; background:var(--panel); border:2px solid var(--line)}
+.demo .agent-card p{margin:0 0 10px; font-size:15px; line-height:1.55}
+.demo .agent-card p:last-child{margin-bottom:0}
+.demo .agent-card .demo-label{margin-bottom:10px; font-size:13px}
+.demo.demo-agent dl{display:grid; gap:4px; margin:0; font-size:14px; line-height:1.45}
+.demo.demo-agent dl div{display:grid; grid-template-columns:5.4em minmax(0,1fr); gap:10px}
+.demo.demo-agent dt{font-weight:700; color:var(--muted)}
+.demo.demo-agent dd{margin:0; overflow-wrap:anywhere}
+.demo .agent-mail dl{margin-bottom:12px; padding-bottom:12px; border-bottom:2px solid var(--line)}
+.demo .agent-list{list-style:none; margin:0; padding:0}
+.demo .agent-list>li{padding:10px 0; border-top:2px solid var(--line); font-size:15px; line-height:1.5}
+.demo .agent-list>li:first-child{padding-top:0; border-top:0}
+.demo .agent-list>li:last-child{padding-bottom:0}
+.demo .agent-list b{display:block; font-weight:700}
+.demo .agent-list q{display:block}
+.demo .agent-list span:not(.demo-tag){display:block; color:var(--muted)}
+.demo .agent-risks>li{display:flex; flex-wrap:wrap; align-items:center; gap:4px 12px}
+.demo .agent-risks b{flex:1 1 12em}
+.demo .agent-risks span:not(.demo-tag){flex-basis:100%}
+
+/* ---------- the approval ---------- */
+.demo .agent-choices{display:flex; flex-wrap:wrap; align-items:stretch; gap:8px}
+.demo .agent-editor{margin-top:18px}
+.demo .agent-editor textarea{min-height:17em; margin-bottom:12px; resize:vertical}
+.demo .agent-edit-error{margin:0 0 12px; font-size:14px; font-weight:700}
+.demo .agent-edit-error:empty{display:none}
+.demo .agent-decision{margin:0; font-weight:700}
+.demo .agent-outcome{margin-top:12px}
+.demo .agent-simulated{margin:14px 0 0}
+.demo .agent-pre{white-space:pre-wrap; overflow-wrap:anywhere}
+.demo .agent-summary{margin:0; font-weight:700}
+
+/* ---------- the desk: step controls, the off switch and the log ---------- */
+.demo .agent-desk{display:flex; flex-direction:column; gap:16px}
+.demo .agent-controls{display:grid; gap:14px; scroll-margin-block:16px}
+.demo .agent-transport{display:flex; flex-wrap:wrap; align-items:stretch; gap:8px}
+.demo .agent-off{display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; padding-block:14px; border-block:2px solid var(--ink)}
+.demo .agent-off-state{margin:0; font-size:14px; font-weight:700}
+.demo .agent-off .hand{margin-left:6px}
+.demo .agent-progress{margin:0; font-size:15px; line-height:1.5}
+.demo .agent-progress:empty{display:none}
+.demo .agent-logbox{container-type:inline-size; padding:14px 16px; background:var(--panel); border:2px solid var(--line)}
+.demo .agent-logbox.is-read{border-color:var(--ink)}
+.demo .agent-logbox h4{margin-bottom:10px}
+.demo .agent-log-scroll{overflow-x:auto}
+.demo .agent-logbox table{width:100%; border-collapse:separate; border-spacing:0; font-size:13px; line-height:1.4}
+.demo .agent-logbox th{position:sticky; top:0; padding:0 10px 8px 0; white-space:nowrap; background:var(--panel); border-bottom:2px solid var(--ink); font:700 13px/1.35 var(--text); color:var(--muted); text-align:left; vertical-align:bottom}
+.demo .agent-logbox td{padding:8px 10px 8px 0; border-bottom:2px solid var(--line); vertical-align:top}
+.demo .agent-logbox th:last-child,.demo .agent-logbox td:last-child{padding-right:0}
+.demo .agent-logbox td:first-child{white-space:nowrap; font-variant-numeric:tabular-nums}
+.demo .agent-logbox .demo-tag{padding:1px 6px; font-size:12px; white-space:nowrap}
+.demo .agent-log-note{margin:10px 0 0; font-size:13px; line-height:1.4; color:var(--muted)}
+/* A narrow log reads as stacked entries instead of a four-column table. */
+@container (max-width:440px){
+  .demo .agent-logbox thead{position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap}
+  .demo .agent-logbox table,.demo .agent-logbox tbody,.demo .agent-logbox tr,.demo .agent-logbox td{display:block}
+  .demo .agent-logbox tr{padding:9px 0; border-bottom:2px solid var(--line)}
+  .demo .agent-logbox tr:first-child{border-top:2px solid var(--ink)}
+  .demo .agent-logbox td{padding:1px 0; border:0}
+  .demo .agent-logbox td::before{content:attr(data-label) ': '; font-weight:700; color:var(--muted)}
+  .demo .agent-logbox td:nth-child(2){font-size:14px; font-weight:700}
+  .demo .agent-logbox td:nth-child(2)::before{content:none}
+}
+
+/* On a wide screen the desk stays in view while the trace grows, and a long log scrolls inside its own box.
+   The extra room at the bottom keeps the newest log entry clear of the site's fixed Ask Capra button. */
+@media(min-width:801px) and (min-height:560px){
+  .demo .agent-desk{position:sticky; top:calc(var(--nav-h,64px) + 16px); max-height:calc(100vh - var(--nav-h,64px) - 48px)}
+  .demo .agent-controls,.demo .agent-progress{flex:none}
+  .demo .agent-logbox{display:flex; flex-direction:column; flex:0 1 auto; min-height:13em}
+  .demo .agent-log-scroll{flex:1 1 auto; min-height:0; overflow-y:auto}
+}
+
+/* ---------- one column at 800px and below ---------- */
+@media(max-width:800px){
+  .demo .agent-grid{grid-template-columns:1fr}
+}

@@ -364,3 +364,170 @@ html:not(.motion-off) .art.gpu-stage canvas,html:not(.motion-off) .art .gpu-post
 .hero-controls.is-away{display:none}
 .film-head .kicker{color:var(--hand); margin:0 0 10px; max-width:none}
 .rows .text-link+.text-link{margin-left:22px}
+
+/* ---------- the wall, put to work (November 2026) ----------
+   AI systems and web apps lead. The paste-ups are real product screens, hand notes point at true numbers,
+   and each line has one paint: solar for AI systems, lagoon for web apps, koi for the studio. */
+@media(min-width:801px){.home .hero{grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr)}}
+.home .hero h1{white-space:normal; text-wrap:balance; font-size:clamp(42px,5.5vw,84px)}
+.proof-art .paste{--tilt:0deg}
+.proof-art .hero-note{left:auto; right:4px; bottom:-48px; --r:-3deg}
+.main-nav .nav-apart{margin-left:18px}
+.main-nav .nav-apart::before{content:''; position:absolute; left:-22px; top:12px; bottom:12px; width:2px; background:var(--line)}
+@media(max-width:1120px){.main-nav{gap:18px; font-size:14px} .main-nav .nav-apart{margin-left:14px} .main-nav .nav-apart::before{left:-16px}}
+
+/* two lines side by side, each on its own paint */
+.lines{display:grid; grid-template-columns:repeat(2,minmax(0,1fr))}
+.line{padding-block:clamp(44px,5.5vw,84px)}
+.line-in{max-width:604px; margin-inline:auto; padding-inline:32px}
+.line h2{font-size:clamp(44px,6vw,88px); letter-spacing:-.05em; margin-bottom:16px}
+.line-who{margin:0 0 12px; font-weight:700}
+.line-lead{font-size:clamp(18px,1.5vw,20px); margin-bottom:22px; max-width:26em}
+.line-list{list-style:none; margin:0 0 26px; padding:0; border-top:2px solid var(--ink)}
+.line-list li{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:4px 18px; padding-block:12px; border-bottom:2px solid var(--ink); font-size:16px; line-height:1.4}
+.line-list b{font:800 17px/1.3 var(--display); letter-spacing:-.015em}
+.rate{display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 12px; margin:0 0 22px}
+.rate-label{flex-basis:100%; font-weight:700}
+.rate b{font:900 clamp(40px,4.6vw,60px)/1 var(--display); letter-spacing:-.04em}
+.rate s{font:700 20px/1 var(--display); opacity:.62}
+.rate small{flex-basis:100%; font-size:14px}
+
+/* proof: paste-ups on the wall, with the true numbers circled by hand */
+.proof{padding-bottom:clamp(50px,7vw,96px)}
+.proof-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(34px,5vw,80px)}
+.proof-item .paste{margin-bottom:28px; --tilt:-1.4deg}
+.proof-item:nth-child(2) .paste{--tilt:1.2deg}
+.proof-item .paste img{aspect-ratio:1440/980; object-fit:cover; object-position:top}
+.proof-item h3{font:900 clamp(34px,4vw,54px)/1 var(--display); letter-spacing:-.045em; margin-bottom:14px}
+.proof-item p{max-width:30em}
+.facts{font-weight:600; line-height:1.9}
+.circled{display:inline-block; padding:0 .45em .04em; margin:0 -.08em; line-height:1.45; border:3px solid var(--hand); border-radius:50%/64%; rotate:-1.5deg; white-space:nowrap}
+.proof-note{margin:34px 0 0}
+
+/* four steps where a page needs them */
+.process-grid.four{grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(18px,2.4vw,34px)}
+.process-grid.four h3{font-size:clamp(20px,1.7vw,24px)}
+.after-grid{margin:30px 0 0}
+/* the hub sits under the four as the thing that holds them */
+.hub-row{display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 28px; margin-top:clamp(26px,3vw,40px); padding:20px 24px; border:2px solid var(--ink)}
+.hub-row h3{flex:none}
+.hub-row p{flex:1 1 24em; margin:0; color:var(--muted)}
+
+/* the studio band keeps the pond */
+.kris-grid.has-pond{grid-template-columns:minmax(0,1fr) minmax(0,.86fr); gap:clamp(30px,5vw,80px)}
+.pond-art{rotate:-1.2deg}
+.kris .pond-art .hero-note{font-size:clamp(22px,2.2vw,30px); margin:0; left:0; bottom:-46px; --r:-4deg}
+.kris .art{border-color:#15141c}
+.kris .hero-controls{margin-top:64px; padding-bottom:0}
+
+/* one quiet strip for the land films: a plate beside the words, never under them */
+.films-strip{padding-block:clamp(48px,6vw,84px)}
+.strip-grid{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(28px,5vw,72px); align-items:center}
+.films-strip h2{font-size:clamp(40px,5vw,68px); margin-bottom:18px}
+.films-strip p:not(.kicker){max-width:28em; color:var(--muted)}
+.plate{margin:0}
+.plate img{width:100%; height:auto; border:2px solid var(--line)}
+.plate figcaption{position:relative; margin-top:14px; padding-top:13px; font-size:14px; color:var(--muted)}
+.plate figcaption::before{content:''; position:absolute; left:0; top:0; width:30px; height:3px; background:var(--ribbon)}
+.plate figcaption b{display:block; font:800 17px/1.3 var(--display); letter-spacing:-.015em; color:var(--ink)}
+
+/* contact: a brief, and the sign-off */
+.contact-ask{max-width:24em}
+.contact-bottom .contact-ask p{margin:0 0 18px; font-size:19px}
+.signoff{margin-top:clamp(34px,5vw,60px); --r:-2deg; font-size:clamp(26px,3vw,40px)}
+
+/* AI systems page */
+.ai-top h1{font-size:clamp(40px,5.2vw,76px); max-width:none; text-wrap:balance}
+.rows h3 small{display:block; margin-top:8px; font:500 15px/1.4 var(--text); letter-spacing:0; color:var(--muted)}
+.stats{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(18px,2.4vw,34px); border-top:2px solid var(--ink)}
+.stats li{padding-top:22px}
+.stats b{display:block; font:900 clamp(48px,6vw,88px)/1 var(--display); letter-spacing:-.05em; margin-bottom:12px}
+.stats p{margin:0 0 10px}
+.stats a{font-size:14px; color:var(--muted); text-decoration:underline; text-underline-offset:3px}
+.stats.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.case-numbers{padding-bottom:clamp(46px,6vw,80px)}
+.audit-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,5vw,80px); align-items:start}
+.audit-grid h2{margin-bottom:22px}
+.audit-grid>div>p{font-size:clamp(18px,1.5vw,20px); max-width:28em}
+.rate-card{padding-block:18px; border-top:2px solid var(--ink)}
+.rate-card:last-of-type{border-bottom:2px solid var(--ink); margin-bottom:26px}
+.rate-card h3{margin-bottom:8px}
+.rate-card .rate{margin:0 0 6px}
+.rate-card .note{margin:0}
+.audit-grid .button+.note{margin:16px 0 0}
+
+/* inner pages whose headline is a full sentence */
+.page-top.sentence h1{font-size:clamp(40px,5.2vw,76px); max-width:13em; text-wrap:balance}
+
+/* the land films page: a dark room from top to bottom, plates beside the words */
+.films-top{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:clamp(28px,5vw,72px); align-items:center}
+.films-top h1{font-size:clamp(44px,5.6vw,84px); max-width:none; text-wrap:balance}
+.films-top .note{margin:14px 0 26px}
+.page-top.field + .story{padding-top:clamp(46px,6vw,80px)}
+/* On a film with a title on its poster, the play button sits in the corner so the title stays readable. */
+.film-pair .film-play{left:16px; top:16px; translate:none; min-height:46px; padding:0 18px}
+.plate-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,2.4vw,34px)}
+.film-pair{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(22px,3vw,44px)}
+.film-pair figure{margin:0; min-width:0}
+.film-pair figcaption{position:relative; margin-top:14px; padding-top:13px; font-size:14px; color:var(--muted)}
+.film-pair figcaption::before{content:''; position:absolute; left:0; top:0; width:30px; height:3px; background:var(--ribbon)}
+.film-pair figcaption b{display:block; font:800 17px/1.3 var(--display); letter-spacing:-.015em; color:var(--ink)}
+.films-page .after-grid{color:var(--muted)}
+.lab-band .paste{--tilt:2deg; max-width:460px; justify-self:center}
+
+/* the contact page */
+.contact-grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(30px,6vw,90px); padding-bottom:clamp(30px,4vw,50px); align-items:start}
+.brief-form{display:grid; gap:18px}
+.brief-form label{display:grid; gap:7px; font-weight:700; font-size:15px}
+.brief-form input:not([type=checkbox]),.brief-form select,.brief-form textarea{width:100%; min-height:50px; padding:12px 14px; font:400 17px/1.4 var(--text); color:var(--ink); background:var(--paper); border:2px solid var(--ink); border-radius:0}
+.brief-form textarea{resize:vertical}
+.brief-form .consent{display:flex; align-items:flex-start; gap:12px; font-weight:400}
+.brief-form .consent input{width:22px; height:22px; margin:2px 0 0; flex:none}
+.brief-form .consent a,.contact-aside .note a{text-decoration:underline; text-underline-offset:3px}
+.brief-form .brief-actions{display:flex; flex-wrap:wrap; gap:14px}
+.brief-form .note{margin:0}
+.brief-result{margin:0; font-weight:700}
+.brief-result.error{color:var(--koi)}
+.contact-aside h2{font-size:clamp(30px,3.4vw,44px); margin-bottom:16px}
+.contact-aside h3{margin:34px 0 12px}
+.contact-aside .email{font-size:clamp(20px,2.2vw,28px)}
+.next-steps{margin:0 0 22px; padding-left:22px}
+.next-steps li{margin-bottom:8px}
+.contact-signoff{padding-bottom:clamp(50px,7vw,90px)}
+
+/* ---------- demos ---------- */
+.demos .demo + .demo{margin-top:clamp(30px,4vw,60px)}
+.demos .demo{scroll-margin-top:calc(var(--nav-h) + 16px)}
+.mp-host{padding-block:clamp(30px,4vw,60px) 0}
+.proof-demos{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(30px,5vw,80px); align-items:center; margin-top:clamp(44px,6vw,84px); padding-top:clamp(40px,5vw,70px); border-top:2px solid var(--ink)}
+.proof-demos .paste{--tilt:-1.2deg}
+.proof-demos .paste img{aspect-ratio:1440/980; object-fit:cover; object-position:top}
+.proof-demos h3{font:900 clamp(30px,3.6vw,48px)/1 var(--display); letter-spacing:-.045em; margin-bottom:14px}
+.demo-links{list-style:none; margin:22px 0 0; padding:0; border-top:2px solid var(--line)}
+.demo-links li{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px 24px; align-items:baseline; padding:14px 0; border-bottom:2px solid var(--line)}
+.demo-links a{font:800 18px/1.3 var(--display); letter-spacing:-.015em; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px}
+.demo-links span{font-size:15px; color:var(--muted)}
+.demo-teaser{justify-self:center; max-width:26em}
+.band.flip .demo-teaser{order:-1}
+.demo-teaser .hand{margin:0 0 14px; font-size:clamp(26px,2.6vw,34px); rotate:-3deg; color:#15141c}
+.demo-teaser ul{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.demo-teaser li{padding:14px 18px; background:var(--paper); color:var(--ink); border:2px solid #15141c; font:700 18px/1.3 var(--display); letter-spacing:-.01em}
+.demo-teaser li:nth-child(2){margin-left:22px}
+.demo-teaser li:nth-child(3){margin-left:44px}
+
+@media(max-width:1000px){
+  .process-grid.four,.stats{grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:34px}
+  .kris-grid.has-pond{grid-template-columns:1fr} .pond-art{max-width:520px; margin:10px 0 0 6px}
+  .plate-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:800px){
+  .films-top,.plate-grid,.film-pair,.contact-grid{grid-template-columns:1fr}
+  .lines,.proof-grid,.strip-grid,.audit-grid,.proof-demos,.demo-links li{grid-template-columns:1fr}
+  .demo-teaser li:nth-child(n){margin-left:0}
+  .band.flip .demo-teaser{order:0; justify-self:start}
+  .line-in{padding-inline:20px}
+  .line-list li{grid-template-columns:1fr; gap:2px}
+  .process-grid.four,.stats,.stats.three{grid-template-columns:1fr}
+  .proof-art .hero-note{position:static; margin-top:18px}
+  .js .main-nav .nav-apart{margin-left:0} .main-nav .nav-apart::before{display:none}
+}

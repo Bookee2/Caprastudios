@@ -1,8 +1,10 @@
 # Capra Studios
 
-An independent design and web studio in Atlanta: websites, web applications, 3D motion, and AI consulting. Operated by Capra, LLC.
+An independent studio in Atlanta: AI systems and custom web applications, with land films as a separate line. Operated by Capra, LLC.
 
 One wall, two lights: a chalk page with flat paint colours taken from the koi pond's palettes, and a black light switch that turns the wall dark and makes the paint glow. Red Hat typography, the ribbon unicorn, hand-tagged notes, and the interactive koi pond hero give the studio its own identity. The direction and its reasoning are in `docs/SITE-CHARACTER-AUDIT.html`.
+
+Since November 17, 2026 the wall is "put to work": the site sells AI systems and web applications first, one paint per page (solar for AI systems, lagoon for web apps, koi for the studio), real product screens as paste-ups, and land films on their own dark page. Capra no longer sells websites. The rules are in [the brand guide](docs/BRAND.md).
 
 ## Run it
 
@@ -33,14 +35,19 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 
 | Content | File |
 | --- | --- |
-| All landing-page copy, portfolio links, contact links, structured data | `index.html` |
+| Homepage: the two lines of work, proof, the studio band, the films strip, structured data | `index.html` |
+| AI Systems: five products, the audit and workshop prices, the demos | `ai-consulting.html`, `assets/demos/ai/` |
+| Web Apps: what a build includes, the product sprint price | `web-apps.html` |
+| About and the method | `about.html` |
+| Contact page and its brief form | `contact.html`, `assets/contact.js` |
+| Land Films: plates, the two films, sources, sending a parcel | `land-films.html`, `assets/films/` |
 | Palette, type, layout and every shared component (daylight, black light, dark rooms, colour fields, paste-ups) | `assets/site.css` |
 | Menu, year, film playback | `assets/studio-next.js` |
 | Navigation bar, the lights switch (daylight or black light) and the motion switch | `assets/nav.js` |
 | Shared behaviours: headline rise, process line, word lighting, diagram draw | `assets/interactions.js` |
 | WebGPU koi pond hero | `assets/pond.js` |
-| Work index and case studies | `work.html`, `trailgoat.html`, `purple-squirrel.html` |
-| Motion showcase page | `motion.html`, `assets/motion-page.css`, `assets/motion-page.js`, `assets/motion-governor.js` |
+| Work index, case studies and the reporting demo | `work.html`, `trailgoat.html`, `purple-squirrel.html`, `assets/demos/market-pulse/` |
+| Motion lab (linked from About and the footer) | `motion-lab.html`, `assets/motion-page.css`, `assets/motion-page.js`, `assets/motion-governor.js` |
 | Motion page WebGPU pieces (shared device, one script per piece) and their fallback stills | `assets/motion-gpu.js`, `assets/gpu/*.js`; regenerate stills with `scripts/capture-gpu-posters.mjs` |
 | Baked motion assets: unicorn turntable sprite sheet and shard rebuild film | `blender/bake_turntable.py`, `blender/bake_shards.py`, `blender/encode_shards.py` → `assets/motion/unicorn-*` |
 | Public privacy explanation | `privacy.html` |
@@ -48,12 +55,15 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Vector logos and hero artwork | `assets/brand/` |
 | Shared ribbon curves; regenerate with `npm run brand` | `scripts/ribbon-shapes.json` |
 | Real portfolio screenshots | `assets/work/` |
+| Link-preview cards, 1200 × 627, one per page | `assets/share/` |
+| The published page list and retired addresses that forward | `publicPages` and `redirects` in `scripts/build.mjs` |
+| What the site assistant knows | `server/knowledge.mjs` |
 
-The contact is **info@caprastudios.co**. All project pricing is intentionally quote-based; there are no invented prices, results, clients, or testimonials. Atlanta is taken from the founder's existing site.
+The contact is **info@caprastudios.co**. Only first steps carry a published price (the AI Opportunity Audit, the Team Workshop, the Product sprint and a lot film); everything after is quoted. There are no invented results, clients, or testimonials. TrailGoat and Purple Squirrel are Capra's own products and are described that way. Kris's phone number is never published; a test enforces it. Atlanta is taken from the founder's existing site.
 
 ## Validation
 
-The build validates local asset paths, anchor targets, one H1 per page, and structured-data JSON. Tests exercise both the GitHub project subdirectory and the future custom-domain root, including canonical, sitemap, structured data, and 404 routing. Browser checks are documented in [QA](docs/QA.md).
+The build validates local asset paths, anchor targets, one H1 per page, and structured-data JSON. Every indexable page must also pass the SEO standard in `scripts/seo.mjs` (see `docs/SEO-STANDARD.md`). Tests exercise both the GitHub project subdirectory and the custom-domain root, including canonical, sitemap, structured data, 404 routing, the forwarding page for a retired address, and that the Marketing Room is no longer published. Browser checks are documented in [QA](docs/QA.md).
 
 ## Reference provenance
 
@@ -67,10 +77,10 @@ The October 1 remake replaces the dark, framed chapters with hard-edged sections
 
 The TrailGoat film now uses the September 29 4K render with its original music. Both the homepage and case study play it only on request. Updated posters, encoding details, and verification are recorded in the refresh scope.
 
-## Marketing Room
+## Marketing Room (retired from the site)
 
-The asset library is published at [caprastudios.co/marketing/](https://caprastudios.co/marketing/). It includes 420 PNG designs and editable SVGs, 14 silent videos, 43 print/carousel PDFs, 21 platform starter kits, signatures and campaign copy. Personal contact details are Kris Brown and kris@caprastudios.co. The phone number is deliberately kept off every published file; print-ready personal cards with it live in the original suite on the external SSD.
+The Marketing Room was published at `/marketing/` until November 2026. It is no longer built, linked or listed in the sitemap, and a rebuild removes an older copy from `dist/`. The `marketing/` folder stays in the repository: the land film pipeline loads its fonts from `marketing/brand/fonts`, and the exports remain the studio's own asset library. `npm run dev` still serves the folder locally. See [Marketing Room delivery](docs/MARKETING-ROOM.md) for provenance.
 
-The `marketing/` folder contains the reviewed exports and their generation source. `npm run build` copies the allowlisted library and assembles downloadable ZIPs with Python 3's standard library. Archives and the duplicate source film are generated in `dist/marketing/`, not committed. The page has `noindex` metadata and is omitted from the public sitemap; it is publicly accessible to anyone with the URL.
+## Retired pages
 
-Use `npm run dev` to preview `/marketing/`; use the built `dist/` output when checking ZIP downloads. See [Marketing Room delivery](docs/MARKETING-ROOM.md) for provenance, editing and verification.
+`motion.html` (the Web page that sold websites) is gone. GitHub Pages has no server redirects, so the build writes a small `noindex` page at that address that forwards to `web-apps.html`. Add any other retired address to `redirects` in `scripts/build.mjs`.
