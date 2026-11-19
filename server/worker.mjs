@@ -1,6 +1,7 @@
 // Cloudflare Worker host for the Ask Capra chat. Deploy from this folder with `npx wrangler deploy`.
 // Briefs are not captured here: status reports leads:false, so the dialog offers the visitor's own email draft.
 import {answer,validateMessages} from './core.mjs';
+import {knowledgeVersion} from './knowledge.mjs';
 export async function handle(req,env,fetchImpl=fetch){
  const pathname=new URL(req.url).pathname;
  const origins=(env.AGENT_ALLOWED_ORIGINS||'').split(',').map(s=>s.trim()).filter(Boolean);
@@ -9,7 +10,7 @@ export async function handle(req,env,fetchImpl=fetch){
  if(!pathname.startsWith('/api/agent'))return send(404,{error:'Not found.'});
  if(origin&&!allowed)return send(403,{error:'Origin not allowed.'});
  if(req.method==='OPTIONS'){if(!allowed)return send(403,{error:'Origin required.'});return new Response(null,{status:204,headers:{'access-control-allow-origin':origin,'access-control-allow-methods':'GET, POST','access-control-allow-headers':'content-type','access-control-max-age':'86400','vary':'Origin'}});}
- if(pathname==='/api/agent/status'&&req.method==='GET')return send(200,{live:Boolean(env.ANTHROPIC_API_KEY),leads:false});
+ if(pathname==='/api/agent/status'&&req.method==='GET')return send(200,{live:Boolean(env.ANTHROPIC_API_KEY),leads:false,knowledge:knowledgeVersion});
  if(pathname==='/api/agent/lead')return send(503,{error:'Online brief submission is unavailable. Use the email draft instead.'});
  if(pathname!=='/api/agent/chat')return send(404,{error:'Not found.'});
  if(req.method!=='POST')return send(405,{error:'Use POST.'});

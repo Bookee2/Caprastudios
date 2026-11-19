@@ -5,7 +5,7 @@ import {mkdtemp,readFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {answer,createAgentHandler,validateMessages,validateLead,model} from './agent.mjs';
-import {retrieve} from './knowledge.mjs';
+import {retrieve,knowledgeVersion} from './knowledge.mjs';
 const user=content=>({role:'user',content});
 test('public knowledge retrieval covers service, RAG, operations and scope questions',()=>{
  for(const [q,id]of [['Can a chat agent handle customer support?','agents'],['Search internal documents and handbook policies','rag'],['Automate our whole business workflow and connect CRM tools','operations'],['What is your price and project budget?','pricing']])assert.ok(retrieve(q).some(x=>x.id===id),q);
@@ -25,7 +25,7 @@ async function serve(options,fn){const handler=createAgentHandler(options);const
 const headers={'Origin':'https://studio.example','Content-Type':'application/json'};
 test('API validates origin, status, capture consent, request size and stores an actual disposable lead',async()=>{
  const dir=await mkdtemp(path.join(tmpdir(),'capra-agent-'));const file=path.join(dir,'leads.jsonl');try{await serve({apiKey:'',origins:['https://studio.example'],leadsFile:file},async base=>{
- const status=await(await fetch(base+'/api/agent/status')).json();assert.deepEqual(status,{live:false,leads:true});
+ const status=await(await fetch(base+'/api/agent/status')).json();assert.deepEqual(status,{live:false,leads:true,knowledge:knowledgeVersion});
  let r=await fetch(base+'/api/agent/chat',{method:'POST',headers:{...headers,Origin:'https://evil.example'},body:JSON.stringify({messages:[user('hi')]})});assert.equal(r.status,403);
  r=await fetch(base+'/api/agent/chat',{method:'POST',headers,body:JSON.stringify({messages:[user('hi')]})});assert.equal(r.status,503);
  const lead={name:'Test Visitor',email:'visitor@example.test',company:'Fixture Co',goal:'Support knowledge agent',budget:'Not sure yet',timeline:'Exploring',consent:true};
@@ -45,7 +45,7 @@ test('Cloudflare Worker enforces origin and limits, reports no lead capture, and
  const call=(path,init={},e=env,f)=>handle(new Request('https://agent.example'+path,init),e,f);
  const post=(body,e,f,origin='https://studio.example')=>call('/api/agent/chat',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body},e,f);
  const ok=async()=>new Response(JSON.stringify({content:[{type:'text',text:'We build websites.'}],stop_reason:'end_turn'}),{status:200});
- let r=await call('/api/agent/status',{headers:{Origin:'https://studio.example'}});assert.deepEqual(await r.json(),{live:true,leads:false});assert.equal(r.headers.get('access-control-allow-origin'),'https://studio.example');
+ let r=await call('/api/agent/status',{headers:{Origin:'https://studio.example'}});assert.deepEqual(await r.json(),{live:true,leads:false,knowledge:knowledgeVersion});assert.equal(r.headers.get('access-control-allow-origin'),'https://studio.example');
  assert.equal((await call('/api/agent/chat',{method:'OPTIONS',headers:{Origin:'https://studio.example'}})).status,204);
  assert.equal((await post(JSON.stringify({messages:[user('hi')]}),env,ok,'https://evil.example')).status,403);
  assert.equal((await call('/api/agent/lead',{method:'POST',headers:{Origin:'https://studio.example'}})).status,503);
@@ -56,4 +56,10 @@ test('Cloudflare Worker enforces origin and limits, reports no lead capture, and
  let seen;const limited={...env,CHAT_LIMIT:{limit:async({key})=>{seen=key;return {success:false};}}};
  r=await handle(new Request('https://agent.example/api/agent/chat',{method:'POST',headers:{Origin:'https://studio.example','Content-Type':'application/json','CF-Connecting-IP':'203.0.113.9'},body:JSON.stringify({messages:[user('hi')]})}),limited,ok);assert.equal(r.status,429);assert.equal(seen,'203.0.113.9');
  assert.equal((await post(JSON.stringify({messages:[user('hi')]}),{AGENT_ALLOWED_ORIGINS:'https://studio.example'},ok)).status,503);
+});
+test('the page only uses an assistant deployed with the current knowledge',async()=>{
+ const page=await readFile(new URL('../assets/agent.js',import.meta.url),'utf8');
+ assert.match(knowledgeVersion,/^\d{4}-\d{2}-\d{2}$/);
+ assert.ok(page.includes(`const KNOWLEDGE='${knowledgeVersion}'`),'assets/agent.js must carry the same date as knowledgeVersion');
+ assert.ok(page.includes('data.knowledge===KNOWLEDGE'));
 });

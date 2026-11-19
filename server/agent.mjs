@@ -2,6 +2,7 @@ import {appendFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {model,validateMessages,answer} from './core.mjs';
+import {knowledgeVersion} from './knowledge.mjs';
 export {model,validateMessages,answer};
 export function validateLead(input){
  const result={};for(const [key,max] of Object.entries({name:100,email:254,company:160,goal:2000,budget:100,timeline:120})){if(typeof input[key]!=='string'||input[key].length>max)throw Error('Please check the brief fields.');result[key]=input[key].trim();}
@@ -16,7 +17,7 @@ export function createAgentHandler({apiKey=process.env.ANTHROPIC_API_KEY,leadsFi
  const send=(code,data)=>{res.writeHead(code,{'content-type':'application/json','cache-control':'no-store','x-content-type-options':'nosniff','vary':'Origin',...(allowed?{'access-control-allow-origin':origin}: {})});res.end(JSON.stringify(data));};
  if(origin&&!allowed){send(403,{error:'Origin not allowed.'});return true;}
  if(req.method==='OPTIONS'){if(!allowed){send(403,{error:'Origin required.'});return true;}res.writeHead(204,{'access-control-allow-origin':origin,'access-control-allow-methods':'GET, POST','access-control-allow-headers':'content-type','vary':'Origin'});res.end();return true;}
- if(pathname==='/api/agent/status'&&req.method==='GET'){send(200,{live:Boolean(apiKey),leads:Boolean(leadsFile)});return true;}
+ if(pathname==='/api/agent/status'&&req.method==='GET'){send(200,{live:Boolean(apiKey),leads:Boolean(leadsFile),knowledge:knowledgeVersion});return true;}
  if(!['/api/agent/chat','/api/agent/lead'].includes(pathname)){send(404,{error:'Not found.'});return true;}
  if(req.method!=='POST'){send(405,{error:'Use POST.'});return true;}
  if(!allowed){send(403,{error:'Origin required.'});return true;}

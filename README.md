@@ -1,10 +1,10 @@
 # Capra Studios
 
-An independent studio in Atlanta: AI systems and custom web applications, with land films as a separate line. Operated by Capra, LLC.
+An independent studio in Atlanta: AI systems, custom web applications and land films. Operated by Capra, LLC.
 
 One wall, two lights: a chalk page with flat paint colours taken from the koi pond's palettes, and a black light switch that turns the wall dark and makes the paint glow. Red Hat typography, the ribbon unicorn, hand-tagged notes, and the interactive koi pond hero give the studio its own identity. The direction and its reasoning are in `docs/SITE-CHARACTER-AUDIT.html`.
 
-Since November 17, 2026 the wall is "put to work": the site sells AI systems and web applications first, one paint per page (solar for AI systems, lagoon for web apps, koi for the studio), real product screens as paste-ups, and land films on their own dark page. Capra no longer sells websites. The rules are in [the brand guide](docs/BRAND.md).
+Since November 17, 2026 the wall is "put to work": the site sells AI systems, web applications and land films with equal billing (land films since November 19), one paint per page (solar for AI systems, lagoon for web apps, koi for the studio, a dark room with lime for land films), with real product screens and film frames as paste-ups. Capra no longer sells websites. The rules are in [the brand guide](docs/BRAND.md).
 
 ## Run it
 
@@ -58,9 +58,9 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Real portfolio screenshots | `assets/work/` |
 | Link-preview cards, 1200 × 627, one per page | `assets/share/` |
 | The published page list and retired addresses that forward | `publicPages` and `redirects` in `scripts/build.mjs` |
-| What the site assistant knows | `server/knowledge.mjs` |
+| What the site assistant knows. After a change, set `knowledgeVersion` there and `KNOWLEDGE` in `assets/agent.js` to the same new date, then redeploy the Worker from `server/` (`npx wrangler deploy`); until then the site shows its prepared answers | `server/knowledge.mjs` |
 
-The contact is **info@caprastudios.co**. Only first steps carry a published price (the AI Opportunity Audit, the Team Workshop, the Product sprint and a lot film); everything after is quoted. There are no invented results, clients, or testimonials. TrailGoat and Purple Squirrel are Capra's own products and are described that way. Kris's phone number is never published; a test enforces it. Atlanta is taken from the founder's existing site.
+The contact is **info@caprastudios.co**. AI systems and web applications carry no published prices: both start with a free consultation and are then quoted. The one published price is a lot film, on the Land Films and facts pages. There are no invented results, clients, or testimonials. TrailGoat and Purple Squirrel are Capra's own products and are described that way. Kris's phone number is never published; a test enforces it. Atlanta is taken from the founder's existing site.
 
 ## Validation
 

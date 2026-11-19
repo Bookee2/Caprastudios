@@ -54,9 +54,9 @@ The oversized 900-weight typography is a deliberate departure from the tool-orie
 
 ## Voice — current direction, November 17, 2026
 
-An independent studio in Atlanta that builds AI systems and web applications. Those two lines lead the site. Land films are a separate line with their own page, linked last in the navigation. Capra no longer sells websites or the Marketing HQ.
+An independent studio in Atlanta that builds AI systems and web applications and makes land films. Since November 19, 2026 the three lines have equal billing. Land Films keeps its own dark page and sits third in the navigation. Capra no longer sells websites or the Marketing HQ.
 
-Headline: **AI systems and web apps that earn their keep.**
+Headline: **AI systems, web apps and land films that earn their keep.**
 Sign-off: **Imagination. Made tangible.**
 
 The AI line is five products, each bought on its own, for a business of any size (Kris: "why wouldn't a 5 person company want a second brain?"). Kris's names lead and the plain term sits beside each:
@@ -69,7 +69,7 @@ The AI line is five products, each bought on its own, for a business of any size
 
 Web apps are not limited to any one kind of software. The line is custom software that does what the business needs and connects to the data and systems it already runs.
 
-Prices: only the first steps are published, plainly: audit $1,950, workshop $1,950, product sprint $2,950. No "founding rate" or struck-through regular price; Kris will raise them once there are clients. Everything else is quoted.
+Prices: none are published for AI systems or web applications. Both start with a free consultation ("Book a free consultation") and are then quoted. A lot film is the one published price. Everything else is quoted.
 
 Say what Capra makes, never how, on the apps and films pages. On the AI page, AI is the product, and one line may say the studio runs on the same systems. "We", sentence case, a fact in every headline; the wit goes in the hand notes.
 
