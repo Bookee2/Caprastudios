@@ -54,7 +54,7 @@ The oversized 900-weight typography is a deliberate departure from the tool-orie
 
 ## Voice — current direction, November 17, 2026
 
-An independent studio in Atlanta that builds AI systems and web applications and makes land films. Since November 19, 2026 the three lines have equal billing. Land Films keeps its own dark page and sits third in the navigation. Capra no longer sells websites or the Marketing HQ.
+An independent studio in Atlanta that builds AI systems and web applications and makes land films. Since November 19, 2026 the three lines have equal billing. Land Films keeps its own dark page and sits third in the navigation. Its copy sells to large-tract and timber investors, developers of communities, commercial and industrial sites, and large projects such as data centers. The single lot is a footnote, not the pitch. Capra no longer sells websites or the Marketing HQ.
 
 Headline: **AI systems, web apps and land films that earn their keep.**
 Sign-off: **Imagination. Made tangible.**
