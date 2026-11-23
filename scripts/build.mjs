@@ -5,9 +5,11 @@ import { execFileSync } from 'node:child_process';
 import { checkSEO } from './seo.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-export const publicPages = ['index.html', 'ai-consulting.html', 'web-apps.html', 'work.html', 'about.html', 'facts.html', 'contact.html', 'land-films.html', 'market-pulse.html', 'motion-lab.html', 'trailgoat.html', 'purple-squirrel.html', 'privacy.html', '404.html'];
+export const publicPages = ['index.html', 'land-films.html', 'about.html', 'facts.html', 'contact.html', 'trailgoat.html', 'motion-lab.html', 'privacy.html', '404.html'];
 // Retired addresses. GitHub Pages has no server redirects, so each becomes a small page that forwards.
-export const redirects = { 'motion.html': 'web-apps.html' };
+// An empty target is the homepage. The AI, web app and work pages left the site on 23 November 2026,
+// when Capra became a land marketing studio.
+export const redirects = { 'motion.html': '', 'ai-consulting.html': '', 'web-apps.html': '', 'market-pulse.html': '', 'work.html': 'land-films.html', 'purple-squirrel.html': 'about.html' };
 export const defaultURL = 'https://bookee2.github.io/Caprastudios/';
 export function normalizeURL(value) {
   const url = new URL(value);
@@ -30,7 +32,7 @@ export async function build(output = path.join(root, 'dist'), override) {
     await writeFile(path.join(output, name), source.replaceAll(defaultURL, url).replace('<meta name="capra-agent-endpoint" content="">', `<meta name="capra-agent-endpoint" content="${endpoint.replace(/\/$/, '')}">`));
   }
   for (const [from, to] of Object.entries(redirects)) {
-    await writeFile(path.join(output, from), `<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>This page has moved — Capra Studios</title>\n<meta name="robots" content="noindex">\n<link rel="canonical" href="${url}${to}">\n<meta http-equiv="refresh" content="0; url=${to}">\n</head>\n<body>\n<p>This page has moved to <a href="${to}">${url}${to}</a>.</p>\n</body>\n</html>\n`);
+    await writeFile(path.join(output, from), `<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>This page has moved — Capra Studios</title>\n<meta name="robots" content="noindex">\n<link rel="canonical" href="${url}${to}">\n<meta http-equiv="refresh" content="0; url=${to || './'}">\n</head>\n<body>\n<p>This page has moved to <a href="${to || './'}">${url}${to}</a>.</p>\n</body>\n</html>\n`);
   }
   // Demo markup in assets/demos/**/*.html is source: each page carries its own copy, so the fragments are not published.
   // Remove retired work from an existing output too; keep source assets intact.

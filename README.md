@@ -1,10 +1,10 @@
 # Capra Studios
 
-An independent studio in Atlanta: AI systems, custom web applications and land films. Operated by Capra, LLC.
+An independent land marketing studio in Atlanta: marketing films for land listings, funds and planned projects. Operated by Capra, LLC.
 
 One wall, two lights: a chalk page with flat paint colours taken from the koi pond's palettes, and a black light switch that turns the wall dark and makes the paint glow. Red Hat typography, the ribbon unicorn, hand-tagged notes, and the interactive koi pond hero give the studio its own identity. The direction and its reasoning are in `docs/SITE-CHARACTER-AUDIT.html`.
 
-Since November 17, 2026 the wall is "put to work": the site sells AI systems, web applications and land films with equal billing (land films since November 19), one paint per page (solar for AI systems, lagoon for web apps, koi for the studio, a dark room with lime for land films), with real product screens and film frames as paste-ups. Capra no longer sells websites. The rules are in [the brand guide](docs/BRAND.md).
+Since November 23, 2026 the site sells one thing: land marketing films. The homepage and the films page are dark rooms with lime, where film frames sit in plates and a silent reel plays in a frame; About, Contact and the facts page stay on the chalk wall. The AI systems, web apps, work and demo pages are retired and forward to the pages that replaced them. Every film or frame on the site comes from a master at 1080p or better. The rules are in [the brand guide](docs/BRAND.md).
 
 ## Run it
 
@@ -35,20 +35,18 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 
 | Content | File |
 | --- | --- |
-| Homepage: the two lines of work, proof, the studio band, the films strip, structured data | `index.html` |
-| AI Systems: five products, the audit and workshop prices, the demos | `ai-consulting.html`, `assets/demos/ai/` |
-| Web Apps: what a build includes, the product sprint price | `web-apps.html` |
-| About and the method | `about.html` |
-| The plain facts page (what we sell, prices, proof). Keep it in step with the other pages | `facts.html` |
+| Homepage: the reel, what a film is for, a film in order, what comes with it, the three films, what a drone can't show, kinds of land, how it works, prices, structured data | `index.html`, `assets/reel.js` |
+| The films: two films in full, the planned project frame by frame, sources, prices, questions | `land-films.html`, `assets/films/` |
+| About: how the studio works, the software it also builds, the lab | `about.html` |
+| The plain facts page (what we make, prices, proof). Keep it in step with the other pages | `facts.html` |
 | Contact page and its brief form | `contact.html`, `assets/contact.js` |
-| Land Films: plates, the two films, sources, sending a parcel | `land-films.html`, `assets/films/` |
 | Palette, type, layout and every shared component (daylight, black light, dark rooms, colour fields, paste-ups) | `assets/site.css` |
 | Menu, year, film playback | `assets/studio-next.js` |
 | Navigation bar, the lights switch (daylight or black light) and the motion switch | `assets/nav.js` |
 | Shared behaviours: headline rise, process line, word lighting, diagram draw | `assets/interactions.js` |
 | WebGPU koi pond hero | `assets/pond.js` |
-| Work index, case studies and the reporting demo | `work.html`, `trailgoat.html`, `purple-squirrel.html`, `assets/demos/market-pulse/` |
-| Motion lab (linked from About and the footer) | `motion-lab.html`, `assets/motion-page.css`, `assets/motion-page.js`, `assets/motion-governor.js` |
+| TrailGoat case study (linked from About) | `trailgoat.html` |
+| Motion lab (linked from About) | `motion-lab.html`, `assets/motion-page.css`, `assets/motion-page.js`, `assets/motion-governor.js` |
 | Motion page WebGPU pieces (shared device, one script per piece) and their fallback stills | `assets/motion-gpu.js`, `assets/gpu/*.js`; regenerate stills with `scripts/capture-gpu-posters.mjs` |
 | Baked motion assets: unicorn turntable sprite sheet and shard rebuild film | `blender/bake_turntable.py`, `blender/bake_shards.py`, `blender/encode_shards.py` → `assets/motion/unicorn-*` |
 | Public privacy explanation | `privacy.html` |
@@ -60,7 +58,7 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | The published page list and retired addresses that forward | `publicPages` and `redirects` in `scripts/build.mjs` |
 | What the site assistant knows. After a change, set `knowledgeVersion` there and `KNOWLEDGE` in `assets/agent.js` to the same new date, then redeploy the Worker from `server/` (`npx wrangler deploy`); until then the site shows its prepared answers | `server/knowledge.mjs` |
 
-The contact is **info@caprastudios.co**. AI systems and web applications carry no published prices: both start with a free consultation and are then quoted. The one published price is a lot film, on the Land Films and facts pages. There are no invented results, clients, or testimonials. TrailGoat and Purple Squirrel are Capra's own products and are described that way. Kris's phone number is never published; a test enforces it. Atlanta is taken from the founder's existing site.
+The contact is **info@caprastudios.co**. The one published price is a film of a single lot, on the homepage, the films page and the facts page; everything else is quoted. There are no invented results, clients, or testimonials, and no client is named: the films on the site are studio pieces and say so. TrailGoat and Purple Squirrel are Capra's own products and are described that way. Kris's phone number is never published; a test enforces it. Atlanta is taken from the founder's existing site.
 
 ## Validation
 
@@ -84,4 +82,6 @@ The Marketing Room was published at `/marketing/` until November 2026. It is no 
 
 ## Retired pages
 
-`motion.html` (the Web page that sold websites) is gone. GitHub Pages has no server redirects, so the build writes a small `noindex` page at that address that forwards to `web-apps.html`. Add any other retired address to `redirects` in `scripts/build.mjs`.
+GitHub Pages has no server redirects, so the build writes a small `noindex` page at each retired address that forwards to its successor. `motion.html`, `ai-consulting.html`, `web-apps.html` and `market-pulse.html` forward to the homepage, `work.html` to the films page and `purple-squirrel.html` to About. Add any other retired address to `redirects` in `scripts/build.mjs`; an empty target is the homepage.
+
+The demo scripts in `assets/demos/` are no longer used by any page. They still ship and are still syntax-checked; removing them means changing the `check` script in `package.json` and two assertions in `scripts/build.test.mjs`.

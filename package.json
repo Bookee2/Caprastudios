@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Capra Studios \u2014 AI systems, custom web applications and land films",
+  "description": "Capra Studios \u2014 land marketing films",
   "scripts": {
     "brand": "node scripts/generate-brand.mjs",
     "dev": "node scripts/serve.mjs",

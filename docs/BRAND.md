@@ -52,7 +52,23 @@ Kris chose this over a calmer, film-derived look ("too far serious") and over ke
 
 The oversized 900-weight typography is a deliberate departure from the tool-oriented TrailGoat scale, made for the user's studio statement-piece brief. The core type family, palette, two radii, neutral hover behavior, and mobile label floor come from `/kb-design` (formerly `/kb-tokyo`).
 
-## Voice — current direction, November 17, 2026
+## Voice — current direction, November 23, 2026
+
+Capra Studios is a land marketing studio. It sells one thing, marketing films for land, because that is what clients pay for. Kris: "really we are land marketing not just flyovers."
+
+Headline: **Land marketing, on film.**
+Sign-off: **Imagination. Made tangible.**
+
+- A film is marketing. It opens on the property, makes one point at a time, carries the client's brand and words, and ends on the client's name and call to action. It comes with a 4:5 cut, a vertical cut and stills.
+- A film markets three things: a listing to buyers, a fund or a portfolio to investors, and a planned project to investors, neighbors and the boards that approve it. Never write as if every film sells a tract.
+- Never call the films flyovers, and never say what they are not. Drone video is the competition, so "What a drone can't show." stays.
+- Measurement backs the points a film makes. It is not the pitch.
+- No client is named or described. The films on the site are studio pieces made from real listings and public filings, and the site says so.
+- Only footage from a master at 1080p or better goes on the site.
+- American spelling.
+- Prices: a film of a single lot is the one published price. Everything else is quoted.
+
+### Earlier direction, November 17 to 19, 2026
 
 An independent studio in Atlanta that builds AI systems and web applications and makes land films. Since November 19, 2026 the three lines have equal billing. Land Films keeps its own dark page and sits third in the navigation. Its copy sells to large-tract and timber investors, developers of communities, commercial and industrial sites, and large projects such as data centers. The single lot is a footnote, not the pitch. Capra no longer sells websites or the Marketing HQ.
 

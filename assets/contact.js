@@ -8,22 +8,20 @@
  const endpoint=config||(location.hostname==='127.0.0.1'||location.hostname==='localhost'?'/api/agent':'');
  const f=form.elements;let leads=false;
 
- // A link such as contact.html?kind=film arrives with the right subject already chosen.
- const wanted=new URLSearchParams(location.search).get('kind');
- if(wanted==='film')f.kind.value='A land film';else if(wanted==='apps')f.kind.value='A web application';else if(wanted==='ai')f.kind.value='AI systems';
- const parcelRow=form.querySelector('[data-for-kind]');
- const showParcel=()=>{if(parcelRow)parcelRow.hidden=f.kind.value!==parcelRow.dataset.forKind;};
- f.kind.addEventListener('change',showParcel);showParcel();
+ // A link such as contact.html?for=fund arrives with the right use already chosen.
+ const uses={listing:'A listing',fund:'A fund or a portfolio',project:'A planned project'};
+ const wanted=uses[new URLSearchParams(location.search).get('for')];
+ if(wanted)f.kind.value=wanted;
 
  function brief(){
-  const parcel=parcelRow&&!parcelRow.hidden?f.parcel.value.trim():'';
+  const parcel=f.parcel.value.trim();
   const goal=`[${f.kind.value}] ${f.goal.value.trim()}${parcel?`\nParcel or address: ${parcel}`:''}`;
   return {name:f.name.value.trim(),email:f.email.value.trim(),company:f.company.value.trim(),goal,budget:f.budget.value,timeline:f.timeline.value.trim(),consent:f.consent.checked};
  }
  function mailto(){
   const d=brief();
   const body=`Name: ${d.name}\nEmail: ${d.email}\nBusiness: ${d.company}\n\nProject / goal:\n${d.goal}\n\nBudget: ${d.budget}\nTiming: ${d.timeline}\n\nI agree to be contacted about this project.`;
-  return 'mailto:info@caprastudios.co?subject='+encodeURIComponent('Capra Studios project brief')+'&body='+encodeURIComponent(body);
+  return 'mailto:info@caprastudios.co?subject='+encodeURIComponent('Land marketing film brief')+'&body='+encodeURIComponent(body);
  }
  draft.addEventListener('click',e=>{if(!form.reportValidity()){e.preventDefault();return;}draft.href=mailto();});
 
@@ -43,7 +41,7 @@
   try{
    const r=await fetch(endpoint+'/lead',{method:'POST',credentials:'omit',headers:{'content-type':'application/json'},body:JSON.stringify(brief()),signal:AbortSignal.timeout(15000)});
    const data=await r.json();if(!r.ok)throw Error(data.error||'The brief could not be sent.');
-   result.textContent=data.message||'Sent. Kris will reply by email.';form.reset();showParcel();
+   result.textContent=data.message||'Sent. Kris will reply by email.';form.reset();
   }catch(err){result.classList.add('error');result.textContent='We could not confirm it arrived. Try again, or use the email draft. '+(err.name==='TimeoutError'?'':err.message);}
   finally{send.disabled=false;}
  });

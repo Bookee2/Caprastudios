@@ -50,7 +50,7 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       // A retired address forwards to its successor and stays out of the sitemap.
       for (const [from, to] of Object.entries(redirects)) {
         const stub = await readFile(path.join(output, from), 'utf8');
-        assert.ok(stub.includes(`url=${to}`) && stub.includes('noindex') && stub.includes(`<link rel="canonical" href="${url}${to}">`), from);
+        assert.ok(stub.includes(`url=${to || './'}"`) && stub.includes('noindex') && stub.includes(`<link rel="canonical" href="${url}${to}">`), from);
         assert.equal(sitemap.includes(`${url}${from}`), false);
       }
       await assert.rejects(access(path.join(output, 'server')));
