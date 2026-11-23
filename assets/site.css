@@ -584,13 +584,14 @@ html:not(.motion-off) .hero-plate{transition:rotate var(--dur-quick) var(--ease)
 .film-cards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,2.4vw,34px)}
 .film-card{display:block; min-width:0}
 .film-card img{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border:2px solid var(--line)}
-.film-card:hover img,.film-card:focus-visible img{border-color:var(--lime)}
+.film-card:hover img,.film-card:focus-visible img{border-color:var(--hand)}
 .film-card b{display:block; margin-top:14px; font:800 clamp(20px,1.8vw,24px)/1.2 var(--display); letter-spacing:-.02em}
 .film-card span{display:block; margin-top:4px; font-size:14px; color:var(--muted)}
-.film-card i{display:inline-block; margin-top:10px; font-style:normal; font-weight:700; color:var(--lime)}
+/* accents take the hand colour, so they read on the chalk wall and glow lime when the lights are off */
+.film-card i{display:inline-block; margin-top:10px; font-style:normal; font-weight:700; color:var(--hand)}
 /* a film shown in order: each frame's caption is numbered */
 .storyboard{counter-reset:beat}
-.storyboard .plate figcaption b::before{counter-increment:beat; content:counter(beat); display:inline-block; min-width:1.5em; color:var(--lime)}
+.storyboard .plate figcaption b::before{counter-increment:beat; content:counter(beat); display:inline-block; min-width:1.5em; color:var(--hand)}
 /* what comes with a film */
 .kit{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(26px,3.4vw,48px) clamp(18px,2.4vw,34px)}
 .kit li{padding-top:20px; border-top:2px solid var(--ink)}
