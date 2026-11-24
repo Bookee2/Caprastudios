@@ -604,6 +604,58 @@ html:not(.motion-off) .hero-plate{transition:rotate var(--dur-quick) var(--ease)
 @media(max-width:1000px){.kit{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.kit{grid-template-columns:1fr}}
 .studio-strip .block-head{align-items:start; margin-bottom:0}
+
+/* ---------- 24 November 2026: paint on the daylight homepage (Kris: "lights on is boring") ---------- */
+/* the reel is taped to the wall, with one hand note pointing at it */
+.reel{position:relative}
+.film-frame.taped .tape{top:-14px; width:104px; height:28px}
+.film-frame.taped .tape.l{left:5%; rotate:-5deg}
+.film-frame.taped .tape.r{left:auto; right:5%; rotate:4deg; background:#b6ff3bd9}
+.reel-note{display:block; width:fit-content; margin:22px 4px 0 auto; --r:-3deg; font-size:clamp(20px,1.9vw,27px)}
+/* film cards are paste-ups: a little crooked, each with its own tape, straight when you reach for them */
+.film-cards .film-card{position:relative; --tape:var(--solar)}
+.film-cards .film-card:nth-child(2){--tape:var(--lagoon)}
+.film-cards .film-card:nth-child(3){--tape:var(--lime)}
+.film-cards .film-card:nth-child(4){--tape:var(--koi)}
+.film-cards .film-card::before{content:''; position:absolute; z-index:2; top:-11px; left:36%; width:74px; height:22px; background:color-mix(in srgb,var(--tape) 85%,transparent); rotate:-4deg; pointer-events:none}
+.film-cards .film-card:nth-child(2)::before{left:44%; rotate:3deg}
+.film-cards .film-card:nth-child(3)::before{left:30%; rotate:-2deg}
+.film-cards .film-card:nth-child(4)::before{left:48%; rotate:5deg}
+.film-cards .film-card img{rotate:-1.3deg; border-color:var(--ink)}
+.film-cards .film-card:nth-child(even) img{rotate:1.1deg}
+html:not(.motion-off) .film-cards .film-card img{transition:rotate var(--dur) var(--ease),scale var(--dur) var(--ease)}
+.film-cards .film-card:hover img,.film-cards .film-card:focus-visible img{rotate:0deg; scale:1.02}
+/* the numbers on a film shown in order are drawn by hand */
+.storyboard .plate figcaption b::before{min-width:0; width:1.75em; margin-right:.5em; padding:.05em 0 .12em; text-align:center; font:400 1.15em/1.2 var(--tag); border:2.5px solid var(--hand); border-radius:50%/62%; rotate:-5deg}
+/* on a paint field the columns and their rules take the field's ink */
+.field .kit li{border-top-color:var(--on,#15141c)}
+.field .kit p{color:var(--on,#15141c)}
+html.bl .field .kit li{border-top-color:var(--line)}
+html.bl .field .kit p{color:var(--muted)}
+.audit-grid .button+.hand{display:block; margin:20px 0 0 4px; font-size:clamp(20px,1.9vw,26px)}
+
+/* ---------- lights off: the same paint, glowing (Kris: "add some of this treatment to lights off as well") ---------- */
+/* a field keeps a trace of its colour in the dark, and its edge glows inward */
+html.bl .field{background:color-mix(in srgb,var(--glow,var(--f)) 9%,#120e1d); box-shadow:inset 0 0 0 2px var(--glow,var(--f)),inset 0 0 110px -50px var(--glow,var(--f))}
+html.bl .field .kit li{border-top-color:var(--glow,var(--f))}
+html.bl .field .kit h3{color:var(--glow,var(--f))}
+/* the dark room is outlined too, so it still reads as a band when the whole wall is dark */
+html.bl .block.room{box-shadow:inset 0 0 0 2px var(--ribbon),inset 0 0 110px -50px var(--ribbon)}
+/* the reel's frame and its tape light up */
+html.bl .film-frame.taped{border-color:var(--lime); box-shadow:0 0 54px -12px #b6ff3b}
+html.bl .film-frame.taped .tape.l{background:var(--solar); box-shadow:0 0 20px var(--solar)}
+html.bl .film-frame.taped .tape.r{background:var(--lime); box-shadow:0 0 20px var(--lime)}
+/* each film card glows in the colour of its own tape */
+html.bl .film-cards .film-card::before{background:var(--tape); box-shadow:0 0 18px var(--tape)}
+html.bl .film-cards .film-card img{border-color:var(--tape); box-shadow:0 0 30px -8px var(--tape)}
+html.bl .film-cards .film-card i{color:var(--tape)}
+/* the hand-drawn numbers and the paint under each row stay lit */
+html.bl .storyboard .plate figcaption b::before{box-shadow:0 0 14px -2px var(--lime),inset 0 0 8px -3px var(--lime); text-shadow:0 0 12px #b6ff3b}
+html.bl .rows.compact>li:not(:hover):not(:focus-within) h3 span{background-size:100% .09em}
+html.bl .rows.compact h3 span{filter:drop-shadow(0 0 7px color-mix(in srgb,var(--c,var(--lime)) 70%,transparent))}
+@media(max-width:800px){
+  .reel-note{margin:22px 0 0}
+}
 .studio-strip .block-head p{margin-bottom:14px}
 @media(max-width:800px){
   .reel-top,.film-cards,.film-cards.four{grid-template-columns:1fr}
