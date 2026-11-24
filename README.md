@@ -36,7 +36,7 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | Content | File |
 | --- | --- |
 | Homepage: the reel, what a film is for, a film in order, what comes with it, the three films, what a drone can't show, kinds of land, how it works, prices, structured data | `index.html`, `assets/reel.js` |
-| The films: two films in full, the planned project frame by frame, sources, prices, questions | `land-films.html`, `assets/films/` |
+| The films: three films in full, the planned project frame by frame, sources, prices, questions | `land-films.html`, `assets/films/` |
 | About: how the studio works, the software it also builds, the lab | `about.html` |
 | The plain facts page (what we make, prices, proof). Keep it in step with the other pages | `facts.html` |
 | Contact page and its brief form | `contact.html`, `assets/contact.js` |

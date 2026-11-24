@@ -582,13 +582,17 @@ html:not(.motion-off) .hero-plate{transition:rotate var(--dur-quick) var(--ease)
 .reel-caption{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 28px; margin-top:14px; font-size:14px; color:var(--muted)}
 .reel-caption b{color:var(--ink)}
 .film-cards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,2.4vw,34px)}
-.film-card{display:block; min-width:0}
+.film-cards.four{grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2vw,28px)}
+/* one film shown large above the pair */
+.film-pair.one{grid-template-columns:1fr; margin-bottom:clamp(26px,3.4vw,48px)}
+@media(max-width:1000px){.film-cards.four{grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:30px}}
+.film-card{display:flex; flex-direction:column; align-items:flex-start; min-width:0}
 .film-card img{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border:2px solid var(--line)}
 .film-card:hover img,.film-card:focus-visible img{border-color:var(--hand)}
 .film-card b{display:block; margin-top:14px; font:800 clamp(20px,1.8vw,24px)/1.2 var(--display); letter-spacing:-.02em}
 .film-card span{display:block; margin-top:4px; font-size:14px; color:var(--muted)}
 /* accents take the hand colour, so they read on the chalk wall and glow lime when the lights are off */
-.film-card i{display:inline-block; margin-top:10px; font-style:normal; font-weight:700; color:var(--hand)}
+.film-card i{display:block; margin-top:auto; padding-top:10px; font-style:normal; font-weight:700; color:var(--hand)}
 /* a film shown in order: each frame's caption is numbered */
 .storyboard{counter-reset:beat}
 .storyboard .plate figcaption b::before{counter-increment:beat; content:counter(beat); display:inline-block; min-width:1.5em; color:var(--hand)}
@@ -602,6 +606,6 @@ html:not(.motion-off) .hero-plate{transition:rotate var(--dur-quick) var(--ease)
 .studio-strip .block-head{align-items:start; margin-bottom:0}
 .studio-strip .block-head p{margin-bottom:14px}
 @media(max-width:800px){
-  .reel-top,.film-cards{grid-template-columns:1fr}
+  .reel-top,.film-cards,.film-cards.four{grid-template-columns:1fr}
   .reel-top{align-items:start}
 }

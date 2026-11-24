@@ -59,8 +59,8 @@ for (const url of [defaultURL, 'https://caprastudios.co/']) {
       // The Marketing Room is retired: it is not published, not in the sitemap, and an older copy is removed.
       await assert.rejects(access(path.join(output, 'marketing')));
       assert.equal(sitemap.includes('marketing'), false);
-      // The land films page ships its two films and their posters.
-      for (const film of ['petit-ridge-film', 'buckeye-road-film']) {
+      // The films page ships its three films and their posters.
+      for (const film of ['petit-ridge-film', 'buckeye-road-film', 'lookout-mountain-film']) {
         assert.ok((await readFile(path.join(output, `assets/films/${film}.mp4`))).length > 1000000, film);
         await access(path.join(output, `assets/films/${film}-poster.jpg`));
       }

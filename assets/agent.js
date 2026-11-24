@@ -7,7 +7,7 @@
  const endpoint=config||(location.hostname==='127.0.0.1'||location.hostname==='localhost'?'/api/agent':'');
  let live=false,leads=false,loaded=false,pending=false,history=[],controller=null,generation=0;
  // Must match knowledgeVersion in server/knowledge.mjs. An assistant deployed with older knowledge is not used.
- const KNOWLEDGE='2026-11-23';
+ const KNOWLEDGE='2026-11-24';
  const answers={
  films:{question:'What is a land marketing film?',text:'A short film that makes the case for a property. It shows the land’s strengths one at a time on the real ground, carries your brand, and ends on your name and how to reach you. It comes with a 4:5 cut and a vertical cut for social feeds, and stills.',link:'land-films.html',label:'The films'},
  uses:{question:'Is it only for selling land?',text:'No. The same kind of film markets a listing to buyers, a fund or a portfolio to investors, and a planned project to investors, neighbors and the boards that have to approve it. A property can stay anonymous, and your disclosures go on screen word for word.',link:'index.html#uses',label:'What a film is for'},
