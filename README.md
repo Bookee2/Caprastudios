@@ -2,9 +2,9 @@
 
 An independent land marketing studio in Atlanta: marketing films for land listings, funds and planned projects. Operated by Capra, LLC.
 
-One wall, two lights: a chalk page with flat paint colours taken from the koi pond's palettes, and a black light switch that turns the wall dark and makes the paint glow. Red Hat typography, the ribbon unicorn, hand-tagged notes, and the interactive koi pond hero give the studio its own identity. The direction and its reasoning are in `docs/SITE-CHARACTER-AUDIT.html`.
+One wall, two lights: a fog-grey page with flat bands of cool earth colour, and a lights switch that turns the wall dark and leaves each band a tint of its colour. Red Hat typography and the ribbon unicorn carry the identity. Since November 24, 2026 there is no handwriting, tape or tilt, and no neon. The current palette and its reasoning are in [the brand guide](docs/BRAND.md); the earlier painted-wall direction is in `docs/SITE-CHARACTER-AUDIT.html`.
 
-Since November 23, 2026 the site sells one thing: land marketing films. Every page follows the lights switch: a chalk wall in daylight, dark with lime when the lights are off. A first visit follows the device: light mode gets the lights on, dark mode gets them off. Pressing the switch is remembered in that browser. Film frames sit in plates and a silent reel plays in a frame, never behind the words. Do not wrap a whole page in `.room`: a room stays dark in both lights, so the switch would have nothing to change. The AI systems, web apps, work and demo pages are retired and forward to the pages that replaced them. Every film or frame on the site comes from a master at 1080p or better. The rules are in [the brand guide](docs/BRAND.md).
+Since November 23, 2026 the site sells one thing: land marketing films. Every page follows the lights switch: a fog-grey wall in daylight, dark with eucalyptus accents when the lights are off. A first visit follows the device: light mode gets the lights on, dark mode gets them off. Pressing the switch is remembered in that browser. Film frames sit in plates and a silent reel plays in a frame, never behind the words. Do not wrap a whole page in `.room`: a room stays dark in both lights, so the switch would have nothing to change. The AI systems, web apps, work and demo pages are retired and forward to the pages that replaced them. Every film or frame on the site comes from a master at 1080p or better. The rules are in [the brand guide](docs/BRAND.md).
 
 ## Run it
 
@@ -40,9 +40,9 @@ See [the launch guide](docs/LAUNCH.md) for the custom domain, contact details, a
 | About: how the studio works, the software it also builds, the lab | `about.html` |
 | The plain facts page (what we make, prices, proof). Keep it in step with the other pages | `facts.html` |
 | Contact page and its brief form | `contact.html`, `assets/contact.js` |
-| Palette, type, layout and every shared component (daylight, black light, dark rooms, colour fields, paste-ups) | `assets/site.css` |
+| Palette, type, layout and every shared component (daylight, lights off, dark rooms, colour fields, framed pictures) | `assets/site.css` |
 | Menu, year, film playback | `assets/studio-next.js` |
-| Navigation bar, the lights switch (daylight or black light) and the motion switch | `assets/nav.js` |
+| Navigation bar, the lights switch (lights on or lights off) and the motion switch | `assets/nav.js` |
 | Shared behaviours: headline rise, process line, word lighting, diagram draw | `assets/interactions.js` |
 | WebGPU koi pond hero | `assets/pond.js` |
 | TrailGoat case study (linked from About) | `trailgoat.html` |

@@ -20,7 +20,7 @@
  const lamps=[...document.querySelectorAll('.lamp')],theme=document.querySelector('meta[name="theme-color"]'),systemDark=matchMedia('(prefers-color-scheme: dark)');
  const changed=()=>dispatchEvent(new CustomEvent('capra:light'));
  const saved=()=>{try{return localStorage.getItem('capra-light');}catch{return null;}};
- function light(){const on=root.classList.contains('bl');lamps.forEach(b=>{b.hidden=false;b.setAttribute('aria-pressed',String(on));const label=b.querySelector('span');if(label)label.textContent=on?'Lights on':'Lights off';});theme?.setAttribute('content',on?'#0e0b16':'#f3f1ea');}
+ function light(){const on=root.classList.contains('bl');lamps.forEach(b=>{b.hidden=false;b.setAttribute('aria-pressed',String(on));const label=b.querySelector('span');if(label)label.textContent=on?'Lights on':'Lights off';});theme?.setAttribute('content',on?'#111618':'#eef0ec');}
  lamps.forEach(b=>b.addEventListener('click',()=>{const on=root.classList.toggle('bl');try{if(on===systemDark.matches)localStorage.removeItem('capra-light');else localStorage.setItem('capra-light',on?'bl':'day');}catch{}light();changed();}));
  systemDark.addEventListener('change',()=>{if(saved())return;root.classList.toggle('bl',systemDark.matches);light();changed();});
  light();

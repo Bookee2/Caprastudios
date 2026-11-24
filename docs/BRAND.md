@@ -10,7 +10,35 @@ Keep clear space around the horn and lower ribbon tip. Use a minimum height of 3
 
 The original C identity is preserved in `docs/brand-archive/cut-c/` and Git history. It is outside the deployed website artifact.
 
-## Palette — remade October 1, 2026
+## Palette — cool earth, November 24, 2026
+
+Kris, on the painted wall: "I like the added colors on the site but I think the handwriting font and the tape effect look kind of out of place for our target market. And also I think maybe we could switch to a more neutral earth tones color palette." He was shown a warm set and a cool set and chose "Cool earth". The audience is land brokers, fund managers and developers.
+
+One wall, two lights still holds. Daylight is a fog-grey wall with flat bands of colour; "Lights off" (`html.bl`) turns the wall dark and each band keeps a tint of its colour with a soft glow. Sections that hold films and frames are dark "rooms" in both lights.
+
+| Colour | Hex | Token | Role |
+| --- | --- | --- | --- |
+| Fog | `#eef0ec` | `--paper` | The wall in daylight |
+| Cool charcoal | `#161b1b` | `--ink` | Text and edges in daylight |
+| Eucalyptus | `#a7c4ad` | `--lime` | The accent: the swipe behind the last words of a headline, hovers, and buttons and labels with the lights off |
+| Lichen | `#b6c3a5` | `--solar` | First band ("For a listing, a fund or a project.") |
+| River | `#a8bcc7` | `--lagoon` | Second band ("One tract, a whole campaign."); TrailGoat on the About page |
+| Juniper | `#7e9c93` | `--koi` | Third band (the studio strip) |
+| Spruce | `#25564c` | `--uv` | Links, labels and frame numbers in daylight |
+| Storm | `#7a8794` | `--magenta` | One row colour |
+| Steel | `#6b8ea8` | `--ribbon` | Caption rules on film plates and the outline of a dark room |
+| Night spruce | `#111618` | `--paper` in `html.bl` | The wall with the lights off |
+| Alert | `#9b3d2f` / `#e8a598` | `--alert` | Error text only |
+
+The token names are older than the colours they hold; `assets/site.css` says so at the top. Rules:
+
+- Flat fields only, with gradients kept inside artwork. One colour per section. Text on a band is cool charcoal.
+- No handwriting, no tape, no stickers, nothing tilted, no neon. Sedgwick Ave Display is retired. A `.hand` element is now a short label in Red Hat Display.
+- The logo stays ribbon blue (`#7aa2f7`) until Kris says otherwise. The films still end on the lime wordmark, because it is rendered into them.
+- Link-preview cards (`assets/share/`, 1200 × 627): fog or dark room, the page's colour behind the last words of the headline, and a framed film frame or a plain list on the right.
+- The motion lab keeps its own artwork colours.
+
+## Earlier palette — October 1 to November 24, 2026 (retired)
 
 One wall, two lights. Daylight is a chalk wall with flat paint; black light (`html.bl`, the "Lights off" switch) turns the wall dark and the paint glows. Sections that hold glowing things (the pond, films, live pieces) are dark "rooms" in both lights. The paint colours come from the koi pond's four light palettes and the logo.
 
@@ -46,7 +74,7 @@ Kris chose this over a calmer, film-derived look ("too far serious") and over ke
 
 - Red Hat Display: wordmark and headlines, 700–900.
 - Red Hat Text: body and navigation, 400–600.
-- Sedgwick Ave Display: hand-tagged notes, a handful per page at most. It stands in for Kris's own marker lettering, which should replace it.
+- Sedgwick Ave Display (hand-tagged notes) was retired on November 24, 2026. The site loads two families only.
 - Red Hat Mono and the all-caps numbered labels are retired.
 - Section names (`.kicker`: Red Hat Display 800 in the hand colour, above a section heading) are a deliberate design choice, kept on October 4, 2026 although Impeccable bans labels above headings outright. They name a section in the studio's voice rather than restating the heading. Keep them few: currently two on the homepage and one on the motion lab.
 
