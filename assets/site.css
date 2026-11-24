@@ -576,6 +576,8 @@ html.bl .line.room{box-shadow:inset 0 0 0 2px var(--lime)}
 .film-cards.four{grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2vw,28px)}
 /* one film shown large above the pair */
 .film-pair.one{grid-template-columns:1fr; margin-bottom:clamp(26px,3.4vw,48px)}
+/* a large film after the pair (the planned project): the same gap above it, none below */
+.film-pair+.film-pair.one{margin:clamp(26px,3.4vw,48px) 0 0}
 @media(max-width:1000px){.film-cards.four{grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:30px}}
 .film-card{display:flex; flex-direction:column; align-items:flex-start; min-width:0}
 .film-card img{width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border:2px solid var(--line)}
