@@ -634,3 +634,25 @@ html.bl .rows.compact h3 span{filter:drop-shadow(0 0 7px color-mix(in srgb,var(-
   .reel-top,.film-cards,.film-cards.four{grid-template-columns:1fr}
   .reel-top{align-items:start}
 }
+
+/* How it's made: the numbers strip, the steps (text beside its picture), the tag for work not yet in a delivered film,
+   and the season slider (the same frame in July and mid-November, the November one clipped from the left) */
+.made-counts{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(18px,2.4vw,34px); padding-block:28px; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink)}
+.made-counts b{display:block; font:900 clamp(30px,3.6vw,48px)/1 var(--display); letter-spacing:-.03em; font-variant-numeric:tabular-nums}
+.made-counts span{display:block; margin-top:10px; font-size:15px; line-height:1.4; color:var(--muted)}
+.made-step{align-items:center}
+.made-step h2{font-size:clamp(30px,3.6vw,48px); margin-bottom:18px}
+.made-step p{max-width:32em}
+.made-num{font:800 13px/1.4 var(--display); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0 0 12px}
+.made-tag{display:inline-block; margin-left:8px; padding:4px 8px 3px; background:var(--lime); color:#161b1b; font:800 11px/1.2 var(--display); letter-spacing:.08em; vertical-align:1px}
+.made-pair{display:grid; gap:clamp(18px,2.4vw,28px)}
+.season-slide{position:relative; aspect-ratio:16/9; max-width:100%; overflow:hidden; border:2px solid var(--line); touch-action:pan-y}
+.season-slide img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border:0}
+.season-slide .season-top{clip-path:inset(0 0 0 var(--cut,50%))}
+.season-slide input{position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize}
+.season-bar{position:absolute; top:0; bottom:0; left:var(--cut,50%); width:2px; margin-left:-1px; background:#fff; pointer-events:none}
+.season-bar::after{content:''; position:absolute; top:50%; left:50%; width:30px; height:30px; margin:-15px 0 0 -15px; border-radius:50%; background:#fff; box-shadow:0 1px 6px #0006}
+.season-slide input:focus-visible ~ .season-bar{background:var(--lime)}
+.season-label{position:absolute; bottom:10px; padding:6px 8px 5px; background:#111618b3; color:#fff; font:800 11px/1 var(--display); letter-spacing:.1em; text-transform:uppercase; pointer-events:none}
+.season-label.one{left:10px} .season-label.two{right:10px}
+@media(max-width:800px){.made-counts{grid-template-columns:repeat(2,minmax(0,1fr))}}

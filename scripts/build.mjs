@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { checkSEO } from './seo.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-export const publicPages = ['index.html', 'land-films.html', 'about.html', 'facts.html', 'contact.html', 'trailgoat.html', 'motion-lab.html', 'privacy.html', '404.html'];
+export const publicPages = ['index.html', 'land-films.html', 'how-its-made.html', 'about.html', 'facts.html', 'contact.html', 'trailgoat.html', 'motion-lab.html', 'privacy.html', '404.html'];
 // Retired addresses. GitHub Pages has no server redirects, so each becomes a small page that forwards.
 // An empty target is the homepage. The AI, web app and work pages left the site on 23 November 2026,
 // when Capra became a land marketing studio.
